@@ -1,92 +1,80 @@
-// -------------------------------
-// Load Countries from JSON
-// -------------------------------
-let loadAbortController = null;
+const countrySelect = document.getElementById('country');
+const currentCostInput = document.getElementById('currentCost');
+const inflationRateInput = document.getElementById('inflationRate');
+const calculateBtn = document.getElementById('calculateBtn');
+const resultBlock = document.getElementById('result');
+const newCostSpan = document.getElementById('newCost');
+const increaseSpan = document.getElementById('increaseAmount');
 
 async function loadCountries() {
-  // Cancel any previous load in progress
-  if (loadAbortController) {
-    loadAbortController.abort();
-  }
-
-  loadAbortController = new AbortController();
-
   try {
-    const response = await fetch('/data/food-inflation.json', {
-      signal: loadAbortController.signal
-    });
-    const data = await response.json();
+    const res = await fetch('./Countries-Inflation.json');
+    if (!res.ok) throw new Error('Failed to load food inflation data');
+    const data = await res.json();
 
-    const select = document.getElementById('country');
-    select.innerHTML = ''; // clear placeholder
+    if (!data.countries || !Array.isArray(data.countries)) return;
 
-    // Sort alphabetically
-    data.sort((a, b) => a.country.localeCompare(b.country));
+    countrySelect.innerHTML = '';
 
-    // Populate dropdown
-    data.forEach(entry => {
-      const option = document.createElement('option');
-      option.value = entry.country;
-      option.textContent = entry.country;
-      select.appendChild(option);
+    data.countries.forEach(country => {
+      const opt = document.createElement('option');
+      opt.value = country.code;
+      opt.textContent = country.name;
+      opt.dataset.inflation = country.value;
+      countrySelect.appendChild(opt);
     });
 
-    // Store globally for later use
-    window.foodInflationData = data;
-
-  } catch (error) {
-    if (error.name === 'AbortError') {
-      console.log('Country loading was cancelled');
-    } else {
-      console.error('Error loading countries:', error);
+    // Default to Netherlands (NL), fallback to US, then first entry
+    const preferred = ['NL', 'US'];
+    let defaultSet = false;
+    for (const code of preferred) {
+      const found = data.countries.find(c => c.code === code);
+      if (found) {
+        countrySelect.value = found.code;
+        inflationRateInput.value = found.value;
+        defaultSet = true;
+        break;
+      }
     }
+    if (!defaultSet && data.countries.length > 0) {
+      countrySelect.value = data.countries[0].code;
+      inflationRateInput.value = data.countries[0].value;
+    }
+
+  } catch (err) {
+    console.error(err);
+    countrySelect.innerHTML = '<option value="">Error loading data</option>';
   }
 }
 
-// -------------------------------
-// Cancel Loading
-// -------------------------------
-function cancelLoadCountries() {
-  if (loadAbortController) {
-    loadAbortController.abort();
-  }
-}
-
-// -------------------------------
-// Calculate Inflation for Selected Country
-// -------------------------------
-function calculateInflation() {
-  const country = document.getElementById('country').value;
-  const resultBox = document.getElementById('result');
-
-  if (!window.foodInflationData) {
-    resultBox.textContent = "Data not loaded yet.";
-    return;
-  }
-
-  const entry = window.foodInflationData.find(item => item.country === country);
-
-  if (!entry) {
-    resultBox.textContent = "No data available for this country.";
-    return;
-  }
-
-  resultBox.innerHTML = `
-    <strong>${entry.country}</strong><br>
-    Latest Food Inflation: <strong>${entry.value}%</strong><br>
-    Previous: ${entry.previous}%<br>
-    Date: ${entry.date}
-  `;
-}
-//
-// -------------------------------
-// Initialize Page
-// -------------------------------
-document.addEventListener('DOMContentLoaded', () => {
-  loadCountries();
-
-  const button = document.getElementById('calculate');
-  if (button) {
-    button.addEventListener('click', calculateInflation);
+countrySelect.addEventListener('change', () => {
+  const selected = countrySelect.options[countrySelect.selectedIndex];
+  const rate = selected.dataset.inflation;
+  if (rate !== undefined) {
+    inflationRateInput.value = rate;
   }
 });
+
+calculateBtn.addEventListener('click', () => {
+  const currentCost = parseFloat(currentCostInput.value);
+  const inflationRate = parseFloat(inflationRateInput.value);
+
+  if (isNaN(currentCost) || currentCost < 0) {
+    alert('Please enter a valid current cost.');
+    return;
+  }
+  if (isNaN(inflationRate)) {
+    alert('Please enter a valid inflation rate.');
+    return;
+  }
+
+  const factor = 1 + inflationRate / 100;
+  const newCost = currentCost * factor;
+  const increase = newCost - currentCost;
+
+  newCostSpan.textContent = newCost.toFixed(2);
+  increaseSpan.textContent = increase.toFixed(2);
+  resultBlock.classList.remove('hidden');
+});
+
+loadCountries();

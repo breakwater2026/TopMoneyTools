@@ -31,7 +31,7 @@ let selectedCountry = null;
 
 async function loadCountries() {
   try {
-    const res = await fetch("food-inflation.json");
+    const res = await fetch("Countries-Inflation.json");
     inflationData = await res.json();
 
     countryEl.innerHTML = "";
@@ -39,8 +39,8 @@ async function loadCountries() {
       .sort((a, b) => a.country.localeCompare(b.country))
       .forEach(entry => {
         const opt = document.createElement("option");
-        opt.value = entry.country;
-        opt.textContent = entry.country;
+        opt.value = entry.name;
+        opt.textContent = entry.name;
         countryEl.appendChild(opt);
       });
 
@@ -59,7 +59,7 @@ async function loadCountries() {
 
 function applyCountryData() {
   const countryName = countryEl.value;
-  selectedCountry = inflationData.find(c => c.country === countryName);
+  selectedCountry = inflationData.find(c => c.name === countryName);
 
   if (!selectedCountry) return;
 

@@ -1,104 +1,88 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Food Inflation Calculator | TopMoneyTools</title>
-  <meta name="description" content="See how rising food prices affect your budget. Enter your food costs and salary to understand how much of your income is being eaten by food inflation.">
-  <link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <header class="header">
-    <a href="/" class="brand">TopMoneyTools</a>
+<div class="wrap">
+
+  <header class="site-header">
+    <a class="brand" href="/">TopMoneyTools</a>
+    <nav class="site-nav">
+      <a href="/tools/food-inflation-calculator/">Inflation</a>
+      <a href="/tools/debt-cost-calculator/">Debt Cost</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+      <a href="/private-policy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/disclaimer/">Disclaimer</a>
+    </nav>
   </header>
 
-  <main class="container">
-
-    <section class="hero">
+  <main>
+    <div class="card">
       <h1>Food Inflation Calculator</h1>
-      <p>See how rising food prices affect your budget. Enter your food costs and salary to understand how much of your income is being eaten by food inflation.</p>
-    </section>
-
-    <section class="card">
+      <p class="lead">Select your country to load the latest food inflation rate, then enter your food costs and salary to see the real impact on your budget.</p>
 
       <!-- Country -->
       <div class="field">
         <label for="country">Country</label>
         <select id="country">
-          <option>Loading...</option>
+          <option value="">Loading countries…</option>
         </select>
       </div>
 
-      <!-- Inflation Rate -->
+      <!-- Inflation rate (prefilled from country) -->
       <div class="field">
         <label for="inflationRate">Food inflation rate (%)</label>
-        <input id="inflationRate" type="number" step="0.1">
-        <div class="note" id="inflationNote"></div>
+        <input type="number" id="inflationRate" step="0.01" />
+        <p class="hint" id="inflationNote">Select a country to load the latest rate.</p>
       </div>
 
-      <!-- Food Cost -->
+      <!-- Food cost + period toggle -->
       <div class="field">
         <label for="foodCost">Your food cost</label>
-        <input id="foodCost" type="number" min="0" step="0.01" placeholder="e.g. 600">
+        <input type="number" id="foodCost" placeholder="e.g. 500" min="0" step="0.01" />
+        <div class="period-toggle" id="foodPeriod">
+          <button data-period="weekly">Weekly</button>
+          <button data-period="monthly" class="active">Monthly</button>
+          <button data-period="annual">Annual</button>
+        </div>
       </div>
 
-      <div class="segmented" id="foodPeriod">
-        <button data-period="weekly" class="active">Weekly</button>
-        <button data-period="monthly">Monthly</button>
-        <button data-period="yearly">Yearly</button>
-      </div>
-
-      <!-- Salary -->
+      <!-- Salary + period toggle -->
       <div class="field">
-        <label for="salary">Your salary</label>
-        <input id="salary" type="number" min="0" step="0.01" placeholder="e.g. 10000">
+        <label for="salary">Your salary (net take-home)</label>
+        <input type="number" id="salary" placeholder="e.g. 3000" min="0" step="0.01" />
+        <div class="period-toggle" id="salaryPeriod">
+          <button data-period="weekly">Weekly</button>
+          <button data-period="monthly" class="active">Monthly</button>
+          <button data-period="annual">Annual</button>
+        </div>
       </div>
 
-      <div class="segmented" id="salaryPeriod">
-        <button data-period="weekly" class="active">Weekly</button>
-        <button data-period="monthly">Monthly</button>
-        <button data-period="yearly">Yearly</button>
+      <!-- Results -->
+      <div class="result" id="severityCard">
+        <h2>Results</h2>
+        <p>Food inflation rate: <strong><span id="resultInflation">—</span></strong></p>
+        <p>Adjusted food cost (monthly): <strong><span id="resultFoodCost">—</span></strong></p>
+        <p>Salary (monthly): <strong><span id="resultSalary">—</span></strong></p>
+        <p>Food cost burden: <strong><span id="resultBurden">—</span></strong></p>
+        <p id="summaryText">Enter your information to see your results.</p>
       </div>
 
-    </section>
-
-    <!-- Results -->
-    <section class="results">
-
-      <div class="result-card">
-        <h3>Food Inflation</h3>
-        <p id="resultInflation">—</p>
-      </div>
-
-      <div class="result-card">
-        <h3>Adjusted Food Cost</h3>
-        <p id="resultFoodCost">—</p>
-      </div>
-
-      <div class="result-card">
-        <h3>Salary (Monthly)</h3>
-        <p id="resultSalary">—</p>
-      </div>
-
-      <div class="result-card severity" id="severityCard">
-        <h3>Food Cost Burden</h3>
-        <p id="resultBurden">—</p>
-      </div>
-
-      <div class="summary" id="summaryText">Enter your information to see your results.</div>
-
-    </section>
-
+      <p class="note">Food inflation rates are sourced from latest available data. Results update instantly as you type.</p>
+    </div>
   </main>
 
-  <footer class="footer">
-    <p>© 2026 TopMoneyTools. All rights reserved.</p>
+  <footer class="site-footer">
+    <p>&copy; 2026 TopMoneyTools &middot; <a href="/disclaimer/">Disclaimer</a></p>
   </footer>
 
-  <script src="script.js"></script>
-
+</div>
+<script type="module" src="food-inflation-calculator.js"></script>
 </body>
 </html>
