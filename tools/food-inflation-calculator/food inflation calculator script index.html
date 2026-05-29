@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Inflation Calculator | TopMoneyTools</title>
+  <meta name="description" content="See how rising food prices affect your budget. Enter your food costs and salary to understand how much of your income is being eaten by food inflation.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header">
+    <a href="/" class="brand">TopMoneyTools</a>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <h1>Food Inflation Calculator</h1>
+      <p>See how rising food prices affect your budget. Enter your food costs and salary to understand how much of your income is being eaten by food inflation.</p>
+    </section>
+
+    <section class="card">
+
+      <!-- Country -->
+      <div class="field">
+        <label for="country">Country</label>
+        <select id="country">
+          <option>Loading...</option>
+        </select>
+      </div>
+
+      <!-- Inflation Rate -->
+      <div class="field">
+        <label for="inflationRate">Food inflation rate (%)</label>
+        <input id="inflationRate" type="number" step="0.1">
+        <div class="note" id="inflationNote"></div>
+      </div>
+
+      <!-- Food Cost -->
+      <div class="field">
+        <label for="foodCost">Your food cost</label>
+        <input id="foodCost" type="number" min="0" step="0.01" placeholder="e.g. 600">
+      </div>
+
+      <div class="segmented" id="foodPeriod">
+        <button data-period="weekly" class="active">Weekly</button>
+        <button data-period="monthly">Monthly</button>
+        <button data-period="yearly">Yearly</button>
+      </div>
+
+      <!-- Salary -->
+      <div class="field">
+        <label for="salary">Your salary</label>
+        <input id="salary" type="number" min="0" step="0.01" placeholder="e.g. 10000">
+      </div>
+
+      <div class="segmented" id="salaryPeriod">
+        <button data-period="weekly" class="active">Weekly</button>
+        <button data-period="monthly">Monthly</button>
+        <button data-period="yearly">Yearly</button>
+      </div>
+
+    </section>
+
+    <!-- Results -->
+    <section class="results">
+
+      <div class="result-card">
+        <h3>Food Inflation</h3>
+        <p id="resultInflation">—</p>
+      </div>
+
+      <div class="result-card">
+        <h3>Adjusted Food Cost</h3>
+        <p id="resultFoodCost">—</p>
+      </div>
+
+      <div class="result-card">
+        <h3>Salary (Monthly)</h3>
+        <p id="resultSalary">—</p>
+      </div>
+
+      <div class="result-card severity" id="severityCard">
+        <h3>Food Cost Burden</h3>
+        <p id="resultBurden">—</p>
+      </div>
+
+      <div class="summary" id="summaryText">Enter your information to see your results.</div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 TopMoneyTools. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+pl

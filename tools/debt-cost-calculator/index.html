@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Debt Cost Calculator | TopMoneyTools</title>
+
+  <meta name="description" content="Estimate how much debt costs in interest per week, month, and year with this simple TopMoneyTools calculator.">
+  <meta name="robots" content="index,follow">
+
+  <!-- Updated canonical URL for TopMoneyTools deployment -->
+  <link rel="canonical" href="https://moneytools-mu.vercel.app/tools/debt-cost-calculator/">
+
+  <!-- Correct stylesheet path for public_v2 -->
+  <link rel="stylesheet" href="/assets/css/moneytools.css">
+  
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1946389838026565" crossorigin="anonymous"></script>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="/">TopMoneyTools</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/tools/food-inflation-calculator/">Inflation</a>
+        <a href="/tools/debt-cost-calculator/">Debt Cost</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/private-policy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="badge">Simple · Fast · Universal</div>
+      <h1>Debt Cost Calculator</h1>
+      <p>Estimate how much debt costs in interest per week, month, and year, and compare that cost with your salary in the same period.</p>
+    </section>
+
+    <!-- Top Banner Ad -->
+    <div style="text-align: center; margin: 20px 0; min-height: 90px;">
+      <ins class="adsbygoogle"
+           style="display: block;"
+           data-ad-client="ca-pub-1946389838026565"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="horizontal"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <section class="grid">
+      <div class="card">
+        <div class="fields">
+          <div class="field">
+            <label for="country">Country</label>
+            <select id="country"></select>
+          </div>
+
+          <div class="field">
+            <label for="principal">Principal amount</label>
+            <input id="principal" type="number" min="0" step="0.01" placeholder="10000">
+          </div>
+
+          <div class="field">
+            <label for="rate">Interest rate</label>
+            <select id="rate"></select>
+          </div>
+
+          <div class="field">
+            <label for="salary">Salary</label>
+            <input id="salary" type="number" min="0" step="0.01" placeholder="4000">
+          </div>
+
+          <div class="field wide">
+            <label>Salary periodicity</label>
+            <div class="segmented" id="periodButtons">
+              <button data-period="weekly" type="button">Weekly</button>
+              <button data-period="monthly" type="button" class="active">Monthly</button>
+              <button data-period="yearly" type="button">Yearly</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          Enter the same salary period you selected above. Results update instantly as you type.
+        </div>
+
+        <div class="results">
+          <div class="result-card">
+            <div class="k">Annual interest</div>
+            <div class="v" id="annualI"></div>
+            <div class="muted" id="annualPct"></div>
+          </div>
+
+          <div class="result-card">
+            <div class="k">Monthly interest</div>
+            <div class="v" id="monthlyI"></div>
+            <div class="muted" id="monthlyPct"></div>
+          </div>
+
+          <div class="result-card">
+            <div class="k">Weekly interest</div>
+            <div class="v" id="weeklyI"></div>
+            <div class="muted" id="weeklyPct"></div>
+          </div>
+
+          <div class="result-card">
+            <div class="k">Interest vs salary</div>
+            <table class="table">
+              <tr><td>Same-period burden</td><td id="samePeriod"></td></tr>
+              <tr><td>Salary in selected period</td><td id="salaryPeriod"></td></tr>
+              <tr><td>Debt service ratio</td><td id="dsr"></td></tr>
+            </table>
+          </div>
+
+          <div class="bar" aria-hidden="true">
+            <div class="fill" id="fill"></div>
+          </div>
+
+          <!-- Mid-Content Ad -->
+          <div style="text-align: center; margin: 30px 0; min-height: 250px;">
+            <ins class="adsbygoogle"
+                 style="display: block; max-width: 300px; margin: 0 auto;"
+                 data-ad-client="ca-pub-1946389838026565"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="rectangle"
+                 data-full-width-responsive="false"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+
+          <div class="small" id="countryHint"></div>
+
+          <div class="tools">
+            <button id="copyButton" type="button">Copy result</button>
+            <button id="shareButton" type="button">Share</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Ad -->
+    <div style="text-align: center; margin: 30px 0 20px 0; min-height: 90px;">
+      <ins class="adsbygoogle"
+           style="display: block;"
+           data-ad-client="ca-pub-1946389838026565"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="horizontal"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+        <footer class="footer">
+      <p>© 2026 TopMoneyTools. All rights reserved.</p>
+      <nav class="footer-nav">
+        <a href="/private-policy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Service</a>
+        <a href="/disclaimer/">Disclaimer</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </footer>
+  </div>
+
+  <script>
+    let countriesData = [];
+
+    const countryEl = document.getElementById("country");
+    const rateEl = document.getElementById("rate");
+    const principalEl = document.getElementById("principal");
+    const salaryEl = document.getElementById("salary");
+    const copyButton = document.getElementById("copyButton");
+    const shareButton = document.getElementById("shareButton");
+
+    const fmt = (v, c) => new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: c,
+      maximumFractionDigits: 2
+    }).format(isFinite(v) ? v : 0);
+
+    let period = "monthly";
+    let lastResult = "";
+
+    // Load countries from JSON
+    async function loadCountries() {
+      try {
+        const response = await fetch('/data/countries.json');
+        const data = await response.json();
+        
+        countriesData = data;
+        
+        countryEl.innerHTML = '';
+        data.forEach((entry, i) => {
+          const o = document.createElement("option");
+          o.value = JSON.stringify([entry.country, entry.currency]);
+          o.textContent = entry.country;
+          if (i === 0) o.selected = true;
+          countryEl.appendChild(o);
+        });
+
+        update();
+      } catch (error) {
+        console.error('Error loading countries:', error);
+        countryEl.innerHTML = '<option value="">Error loading countries</option>';
+      }
+    }
+
+    for (let r = 0; r <= 20.0001; r += 0.25) {
+      const o = document.createElement("option");
+      o.value = r.toFixed(2);
+      o.textContent = r % 1 === 0 ? r.toFixed(0) : r.toFixed(2);
+      if (r === 5) o.selected = true;
+      rateEl.appendChild(o);
+    }
+
+    document.getElementById("periodButtons").addEventListener("click", e => {
+      if (e.target.tagName !== "BUTTON") return;
+      period = e.target.dataset.period;
+      [...e.currentTarget.querySelectorAll("button")].forEach(b => b.classList.toggle("active", b === e.target));
+      update();
+    });
+
+    [countryEl, rateEl, principalEl, salaryEl].forEach(el => el.addEventListener("input", update));
+
+    function periodLabel() {
+      return period.charAt(0).toUpperCase() + period.slice(1);
+    }
+
+    function update() {
+      const [country, currency] = JSON.parse(countryEl.value);
+      const principal = parseFloat(principalEl.value || 0);
+      const rate = parseFloat(rateEl.value || 0) / 100;
+      const salary = parseFloat(salaryEl.value || 0);
+
+      const annualInterest = principal * rate;
+      const monthlyInterest = annualInterest / 12;
+      const weeklyInterest = annualInterest / 52;
+
+      let interestForPeriod = 0;
+      if (period === "weekly") interestForPeriod = weeklyInterest;
+      else if (period === "monthly") interestForPeriod = monthlyInterest;
+      else interestForPeriod = annualInterest;
+
+      const percentOfSalary = salary > 0 ? (interestForPeriod / salary) * 100 : 0;
+
+      document.getElementById("annualI").textContent = fmt(annualInterest, currency);
+      document.getElementById("monthlyI").textContent = fmt(monthlyInterest, currency);
+      document.getElementById("weeklyI").textContent = fmt(weeklyInterest, currency);
+
+      document.getElementById("annualPct").textContent =
+        principal > 0 ? `${(rate * 100).toFixed(2)}% per year` : "Enter principal to calculate";
+
+      document.getElementById("monthlyPct").textContent =
+        salary > 0 ? `${fmt(monthlyInterest, currency)} per month` : "Enter salary to compare";
+
+      document.getElementById("weeklyPct").textContent =
+        salary > 0 ? `${fmt(weeklyInterest, currency)} per week` : "Enter salary to compare";
+
+      document.getElementById("samePeriod").textContent =
+        salary > 0 ? `${fmt(interestForPeriod, currency)} (${percentOfSalary.toFixed(2)}%)` : "—";
+
+      document.getElementById("salaryPeriod").textContent =
+        salary > 0 ? `${periodLabel()} salary: ${fmt(salary, currency)}` : "—";
+
+      document.getElementById("dsr").textContent =
+        salary > 0 ? `${percentOfSalary.toFixed(2)}%` : "—";
+
+      document.getElementById("fill").style.width = `${Math.min(100, percentOfSalary || 0)}%`;
+
+      document.getElementById("countryHint").textContent =
+        `${country} selected · currency formatting applied`;
+
+      lastResult = [
+        "Debt Cost Calculator Result",
+        `Principal: ${fmt(principal, currency)}`,
+        `Rate: ${(rate * 100).toFixed(2)}% per year`,
+        `${periodLabel()} salary: ${fmt(salary, currency)}`,
+        `Annual interest: ${fmt(annualInterest, currency)}`,
+        `Monthly interest: ${fmt(monthlyInterest, currency)}`,
+        `Weekly interest: ${fmt(weeklyInterest, currency)}`,
+        `Same-period burden: ${fmt(interestForPeriod, currency)} (${percentOfSalary.toFixed(2)}%)`
+      ].join("\n");
+    }
+
+    copyButton.addEventListener("click", () => {
+      if (!navigator.clipboard || !lastResult) return;
+      navigator.clipboard.writeText(lastResult).then(() => {
+        copyButton.textContent = "Copied!";
+        setTimeout(() => copyButton.textContent = "Copy result", 2500);
+      }).catch(() => {
+        copyButton.textContent = "Copy failed";
+      });
+    });
+
+    shareButton.addEventListener("click", async () => {
+      const title = document.title;
+      const url = window.location.href;
+      const text = `Check this debt cost calculator: ${title}`;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, text, url });
+          shareButton.textContent = "Shared";
+          setTimeout(() => shareButton.textContent = "Share", 2000);
+        } catch (err) {
+          if (err.name !== "AbortError") {
+            shareButton.textContent = "Share failed";
+            setTimeout(() => shareButton.textContent = "Share", 2000);
+          }
+        }
+      } else {
+        try {
+          await navigator.clipboard.writeText(url);
+          shareButton.textContent = "Link copied";
+          setTimeout(() => shareButton.textContent = "Share", 2000);
+        } catch (err) {
+          shareButton.textContent = "Share failed";
+          setTimeout(() => shareButton.textContent = "Share", 2000);
+        }
+      }
+    });
+
+    // Initialize page by loading countries
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadCountries);
+    } else {
+      loadCountries();
+    }
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Inflation Calculator | TopMoneyTools</title>
+  <meta name="description" content="Estimate how food inflation changes the purchasing power of your money. Select your country to see the latest food inflation rates and calculate future purchasing power.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://moneytools-mu.vercel.app/tools/food-inflation-calculator/">
+  <link rel="stylesheet" href="/assets/css/moneytools.css">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1946389838026565" crossorigin="anonymous"></script>
+  <!-- Replace XXXXXXXXXXXXXXXX with your Google AdSense Publisher ID -->
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="/">TopMoneyTools</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/tools/food-inflation-calculator/">Inflation</a>
+        <a href="/tools/debt-cost-calculator/">Debt Cost</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/private-policy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="badge">Simple · Fast · Universal</div>
+      <h1>Food Inflation Calculator</h1>
+      <p>Estimate how food inflation changes the purchasing power of your money. Select a country to see the latest food inflation rate and calculate future purchasing power.</p>
+    </section>
+
+    <!-- Top Banner Ad -->
+    <div style="text-align: center; margin: 20px 0; min-height: 90px;">
+      <ins class="adsbygoogle"
+           style="display: block;"
+           data-ad-client="ca-pub-1946389838026565"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="horizontal"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <section class="grid">
+      <div class="card">
+        <div class="fields">
+          <div class="field">
+            <label for="country">Country</label>
+            <select id="country">
+              <option value="">Loading countries...</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="amount">Amount to analyze</label>
+            <input id="amount" type="number" min="0" step="0.01" placeholder="1000">
+          </div>
+
+          <div class="field">
+            <label for="years">Time period</label>
+            <input id="years" type="number" min="0" step="1" placeholder="5">
+          </div>
+
+          <div class="field wide">
+            <label>Currency selection</label>
+            <div class="segmented" id="currencyButtons">
+              <button data-currency="USD" type="button" class="active">USD</button>
+              <button data-currency="EUR" type="button">EUR</button>
+              <button data-currency="GBP" type="button">GBP</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          Food inflation rates are sourced from latest available data. Results update instantly as you type.
+          <div style="font-size: 12px; color: #888; margin-top: 10px;">
+            <em>This calculator is supported by Google AdSense advertisements.</em>
+          </div>
+        </div>
+
+        <div class="results">
+          <div class="result-card">
+            <div class="k">Current food inflation rate</div>
+            <div class="v" id="currentRate"></div>
+            <div class="muted" id="rateDate"></div>
+          </div>
+
+          <div class="result-card">
+            <div class="k">Starting amount</div>
+            <div class="v" id="startingAmount"></div>
+            <div class="muted" id="currencyLabel"></div>
+          </div>
+
+          <div class="result-card">
+            <div class="k">Purchasing power after inflation</div>
+            <div class="v" id="futureValue"></div>
+            <div class="muted" id="futurePeriod"></div>
+          </div>
+
+          <div class="result-card">
+            <div class="k">Loss in purchasing power</div>
+            <div class="v" id="lossValue"></div>
+            <div class="muted" id="lossPct"></div>
+          </div>
+
+          <div class="bar" aria-hidden="true">
+            <div class="fill" id="fill"></div>
+          </div>
+
+          <!-- Mid-Content Ad -->
+          <div style="text-align: center; margin: 30px 0; min-height: 250px;">
+            <ins class="adsbygoogle"
+                 style="display: block; max-width: 300px; margin: 0 auto;"
+                 data-ad-client="ca-pub-1946389838026565"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="rectangle"
+                 data-full-width-responsive="false"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+
+          <div class="small" id="summaryHint"></div>
+
+          <div class="result-card">
+            <div class="k">Summary</div>
+            <table class="table">
+              <tr><td>Country</td><td id="summaryCountry"></td></tr>
+              <tr><td>Food inflation rate</td><td id="summaryRate"></td></tr>
+              <tr><td>Time period</td><td id="summaryYears"></td></tr>
+            </table>
+          </div>
+
+          <div class="tools">
+            <button id="copyButton" type="button">Copy result</button>
+            <button id="shareButton" type="button">Share</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Ad -->
+    <div style="text-align: center; margin: 30px 0 20px 0; min-height: 90px;">
+      <ins class="adsbygoogle"
+           style="display: block;"
+           data-ad-client="ca-pub-1946389838026565"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="horizontal"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+        <footer class="footer">
+      <p>© 2026 TopMoneyTools. All rights reserved.</p>
+      <nav class="footer-nav">
+        <a href="/private-policy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Service</a>
+        <a href="/disclaimer/">Disclaimer</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </footer>
+  </div>
+
+  <script>
+    let foodInflationData = [];
+    let currentSelectedData = null;
+
+    const countryEl = document.getElementById("country");
+    const amountEl = document.getElementById("amount");
+    const yearsEl = document.getElementById("years");
+    const copyButton = document.getElementById("copyButton");
+    const shareButton = document.getElementById("shareButton");
+
+    const fmt = (v, c) => new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: c,
+      maximumFractionDigits: 2
+    }).format(isFinite(v) ? v : 0);
+
+    let currency = "USD";
+    let lastResult = "";
+
+    // Load countries from JSON
+
+    async function loadCountries() {
+  try {
+    // Load inflation dataset
+    const inflationRes = await fetch('/tools/food-inflation-calculator/food-inflation.json');
+    foodInflationData = await inflationRes.json();
+
+    // Load country list
+    const countriesRes = await fetch('/data/countries.json');
+    const countryList = await countriesRes.json();
+
+    // Populate dropdown using inflation data (sorted)
+    countryEl.innerHTML = '';
+    foodInflationData
+      .sort((a, b) => a.country.localeCompare(b.country))
+      .forEach(entry => {
+        const o = document.createElement("option");
+        o.value = entry.country;
+        o.textContent = entry.country;
+        countryEl.appendChild(o);
+      });
+
+    // Set initial selection
+    currentSelectedData = foodInflationData[0];
+    update();
+
+  } catch (error) {
+    console.error('Error loading data:', error);
+    countryEl.innerHTML = '<option value="">Error loading data</option>';
+  }
+}
+
+    // Currency selection
+    document.getElementById("currencyButtons").addEventListener("click", e => {
+      if (e.target.tagName !== "BUTTON") return;
+      currency = e.target.dataset.currency;
+      [...e.currentTarget.querySelectorAll("button")].forEach(b => b.classList.toggle("active", b === e.target));
+      update();
+    });
+
+    // Event listeners
+    [countryEl, amountEl, yearsEl].forEach(el => el.addEventListener("input", update));
+
+    function update() {
+      const countryName = countryEl.value;
+      const entry = foodInflationData.find(item => item.country === countryName);
+      
+      if (!entry) {
+        document.getElementById("currentRate").textContent = "—";
+        return;
+      }
+
+      currentSelectedData = entry;
+      const amount = parseFloat(amountEl.value || 0);
+      const years = parseFloat(yearsEl.value || 0);
+      const inflationRate = entry.value / 100;
+
+      // Calculate future value based on food inflation
+      const futureAmount = amount * Math.pow(1 + inflationRate, years);
+      const lossValue = futureAmount - amount;
+      const lossPct = amount > 0 ? (lossValue / amount) * 100 : 0;
+
+      // Display results
+      document.getElementById("currentRate").textContent = `${entry.value}%`;
+      document.getElementById("rateDate").textContent = `Updated ${new Date(entry.date).toLocaleDateString()}`;
+      
+      document.getElementById("startingAmount").textContent = fmt(amount, currency);
+      document.getElementById("currencyLabel").textContent = `${currency} selected`;
+
+      document.getElementById("futureValue").textContent = fmt(futureAmount, currency);
+      document.getElementById("futurePeriod").textContent = 
+        years > 0 ? `After ${years.toFixed(0)} year${years !== 1 ? 's' : ''} at ${entry.value}% annual food inflation` : "Enter a time period";
+
+      document.getElementById("lossValue").textContent = fmt(lossValue, currency);
+      document.getElementById("lossPct").textContent = 
+        amount > 0 ? `${lossPct.toFixed(2)}% loss in purchasing power` : "Enter an amount to calculate";
+
+      document.getElementById("fill").style.width = `${Math.min(100, Math.max(0, lossPct))}%`;
+
+      document.getElementById("summaryHint").textContent = 
+        `Your money's purchasing power decreases by ${entry.value}% annually due to food inflation in ${entry.country}.`;
+
+      document.getElementById("summaryCountry").textContent = entry.country;
+      document.getElementById("summaryRate").textContent = `${entry.value}%`;
+      document.getElementById("summaryYears").textContent = `${years.toFixed(0)} year${years !== 1 ? 's' : ''}`;
+
+      lastResult = [
+        "Food Inflation Calculator Result",
+        `Country: ${entry.country}`,
+        `Starting amount: ${fmt(amount, currency)}`,
+        `Food inflation rate: ${entry.value}%`,
+        `Time period: ${years.toFixed(0)} years`,
+        `Future purchasing power: ${fmt(futureAmount, currency)}`,
+        `Loss in purchasing power: ${fmt(lossValue, currency)} (${lossPct.toFixed(2)}%)`
+      ].join("\n");
+    }
+
+    copyButton.addEventListener("click", () => {
+      if (!navigator.clipboard || !lastResult) return;
+      navigator.clipboard.writeText(lastResult).then(() => {
+        copyButton.textContent = "Copied!";
+        setTimeout(() => copyButton.textContent = "Copy result", 2500);
+      }).catch(() => {
+        copyButton.textContent = "Copy failed";
+      });
+    });
+
+    shareButton.addEventListener("click", async () => {
+      const title = document.title;
+      const url = window.location.href;
+      const text = `Check this food inflation calculator: ${title}`;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, text, url });
+          shareButton.textContent = "Shared";
+          setTimeout(() => shareButton.textContent = "Share", 2000);
+        } catch (err) {
+          if (err.name !== "AbortError") {
+            shareButton.textContent = "Share failed";
+            setTimeout(() => shareButton.textContent = "Share", 2000);
+          }
+        }
+      } else {
+        try {
+          await navigator.clipboard.writeText(url);
+          shareButton.textContent = "Link copied";
+          setTimeout(() => shareButton.textContent = "Share", 2000);
+        } catch (err) {
+          shareButton.textContent = "Share failed";
+          setTimeout(() => shareButton.textContent = "Share", 2000);
+        }
+      }
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', loadCountries);
+  </script>
+</body>
+
+
