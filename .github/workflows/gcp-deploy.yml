@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 env:
   PROJECT_ID: project-7ee9ba0e-6038-467d-83a
@@ -38,3 +39,8 @@ jobs:
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
           source: .
+          service_account: ${{ env.SERVICE_ACCOUNT }}
+          flags: --allow-unauthenticated
+
+      - name: Show Service URL
+        run: echo "Deployment complete"
