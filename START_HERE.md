@@ -10,7 +10,7 @@ Your TopMoneyTools website has been successfully restructured with a complete **
 
 ### 📁 **New Directories** (4 total)
 - ✅ `.github/workflows/` - GitHub Actions automation
-- ✅ `cloud-config/` - Google Cloud configuration scripts
+- ✅ `cloud-config/` - Google Cloud configuration scriptshttps://github.com/breakwater2026/TopMoneyTools/actions
 - ✅ `docs/` - Comprehensive documentation
 - ✅ `src/` - Vertex AI outputs directory
 
