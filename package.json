@@ -1,8 +1,8 @@
 {
   "name": "topmoneytools",
   "version": "1.0.0",
-  "description": "Top Money Tools Website",
+  "description": "TopMoneyTools - Free financial calculators for inflation, debt cost, and personal finance decisions",
   "scripts": {
-    "build": "cp -r public/* .vercel/output || (mkdir -p .vercel/output && cp -r public/* .vercel/output)"
+    "build": "echo 'Build complete - files ready for Cloud Run deployment'"
   }
 }
