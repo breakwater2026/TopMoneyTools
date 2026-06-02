@@ -9,7 +9,7 @@ env:
   PROJECT_ID: project-7ee9ba0e-6038-467d-83a
   SERVICE: topmoneytools-website
   REGION: northamerica-northeast1
-  WIF_PROVIDER: projects/687832097444/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+  WIF_PROVIDER: projects/687832097444/locations/global/workloadIdentityPools/github-pool/providers/git-hub-provider
   SERVICE_ACCOUNT: github-deploy-sa@project-7ee9ba0e-6038-467d-83a.iam.gserviceaccount.com
 
 jobs:
