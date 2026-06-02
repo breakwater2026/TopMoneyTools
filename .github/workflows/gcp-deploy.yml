@@ -1,73 +1,40 @@
-name: Deploy to Google Cloud
+name: Deploy to Cloud Run
+
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 env:
-  GCP_PROJECT_ID: 'project-7ee9ba0e-6038-467d-83a'
-  GCP_REGION: 'us-central1'
-  CLOUD_RUN_SERVICE: 'topmoneytools-website'
+  PROJECT_ID: project-7ee9ba0e-6038-467d-83a
+  SERVICE: topmoneytools-website
+  REGION: northamerica-northeast1
+  WIF_PROVIDER: projects/687832097444/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+  SERVICE_ACCOUNT: github-deploy-sa@project-7ee9ba0e-6038-467d-83a.iam.gserviceaccount.com
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
+
     permissions:
-      contents: 'read'
-      id-token: 'write'
+      contents: read
+      id-token: write
 
     steps:
-      - name: 'Checkout Code'
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v1'
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
         with:
-          workload_identity_provider: 'projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
-          service_account: 'github-website-bot@${{ env.GCP_PROJECT_ID }}.iam.gserviceaccount.com'
+          project_id: ${{ env.PROJECT_ID }}
+          workload_identity_provider: ${{ env.WIF_PROVIDER }}
+          service_account: ${{ env.SERVICE_ACCOUNT }}
 
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
-
-      - name: 'Deploy to Cloud Run'
-        run: |-
-          gcloud run deploy ${{ env.CLOUD_RUN_SERVICE }} \
-            --source . \
-            --region ${{ env.GCP_REGION }} \
-            --allow-unauthenticated \
-            --project ${{ env.GCP_PROJECT_ID }} \
-            --platform managed
-
-      - name: 'Output Service URL'
-        run: |-
-          echo "Deployment successful!"
-          gcloud run services describe ${{ env.CLOUD_RUN_SERVICE }} \
-            --region ${{ env.GCP_REGION }} \
-            --project ${{ env.GCP_PROJECT_ID }} \
-            --format='value(status.url)'
-
-  ai-styling-review:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-    needs: build-and-deploy
-    if: github.event_name == 'pull_request'
-
-    steps:
-      - name: 'Checkout Code'
-        uses: actions/checkout@v3
-
-      - name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v1'
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v3
         with:
-          workload_identity_provider: 'projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
-          service_account: 'github-website-bot@${{ env.GCP_PROJECT_ID }}.iam.gserviceaccount.com'
-
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
-
-      - name: 'Review with Vertex AI (Optional)'
-        run: |-
-          echo "AI styling review job ready. Configure Vertex AI API calls here."
+          project_id: ${{ env.PROJECT_ID }}
+          service: ${{ env.SERVICE }}
+          region: ${{ env.REGION }}
+          source: .
