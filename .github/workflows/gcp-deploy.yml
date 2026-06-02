@@ -8,8 +8,10 @@ on:
 
 env:
   PROJECT_ID: project-7ee9ba0e-6038-467d-83a
-  SERVICE: topmoneytools-website
   REGION: northamerica-northeast1
+  SERVICE: topmoneytools-website
+  REPOSITORY: topmoneytools-images
+  IMAGE: topmoneytools-website
   WIF_PROVIDER: projects/687832097444/locations/global/workloadIdentityPools/github-pool/providers/git-hub-provider
   SERVICE_ACCOUNT: github-deploy-sa@project-7ee9ba0e-6038-467d-83a.iam.gserviceaccount.com
 
@@ -32,15 +34,31 @@ jobs:
           workload_identity_provider: ${{ env.WIF_PROVIDER }}
           service_account: ${{ env.SERVICE_ACCOUNT }}
 
-      - name: Deploy to Cloud Run
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }} \
+            .
+
+      - name: Push Docker image
+        run: |
+          docker push \
+            ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}
+
+      - name: Deploy image to Cloud Run
+        id: deploy
         uses: google-github-actions/deploy-cloudrun@v3
         with:
-          project_id: ${{ env.PROJECT_ID }}
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
-          source: .
-          service_account: ${{ env.SERVICE_ACCOUNT }}
-          flags: --allow-unauthenticated
+          image: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}
+          flags: '--allow-unauthenticated'
 
-      - name: Show Service URL
-        run: echo "Deployment complete"
+      - name: Show URL
+        run: echo "${{ steps.deploy.outputs.url }}"
