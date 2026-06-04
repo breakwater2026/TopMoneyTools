@@ -1,0 +1,54 @@
+
+You can copy and paste this entire message or grab sections of it directly to hand off to Claude Haiku 4.5 in VS Code.
+
+📑 Task 1: Embedding & Styling the AI Search Widget
+The Code Block to Copy:
+HTML
+<script src="https://cloud.google.com/ai/gen-app-builder/client?hl=en_US"></script>
+
+
+<input placeholder="Search here" id="searchWidgetTrigger" />
+
+
+<gen-search-widget 
+  configId="97a196d4-63a3-4f8f-b34e-c697db7e3cac" 
+  triggerId="searchWidgetTrigger"> 
+</gen-search-widget>
+Prompt for Claude Haiku:
+"Take these three code snippets. Paste the Global JavaScript Bundle into the HTML head of my website layout file. Then, place the visual search input bar and the hidden gen-search-widget container together into the navigation or header component file where my search bar belongs.
+
+Once inserted, look at my existing navigation/header styles. Apply the exact same CSS/Tailwind classes to this new #searchWidgetTrigger input so it seamlessly matches our site's existing buttons, inherits the same padding/borders, and scales down perfectly on mobile screens."
+
+🗄️ Task 2: Standardizing Data Ingestion for the Inflation Calculator
+Prompt for Claude Haiku:
+"We are standardizing our data ingestion structure across our plain vanilla JS files to read from a single static JSON file named Countries-Inflation.json. Our Python conversion script outputs the data into an object format containing a countries array, where each country has a .code, .name, and .value (inflation rate).
+
+Please update our main application data-loading logic to strictly match this structure:
+
+Safely parse data.countries dynamically when the page loads.
+
+Ensure the sort logic uses the correct key: .sort((a, b) => a.name.localeCompare(b.name)).
+
+Use the country .code as the option value, and store the inflation rate directly on the element using the HTML5 dataset attribute: opt.dataset.inflation = country.value;.
+
+Keep our default selection chain fully active: Default to Netherlands (NL), fallback to United States (US), and fallback to the first entry if neither is available.
+
+Update the event listener so that when a user changes the country, it extracts selected.dataset.inflation and passes it cleanly into our computational variable."
+
+🎨 Task 3: Cloning the UI & Writing the Debt Calculator Architecture
+Prompt for Claude Haiku:
+"Act as an expert frontend vanilla JS developer and UI/UX designer. Look at our finalized, locked-in Inflation Calculator file (both its HTML layout and its JS event system). I want you to clone its exact premium financial aesthetic, responsive card grids, button states, padding, margins, and architectural code structure over to create our new debt-calculator file.
+
+Here are the specific modifications required for the Debt Calculator:
+
+Data Load: Structure the async fetch logic to read from a standalone static Countries-Debt.json file following our standardized root object format (data.countries).
+
+DOM Elements: Target our debt-specific layout elements: totalDebt, interestRate, monthlyPayment, resultPayoffMonths, resultTotalInterest, and severityCard.
+
+Computational Logic: Replace the inflation formulas with standard debt payoff math. Calculate how many months it will take to pay off the totalDebt given the user's input interestRate (annual APR divided by 12) and their chosen monthlyPayment. Also calculate the total cumulative interest paid over the lifespan of that payoff window. Include a safe fallback fallback interest rate (like 5.0%) if a fetch fails.
+
+Reactive Input Listeners: Bind the calculations to input and change events just like the inflation model, ensuring calculations update dynamically in real time without refreshing the page.
+
+Severity Card Thresholds: Mirror the dynamic color-switching styling of the inflation model's severityCard. Set it to green if interest consumes a negligible percentage of their monthly payment, orange for moderate, and add a flashing or bold red class if their chosen monthly payment is too low to cover the accumulating monthly interest (negative amortization).
+
+Please write the complete, clean vanilla JS code and structural layout changes to make the two calculators look and act like identical twins."

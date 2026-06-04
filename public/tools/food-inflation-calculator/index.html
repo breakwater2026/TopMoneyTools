@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Food Inflation Calculator | TopMoneyTools</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Google Gen App Builder Search Widget -->
+  <script src="https://cloud.google.com/ai/gen-app-builder/client?hl=en_US"></script>
 </head>
 <body>
 <div class="wrap">
 
   <header class="site-header">
     <a class="brand" href="/">TopMoneyTools</a>
+    <input placeholder="Ask about food inflation..." id="searchWidgetTrigger" class="search-input" style="max-width: 250px; margin: 0 1rem;" />
     <nav class="site-nav">
       <a href="/tools/food-inflation-calculator/">Inflation</a>
       <a href="/tools/debt-cost-calculator/">Debt Cost</a>
@@ -21,6 +24,11 @@
       <a href="/disclaimer/">Disclaimer</a>
     </nav>
   </header>
+
+  <gen-search-widget 
+    configId="97a196d4-63a3-4f8f-b34e-c697db7e3cac" 
+    triggerId="searchWidgetTrigger">
+  </gen-search-widget>
 
   <main>
     <div class="card">

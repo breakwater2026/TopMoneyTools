@@ -32,19 +32,41 @@ let selectedCountry = null;
 async function loadCountries() {
   try {
     const res = await fetch("Countries-Inflation.json");
-    inflationData = await res.json();
+    const data = await res.json();
+    
+    if (!data.countries || !Array.isArray(data.countries)) {
+      throw new Error("Invalid data structure");
+    }
 
     countryEl.innerHTML = "";
-    inflationData
-      .sort((a, b) => a.country.localeCompare(b.country))
+    data.countries
+      .sort((a, b) => a.name.localeCompare(b.name))
       .forEach(entry => {
         const opt = document.createElement("option");
-        opt.value = entry.name;
+        opt.value = entry.code;
         opt.textContent = entry.name;
+        opt.dataset.inflation = entry.value;
+        opt.dataset.date = entry.date;
         countryEl.appendChild(opt);
       });
 
-    selectedCountry = inflationData[0];
+    // Default to Netherlands (NL), fallback to US, then first entry
+    const preferred = ['NL', 'US'];
+    let defaultSet = false;
+    for (const code of preferred) {
+      const found = data.countries.find(c => c.code === code);
+      if (found) {
+        countryEl.value = found.code;
+        selectedCountry = found;
+        defaultSet = true;
+        break;
+      }
+    }
+    if (!defaultSet && data.countries.length > 0) {
+      countryEl.value = data.countries[0].code;
+      selectedCountry = data.countries[0];
+    }
+    
     applyCountryData();
 
   } catch (err) {
@@ -58,10 +80,17 @@ async function loadCountries() {
 -------------------------------------------------- */
 
 function applyCountryData() {
-  const countryName = countryEl.value;
-  selectedCountry = inflationData.find(c => c.name === countryName);
+  const countryCode = countryEl.value;
+  const selected = countryEl.options[countryEl.selectedIndex];
+  
+  if (!selected || !selected.dataset.inflation) return;
 
-  if (!selectedCountry) return;
+  selectedCountry = {
+    code: countryCode,
+    name: selected.textContent,
+    value: parseFloat(selected.dataset.inflation),
+    date: selected.dataset.date
+  };
 
   inflationRateEl.value = selectedCountry.value;
   inflationNoteEl.textContent =

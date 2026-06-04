@@ -3,39 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Estimate how much debt costs in interest per week, month, and year, and compare that cost with your salary in the same period." />
-  <title>Debt Cost Calculator | TopMoneyTools</title>
-  <link rel="stylesheet" href="/assets/css/moneytools.css" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1946389838026565" crossorigin="anonymous"></script>
-  <style>
-    .tag { display:inline-block; background:#e8f0fe; color:#1a73e8; font-size:.75rem; font-weight:600; letter-spacing:.08em; padding:.3rem .8rem; border-radius:999px; margin-bottom:1rem; text-transform:uppercase; }
-    .calculator-wrapper { max-width:860px; margin:0 auto; padding:2rem 1rem; font-family:system-ui,sans-serif; }
-    h1 { font-size:2rem; font-weight:800; margin-bottom:.5rem; color:#111; }
-    .subtitle { color:#555; margin-bottom:2rem; max-width:60ch; }
-    .input-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem; }
-    @media(max-width:600px){ .input-grid{ grid-template-columns:1fr; } }
-    .input-group label { display:block; font-size:.85rem; font-weight:600; color:#333; margin-bottom:.4rem; }
-    .input-group select, .input-group input { width:100%; padding:.65rem .85rem; border:1px solid #ccc; border-radius:8px; font-size:1rem; background:#fff; color:#111; }
-    .period-toggle { display:flex; gap:.5rem; margin-top:.5rem; }
-    .period-toggle button { flex:1; padding:.5rem; border:1px solid #ccc; border-radius:999px; background:#fff; font-size:.85rem; cursor:pointer; }
-    .period-toggle button.active { background:#1a73e8; color:#fff; border-color:#1a73e8; }
-    .results-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem; }
-    @media(max-width:600px){ .results-grid{ grid-template-columns:1fr; } }
-    .result-card { border:1px solid #e0e0e0; border-radius:10px; padding:1rem 1.2rem; background:#fafafa; }
-    .result-card .label { font-size:.82rem; font-weight:600; color:#555; margin-bottom:.3rem; }
-    .result-card .value { font-size:1.4rem; font-weight:700; color:#111; }
-    .result-card.green { border-left:4px solid #27ae60; }
-    .result-card.orange { border-left:4px solid #f39c12; }
-    .result-card.red { border-left:4px solid #c0392b; }
-    #summaryText { margin-top:1rem; font-size:.9rem; color:#555; font-style:italic; }
-    .meta-note { font-size:.78rem; color:#888; margin-top:.5rem; }
-    nav a { text-decoration:none; color:#4b5563; font-size:.9rem; margin-left:1.2rem; }
-  </style>
+  <meta name="description" content="Calculate how debt costs you in interest and how your monthly payment compares to the interest accumulating on your debt." />
+  <title>Debt Burden Calculator | TopMoneyTools</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Gen App Builder Search Widget -->
+  <script src="https://cloud.google.com/ai/gen-app-builder/client?hl=en_US"></script>
 </head>
 <body>
-  <header style="padding:1rem 2rem;background:#fff;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;">
-    <a href="/" style="font-weight:800;font-size:1.1rem;color:#1a73e8;text-decoration:none;">TopMoneyTools</a>
-    <nav>
+<div class="wrap">
+
+  <header class="site-header">
+    <a class="brand" href="/">TopMoneyTools</a>
+    <input placeholder="Ask about debt and interest..." id="searchWidgetTrigger" class="search-input" style="max-width: 250px; margin: 0 1rem;" />
+    <nav class="site-nav">
       <a href="/tools/food-inflation-calculator/">Inflation</a>
       <a href="/tools/debt-cost-calculator/">Debt Cost</a>
       <a href="/about/">About</a>
@@ -46,58 +26,77 @@
     </nav>
   </header>
 
-  <main class="calculator-wrapper">
-    <span class="tag">Simple · Fast · Universal</span>
-    <h1>Debt Cost Calculator</h1>
-    <p class="subtitle">Estimate how much debt costs in interest per week, month, and year, and compare that cost with your salary in the same period.</p>
+  <gen-search-widget 
+    configId="97a196d4-63a3-4f8f-b34e-c697db7e3cac" 
+    triggerId="searchWidgetTrigger">
+  </gen-search-widget>
 
-    <div class="input-grid">
-      <div class="input-group">
-        <label for="country">Country / Currency</label>
-        <select id="country"><option>Loading countries…</option></select>
-      </div>
-      <div class="input-group">
-        <label for="principal">Principal amount</label>
-        <input type="number" id="principal" value="10000" min="0" step="any" />
-      </div>
-    </div>
+  <main>
+    <div class="card">
+      <h1>Debt Burden Calculator</h1>
+      <p class="lead">Calculate how much interest your debt accumulates each month, and see if your monthly payment covers the interest or if you're falling behind.</p>
 
-    <div class="input-grid">
-      <div class="input-group">
-        <label for="rate">Interest rate (%)</label>
-        <select id="rate"></select>
+      <!-- Country -->
+      <div class="field">
+        <label for="country">Country</label>
+        <select id="country">
+          <option value="">Loading countries…</option>
+        </select>
       </div>
-      <div class="input-group">
-        <label for="salary">Salary</label>
-        <input type="number" id="salary" value="4000" min="0" step="any" />
+
+      <!-- Principal Debt Amount -->
+      <div class="field">
+        <label for="principal">Total debt amount</label>
+        <input type="number" id="principal" placeholder="e.g. 10000" min="0" step="0.01" />
+      </div>
+
+      <!-- Interest Rate (prefilled from country) -->
+      <div class="field">
+        <label for="rate">Annual interest rate (%)</label>
+        <input type="number" id="rate" step="0.01" min="0" />
+        <p class="hint" id="interestNote">Select a country to load the latest rate.</p>
+      </div>
+
+      <!-- Monthly Payment -->
+      <div class="field">
+        <label for="monthlyPayment">Your monthly payment</label>
+        <input type="number" id="monthlyPayment" placeholder="e.g. 500" min="0" step="0.01" />
+      </div>
+
+      <!-- Salary + period toggle -->
+      <div class="field">
+        <label for="salary">Your salary (net take-home)</label>
+        <input type="number" id="salary" placeholder="e.g. 4000" min="0" step="0.01" />
         <div class="period-toggle" id="salaryPeriod">
           <button data-period="weekly">Weekly</button>
           <button data-period="monthly" class="active">Monthly</button>
-          <button data-period="yearly">Yearly</button>
+          <button data-period="annual">Annual</button>
         </div>
       </div>
+
+      <!-- Results -->
+      <div class="result" id="severityCard">
+        <h2>Results</h2>
+        <p>Annual interest cost: <strong><span id="annualInterest">—</span></strong></p>
+        <p>Monthly interest cost: <strong><span id="monthlyInterest">—</span></strong></p>
+        <p>Weekly interest cost: <strong><span id="weeklyInterest">—</span></strong></p>
+        <p>Interest as % of payment: <strong><span id="burdenValue">—</span></strong></p>
+        <p>Your salary (selected period): <strong><span id="salaryPeriodValue">—</span></strong></p>
+        <p id="summaryText">Enter your information to see your results.</p>
+      </div>
+
+      <p class="note">Interest rates are sourced from latest available data. Results update instantly as you type. Higher interest rates mean more of your payment goes to interest rather than reducing your debt.</p>
     </div>
+  </main>
 
-    <p class="meta-note">Enter the same salary period you selected above. Results update instantly as you type.</p>
+  <footer class="site-footer">
+    <p>&copy; 2026 TopMoneyTools &middot; <a href="/disclaimer/">Disclaimer</a></p>
+  </footer>
 
-    <div class="results-grid">
-      <div class="result-card">
-        <div class="label">Annual interest</div>
-        <div class="value" id="annualInterest">—</div>
-      </div>
-      <div class="result-card">
-        <div class="label">Monthly interest</div>
-        <div class="value" id="monthlyInterest">—</div>
-      </div>
-      <div class="result-card">
-        <div class="label">Weekly interest</div>
-        <div class="value" id="weeklyInterest">—</div>
-      </div>
-      <div class="result-card" id="severityCard">
-        <div class="label">Interest vs salary</div>
-        <div style="font-size:.85rem;color:#555;margin-bottom:.3rem;">Same-period burden: <strong><span id="burdenValue">—</span></strong></div>
-        <div style="font-size:.85rem;color:#555;margin-bottom:.3rem;">Salary in selected period: <strong><span id="salaryPeriodValue">—</span></strong></div>
-      </div>
+</div>
+<script type="module" src="debt-calculator.js"></script>
+</body>
+</html>
     </div>
 
     <p id="summaryText">Enter your debt, interest rate, and salary to see how much of your income goes to interest.</p>

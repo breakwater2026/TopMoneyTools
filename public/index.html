@@ -11,6 +11,9 @@
 
   <link rel="stylesheet" href="/assets/css/moneytools.css">
 
+  <!-- Google Gen App Builder Search Widget -->
+  <script src="https://cloud.google.com/ai/gen-app-builder/client?hl=en_US"></script>
+
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1946389838026565" crossorigin="anonymous"></script>
 </head>
@@ -21,6 +24,7 @@
     <!-- Header -->
     <header class="header">
       <a class="brand" href="/">TopMoneyTools</a>
+      <input placeholder="Ask about inflation, debt, or money..." id="searchWidgetTrigger" class="search-input" />
       <nav class="site-nav" aria-label="Primary">
         <a href="/tools/food-inflation-calculator/">Inflation</a>
         <a href="/tools/debt-cost-calculator/">Debt Cost</a>
@@ -31,6 +35,12 @@
         <a href="/disclaimer/">Disclaimer</a>
       </nav>
     </header>
+
+    <!-- AI Search Widget Container -->
+    <gen-search-widget 
+      configId="97a196d4-63a3-4f8f-b34e-c697db7e3cac" 
+      triggerId="searchWidgetTrigger">
+    </gen-search-widget>
 
     <!-- Hero -->
     <section class="hero">
