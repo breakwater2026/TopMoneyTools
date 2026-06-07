@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calculate how food inflation impacts your budget and see what percentage of your salary goes towards food costs." />
   <title>Food Inflation Calculator | TopMoneyTools</title>
   <link rel="stylesheet" href="style.css" />
   <!-- Google Gen App Builder Search Widget -->
@@ -31,10 +32,13 @@
   </gen-search-widget>
 
   <main>
-    <div class="card">
-      <h1>Food Inflation Calculator</h1>
-      <p class="lead">Select your country to load the latest food inflation rate, then enter your food costs and salary to see the real impact on your budget.</p>
+<div class="card">
+  <p class="motto">SIMPLE · FAST · UNIVERSAL</p>
+  <h1>Food Inflation Calculator</h1>
+  <p class="lead">Select your country to load the latest food inflation rate, then enter your food costs and salary to see the real impact on your budget.</p>
 
+  <div class="calculator-layout">
+    <div class="calculator-column input-column">
       <!-- Country -->
       <div class="field">
         <label for="country">Country</label>
@@ -57,7 +61,7 @@
         <div class="period-toggle" id="foodPeriod">
           <button data-period="weekly">Weekly</button>
           <button data-period="monthly" class="active">Monthly</button>
-          <button data-period="annual">Annual</button>
+          <button data-period="annual">Yearly</button>
         </div>
       </div>
 
@@ -68,19 +72,33 @@
         <div class="period-toggle" id="salaryPeriod">
           <button data-period="weekly">Weekly</button>
           <button data-period="monthly" class="active">Monthly</button>
-          <button data-period="annual">Annual</button>
+          <button data-period="annual">Yearly</button>
         </div>
       </div>
+    </div>
 
-      <!-- Results -->
+    <div class="calculator-column result-column">
       <div class="result" id="severityCard">
-        <h2>Results</h2>
-        <p>Food inflation rate: <strong><span id="resultInflation">—</span></strong></p>
-        <p>Adjusted food cost (monthly): <strong><span id="resultFoodCost">—</span></strong></p>
-        <p>Salary (monthly): <strong><span id="resultSalary">—</span></strong></p>
-        <p>Food cost burden: <strong><span id="resultBurden">—</span></strong></p>
+        <div class="result-row">
+          <span class="result-label">Food inflation rate</span>
+          <strong class="result-value"><span id="resultInflation">—</span>%</strong>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Adjusted food cost (monthly)</span>
+          <strong class="result-value"><span id="resultFoodCost">—</span></strong>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Salary (monthly)</span>
+          <strong class="result-value"><span id="resultSalary">—</span></strong>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Food cost burden</span>
+          <strong class="result-value"><span id="resultBurden">—</span>%</strong>
+        </div>
         <p id="summaryText">Enter your information to see your results.</p>
       </div>
+    </div>
+  </div>
 
       <p class="note">Food inflation rates are sourced from latest available data. Results update instantly as you type.</p>
     </div>

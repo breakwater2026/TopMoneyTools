@@ -120,10 +120,10 @@ function updateResults() {
   const inflatedFood = monthlyFood * (1 + inflationRate);
   const burdenPct = monthlySalary > 0 ? (inflatedFood / monthlySalary) * 100 : 0;
 
-  resultInflation.textContent = `${(inflationRate * 100).toFixed(1)}%`;
+  resultInflation.textContent = `${(inflationRate * 100).toFixed(1)}`;
   resultFoodCost.textContent = fmtCurrency(inflatedFood);
   resultSalary.textContent = fmtCurrency(monthlySalary);
-  resultBurden.textContent = `${burdenPct.toFixed(1)}%`;
+  resultBurden.textContent = `${burdenPct.toFixed(1)}`;
 
   severityCard.classList.remove("green", "orange", "red");
   if (burdenPct < 15) severityCard.classList.add("green");
