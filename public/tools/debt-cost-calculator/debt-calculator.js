@@ -35,7 +35,7 @@ let selectedCountry = null;
 
 async function loadCountries() {
   try {
-    const res = await fetch("Countries-Debt.json");
+    const res = await fetch("./Countries-Debt.json");
     const data = await res.json();
 
     if (!data.countries || !Array.isArray(data.countries)) {
