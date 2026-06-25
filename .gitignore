@@ -6,4 +6,4 @@ python3_tools/
 CoPilot Conversations.txt
 .vercel
 .env*
-service-account-key.json
+service-account-key.jsonnode_modules/
