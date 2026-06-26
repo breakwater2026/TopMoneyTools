@@ -3,6 +3,7 @@ import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, RangeField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { base44 } from "@/api/base44Client";
 
 export default function DebtCostTool() {
   const [principal, setPrincipal] = useState(10000);
@@ -35,7 +36,7 @@ export default function DebtCostTool() {
             <RangeField label="How many years will you be repaying?" helper="Most personal loans are 1-7 years. Mortgages are typically 15-30 years." value={years} onChange={setYears} min={1} max={30} unit=" yrs" ariaLabel="Loan term in years" />
           </>
         }
-        calculate={<CalculateButton onClick={() => setCalculated(true)}>Calculate My Debt Cost</CalculateButton>}
+        calculate={<CalculateButton onClick={() => { setCalculated(true); base44.analytics.track({ eventName: "tool_calculate", properties: { tool: "debt-cost" } }); }}>Calculate My Debt Cost</CalculateButton>}
         results={
           <ToolResultBlock
             visible={calculated}

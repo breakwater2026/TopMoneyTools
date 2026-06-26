@@ -3,6 +3,7 @@ import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, RangeField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { base44 } from "@/api/base44Client";
 
 export default function FoodInflationTool() {
   const [spend, setSpend] = useState(400);
@@ -52,7 +53,7 @@ export default function FoodInflationTool() {
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">Using {rate}% annual food inflation rate.</p>
           </>
         }
-        calculate={<CalculateButton onClick={() => setCalculated(true)}>Calculate My Grocery Impact</CalculateButton>}
+        calculate={<CalculateButton onClick={() => { setCalculated(true); base44.analytics.track({ eventName: "tool_calculate", properties: { tool: "food-inflation" } }); }}>Calculate My Grocery Impact</CalculateButton>}
         results={
           <ToolResultBlock
             visible={calculated}

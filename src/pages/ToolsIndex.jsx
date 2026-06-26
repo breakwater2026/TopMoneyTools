@@ -6,7 +6,7 @@ import AdSlot from "@/components/AdSlot";
 import { TOOLS } from "@/config/site.config";
 
 export default function ToolsIndex() {
-  const disabled = ["inflation-impact", "loan-comparison"];
+  const disabled = [];
   return (
     <Layout>
       <SEO title="All Tools" description="Browse every TopMoneyTools calculator — ten free, private financial instruments covering inflation, debt, mortgages, retirement, budgeting, net worth, savings goals and more." path="/tools" />

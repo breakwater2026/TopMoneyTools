@@ -23,8 +23,15 @@ import RetirementTool from '@/pages/tools/RetirementTool';
 import BudgetPlannerTool from '@/pages/tools/BudgetPlannerTool';
 import NetWorthTool from '@/pages/tools/NetWorthTool';
 import SavingsGoalTool from '@/pages/tools/SavingsGoalTool';
-import InflationImpactTool from '@/pages/tools/InflationImpactTool';
-import LoanComparisonTool from '@/pages/tools/LoanComparisonTool';
+import EmergencyFundTool from '@/pages/tools/EmergencyFundTool';
+import SavingsRateTool from '@/pages/tools/SavingsRateTool';
+import Budgeting101 from '@/pages/education/Budgeting101';
+import Investing101 from '@/pages/education/Investing101';
+import RetirementPlanningBasics from '@/pages/education/RetirementPlanningBasics';
+import UnderstandingInterestRates from '@/pages/education/UnderstandingInterestRates';
+import HowInflationWorks from '@/pages/education/HowInflationWorks';
+import CreditScoresAndBorrowing from '@/pages/education/CreditScoresAndBorrowing';
+import EmergencyFundsAndSafetyNets from '@/pages/education/EmergencyFundsAndSafetyNets';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -62,9 +69,16 @@ const AuthenticatedApp = () => {
       <Route path="/tools/budget-planner" element={<BudgetPlannerTool />} />
       <Route path="/tools/net-worth" element={<NetWorthTool />} />
       <Route path="/tools/savings-goal" element={<SavingsGoalTool />} />
-      <Route path="/tools/inflation-impact" element={<InflationImpactTool />} />
-      <Route path="/tools/loan-comparison" element={<LoanComparisonTool />} />
+      <Route path="/tools/emergency-fund" element={<EmergencyFundTool />} />
+      <Route path="/tools/savings-rate" element={<SavingsRateTool />} />
       <Route path="/education" element={<Education />} />
+      <Route path="/education/budgeting-101" element={<Budgeting101 />} />
+      <Route path="/education/investing-101" element={<Investing101 />} />
+      <Route path="/education/retirement-planning-basics" element={<RetirementPlanningBasics />} />
+      <Route path="/education/understanding-interest-rates" element={<UnderstandingInterestRates />} />
+      <Route path="/education/how-inflation-works" element={<HowInflationWorks />} />
+      <Route path="/education/credit-scores-and-borrowing" element={<CreditScoresAndBorrowing />} />
+      <Route path="/education/emergency-funds-and-safety-nets" element={<EmergencyFundsAndSafetyNets />} />
       <Route path="/glossary" element={<Glossary />} />
       <Route path="/resources" element={<Resources />} />
       <Route path="/about" element={<About />} />

@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { base44 } from "@/api/base44Client";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
@@ -45,7 +46,7 @@ export default function InvestmentGrowthTool() {
             </div>
           </>
         }
-        calculate={<CalculateButton onClick={() => setCalculated(true)}>Calculate Investment Growth</CalculateButton>}
+        calculate={<CalculateButton onClick={() => { setCalculated(true); base44.analytics.track({ eventName: "tool_calculate", properties: { tool: "investment-growth" } }); }}>Calculate Investment Growth</CalculateButton>}
         results={
           <>
             <ToolResultBlock

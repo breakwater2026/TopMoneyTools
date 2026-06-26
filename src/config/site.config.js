@@ -8,8 +8,7 @@ export const SITE = {
     "A privacy-first collection of free financial calculators. 10 instruments for inflation, debt, mortgages, retirement, budgeting, net worth and more — all run privately on your device.",
 };
 
-// 10 tools total (PRD §5). `live` flags which tools have full calculators vs.
-// scaffolded placeholders (Inflation Impact, Loan Comparison).
+// 10 tools total (PRD §5) — all ten instruments are now live.
 export const TOOLS = [
   { slug: "food-inflation", num: "01", name: "Food Inflation Calculator", short: "See how rising grocery prices compound over time." },
   { slug: "debt-cost", num: "02", name: "Debt Cost Calculator", short: "Understand the true cost of any loan with amortization." },
@@ -19,13 +18,12 @@ export const TOOLS = [
   { slug: "budget-planner", num: "06", name: "Budget Planner", short: "Split income into needs, wants, and surplus." },
   { slug: "net-worth", num: "07", name: "Net Worth Calculator", short: "Assets minus liabilities — your net position." },
   { slug: "savings-goal", num: "08", name: "Savings Goal Calculator", short: "Find the timeline and monthly rate to reach any goal." },
-  // Future / scaffolded
-  { slug: "inflation-impact", num: "09", name: "Inflation Impact Calculator", short: "Coming soon — measure how inflation reshapes your purchasing power." },
-  { slug: "loan-comparison", num: "10", name: "Loan Comparison Tool", short: "Coming soon — line up multiple loans side by side." },
+  { slug: "emergency-fund", num: "09", name: "Emergency Fund Calculator", short: "See how many months of expenses your savings cover — and what's missing." },
+  { slug: "savings-rate", num: "10", name: "Savings Rate Calculator", short: "Measure the share of income you keep — the habit behind every goal." },
 ];
 
-export const LIVE_TOOLS = TOOLS.filter((t) => !["inflation-impact", "loan-comparison"].includes(t.slug));
-export const FUTURE_TOOLS = TOOLS.filter((t) => ["inflation-impact", "loan-comparison"].includes(t.slug));
+export const LIVE_TOOLS = TOOLS.filter((t) => true);
+export const FUTURE_TOOLS = [];
 
 export const NAV_LINKS = [
   { label: "Education", path: "/education" },
@@ -65,4 +63,10 @@ export const GLOSSARY = [
   ["yield", "Yield", "The income an investment generates, such as interest or dividends, usually as a percentage."],
   ["principal-interest", "Principal & Interest", "The two parts of a loan payment — principal reduces debt, interest is the lender's fee."],
   ["4-percent-rule", "4% Rule", "A guideline: you can safely withdraw ~4% of retirement savings yearly for ~30 years."],
+  ["cash-reserve", "Cash Reserve", "Liquid money set aside for immediate use — the accessible savings that form the heart of an emergency fund."],
+  ["fixed-expenses", "Fixed Expenses", "Costs that stay the same each month — rent, loan payments, insurance — the baseline an emergency fund must cover."],
+  ["variable-expenses", "Variable Expenses", "Costs that fluctuate month to month — groceries, utilities, dining — easier to trim than fixed costs."],
+  ["financial-resilience", "Financial Resilience", "Your ability to weather shocks — job loss, medical bills, emergencies — without falling into debt."],
+  ["discretionary-income", "Discretionary Income", "Income left after taxes and essential expenses — money available for wants, saving, or investing."],
+  ["budgeting", "Budgeting", "The ongoing practice of splitting income across needs, wants, and savings — turning a budget into a habit."],
 ].map(([slug, term, def]) => ({ slug, term, def }));

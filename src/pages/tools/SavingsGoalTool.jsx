@@ -3,6 +3,7 @@ import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { base44 } from "@/api/base44Client";
 
 export default function SavingsGoalTool() {
   const [goal, setGoal] = useState(15000);
@@ -49,7 +50,7 @@ export default function SavingsGoalTool() {
             </div>
           </>
         }
-        calculate={<CalculateButton onClick={() => setCalculated(true)}>Calculate Savings Timeline</CalculateButton>}
+        calculate={<CalculateButton onClick={() => { setCalculated(true); base44.analytics.track({ eventName: "tool_calculate", properties: { tool: "savings-goal" } }); }}>Calculate Savings Timeline</CalculateButton>}
         results={
           <ToolResultBlock
             visible={calculated}

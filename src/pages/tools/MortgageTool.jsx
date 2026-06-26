@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { base44 } from "@/api/base44Client";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
@@ -49,7 +50,7 @@ export default function MortgageTool() {
             </div>
           </>
         }
-        calculate={<CalculateButton onClick={() => setCalculated(true)}>Calculate My Mortgage</CalculateButton>}
+        calculate={<CalculateButton onClick={() => { setCalculated(true); base44.analytics.track({ eventName: "tool_calculate", properties: { tool: "mortgage-payment" } }); }}>Calculate My Mortgage</CalculateButton>}
         results={
           <ToolResultBlock
             visible={calculated}

@@ -3,6 +3,7 @@ import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { base44 } from "@/api/base44Client";
 
 export default function NetWorthTool() {
   const [assets, setAssets] = useState({ home: 300000, savings: 15000, investments: 25000, vehicle: 12000, other: 0 });
@@ -60,7 +61,7 @@ export default function NetWorthTool() {
             </fieldset>
           </div>
         }
-        calculate={<CalculateButton onClick={() => setCalculated(true)}>Calculate My Net Worth</CalculateButton>}
+        calculate={<CalculateButton onClick={() => { setCalculated(true); base44.analytics.track({ eventName: "tool_calculate", properties: { tool: "net-worth" } }); }}>Calculate My Net Worth</CalculateButton>}
         results={
           <ToolResultBlock
             visible={calculated}

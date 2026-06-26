@@ -35,21 +35,17 @@ export default function Header() {
             </button>
             {open && (
               <div className="absolute right-0 top-full w-80 instrument-surface rounded-sm p-2 shadow-2xl instrument-glow">
-                {TOOLS.map((t) => {
-                  const disabled = ["inflation-impact", "loan-comparison"].includes(t.slug);
-                  return (
-                    <Link
-                      key={t.slug}
-                      to={disabled ? "/tools" : `/tools/${t.slug}`}
-                      onClick={() => setOpen(false)}
-                      className={`flex items-center gap-3 px-3 py-2 ${disabled ? "cursor-not-allowed opacity-40" : "hover:bg-[#A3FFD6]/10"}`}
-                    >
-                      <span className="font-mono text-xs text-[#889988]">{t.num}</span>
-                      <span className="flex-1 text-sm text-[#E0E0E0]">{t.name}</span>
-                      {disabled && <span className="font-mono text-[9px] uppercase tracking-widest text-[#889988]">soon</span>}
-                    </Link>
-                  );
-                })}
+                {TOOLS.map((t) => (
+                  <Link
+                    key={t.slug}
+                    to={`/tools/${t.slug}`}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2 hover:bg-[#A3FFD6]/10"
+                  >
+                    <span className="font-mono text-xs text-[#889988]">{t.num}</span>
+                    <span className="flex-1 text-sm text-[#E0E0E0]">{t.name}</span>
+                  </Link>
+                ))}
               </div>
             )}
           </div>

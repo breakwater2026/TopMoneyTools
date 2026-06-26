@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { base44 } from "@/api/base44Client";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
@@ -45,7 +46,7 @@ export default function RetirementTool() {
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">≈ {yearsToRetire} years to retirement.</p>
           </>
         }
-        calculate={<CalculateButton onClick={() => setCalculated(true)}>Calculate Retirement Outlook</CalculateButton>}
+        calculate={<CalculateButton onClick={() => { setCalculated(true); base44.analytics.track({ eventName: "tool_calculate", properties: { tool: "retirement" } }); }}>Calculate Retirement Outlook</CalculateButton>}
         results={
           <ToolResultBlock
             visible={calculated}
