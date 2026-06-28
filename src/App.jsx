@@ -32,6 +32,18 @@ import UnderstandingInterestRates from '@/pages/education/UnderstandingInterestR
 import HowInflationWorks from '@/pages/education/HowInflationWorks';
 import CreditScoresAndBorrowing from '@/pages/education/CreditScoresAndBorrowing';
 import EmergencyFundsAndSafetyNets from '@/pages/education/EmergencyFundsAndSafetyNets';
+import ReloadPrompt from "./ReloadPrompt"
+
+function App() {
+  return (
+    <>
+      <ReloadPrompt />
+      {/* rest of your app */}
+    </>
+  )
+}
+
+export default App
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
