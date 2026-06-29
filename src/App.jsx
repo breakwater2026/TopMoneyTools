@@ -27,7 +27,7 @@ import SavingsGoalTool from "@/pages/tools/SavingsGoalTool";
 import EmergencyFundTool from "@/pages/tools/EmergencyFundTool";
 import SavingsRateTool from "@/pages/tools/SavingsRateTool";
 
-import HowInflationEffectsYourDailyBudget from "@/pages/education/HowInflationEffectsYourDailyBudget";
+import HowInflationAffectsYourDailyBudget from "@/pages/education/HowInflationAffectsYourDailyBudget";
 import BudgetingForBeginners from "@/pages/education/BudgetingForBeginners";
 import HowToCompareLoans from "@/pages/education/HowToCompareLoans";
 import Budgeting101 from "@/pages/education/Budgeting101";
@@ -47,6 +47,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+
           <Route path="/tools" element={<ToolsIndex />} />
           <Route path="/tools/food-inflation" element={<FoodInflationTool />} />
           <Route path="/tools/debt-cost" element={<DebtCostTool />} />
@@ -62,7 +63,7 @@ function App() {
           <Route path="/education" element={<Education />} />
           <Route
             path="/education/how-inflation-affects-your-daily-budget"
-            element={<HowInflationEffectsYourDailyBudget />}
+            element={<HowInflationAffectsYourDailyBudget />}
           />
           <Route
             path="/education/budgeting-for-beginners"
