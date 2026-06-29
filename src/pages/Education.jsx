@@ -7,8 +7,8 @@ import Reveal from "@/components/Reveal";
 
 export const ARTICLES = [
   { slug: "how-inflation-affects-your-daily-budget", mark: "▮", t: "How Inflation Affects Your Daily Budget", d: "Understand why prices rise and how to stay ahead of them." },
-  { slug: "budgeting-for-beginners-50-30-20-rule-explained", mark: "▣", t: "Budgeting for Beginners (50/30/20 Rule)", d: "A simple method to bring balance and clarity to your spending." },
-  { slug: "how-to-compare-loans-without-getting-confused", mark: "◈", t: "How to Compare Loans", d: "Learn the three numbers that matter most when choosing a loan." },
+  { slug: "budgeting-for-beginners", mark: "▣", t: "Budgeting for Beginners (50/30/20 Rule)", d: "A simple method to bring balance and clarity to your spending." },
+  { slug: "how-to-compare-loans", mark: "◈", t: "How to Compare Loans", d: "Learn the three numbers that matter most when choosing a loan." },
   { slug: "budgeting-101", mark: "▤", t: "Budgeting 101", d: "The beginner's complete guide to building a budget that actually works." },
   { slug: "investing-101", mark: "▦", t: "Investing 101", d: "How to start growing your money — compound growth, risk, and time explained." },
   { slug: "retirement-planning-basics", mark: "▧", t: "Retirement Planning Basics", d: "How much you need, the 4% rule, and how to project your nest egg." },
