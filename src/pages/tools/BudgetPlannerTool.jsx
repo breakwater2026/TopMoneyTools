@@ -3,7 +3,6 @@ import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
-import { base44 } from "@/api/base44Client";
 
 export default function BudgetPlannerTool() {
   const [income, setIncome] = useState(4500);
@@ -39,7 +38,7 @@ export default function BudgetPlannerTool() {
             </div>
           </>
         }
-        calculate={<CalculateButton onClick={() => { setCalculated(true); base44.analytics.track({ eventName: "tool_calculate", properties: { tool: "budget-planner" } }); }}>Plan My Budget</CalculateButton>}
+        calculate={<CalculateButton onClick={() => { setCalculated(true);  }}>Plan My Budget</CalculateButton>}
         results={
           <ToolResultBlock
             visible={calculated}

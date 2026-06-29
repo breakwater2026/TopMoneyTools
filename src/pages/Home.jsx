@@ -164,7 +164,7 @@ export default function Home() {
         <div className="grid gap-5 sm:grid-cols-2">
           <Link to="/glossary" className="instrument-surface rounded-sm p-6 transition hover:instrument-glow">
             <h3 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Glossary</h3>
-            <p className="mt-2 font-heading text-xl font-semibold text-[#E0E0E0]">29 Plain-English Terms</p>
+            <p className="mt-2 font-heading text-xl font-semibold text-[#E0E0E0]">35 Plain-English Terms</p>
             <p className="mt-2 text-sm text-[#889988]">Every financial word used across our tools, defined simply.</p>
             <span className="mt-3 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6]">View glossary <ArrowRight className="h-3 w-3" /></span>
           </Link>

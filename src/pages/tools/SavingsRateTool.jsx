@@ -3,7 +3,6 @@ import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
-import { base44 } from "@/api/base44Client";
 
 export default function SavingsRateTool() {
   const [monthlyIncome, setMonthlyIncome] = useState(5000);
@@ -30,7 +29,7 @@ export default function SavingsRateTool() {
             <NumberField label="Amount saved per month" helper="What you put away after expenses" value={monthlySavings} onChange={setMonthlySavings} prefix="$" ariaLabel="Amount saved per month" />
           </div>
         }
-        calculate={<CalculateButton onClick={() => { setCalculated(true); base44.analytics.track({ eventName: "tool_calculate", properties: { tool: "savings-rate" } }); }}>Calculate My Savings Rate</CalculateButton>}
+        calculate={<CalculateButton onClick={() => { setCalculated(true);  }}>Calculate My Savings Rate</CalculateButton>}
         results={
           <ToolResultBlock
             visible={calculated}

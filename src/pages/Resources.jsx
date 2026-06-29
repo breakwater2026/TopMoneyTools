@@ -5,7 +5,6 @@ import SEO from "@/components/SEO";
 import AdSlot from "@/components/AdSlot";
 import { TOOLS } from "@/config/site.config";
 import { ARTICLES } from "@/pages/Education";
-import { base44 } from "@/api/base44Client";
 
 const EXTERNAL = [
   { label: "Consumer Financial Protection Bureau (CFPB)", href: "https://www.consumerfinance.gov" },
@@ -74,7 +73,6 @@ export default function Resources() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-[#E0E0E0] hover:text-[#A3FFD6]"
-                onClick={() => base44.analytics.track({ eventName: "outbound_link_click", properties: { url: e.href } })}
               >
                 {e.label} <ArrowRight className="h-3 w-3 shrink-0" />
               </a>

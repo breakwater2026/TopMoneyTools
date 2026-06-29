@@ -3,7 +3,6 @@ import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
-import { base44 } from "@/api/base44Client";
 
 export default function EmergencyFundTool() {
   const [monthlyExpenses, setMonthlyExpenses] = useState(3000);
@@ -31,7 +30,7 @@ export default function EmergencyFundTool() {
             <SelectField label="Target coverage" helper="How many months of expenses to aim for" value={targetMonths} onChange={setTargetMonths} options={[{ value: "3", label: "3 months — starter" }, { value: "6", label: "6 months — solid" }, { value: "12", label: "12 months — conservative" }]} ariaLabel="Target coverage months" />
           </div>
         }
-        calculate={<CalculateButton onClick={() => { setCalculated(true); base44.analytics.track({ eventName: "tool_calculate", properties: { tool: "emergency-fund" } }); }}>Calculate My Emergency Fund</CalculateButton>}
+        calculate={<CalculateButton onClick={() => { setCalculated(true);  }}>Calculate My Emergency Fund</CalculateButton>}
         results={
           <ToolResultBlock
             visible={calculated}
