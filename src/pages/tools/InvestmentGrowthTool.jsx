@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
+import { lazy, Suspense, useMemo, useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, RangeField, CalculateButton, usd } from "@/components/tools/FormControls";
+
+const InvestmentGrowthChart = lazy(() => import("@/components/tools/InvestmentGrowthChart"));
 
 export default function InvestmentGrowthTool() {
   const [initial, setInitial] = useState(5000);
@@ -18,13 +19,32 @@ export default function InvestmentGrowthTool() {
     const series = [];
     let balance = initial;
     let contributed = initial;
-    series.push({ year: 0, value: Math.round(balance), contributions: Math.round(contributed) });
+
+    series.push({
+      year: 0,
+      value: Math.round(balance),
+      contributions: Math.round(contributed),
+    });
+
     for (let m = 1; m <= months; m++) {
       balance = balance * (1 + monthlyRate) + monthly;
       contributed += monthly;
-      if (m % 12 === 0) series.push({ year: m / 12, value: Math.round(balance), contributions: Math.round(contributed) });
+
+      if (m % 12 === 0) {
+        series.push({
+          year: m / 12,
+          value: Math.round(balance),
+          contributions: Math.round(contributed),
+        });
+      }
     }
-    return { finalValue: Math.round(balance), totalContributed: Math.round(contributed), totalGrowth: Math.round(balance - contributed), chartData: series };
+
+    return {
+      finalValue: Math.round(balance),
+      totalContributed: Math.round(contributed),
+      totalGrowth: Math.round(balance - contributed),
+      chartData: series,
+    };
   }, [initial, monthly, rate, years]);
 
   return (
@@ -37,15 +57,55 @@ export default function InvestmentGrowthTool() {
         subtitle="Enter your starting amount, monthly contributions, expected return, and time horizon to see how compounding builds wealth, year by year."
         inputs={
           <>
-            <NumberField label="Initial investment" helper="The lump sum you start with today." value={initial} onChange={setInitial} prefix="$" ariaLabel="Initial investment" />
-            <NumberField label="Monthly contribution" helper="The amount you add each month, consistently." value={monthly} onChange={setMonthly} prefix="$" ariaLabel="Monthly contribution" />
+            <NumberField
+              label="Initial investment"
+              helper="The lump sum you start with today."
+              value={initial}
+              onChange={setInitial}
+              prefix="$"
+              ariaLabel="Initial investment"
+            />
+            <NumberField
+              label="Monthly contribution"
+              helper="The amount you add each month, consistently."
+              value={monthly}
+              onChange={setMonthly}
+              prefix="$"
+              ariaLabel="Monthly contribution"
+            />
             <div className="grid gap-5 sm:grid-cols-2">
-              <NumberField label="Expected annual return (%)" helper="A diversified stock portfolio has averaged ~7% after inflation." value={rate} onChange={setRate} prefix="" suffix="%" step={0.1} ariaLabel="Annual return" />
-              <RangeField label="Years invested" helper="Stay invested as long as you can — time is compounding's engine." value={years} onChange={setYears} min={1} max={45} unit=" yrs" ariaLabel="Years invested" />
+              <NumberField
+                label="Expected annual return (%)"
+                helper="A diversified stock portfolio has averaged ~7% after inflation."
+                value={rate}
+                onChange={setRate}
+                prefix=""
+                suffix="%"
+                step={0.1}
+                ariaLabel="Annual return"
+              />
+              <RangeField
+                label="Years invested"
+                helper="Stay invested as long as you can — time is compounding's engine."
+                value={years}
+                onChange={setYears}
+                min={1}
+                max={45}
+                unit=" yrs"
+                ariaLabel="Years invested"
+              />
             </div>
           </>
         }
-        calculate={<CalculateButton onClick={() => { setCalculated(true);  }}>Calculate Investment Growth</CalculateButton>}
+        calculate={
+          <CalculateButton
+            onClick={() => {
+              setCalculated(true);
+            }}
+          >
+            Calculate Investment Growth
+          </CalculateButton>
+        }
         results={
           <>
             <ToolResultBlock
@@ -54,36 +114,44 @@ export default function InvestmentGrowthTool() {
               rows={[
                 { label: "Total Contributed", value: usd(totalContributed) },
                 { label: "Total Growth", value: usd(totalGrowth), emphasis: "mint" },
-                { label: "Growth as % of Total", value: `${totalContributed > 0 ? Math.round((totalGrowth / finalValue) * 100) : 0}%` },
+                {
+                  label: "Growth as % of Total",
+                  value: `${finalValue > 0 ? Math.round((totalGrowth / finalValue) * 100) : 0}%`,
+                },
               ]}
             />
+
             {calculated && (
-              <div className="mt-6 rounded-sm border border-[#A3FFD6]/25 bg-void/60 p-5">
-                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">// Trajectory</p>
-                <div className="mt-3 h-64">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                      <CartesianGrid stroke="#A3FFD620" strokeDasharray="3 3" />
-                      <XAxis dataKey="year" stroke="#889988" tick={{ fontSize: 11, fontFamily: "JetBrains Mono" }} label={{ value: "Year", position: "insideBottom", offset: -2, fill: "#889988", fontSize: 11 }} />
-                      <YAxis stroke="#889988" tick={{ fontSize: 11, fontFamily: "JetBrains Mono" }} tickFormatter={usd} width={70} />
-                      <Tooltip
-                        contentStyle={{ background: "#0E1A0E", border: "1px solid #A3FFD640", borderRadius: 4, color: "#E0E0E0", fontFamily: "JetBrains Mono" }}
-                        formatter={(v) => usd(v)}
-                        labelFormatter={(l) => `Year ${l}`}
-                      />
-                      <Line type="monotone" dataKey="contributions" name="Contributions" stroke="#889988" strokeWidth={1.5} dot={false} />
-                      <Line type="monotone" dataKey="value" name="Total Value" stroke="#A3FFD6" strokeWidth={2} dot={false} />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </div>
-              </div>
+              <Suspense
+                fallback={
+                  <div className="mt-6 rounded-sm border border-[#A3FFD6]/25 bg-void/60 p-5">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">
+                      // Trajectory
+                    </p>
+                    <div className="mt-3 flex h-64 items-center justify-center text-sm text-[#889988]">
+                      Loading chart…
+                    </div>
+                  </div>
+                }
+              >
+                <InvestmentGrowthChart chartData={chartData} usd={usd} />
+              </Suspense>
             )}
           </>
         }
         intelBrief={[
-          { title: "Compounding is the engine", body: "Each year's returns earn returns in the next year. The longer you stay invested, the more growth comes from growth rather than from your contributions." },
-          { title: "Time matters more than timing", body: "Starting earlier — even with less money — almost always beats investing more later, because compounding needs time to do its work." },
-          { title: "Returns aren't guaranteed", body: "7% is a long-run average for diversified stock portfolios, but real returns vary year to year. Use this as a planning estimate, not a promise." },
+          {
+            title: "Compounding is the engine",
+            body: "Each year's returns earn returns in the next year. The longer you stay invested, the more growth comes from growth rather than from your contributions.",
+          },
+          {
+            title: "Time matters more than timing",
+            body: "Starting earlier — even with less money — almost always beats investing more later, because compounding needs time to do its work.",
+          },
+          {
+            title: "Returns aren't guaranteed",
+            body: "7% is a long-run average for diversified stock portfolios, but real returns vary year to year. Use this as a planning estimate, not a promise.",
+          },
         ]}
         learnMore={[
           { label: "Glossary: Compound Growth", to: "/glossary#compound-growth" },
