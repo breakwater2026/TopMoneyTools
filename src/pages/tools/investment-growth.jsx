@@ -6,7 +6,7 @@ import { NumberField, RangeField, CalculateButton, usd } from "@/components/tool
 
 const InvestmentGrowthChart = lazy(() => import("@/components/tools/InvestmentGrowthChart"));
 
-export default function InvestmentGrowthTool() {
+export default function InvestmentGrowth() {
   const [initial, setInitial] = useState(5000);
   const [monthly, setMonthly] = useState(250);
   const [rate, setRate] = useState(7);

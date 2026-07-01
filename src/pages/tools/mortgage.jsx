@@ -4,7 +4,7 @@ import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, RangeField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
 
-export default function MortgageTool() {
+export default function Mortgage() {
   const [price, setPrice] = useState(400000);
   const [downPct, setDownPct] = useState(20);
   const [rate, setRate] = useState(6.5);

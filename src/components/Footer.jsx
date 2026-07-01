@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { TOOLS, GLOSSARY } from "@/config/site.config";
 import { ARTICLES } from "@/pages/Education";
+import AdSlot from "@/components/AdSlot";
 
 // Single global footer — 4-column layout.
 // Sections: Tools / Articles / Resources / Legal
@@ -54,6 +55,13 @@ export default function Footer() {
           </div>
         </nav>
 
+      </div>
+
+      {/* Footer ad */}
+      <div className="border-t border-[#A3FFD6]/10 py-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <AdSlot slot="footer" className="h-[90px]" />
+        </div>
       </div>
 
       {/* Razor-thin copyright line */}

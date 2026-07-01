@@ -4,7 +4,7 @@ import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
 
-export default function SavingsRateTool() {
+export default function SavingsRate() {
   const [monthlyIncome, setMonthlyIncome] = useState(5000);
   const [monthlyExpenses, setMonthlyExpenses] = useState(3500);
   const [monthlySavings, setMonthlySavings] = useState(1500);

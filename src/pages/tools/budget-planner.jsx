@@ -4,7 +4,7 @@ import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
 
-export default function BudgetPlannerTool() {
+export default function BudgetPlanner() {
   const [income, setIncome] = useState(4500);
   const [fixed, setFixed] = useState(2000);
   const [variable, setVariable] = useState(1500);

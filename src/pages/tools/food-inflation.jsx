@@ -4,7 +4,7 @@ import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, RangeField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
 
-export default function FoodInflationTool() {
+export default function FoodInflation() {
   const [spend, setSpend] = useState(400);
   const [region, setRegion] = useState("US");
   const [years, setYears] = useState(5);

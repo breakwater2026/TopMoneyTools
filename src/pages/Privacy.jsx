@@ -7,6 +7,7 @@ export default function Privacy() {
       <SEO
         title="Privacy Policy | TopMoneyTools"
         description="TopMoneyTools does not store your inputs, track your activity, or require an account. All calculations run privately on your own device."
+        path="/privacy"
         seoMeta={{
           url: "https://topmoneytools.com/privacy",
           type: "website",

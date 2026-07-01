@@ -44,6 +44,7 @@ export default function StartHere() {
         <SEO
           title="Start Here — Your First Steps with TopMoneyTools"
           description="New here? This page gives you the exact steps to get started — no financial experience needed, no account, no tracking, and every calculation runs entirely in your browser."
+          path="/start-here"
           seoMeta={{
             title: "Start Here — Your First Steps with TopMoneyTools",
             description:

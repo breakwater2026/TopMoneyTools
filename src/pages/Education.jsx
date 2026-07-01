@@ -43,6 +43,7 @@ export default function Education() {
       <SEO
         title="Education Center | TopMoneyTools"
         description="Plain-English guides from TopMoneyTools on inflation, budgeting, loan terms and credit scores — simple, friendly financial education for everyday life."
+        path="/education"
         seoMeta={{
           url: "https://topmoneytools.com/education",
           type: "website",

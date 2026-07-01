@@ -8,6 +8,7 @@ export default function About() {
       <SEO
         title="About TopMoneyTools"
         description="TopMoneyTools is built for people who want to understand their finances without complexity or pressure — ten private calculators plus plain-English education, all on your device."
+        path="/about"
         seoMeta={{
           url: "https://topmoneytools.com/about",
           type: "website",

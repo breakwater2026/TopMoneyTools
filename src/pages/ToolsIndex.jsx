@@ -31,6 +31,7 @@ export default function ToolsIndex() {
       <SEO
         title="All Tools | TopMoneyTools"
         description="Browse every TopMoneyTools calculator — ten free, private financial instruments covering inflation, debt, mortgages, retirement, budgeting, net worth, savings goals and more."
+        path="/tools"
         seoMeta={{
           url: "https://topmoneytools.com/tools",
           type: "website",

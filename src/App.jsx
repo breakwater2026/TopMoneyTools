@@ -17,16 +17,18 @@ const About = lazy(() => import("@/pages/About"));
 const StartHere = lazy(() => import("@/pages/StartHere"));
 const Privacy = lazy(() => import("@/pages/Privacy"));
 
-const FoodInflationTool = lazy(() => import("@/pages/tools/FoodInflationTool"));
-const DebtCostTool = lazy(() => import("@/pages/tools/DebtCostTool"));
-const MortgageTool = lazy(() => import("@/pages/tools/MortgageTool"));
-const InvestmentGrowthTool = lazy(() => import("@/pages/tools/InvestmentGrowthTool"));
-const RetirementTool = lazy(() => import("@/pages/tools/RetirementTool"));
-const BudgetPlannerTool = lazy(() => import("@/pages/tools/BudgetPlannerTool"));
-const NetWorthTool = lazy(() => import("@/pages/tools/NetWorthTool"));
-const SavingsGoalTool = lazy(() => import("@/pages/tools/SavingsGoalTool"));
-const EmergencyFundTool = lazy(() => import("@/pages/tools/EmergencyFundTool"));
-const SavingsRateTool = lazy(() => import("@/pages/tools/SavingsRateTool"));
+const FoodInflation = lazy(() => import("@/pages/tools/food-inflation"));
+const DebtCost = lazy(() => import("@/pages/tools/debt-cost"));
+const Mortgage = lazy(() => import("@/pages/tools/mortgage"));
+const InvestmentGrowth = lazy(() => import("@/pages/tools/investment-growth"));
+const Retirement = lazy(() => import("@/pages/tools/retirement"));
+const BudgetPlanner = lazy(() => import("@/pages/tools/budget-planner"));
+const NetWorth = lazy(() => import("@/pages/tools/net-worth"));
+const SavingsGoal = lazy(() => import("@/pages/tools/savings-goal"));
+const EmergencyFund = lazy(() => import("@/pages/tools/emergency-fund"));
+const SavingsRate = lazy(() => import("@/pages/tools/savings-rate"));
+const InflationImpact = lazy(() => import("@/pages/tools/inflation-impact"));
+const FutureValue = lazy(() => import("@/pages/tools/future-value"));
 
 const HowInflationAffectsYourDailyBudget = lazy(() =>
   import("@/pages/education/HowInflationAffectsYourDailyBudget")
@@ -80,16 +82,18 @@ function App() {
             <Route path="/" element={<Home />} />
 
             <Route path="/tools" element={<ToolsIndex />} />
-            <Route path="/tools/food-inflation" element={<FoodInflationTool />} />
-            <Route path="/tools/debt-cost" element={<DebtCostTool />} />
-            <Route path="/tools/mortgage-payment" element={<MortgageTool />} />
-            <Route path="/tools/investment-growth" element={<InvestmentGrowthTool />} />
-            <Route path="/tools/retirement" element={<RetirementTool />} />
-            <Route path="/tools/budget-planner" element={<BudgetPlannerTool />} />
-            <Route path="/tools/net-worth" element={<NetWorthTool />} />
-            <Route path="/tools/savings-goal" element={<SavingsGoalTool />} />
-            <Route path="/tools/emergency-fund" element={<EmergencyFundTool />} />
-            <Route path="/tools/savings-rate" element={<SavingsRateTool />} />
+            <Route path="/tools/food-inflation" element={<FoodInflation />} />
+            <Route path="/tools/debt-cost" element={<DebtCost />} />
+            <Route path="/tools/mortgage-payment" element={<Mortgage />} />
+            <Route path="/tools/investment-growth" element={<InvestmentGrowth />} />
+            <Route path="/tools/retirement" element={<Retirement />} />
+            <Route path="/tools/budget-planner" element={<BudgetPlanner />} />
+            <Route path="/tools/net-worth" element={<NetWorth />} />
+            <Route path="/tools/savings-goal" element={<SavingsGoal />} />
+            <Route path="/tools/emergency-fund" element={<EmergencyFund />} />
+            <Route path="/tools/savings-rate" element={<SavingsRate />} />
+            <Route path="/tools/inflation-impact" element={<InflationImpact />} />
+            <Route path="/tools/future-value" element={<FutureValue />} />
 
             <Route path="/education" element={<Education />} />
             <Route

@@ -4,7 +4,7 @@ import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
 
-export default function EmergencyFundTool() {
+export default function EmergencyFund() {
   const [monthlyExpenses, setMonthlyExpenses] = useState(3000);
   const [currentSavings, setCurrentSavings] = useState(9000);
   const [targetMonths, setTargetMonths] = useState("6");

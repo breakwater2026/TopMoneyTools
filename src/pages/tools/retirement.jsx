@@ -4,7 +4,7 @@ import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
 
-export default function RetirementTool() {
+export default function Retirement() {
   const [currentAge, setCurrentAge] = useState(30);
   const [currentSavings, setCurrentSavings] = useState(20000);
   const [monthly, setMonthly] = useState(400);

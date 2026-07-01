@@ -4,7 +4,7 @@ import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
 import { NumberField, RangeField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
 
-export default function DebtCostTool() {
+export default function DebtCost() {
   const [principal, setPrincipal] = useState(10000);
   const [country, setCountry] = useState("US");
   const [years, setYears] = useState(5);
