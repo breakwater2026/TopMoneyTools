@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import Layout from "@/components/Layout";
+import { TOOLS } from "@/config/site.config";
+import { ARTICLES } from "@/pages/Education";
 
 export default function StartHere() {
   const breadcrumbSchema = {
@@ -20,6 +22,20 @@ export default function StartHere() {
         "item": "https://topmoneytools.com/start-here",
       },
     ],
+  };
+
+  // Create descriptions for articles that match the existing Start Here copy
+  const articleDescriptions = {
+    "how-inflation-affects-your-daily-budget": "See how rising prices change your everyday costs — groceries, fuel, utilities, rent.",
+    "budgeting-for-beginners": "Build a simple, flexible budget you can actually stick to.",
+    "how-to-compare-loans": "Learn how APR, interest rates, fees, and loan terms really affect total cost.",
+    "budgeting-101": "Understand needs vs wants, fixed vs variable expenses, and how to plan ahead.",
+    "investing-101": "A beginner-friendly introduction to risk, returns, diversification, and long-term growth.",
+    "retirement-planning-basics": "How much to save, where to save, and how compounding works over decades.",
+    "understanding-interest-rates": "Why rates rise and fall — and how they affect loans, savings, and inflation.",
+    "how-inflation-works": "A clear explanation of CPI, purchasing power, and why prices change.",
+    "credit-scores-and-borrowing": "What affects your score, how lenders evaluate you, and how to improve it.",
+    "emergency-funds-and-safety-nets": "How much to save, where to keep it, and how to build resilience.",
   };
 
   return (
@@ -61,133 +77,20 @@ export default function StartHere() {
           </p>
 
           <ul className="mt-6 space-y-4">
-            <li>
-              <Link
-                to="/education/how-inflation-affects-your-daily-budget"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                How Inflation Affects Your Daily Budget
-              </Link>
-              <p className="text-sm text-[#889988]">
-                See how rising prices change your everyday costs — groceries,
-                fuel, utilities, rent.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/education/budgeting-for-beginners-50-30-20-rule-explained"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Budgeting for Beginners (50/30/20 Rule)
-              </Link>
-              <p className="text-sm text-[#889988]">
-                Build a simple, flexible budget you can actually stick to.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/education/how-to-compare-loans"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                How to Compare Loans
-              </Link>
-              <p className="text-sm text-[#889988]">
-                Learn how APR, interest rates, fees, and loan terms really affect
-                total cost.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/education/budgeting-101"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Budgeting 101
-              </Link>
-              <p className="text-sm text-[#889988]">
-                Understand needs vs wants, fixed vs variable expenses, and how to
-                plan ahead.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/education/investing-101"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Investing 101
-              </Link>
-              <p className="text-sm text-[#889988]">
-                A beginner‑friendly introduction to risk, returns, diversification,
-                and long‑term growth.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/education/retirement-planning-basics"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Retirement Planning Basics
-              </Link>
-              <p className="text-sm text-[#889988]">
-                How much to save, where to save, and how compounding works over
-                decades.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/education/understanding-interest-rates"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Understanding Interest Rates
-              </Link>
-              <p className="text-sm text-[#889988]">
-                Why rates rise and fall — and how they affect loans, savings, and
-                inflation.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/education/how-inflation-works"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                How Inflation Works
-              </Link>
-              <p className="text-sm text-[#889988]">
-                A clear explanation of CPI, purchasing power, and why prices
-                change.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/education/credit-scores-and-borrowing"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Credit Scores & Borrowing
-              </Link>
-              <p className="text-sm text-[#889988]">
-                What affects your score, how lenders evaluate you, and how to
-                improve it.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/education/emergency-funds-and-safety-nets"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Emergency Funds & Financial Safety Nets
-              </Link>
-              <p className="text-sm text-[#889988]">
-                How much to save, where to keep it, and how to build resilience.
-              </p>
-            </li>
+            {ARTICLES.map((article, index) => (
+              <li key={article.slug}>
+                <span className="mr-3 font-mono text-[#A3FFD6]">{String(index + 1).padStart(2, "0")}.</span>
+                <Link
+                  to={`/education/${article.slug}`}
+                  className="text-[#A3FFD6] hover:underline"
+                >
+                  {article.t}
+                </Link>
+                <p className="text-sm text-[#889988]">
+                  {articleDescriptions[article.slug] || article.d}
+                </p>
+              </li>
+            ))}
           </ul>
         </section>
 
@@ -202,125 +105,20 @@ export default function StartHere() {
           </p>
 
           <ul className="mt-6 space-y-4">
-            <li>
-              <Link
-                to="/tools/food-inflation"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Food Inflation Calculator
-              </Link>
-              <p className="text-sm text-[#889988]">
-                See how rising prices affect your grocery budget.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/tools/debt-cost"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Debt Cost Calculator
-              </Link>
-              <p className="text-sm text-[#889988]">
-                Understand how much interest you’ll pay over time.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/tools/mortgage-payment"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Mortgage Payment Calculator
-              </Link>
-              <p className="text-sm text-[#889988]">
-                Estimate monthly payments and long‑term costs.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/tools/investment-growth"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Investment Growth Calculator
-              </Link>
-              <p className="text-sm text-[#889988]">
-                See how your money grows with compounding.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/tools/retirement"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Retirement Savings Calculator
-              </Link>
-              <p className="text-sm text-[#889988]">
-                Estimate how much you’ll need — and how close you are.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/tools/budget-planner"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Budget Planner
-              </Link>
-              <p className="text-sm text-[#889988]">
-                Build a simple, flexible budget in minutes.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/tools/net-worth"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Net Worth Calculator
-              </Link>
-              <p className="text-sm text-[#889988]">
-                Track your financial baseline over time.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/tools/savings-goal"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Savings Goal Calculator
-              </Link>
-              <p className="text-sm text-[#889988]">
-                See how long it takes to reach a target.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/tools/emergency-fund"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Emergency Fund Calculator
-              </Link>
-              <p className="text-sm text-[#889988]">
-                Build a safety net that fits your life.
-              </p>
-            </li>
-
-            <li>
-              <Link
-                to="/tools/savings-rate"
-                className="text-[#A3FFD6] hover:underline"
-              >
-                Savings Rate Calculator
-              </Link>
-              <p className="text-sm text-[#889988]">
-                Measure how much of your income you’re saving.
-              </p>
-            </li>
+            {TOOLS.map((tool, index) => (
+              <li key={tool.slug}>
+                <span className="mr-3 font-mono text-[#A3FFD6]">{String(index + 1).padStart(2, "0")}.</span>
+                <Link
+                  to={`/tools/${tool.slug}`}
+                  className="text-[#A3FFD6] hover:underline"
+                >
+                  {tool.name}
+                </Link>
+                <p className="text-sm text-[#889988]">
+                  {tool.short}
+                </p>
+              </li>
+            ))}
           </ul>
 
           <p className="mt-6 text-sm text-[#889988]">

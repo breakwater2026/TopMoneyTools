@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { ADSENSE, ADS_ENABLED, SLOT_MAP } from "@/config/adsense.config";
 
 // AdSense ad slot. When ADS_ENABLED is false (or IDs are placeholders), it
@@ -7,16 +7,39 @@ import { ADSENSE, ADS_ENABLED, SLOT_MAP } from "@/config/adsense.config";
 // ads feel like a native part of the interface rather than an intrusion.
 //
 // slot: "top" | "mid" | "sidebar" | "footer"
-export default function AdSlot({ slot, className = "", format = "auto", style }) {
+export default function AdSlot({ slot, className = "", format = "auto", style, layout }) {
+  const ref = useRef(null);
   const slotKey = SLOT_MAP[slot];
   const adUnitId = slotKey ? ADSENSE[slotKey] : "";
   const placeholder = !ADS_ENABLED || !adUnitId || adUnitId === "0000000000";
 
   useEffect(() => {
-    if (placeholder) return;
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) { /* no-op */ }
+    if (placeholder || !ref.current) return;
+
+    const loadAd = () => {
+      try {
+        // eslint-disable-next-line no-undef
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        // no-op
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadAd();
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
   }, [placeholder]);
 
   return (
@@ -31,11 +54,13 @@ export default function AdSlot({ slot, className = "", format = "auto", style })
           </div>
         ) : (
           <ins
+            ref={ref}
             className="adsbygoogle block"
-            style={{ display: "block" }}
+            style={{ display: "block", ...(layout ? { textAlign: "center" } : {}) }}
             data-ad-client={ADSENSE.PUBLISHER_ID}
             data-ad-slot={adUnitId}
             data-ad-format={format}
+            {...(layout ? { "data-ad-layout": layout } : {})}
             data-full-width-responsive="true"
           />
         )}

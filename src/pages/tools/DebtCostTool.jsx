@@ -1,15 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, RangeField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { NumberField, RangeField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
 
 export default function DebtCostTool() {
   const [principal, setPrincipal] = useState(10000);
-  const [rate, setRate] = useState(8);
+  const [country, setCountry] = useState("US");
   const [years, setYears] = useState(5);
   const [calculated, setCalculated] = useState(false);
+  const [countries, setCountries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    fetch("/tools/debt-cost-calculator/Countries-Debt.json")
+      .then(response => response.json())
+      .then(data => {
+        setCountries(data.countries);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("Error loading countries:", error);
+        setLoading(false);
+      });
+  }, []);
+
+  const getRate = (code) => {
+    const countryData = countries.find(c => c.code === code);
+    return countryData ? countryData.value : 5.2;
+  };
+
+  const rate = getRate(country);
   const monthlyRate = rate / 100 / 12;
   const months = years * 12;
   const monthlyPayment =
@@ -31,8 +52,16 @@ export default function DebtCostTool() {
         inputs={
           <>
             <NumberField label="How much do you want to borrow?" helper="The total loan amount — e.g. car, personal loan, or credit card balance." value={principal} onChange={setPrincipal} prefix="$" ariaLabel="Loan amount" />
-            <NumberField label="What is the annual interest rate?" helper="Check your loan agreement or credit card statement. A typical personal loan is 6-20%." value={rate} onChange={setRate} prefix="" suffix="%" step={0.1} ariaLabel="Annual interest rate" />
+            <SelectField
+              label="Which country do you live in?"
+              helper="This sets a typical annual interest rate for your region — you can always adjust it manually!"
+              value={country}
+              onChange={setCountry}
+              ariaLabel="Country or region"
+              options={countries.map(c => ({ value: c.code, label: `${c.name} (${c.value}% avg)` }))}
+            />
             <RangeField label="How many years will you be repaying?" helper="Most personal loans are 1-7 years. Mortgages are typically 15-30 years." value={years} onChange={setYears} min={1} max={30} unit=" yrs" ariaLabel="Loan term in years" />
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">Using {rate}% annual interest rate.</p>
           </>
         }
         calculate={<CalculateButton onClick={() => { setCalculated(true);  }}>Calculate My Debt Cost</CalculateButton>}

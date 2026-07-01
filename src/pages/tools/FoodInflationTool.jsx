@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
@@ -6,25 +6,36 @@ import { NumberField, RangeField, SelectField, CalculateButton, usd } from "@/co
 
 export default function FoodInflationTool() {
   const [spend, setSpend] = useState(400);
-  const [region, setRegion] = useState("us");
+  const [region, setRegion] = useState("US");
   const [years, setYears] = useState(5);
   const [calculated, setCalculated] = useState(false);
+  const [countries, setCountries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const RATES = {
-    us: { label: "United States (3.5% avg)", rate: 3.5 },
-    uk: { label: "United Kingdom (4% avg)", rate: 4 },
-    ca: { label: "Canada (3.8% avg)", rate: 3.8 },
-    au: { label: "Australia (4.2% avg)", rate: 4.2 },
-    de: { label: "Germany (3% avg)", rate: 3 },
-    fr: { label: "France (3.2% avg)", rate: 3.2 },
-    br: { label: "Brazil (8.5% avg)", rate: 8.5 },
-    in: { label: "India (6.5% avg)", rate: 6.5 },
-    za: { label: "South Africa (7% avg)", rate: 7 },
-    mx: { label: "Mexico (6% avg)", rate: 6 },
-    custom: { label: "Custom rate", rate: 4 },
+  useEffect(() => {
+    fetch("/tools/food-inflation-calculator/Countries-Inflation.json")
+      .then(response => response.json())
+      .then(data => {
+        setCountries(data.countries);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("Error loading countries:", error);
+        setLoading(false);
+      });
+  }, []);
+
+  const getRate = (code) => {
+    const country = countries.find(c => c.code === code);
+    return country ? country.value : 2.4;
   };
 
-  const rate = RATES[region]?.rate ?? 3.5;
+  const getLabel = (code) => {
+    const country = countries.find(c => c.code === code);
+    return country ? `${country.name} (${country.value}% avg)` : "United States (2.4% avg)";
+  };
+
+  const rate = getRate(region);
   const future = spend * Math.pow(1 + rate / 100, years);
   const totalIncrease = future - spend;
   const pctIncrease = (totalIncrease / spend) * 100;
@@ -46,7 +57,7 @@ export default function FoodInflationTool() {
               value={region}
               onChange={setRegion}
               ariaLabel="Country or region"
-              options={Object.entries(RATES).map(([k, v]) => ({ value: k, label: v.label }))}
+              options={countries.map(c => ({ value: c.code, label: `${c.name} (${c.value}% avg)` }))}
             />
             <RangeField label="How many years ahead do you want to see?" helper="Try 5 years to start — small changes add up fast." value={years} onChange={setYears} min={1} max={30} unit=" yrs" ariaLabel="Years ahead" />
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">Using {rate}% annual food inflation rate.</p>

@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import AdSlot from "@/components/AdSlot";
 import MoneyBasicsSidebar from "@/components/MoneyBasicsSidebar";
 import Reveal from "@/components/Reveal";
+import BreadcrumbNav from "@/components/BreadcrumbNav";
 
 // The Instrument Stage — shared shell for every calculator.
 // Layout per PRD §4.1 + design spec §3.II:
@@ -13,7 +14,7 @@ import Reveal from "@/components/Reveal";
 //   - Intel Brief (scroll-triggered reveal)
 //   - Closing editorial image ("The Explorer's Artifacts")
 export default function ToolPageShell({
-  slug, name, num, title, subtitle, inputs, calculate, results, intelBrief = [], learnMore = [], sidebarTerms, imageUrl, imageAlt, imageCaption,
+  slug, name, num, title, subtitle, inputs, calculate, results, intelBrief = [], learnMore = [], sidebarTerms, imageUrl, imageAlt, imageCaption, faqs = [],
 }) {
   const softwareApplicationSchema = {
     "@context": "https://schema.org",
@@ -55,6 +56,22 @@ export default function ToolPageShell({
     ],
   };
 
+  const faqSchema = faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a,
+      },
+    })),
+  } : null;
+
+  const structuredDataArray = [softwareApplicationSchema, breadcrumbSchema];
+  if (faqSchema) structuredDataArray.push(faqSchema);
+
   return (
     <>
       <SEO 
@@ -65,7 +82,7 @@ export default function ToolPageShell({
           url: `https://topmoneytools.com/tools/${slug}`,
           type: "SoftwareApplication"
         }} 
-        structuredData={[softwareApplicationSchema, breadcrumbSchema]} 
+        structuredData={structuredDataArray} 
       />
 
       {/* Top banner ad — integrated "status bar" */}
@@ -76,6 +93,10 @@ export default function ToolPageShell({
       </div>
 
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+        <BreadcrumbNav items={[
+          { label: "Tools", to: "/tools" },
+          { label: name },
+        ]} />
         {/* Hero */}
         <header className="mb-8">
           <Link to="/tools" className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988] hover:text-[#A3FFD6]">
@@ -127,6 +148,28 @@ export default function ToolPageShell({
                 </Reveal>
               ))}
             </ol>
+          </div>
+        </section>
+      )}
+
+      {/* FAQ Section */}
+      {faqs.length > 0 && (
+        <section aria-labelledby="tool-faq" className="border-t border-[#A3FFD6]/10 bg-obsidian">
+          <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+            <h2 id="tool-faq" className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">
+              // Pre-Flight Checks
+            </h2>
+            <h3 className="mt-1 font-heading text-2xl font-bold text-[#E0E0E0]">Frequently Asked Questions</h3>
+            <dl className="mt-8 space-y-3">
+              {faqs.map((faq, i) => (
+                <Reveal key={i}>
+                  <div className="instrument-surface rounded-sm p-5">
+                    <dt className="font-heading font-semibold text-[#E0E0E0]">{faq.q}</dt>
+                    <dd className="mt-1 text-sm text-[#889988]">{faq.a}</dd>
+                  </div>
+                </Reveal>
+              ))}
+            </dl>
           </div>
         </section>
       )}
