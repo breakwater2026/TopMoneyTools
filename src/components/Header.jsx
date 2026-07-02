@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import CompassLogo from "@/components/CompassLogo";
 import { TOOLS, NAV_LINKS } from "@/config/site.config";
 
 // Global header — sticky, fully accessible (role=navigation, aria-label="Main",
-// keyboard-navigable), with Tools dropdown listing all 10 tools.
+// keyboard-navigable), with a mobile-first menu that preserves the desktop experience.
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#A3FFD6]/15 bg-obsidian/95 backdrop-blur supports-[backdrop-filter]:bg-obsidian/80">
@@ -62,20 +68,53 @@ export default function Header() {
           ))}
         </nav>
 
-        <Link
-          to="/start-here"
-          className="rounded-sm border-2 border-[#A3FFD6] px-4 py-2 font-mono text-xs uppercase tracking-[0.2em] text-[#A3FFD6] transition hover:bg-[#A3FFD6] hover:text-[#081008]"
-        >
-          Start Here
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            to="/start-here"
+            className="hidden rounded-sm border-2 border-[#A3FFD6] px-4 py-2 font-mono text-xs uppercase tracking-[0.2em] text-[#A3FFD6] transition hover:bg-[#A3FFD6] hover:text-[#081008] sm:inline-flex"
+          >
+            Start Here
+          </Link>
+
+          <button
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav-panel"
+            onClick={() => setMobileMenuOpen((v) => !v)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-[#A3FFD6]/20 text-[#E0E0E0] transition hover:border-[#A3FFD6]/40 hover:text-[#A3FFD6] md:hidden"
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
-      <nav aria-label="Mobile" className="flex gap-1 overflow-x-auto border-t border-[#A3FFD6]/10 px-3 py-2 md:hidden">
-        <Link to="/tools" className="whitespace-nowrap px-2 py-1 font-mono text-xs uppercase tracking-[0.15em] text-[#E0E0E0]">Tools</Link>
-        {NAV_LINKS.map((l) => (
-          <Link key={l.path} to={l.path} className="whitespace-nowrap px-2 py-1 font-mono text-xs uppercase tracking-[0.15em] text-[#E0E0E0]">{l.label}</Link>
-        ))}
-      </nav>
+      <div
+        id="mobile-nav-panel"
+        className={`overflow-hidden border-t border-[#A3FFD6]/10 bg-obsidian/95 transition-all duration-200 md:hidden ${mobileMenuOpen ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0"}`}
+      >
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-3 sm:px-6">
+          <Link to="/tools" onClick={() => setMobileMenuOpen(false)} className="rounded-sm px-3 py-2 font-mono text-xs uppercase tracking-[0.2em] text-[#E0E0E0] hover:bg-[#A3FFD6]/10 hover:text-[#A3FFD6]">
+            Tools
+          </Link>
+          <div className="rounded-sm border border-[#A3FFD6]/10 p-2">
+            {TOOLS.map((t) => (
+              <Link key={t.slug} to={`/tools/${t.slug}`} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 rounded-sm px-2 py-2 text-sm text-[#E0E0E0] hover:bg-[#A3FFD6]/10 hover:text-[#A3FFD6]">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#889988]">{t.num}</span>
+                <span>{t.name}</span>
+              </Link>
+            ))}
+          </div>
+          {NAV_LINKS.map((l) => (
+            <Link key={l.path} to={l.path} onClick={() => setMobileMenuOpen(false)} className="rounded-sm px-3 py-2 font-mono text-xs uppercase tracking-[0.2em] text-[#E0E0E0] hover:bg-[#A3FFD6]/10 hover:text-[#A3FFD6]">
+              {l.label}
+            </Link>
+          ))}
+          <Link to="/start-here" onClick={() => setMobileMenuOpen(false)} className="rounded-sm border border-[#A3FFD6]/30 px-3 py-2 text-center font-mono text-xs uppercase tracking-[0.2em] text-[#A3FFD6] hover:bg-[#A3FFD6] hover:text-[#081008]">
+            Start Here
+          </Link>
+        </div>
+      </div>
     </header>
   );
 }

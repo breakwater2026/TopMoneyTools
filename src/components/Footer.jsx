@@ -8,7 +8,7 @@ import AdSlot from "@/components/AdSlot";
 export default function Footer() {
   return (
     <footer className="border-t border-[#A3FFD6]/15 bg-obsidian">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 sm:grid-cols-2 lg:grid-cols-4">
 
         <nav aria-label="Tools (footer)">
           <h2 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">Tools</h2>

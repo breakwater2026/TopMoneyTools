@@ -92,13 +92,13 @@ export default function ToolPageShell({
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+      <div className="mx-auto max-w-7xl px-3 py-6 sm:px-6 sm:py-10">
         <BreadcrumbNav items={[
           { label: "Tools", to: "/tools" },
           { label: name },
         ]} />
         {/* Hero */}
-        <header className="mb-8">
+        <header className="mb-6 sm:mb-8">
           <Link to="/tools" className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988] hover:text-[#A3FFD6]">
             ← Back to Tools
           </Link>
@@ -110,9 +110,9 @@ export default function ToolPageShell({
         </header>
 
         {/* 2:1 asymmetric balance */}
-        <div className="grid gap-8 lg:grid-cols-[65%_32%]">
+        <div className="grid gap-6 lg:grid-cols-[65%_32%] lg:gap-8">
           {/* Main Stage — engine + result HUD */}
-          <article className="instrument-surface rounded-sm p-6 sm:p-8">
+          <article className="instrument-surface rounded-sm p-4 sm:p-8">
             <div className="space-y-6">{inputs}</div>
             {calculate && <div className="mt-8">{calculate}</div>}
             {results}
