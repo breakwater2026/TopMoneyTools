@@ -26,13 +26,13 @@ export default function ArticleShell({ title, description, path, sidebarTerms, r
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+      <div className="mx-auto max-w-7xl px-3 py-6 sm:px-6 sm:py-10">
         <BreadcrumbNav items={[
           { label: "Education", to: "/education" },
           { label: title },
         ]} />
 
-        <header className="mb-8">
+        <header className="mb-6 sm:mb-8">
           <Link to="/education" className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988] hover:text-[#A3FFD6]">
             ← Back to Education
           </Link>
@@ -46,8 +46,8 @@ export default function ArticleShell({ title, description, path, sidebarTerms, r
           </div>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[65%_32%]">
-          <article className="instrument-surface rounded-sm p-6 sm:p-8 prose-headings:font-heading prose-headings:text-[#E0E0E0] prose-p:text-[#889988] prose-p:leading-relaxed">
+        <div className="grid gap-6 lg:grid-cols-[65%_32%] lg:gap-8">
+          <article className="instrument-surface rounded-sm p-4 sm:p-8 prose-headings:font-heading prose-headings:text-[#E0E0E0] prose-p:text-[#889988] prose-p:leading-relaxed">
             {children}
 
             {relatedTools.length > 0 && (

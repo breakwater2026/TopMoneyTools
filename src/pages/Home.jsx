@@ -52,12 +52,12 @@ export default function Home() {
           className="pointer-events-none absolute inset-0 opacity-30"
           style={{ backgroundImage: "radial-gradient(circle at 50% 30%, hsl(158 100% 82% / 0.18) 0, transparent 55%)" }}
         />
-        <div className="relative mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 sm:py-28">
+        <div className="relative mx-auto max-w-7xl px-4 py-14 text-center sm:px-6 sm:py-28">
           <p className="font-mono text-[11px] uppercase tracking-[0.4em] text-[#A3FFD6]">// The Navigator's Interface</p>
-          <h1 className="mx-auto mt-4 max-w-3xl font-heading text-4xl font-bold leading-[1.05] tracking-tight text-[#E0E0E0] sm:text-6xl">
+          <h1 className="mx-auto mt-4 max-w-3xl font-heading text-3xl font-bold leading-[1.05] tracking-tight text-[#E0E0E0] sm:text-6xl">
             A <span className="text-[#A3FFD6]">Tactical Financial Instrument</span> for Everyday Money Decisions
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#889988]">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#889988] sm:text-lg">
             When prices rise, bills shift, or choices feel overwhelming, TopMoneyTools helps you navigate the journey. {" "}
             Ten free, private calculators and clear guidance — all run entirely on your device. No accounts. No tracking.
           </p>
@@ -80,7 +80,7 @@ export default function Home() {
       </div>
 
       {/* Intro */}
-      <section className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
+      <section className="mx-auto max-w-3xl px-4 py-12 text-center sm:px-6 sm:py-16">
         <Reveal>
           <h2 className="font-heading text-3xl font-bold tracking-tight text-[#E0E0E0] sm:text-4xl">
             Money Feeling Complicated? We Map It.
