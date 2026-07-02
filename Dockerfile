@@ -6,14 +6,17 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve assets using Nginx
-FROM nginx:alpine
-RUN rm -rf /etc/nginx/conf.d/* /usr/share/nginx/html/*
-COPY --from=builder /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Stage 2: Serve assets using a native Node static server
+FROM node:20-alpine
+WORKDIR /app
 
-# FIX: Explicitly grant Nginx permission to read the web files
-RUN chmod -R 755 /usr/share/nginx/html
+# Install the official Vercel static server globally
+RUN npm install -g serve
+
+# Copy the compiled static assets from the builder stage
+COPY --from=builder /app/dist ./dist
 
 EXPOSE 8080
-CMD ["nginx", "-g", "daemon off;"]
+
+# Run 'serve' in single-page app mode (-s) listening on port 8080 (-l 8080)
+CMD ["serve", "-s", "dist", "-l", "8080"]
