@@ -4,8 +4,10 @@ server {
     listen ${PORT};
     server_name localhost;
 
-    # Ensure correct MIME for .webmanifest and serve it explicitly
+    # Ensure correct MIME mappings for common assets
     types {
+        text/html html htm;
+        application/javascript js;
         application/manifest+json webmanifest;
     }
 
@@ -32,6 +34,10 @@ server {
     location / {
         root /usr/share/nginx/html;
         index index.html index.htm;
+        # Force HTML Content-Type for root requests (try_files may internally redirect)
+        if ($request_uri = "/") {
+            add_header Content-Type text/html always;
+        }
         try_files $uri $uri/ /index.html;
     }
 
