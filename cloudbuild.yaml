@@ -9,7 +9,7 @@ steps:
       - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'
       - '-f'
       - 'Dockerfile'
-      - 'Website'
+      - '.'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
