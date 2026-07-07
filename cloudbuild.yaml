@@ -6,7 +6,7 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/topmoneytools/topmoneytools:$BUILD_ID'
       - '-f'
       - 'Dockerfile'
       - '.'
@@ -14,18 +14,18 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/topmoneytools/topmoneytools:$BUILD_ID'
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
       - 'run'
       - 'deploy'
-      - 'my-website-service'
-      - '--image=us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'
+      - 'topmoneytools'
+      - '--image=us-central1-docker.pkg.dev/$PROJECT_ID/topmoneytools/topmoneytools:$BUILD_ID'
       - '--region=us-central1'
       - '--platform=managed'
       - '--allow-unauthenticated'
 
 images:
-  - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/topmoneytools/topmoneytools:$BUILD_ID'
