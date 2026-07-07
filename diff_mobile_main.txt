@@ -1,0 +1,10 @@
+M	src/App.jsx
+D	src/components/CookieBanner.jsx
+M	src/components/Footer.jsx
+M	src/components/Layout.jsx
+M	src/config/site.config.js
+M	src/pages/About.jsx
+D	src/pages/Contact.jsx
+M	src/pages/Home.jsx
+M	src/pages/Privacy.jsx
+D	src/pages/Terms.jsx

@@ -1,0 +1,19 @@
+[ User / Web Browser ]
+         │
+         ▼ (HTTP/HTTPS)
+[ Global External Load Balancer ]
+         │
+         ▼ (Routes Traffic)
+[ User Interface (qa-service on Cloud Run) ]
+   │                                  │
+   │ (Queries State)                  │ (Sends Instructions)
+   ▼                                  ▼
+[ Vector Database ] <─────── [ Master Agent (Agent Engine) ]
+(PostgreSQL)                          │
+   ▲                                  │ (Coordinates Tasks)
+   │                                  ▼
+[ Ingestion Service ] <───── [ Sub-Agents (Software) ]
+(Cloud Run)                  - Competitive Analysis
+   │                         - Styling Review
+   ▼                         - Coding & Deployment
+[ Cloud Storage Bucket ]
