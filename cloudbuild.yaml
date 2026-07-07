@@ -6,30 +6,24 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/topmoneytools/topmoneytools:$BUILD_ID'
-      - '-f'
-      - 'Dockerfile'
-<<<<<<< HEAD
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'
       - '.'
-=======
-      - 'Website'
->>>>>>> parent of ceb17cf (Move website source into Website/ and document new repo layout)
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/topmoneytools/topmoneytools:$BUILD_ID'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
       - 'run'
       - 'deploy'
-      - 'topmoneytools'
-      - '--image=us-central1-docker.pkg.dev/$PROJECT_ID/topmoneytools/topmoneytools:$BUILD_ID'
+      - 'my-website-service'
+      - '--image=us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'
       - '--region=us-central1'
       - '--platform=managed'
       - '--allow-unauthenticated'
 
 images:
-  - 'us-central1-docker.pkg.dev/$PROJECT_ID/topmoneytools/topmoneytools:$BUILD_ID'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-// This file exists for backwards compatibility with old repository paths.
-// The actual website source is now located under Website/src/.
-export { default } from '../../Website/src/pages/StartHere.jsx';
-=======
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import Layout from "@/components/Layout";
@@ -212,4 +207,3 @@ export default function StartHere() {
     </Layout>
   );
 }
->>>>>>> parent of ceb17cf (Move website source into Website/ and document new repo layout)
