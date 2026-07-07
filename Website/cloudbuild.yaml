@@ -3,6 +3,7 @@ options:
 
 steps:
   - name: 'gcr.io/cloud-builders/docker'
+    dir: 'Website'
     args:
       - 'build'
       - '-t'
