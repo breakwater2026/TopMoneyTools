@@ -2,6 +2,7 @@
 
 Privacy-first financial calculators and guides. All tools run locally in your browser.
 
+<<<<<<< HEAD
 ## Repository layout
 
 The website source is now contained under the `Website/` folder.
@@ -17,10 +18,11 @@ The root `cloudbuild.yaml` builds the Docker image from the `Website/` directory
 cloudbuild.yaml -> dir: 'Website'
 ```
 
+=======
+>>>>>>> parent of ceb17cf (Move website source into Website/ and document new repo layout)
 ## Local Development
 
 ```bash
-cd Website
 npm install
 npm run dev
 ```
@@ -28,13 +30,11 @@ npm run dev
 ## Build
 
 ```bash
-cd Website
 npm run build
 ```
 
 ## Linting
 
 ```bash
-cd Website
 npm run lint
 ```

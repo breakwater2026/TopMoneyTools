@@ -9,7 +9,11 @@ steps:
       - 'us-central1-docker.pkg.dev/$PROJECT_ID/topmoneytools/topmoneytools:$BUILD_ID'
       - '-f'
       - 'Dockerfile'
+<<<<<<< HEAD
       - '.'
+=======
+      - 'Website'
+>>>>>>> parent of ceb17cf (Move website source into Website/ and document new repo layout)
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
