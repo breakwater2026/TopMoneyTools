@@ -15,18 +15,18 @@ server {
     location = /manifest.webmanifest {
         root /usr/share/nginx/html;
         # In case types aren't picked up, ensure correct header
-        add_header Content-Type application/manifest+json;
+        add_header Content-Type application/manifest+json always;
     }
 
     location = /index.html {
         root /usr/share/nginx/html;
-        add_header Content-Type text/html;
+        add_header Content-Type text/html always;
     }
 
     # Serve service worker with explicit JS content type to avoid octet-stream
     location = /sw.js {
         root /usr/share/nginx/html;
-        add_header Content-Type application/javascript;
+        add_header Content-Type application/javascript always;
     }
 
     location / {
