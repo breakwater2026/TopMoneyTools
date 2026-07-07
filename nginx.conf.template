@@ -4,30 +4,20 @@ server {
     listen ${PORT};
     server_name localhost;
 
-    # Ensure correct MIME mappings for common assets
-    types {
-        text/html html htm;
-        application/javascript js;
-        application/manifest+json webmanifest;
-    }
-
-    # If mime.types isn't picked up for some reason, make HTML the default
-    default_type text/html;
-
     location = /manifest.webmanifest {
         root /usr/share/nginx/html;
-        # Rely on mime.types to set Content-Type based on file extension
+        default_type application/manifest+json;
     }
 
     location = /index.html {
         root /usr/share/nginx/html;
-        # Rely on mime.types to set Content-Type based on file extension
+        default_type text/html;
     }
 
-    # Serve service worker with explicit JS content type to avoid octet-stream
+    # Explicitly force JavaScript type for the service worker
     location = /sw.js {
         root /usr/share/nginx/html;
-        # Rely on mime.types to set Content-Type based on file extension
+        default_type application/javascript;
     }
 
     location / {
