@@ -28,9 +28,13 @@ export default function Privacy() {
             by design. We have no database of your financial information because we never receive one.
           </p>
           <p>
-            The only third-party service present is Google AdSense (when ads are enabled), which operates under its own
-            privacy policy. We use placeholder slots until ads are configured; they then load Google's standard ad
-            units.
+            The only third-party service present is Google AdSense (when ads are enabled). Google may use cookies and
+            other identifiers to serve ads and measure performance. AdSense operates under its own privacy policy.
+          </p>
+          <p>
+            You can opt out of personalized advertising by visiting
+            <a href="https://www.google.com/settings/ads" className="text-[#A3FFD6] hover:underline"> Google Ads Settings</a>
+            or <a href="https://www.aboutads.info/choices" className="text-[#A3FFD6] hover:underline">AboutAds.info</a>.
           </p>
           <p>
             Just simple instruments that help you make better decisions — privately.

@@ -16,6 +16,8 @@ const Resources = lazy(() => import("@/pages/Resources"));
 const About = lazy(() => import("@/pages/About"));
 const StartHere = lazy(() => import("@/pages/StartHere"));
 const Privacy = lazy(() => import("@/pages/Privacy"));
+const Contact = lazy(() => import("@/pages/Contact"));
+const Terms = lazy(() => import("@/pages/Terms"));
 
 const FoodInflation = lazy(() => import("@/pages/tools/food-inflation"));
 const DebtCost = lazy(() => import("@/pages/tools/debt-cost"));
@@ -138,6 +140,8 @@ function App() {
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/terms" element={<Terms />} />
             <Route path="/start-here" element={<StartHere />} />
             <Route path="/privacy" element={<Privacy />} />
 

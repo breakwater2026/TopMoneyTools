@@ -30,6 +30,7 @@ export const NAV_LINKS = [
   { label: "Glossary", path: "/glossary" },
   { label: "Resources", path: "/resources" },
   { label: "About", path: "/about" },
+  { label: "Contact", path: "/contact" },
 ];
 
 // 29 glossary terms (PRD §6.4)

@@ -48,6 +48,8 @@ export default function Footer() {
           <h2 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">Legal</h2>
           <ul className="mt-3 space-y-2 text-sm text-[#E0E0E0]/80">
             <li><Link to="/privacy" className="hover:text-[#A3FFD6]">Privacy Policy</Link></li>
+            <li><Link to="/terms" className="hover:text-[#A3FFD6]">Terms of Use</Link></li>
+            <li><Link to="/contact" className="hover:text-[#A3FFD6]">Contact</Link></li>
           </ul>
           <div className="mt-6">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#889988]">Private by design</p>

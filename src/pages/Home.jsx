@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck, Sparkles, Compass } from "lucide-react";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import AdSlot from "@/components/AdSlot";
@@ -15,9 +15,21 @@ const FAQS = [
 ];
 
 const VALUES = [
-  { t: "Private by Design", d: "Your inputs never leave your device. No accounts, no tracking, no data collection — ever." },
-  { t: "Plain Language", d: "Every tool and article is written in everyday words with examples that map to your life." },
-  { t: "Built for Real Life", d: "From inflation to loan terms, we focus on the financial questions people face every day." },
+  {
+    icon: ShieldCheck,
+    t: "Private by Design",
+    d: "Your inputs never leave your device. No accounts, no tracking, no data collection — ever.",
+  },
+  {
+    icon: Sparkles,
+    t: "Plain Language",
+    d: "Every tool and article is written in everyday words with examples that map to your life.",
+  },
+  {
+    icon: Compass,
+    t: "Built for Real Life",
+    d: "From inflation to loan terms, we focus on the financial questions people face every day.",
+  },
 ];
 
 const websiteStructuredData = {
@@ -95,14 +107,20 @@ export default function Home() {
       {/* Values */}
       <section aria-label="Why TopMoneyTools" className="mx-auto max-w-7xl px-4 pb-12 sm:px-6">
         <div className="grid gap-5 sm:grid-cols-3">
-          {VALUES.map((v) => (
-            <Reveal key={v.t}>
-              <div className="instrument-surface h-full rounded-sm p-6">
-                <h3 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">{v.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#889988]">{v.d}</p>
-              </div>
-            </Reveal>
-          ))}
+          {VALUES.map((v) => {
+            const Icon = v.icon;
+            return (
+              <Reveal key={v.t}>
+                <div className="instrument-surface h-full rounded-sm p-6">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#A3FFD6]/10 text-[#A3FFD6]">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">{v.t}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[#889988]">{v.d}</p>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
@@ -121,7 +139,9 @@ export default function Home() {
             >
               <div className="flex items-center justify-between">
                 <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">{t.num}</span>
-                <span aria-hidden="true" className="h-3 w-3 rotate-45 border border-[#A3FFD6] transition group-hover:bg-[#A3FFD6]" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#A3FFD6]/20 bg-[#A3FFD6]/10 text-[#A3FFD6]">
+                  <span className="text-sm font-semibold uppercase tracking-[0.2em]">{t.name.split(" ")[0].slice(0, 1)}</span>
+                </div>
               </div>
               <h3 className="mt-4 font-heading text-lg font-semibold text-[#E0E0E0]">{t.name}</h3>
               <p className="mt-2 flex-1 text-sm text-[#889988]">{t.short}</p>
@@ -226,6 +246,35 @@ export default function Home() {
             privately.
           </p>
         </Reveal>
+      </section>
+
+      {/* Support callout */}
+      <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6">
+        <div className="instrument-surface rounded-sm border border-[#A3FFD6]/10 p-6 text-[#889988]">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Support</p>
+              <h2 className="mt-2 font-heading text-2xl font-bold text-[#E0E0E0]">Need a hand with a calculator?</h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#889988]">
+                Reach out if you want help understanding a result, want a new tool, or have feedback about how the site works.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center rounded-sm bg-[#A3FFD6] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#081008] transition hover:bg-[#88E6B8]"
+              >
+                Contact us
+              </Link>
+              <Link
+                to="/privacy"
+                className="inline-flex items-center justify-center rounded-sm border border-[#A3FFD6]/30 px-5 py-3 text-xs uppercase tracking-[0.18em] text-[#A3FFD6] transition hover:bg-[#A3FFD6]/10"
+              >
+                View privacy policy
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Footer banner ad */}

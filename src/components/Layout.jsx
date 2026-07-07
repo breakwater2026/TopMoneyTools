@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SkipLink from "@/components/SkipLink";
+import CookieBanner from "@/components/CookieBanner";
 
 export default function Layout({ children }) {
   return (
@@ -11,6 +12,7 @@ export default function Layout({ children }) {
         {children}
       </main>
       <Footer />
+      <CookieBanner />
     </div>
   );
 }
