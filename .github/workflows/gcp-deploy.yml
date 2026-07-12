@@ -7,14 +7,14 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECT_ID: project-7ee9ba0e-6038-467d-83a
-  GAR_LOCATION: northamerica-northeast1
+  PROJECT_ID: tmtwebsite-501119
+  GAR_LOCATION: us-central1
   REGION: us-central1
   SERVICE: topmoneytools-website
   REPOSITORY: topmoneytools-images
   IMAGE: topmoneytools-website
   WIF_PROVIDER: projects/687832097444/locations/global/workloadIdentityPools/github-pool/providers/git-hub-provider
-  SERVICE_ACCOUNT: github-deploy-sa@project-7ee9ba0e-6038-467d-83a.iam.gserviceaccount.com
+  SERVICE_ACCOUNT: github-deploy-1034685814627@developer.gserviceaccount.com
 
 jobs:
   deploy:
