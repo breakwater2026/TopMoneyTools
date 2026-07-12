@@ -1,31 +1,17 @@
-# Multi-stage build for optimized production image
-FROM node:18-alpine AS base
-
+# Stage 1: Build the Vite application
+FROM node:20-alpine AS builder
 WORKDIR /app
-
-# Install dependencies
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
+COPY . .
+RUN npm run build
 
-# Production stage
+# Stage 2: Serve assets using Nginx
 FROM nginx:alpine
+RUN rm -rf /etc/nginx/conf.d/*
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Copy website files to the web server's folder
-COPY . /usr/share/nginx/html
-
-# Copy static assets
-COPY public/ /usr/share/nginx/html/
-COPY assets/ /usr/share/nginx/html/assets/
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-  CMD curl -f http://localhost:8080/ || exit 1
-
-# Tell Cloud Run to use port 8080
 EXPOSE 8080
-
-# Start nginx
 CMD ["nginx", "-g", "daemon off;"]
+
