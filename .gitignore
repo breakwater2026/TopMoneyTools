@@ -6,3 +6,4 @@ python3_tools/
 CoPilot Conversations.txt
 .vercel
 .env*
+node_modules
