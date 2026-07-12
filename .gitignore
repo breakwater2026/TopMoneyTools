@@ -7,3 +7,4 @@ CoPilot Conversations.txt
 .vercel
 .env*
 node_modules
+node_modules/
