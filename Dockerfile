@@ -1,8 +1,14 @@
 # Stage 1: Build the Vite application
 FROM node:20-alpine AS builder
 WORKDIR /app
+
+# Explicitly copy both package.json and package-lock.json first
 COPY package*.json ./
+
+# Run clean install (this will now find the lockfile perfectly)
 RUN npm ci
+
+# Copy the rest of your application code
 COPY . .
 RUN npm run build
 
