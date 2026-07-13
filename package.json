@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "TopMoneyTools - Free financial calculators for inflation, debt cost, and personal finance decisions",
   "scripts": {
-     "dev": "vite",
-     "build": "vite build",
-     "preview": "vite preview"
-}
-    "build": "echo 'Build complete - files ready for Cloud Run deployment'"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   }
 }
