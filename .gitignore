@@ -8,3 +8,4 @@ CoPilot Conversations.txt
 .env*
 node_modules
 node_modules/
+dist/
