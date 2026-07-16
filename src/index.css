@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* The Navigator's Interface — color protocol */
+    --background: 156 30% 4%;            /* Deep Obsidian #081008 */
+    --foreground: 140 14% 88%;           /* light sage-white #E0E0E0 */
+    --card: 130 30% 8%;                  /* Forest Void #0E1A0E */
+    --card-foreground: 140 14% 88%;
+    --popover: 130 30% 8%;
+    --popover-foreground: 140 14% 88%;
+    --primary: 158 100% 82%;            /* Kinetic Mint #A3FFD6 */
+    --primary-foreground: 156 30% 4%;
+    --secondary: 130 14% 18%;
+    --secondary-foreground: 140 14% 88%;
+    --muted: 130 14% 14%;
+    --muted-foreground: 120 9% 56%;      /* Muted Sage #889988 */
+    --accent: 32 100% 82%;               /* Warning Amber #FFD6A3 */
+    --accent-foreground: 30 30% 8%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 140 14% 18%;
+    --input: 130 20% 12%;
+    --ring: 158 100% 82%;
+    --radius: 0.25rem;
+
+    /* Custom Navigator tokens */
+    --grid-line: 140 14% 22%;
+    --glow: 158 100% 82%;
+
+    --font-heading: "Archivo", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Archivo", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image:
+      linear-gradient(to right, hsl(var(--grid-line) / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--grid-line) / 0.07) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Monospaced data helper */
+  .font-data { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+}
+
+@layer components {
+  /* The "Instrument" surface — sharp corners, mint hairline border */
+  .instrument-surface {
+    @apply bg-card border border-[hsl(var(--primary)/0.12)] text-foreground;
+  }
+  /* Kinetic glow border that traces on hover/active */
+  .instrument-glow {
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.25), 0 0 28px -8px hsl(var(--glow) / 0.4);
+  }
+  .hairline-border { @apply border border-[hsl(var(--primary)/0.18)]; }
+}
+
+@layer utilities {
+  .text-primary { color: hsl(var(--primary)); }
+  .pulse-glow { animation: pulseGlow 2.4s ease-in-out infinite; }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 1px hsl(var(--primary) / 0.5), 0 0 32px -6px hsl(var(--glow) / 0.6); }
+    50% { box-shadow: 0 0 0 1px hsl(var(--primary) / 0.8), 0 0 48px -2px hsl(var(--glow) / 0.85); }
+  }
+  .reveal { animation: revealFade 0.5s ease-out both; }
+  @keyframes revealFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

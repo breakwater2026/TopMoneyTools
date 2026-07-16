@@ -1,0 +1,8 @@
+# Exclude version control directories
+.git/
+
+# Exclude node modules (will be installed in the container)
+node_modules/
+
+# Exclude this ignore file itself
+.gcloudignore

@@ -1,76 +1,159 @@
-/* ============================================================
-TopMoneyTools — Shared Utility Library
-File: /assets/js/moneytools.js
-============================================================ */
+/**
+ * Money Tools - Shared Utility Functions
+ * Used by financial calculators across TopMoneyTools
+ */
 
-export function toNumber(value) {
-  if (value === null || value === undefined) return null;
-  const n = parseFloat(value);
-  return isNaN(n) ? null : n;
-}
-
-export function nonNegative(n) { return n < 0 ? 0 : n; }
-export function round2(n) { return Math.round(n * 100) / 100; }
-export function el(id) { return document.getElementById(id); }
-export function show(element) { if (element) element.classList.remove('hidden'); }
-export function hide(element) { if (element) element.classList.add('hidden'); }
-export function setText(element, value) { if (element) element.textContent = value; }
-export function applyRate(amount, ratePercent) { return amount * (1 + ratePercent / 100); }
-export function difference(newValue, oldValue) { return newValue - oldValue; }
-
-export async function loadJSON(path) {
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`Failed to load JSON: ${path}`);
-  return await res.json();
-}
-
-export function populateCountrySelect(selectEl, countries) {
-  countries.forEach(c => {
-    const opt = document.createElement('option');
-    opt.value = c.code || c.currency || c.name;
-    opt.textContent = c.name || c.country;
-    opt.dataset.inflation = c.value || '';
-    selectEl.appendChild(opt);
-  });
-}
-
-const CURRENCY_SYMBOLS = {
-  USD:'$', EUR:'€', GBP:'£', JPY:'¥', CAD:'CA$', AUD:'A$',
-  CHF:'CHF', CNY:'¥', INR:'₹', BRL:'R$', MXN:'MX$', KRW:'₩',
-  SEK:'kr', NOK:'kr', DKK:'kr', PLN:'zł', CZK:'Kč', HUF:'Ft',
-  RON:'lei', TRY:'₺', RUB:'₽', ZAR:'R', NGN:'₦', EGP:'£',
-  AED:'AED', SAR:'SAR', ILS:'₪', THB:'฿', SGD:'S$', HKD:'HK$',
-  MYR:'RM', IDR:'Rp', PHP:'₱', PKR:'₨', BDT:'৳', VND:'₫',
-  CLP:'CLP', COP:'COP', PEN:'S/', ARS:'$', UYU:'$U'
-};
-
-export function fmtCurrency(value, currencyCode) {
-  if (isNaN(value) || value === null) return '—';
-  const formatted = new Intl.NumberFormat('en-GB', {
+/**
+ * Format a number as currency (USD by default, extensible)
+ * @param {number} value - The number to format
+ * @param {string} currency - Currency code (default: 'USD')
+ * @returns {string} Formatted currency string
+ */
+export function fmtCurrency(value, currency = 'USD') {
+  if (isNaN(value)) return '—';
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: currency,
     minimumFractionDigits: 2,
-    maximumFractionDigits: 2
+    maximumFractionDigits: 2,
   }).format(value);
-  const symbol = currencyCode ? (CURRENCY_SYMBOLS[currencyCode] || currencyCode + ' ') : '';
-  return symbol + formatted;
 }
 
-export function getActivePeriod(containerEl) {
-  if (!containerEl) return 'monthly';
-  const active = containerEl.querySelector('button.active');
+/**
+ * Set active state on a button within a button group
+ * @param {HTMLElement} container - The container with period toggle buttons
+ * @param {HTMLElement} button - The button to activate
+ */
+export function setActiveButton(container, button) {
+  const buttons = container.querySelectorAll('button');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  button.classList.add('active');
+}
+
+/**
+ * Get the active period from a button group
+ * @param {HTMLElement} container - The container with period toggle buttons
+ * @returns {string} The active period ('weekly', 'monthly', 'annual', 'yearly')
+ */
+export function getActivePeriod(container) {
+  const active = container.querySelector('button.active');
   return active ? active.dataset.period : 'monthly';
 }
 
-export function setActiveButton(containerEl, clickedBtn) {
-  if (!containerEl) return;
-  containerEl.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
-  clickedBtn.classList.add('active');
+/**
+ * Normalize a value to monthly amount based on the given period
+ * @param {number} value - The value to normalize
+ * @param {string} period - The period ('weekly', 'monthly', 'annual', 'yearly')
+ * @returns {number} The value normalized to monthly
+ */
+export function normalizeToMonthly(value, period) {
+  if (!value || isNaN(value)) return 0;
+  
+  switch (period) {
+    case 'weekly':
+      return value * 52 / 12; // 52 weeks / 12 months
+    case 'monthly':
+      return value;
+    case 'annual':
+    case 'yearly':
+      return value / 12;
+    default:
+      return value;
+  }
 }
 
-export function normalizeToMonthly(amount, period) {
-  if (isNaN(amount) || amount === null) return 0;
+/**
+ * Normalize a value from monthly to a target period
+ * @param {number} monthlyValue - The monthly value
+ * @param {string} period - The target period ('weekly', 'monthly', 'annual', 'yearly')
+ * @returns {number} The value normalized to the target period
+ */
+export function normalizeFromMonthly(monthlyValue, period) {
+  if (!monthlyValue || isNaN(monthlyValue)) return 0;
+  
   switch (period) {
-    case 'weekly':  return amount * 52 / 12;
-    case 'annual':  return amount / 12;
-    default:        return amount;
+    case 'weekly':
+      return monthlyValue * 12 / 52;
+    case 'monthly':
+      return monthlyValue;
+    case 'annual':
+    case 'yearly':
+      return monthlyValue * 12;
+    default:
+      return monthlyValue;
   }
+}
+
+/**
+ * Calculate debt payoff information
+ * @param {number} principal - Total debt amount
+ * @param {number} annualRate - Annual interest rate as percentage (e.g., 5 for 5%)
+ * @param {number} monthlyPayment - Monthly payment amount
+ * @returns {object} { months, totalInterest, monthlyInterest, weeklyInterest, annualInterest, canPayOff }
+ */
+export function calculateDebtPayoff(principal, annualRate, monthlyPayment) {
+  if (principal <= 0 || annualRate < 0 || monthlyPayment <= 0) {
+    return {
+      months: 0,
+      totalInterest: 0,
+      monthlyInterest: 0,
+      weeklyInterest: 0,
+      annualInterest: 0,
+      canPayOff: false,
+    };
+  }
+
+  const monthlyRate = annualRate / 100 / 12;
+  const monthlyInterest = principal * monthlyRate;
+
+  // Check if payment covers interest (negative amortization)
+  if (monthlyPayment <= monthlyInterest && monthlyPayment > 0) {
+    return {
+      months: Infinity,
+      totalInterest: Infinity,
+      monthlyInterest: monthlyInterest,
+      weeklyInterest: monthlyInterest * 12 / 52,
+      annualInterest: monthlyInterest * 12,
+      canPayOff: false,
+    };
+  }
+
+  // Standard amortization formula: n = -log(1 - r*P/M) / log(1 + r)
+  let balance = principal;
+  let totalInterest = 0;
+  let months = 0;
+  const maxMonths = 600; // Safety cap to prevent infinite loops
+
+  while (balance > 0 && months < maxMonths) {
+    const interestPayment = balance * monthlyRate;
+    const principalPayment = monthlyPayment - interestPayment;
+
+    if (principalPayment <= 0) break;
+
+    totalInterest += interestPayment;
+    balance -= principalPayment;
+    months++;
+  }
+
+  return {
+    months: balance > 0 ? Infinity : months,
+    totalInterest: totalInterest,
+    monthlyInterest: monthlyInterest,
+    weeklyInterest: monthlyInterest * 12 / 52,
+    annualInterest: monthlyInterest * 12,
+    canPayOff: balance <= 0 && months < maxMonths,
+  };
+}
+
+/**
+ * Calculate simple interest cost over a period
+ * @param {number} principal - Amount borrowed
+ * @param {number} annualRate - Annual interest rate as percentage
+ * @param {number} months - Number of months
+ * @returns {number} Interest cost
+ */
+export function calculateSimpleInterest(principal, annualRate, months) {
+  if (principal <= 0 || annualRate < 0) return 0;
+  const monthlyRate = annualRate / 100 / 12;
+  return principal * monthlyRate * months;
 }

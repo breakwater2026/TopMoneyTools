@@ -1,8 +1,0 @@
-.antigravitycli/
-*.json
-dummy.txt
-Handover_Note.txt
-python3_tools/
-CoPilot Conversations.txt
-.vercel
-.env*
