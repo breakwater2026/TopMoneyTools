@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { NumberField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
 
 export default function SavingsGoal() {
   const [goal, setGoal] = useState(15000);
@@ -11,15 +11,19 @@ export default function SavingsGoal() {
   const [rate, setRate] = useState(2);
   const [calculated, setCalculated] = useState(false);
 
-  const remaining = Math.max(0, goal - current);
-  const monthlyRate = rate / 100 / 12;
+  const safeGoal = toNumber(goal, 0);
+  const safeCurrent = toNumber(current, 0);
+  const safeMonthly = toNumber(monthly, 0);
+  const safeRate = toNumber(rate, 0);
+  const remaining = Math.max(0, safeGoal - safeCurrent);
+  const monthlyRate = safeRate / 100 / 12;
 
   let months = 0;
-  let balance = current;
+  let balance = safeCurrent;
   if (remaining > 0 && (monthly > 0 || monthlyRate > 0)) {
     let safety = 0;
-    while (balance < goal && safety < 2400) {
-      balance = balance * (1 + monthlyRate) + monthly;
+    while (balance < safeGoal && safety < 2400) {
+      balance = balance * (1 + monthlyRate) + safeMonthly;
       months++;
       safety++;
     }
@@ -27,7 +31,7 @@ export default function SavingsGoal() {
 
   const futureDate = new Date();
   futureDate.setMonth(futureDate.getMonth() + months);
-  const totalInterest = Math.round(balance > current ? balance - current - monthly * months < 0 ? 0 : balance - current - monthly * months : 0);
+  const totalInterest = Math.round(balance > safeCurrent ? balance - safeCurrent - safeMonthly * months < 0 ? 0 : balance - safeCurrent - safeMonthly * months : 0);
 
   return (
     <Layout>
@@ -62,9 +66,9 @@ export default function SavingsGoal() {
             }
             rows={
               remaining === 0
-                ? [{ label: "Currently Saved", value: usd(current), emphasis: "mint" }]
+                ? [{ label: "Currently Saved", value: usd(safeCurrent), emphasis: "mint" }]
                 : [
-                    { label: "Per Month", value: usd(monthly), emphasis: "mint" },
+                    { label: "Per Month", value: usd(safeMonthly), emphasis: "mint" },
                     { label: "Amount Remaining", value: usd(remaining) },
                     { label: "Projected Interest", value: usd(totalInterest), emphasis: "mint" },
                   ]

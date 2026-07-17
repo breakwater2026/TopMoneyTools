@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, RangeField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { NumberField, RangeField, SelectField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
 
 export default function Mortgage() {
   const [price, setPrice] = useState(400000);
@@ -11,10 +11,14 @@ export default function Mortgage() {
   const [term, setTerm] = useState("30");
   const [calculated, setCalculated] = useState(false);
 
-  const downPayment = (price * downPct) / 100;
-  const loanAmount = price - downPayment;
-  const monthlyRate = rate / 100 / 12;
-  const months = +term * 12;
+  const safePrice = toNumber(price, 0);
+  const safeDownPct = toNumber(downPct, 0);
+  const safeRate = toNumber(rate, 0);
+  const safeTerm = toNumber(term, 0);
+  const downPayment = (safePrice * safeDownPct) / 100;
+  const loanAmount = safePrice - downPayment;
+  const monthlyRate = safeRate / 100 / 12;
+  const months = safeTerm * 12;
   const monthlyPayment =
     monthlyRate === 0
       ? loanAmount / months

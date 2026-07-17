@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, RangeField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { NumberField, RangeField, SelectField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
 
 export default function FoodInflation() {
   const [spend, setSpend] = useState(400);
@@ -35,10 +35,13 @@ export default function FoodInflation() {
     return country ? `${country.name} (${country.value}% avg)` : "United States (2.4% avg)";
   };
 
+  const safeSpend = toNumber(spend, 0);
+  const safeYears = toNumber(years, 0);
   const rate = getRate(region);
-  const future = spend * Math.pow(1 + rate / 100, years);
-  const totalIncrease = future - spend;
-  const pctIncrease = (totalIncrease / spend) * 100;
+  const safeRate = toNumber(rate, 0);
+  const future = safeSpend * Math.pow(1 + safeRate / 100, safeYears);
+  const totalIncrease = future - safeSpend;
+  const pctIncrease = safeSpend > 0 ? (totalIncrease / safeSpend) * 100 : 0;
 
   return (
     <Layout>

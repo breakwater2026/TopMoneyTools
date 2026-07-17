@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { NumberField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
 
 export default function Retirement() {
   const [currentAge, setCurrentAge] = useState(30);
@@ -12,14 +12,19 @@ export default function Retirement() {
   const [retireAge, setRetireAge] = useState(65);
   const [calculated, setCalculated] = useState(false);
 
-  const yearsToRetire = Math.max(0, retireAge - currentAge);
+  const safeCurrentAge = toNumber(currentAge, 0);
+  const safeRetireAge = toNumber(retireAge, 0);
+  const safeCurrentSavings = toNumber(currentSavings, 0);
+  const safeMonthly = toNumber(monthly, 0);
+  const safeRate = toNumber(rate, 0);
+  const yearsToRetire = Math.max(0, safeRetireAge - safeCurrentAge);
   const months = yearsToRetire * 12;
-  const monthlyRate = rate / 100 / 12;
+  const monthlyRate = safeRate / 100 / 12;
   const futureSavings =
     monthlyRate === 0
-      ? currentSavings + monthly * months
-      : currentSavings * Math.pow(1 + monthlyRate, months) +
-        monthly * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+      ? safeCurrentSavings + safeMonthly * months
+      : safeCurrentSavings * Math.pow(1 + monthlyRate, months) +
+        safeMonthly * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
   const monthlyIncome = futureSavings * 0.04 / 12; // 4% rule
   const annualIncome = monthlyIncome * 12;
 
@@ -53,7 +58,7 @@ export default function Retirement() {
             rows={[
               { label: "Monthly Income (4% Rule)", value: usd(monthlyIncome), emphasis: "mint" },
               { label: "Annual Income (4% Rule)", value: usd(annualIncome) },
-              { label: "Total Contributed", value: usd(currentSavings + monthly * months) },
+              { label: "Total Contributed", value: usd(safeCurrentSavings + safeMonthly * months) },
             ]}
           />
         }

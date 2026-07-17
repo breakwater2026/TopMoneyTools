@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { NumberField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
 
 export default function SavingsRate() {
   const [monthlyIncome, setMonthlyIncome] = useState(5000);
@@ -10,9 +10,12 @@ export default function SavingsRate() {
   const [monthlySavings, setMonthlySavings] = useState(1500);
   const [calculated, setCalculated] = useState(false);
 
-  const savingsRate = monthlyIncome > 0 ? (monthlySavings / monthlyIncome) * 100 : 0;
-  const expenseRatio = monthlyIncome > 0 ? (monthlyExpenses / monthlyIncome) * 100 : 0;
-  const discretionary = Math.max(0, monthlyIncome - monthlyExpenses);
+  const safeMonthlyIncome = toNumber(monthlyIncome, 0);
+  const safeMonthlyExpenses = toNumber(monthlyExpenses, 0);
+  const safeMonthlySavings = toNumber(monthlySavings, 0);
+  const savingsRate = safeMonthlyIncome > 0 ? (safeMonthlySavings / safeMonthlyIncome) * 100 : 0;
+  const expenseRatio = safeMonthlyIncome > 0 ? (safeMonthlyExpenses / safeMonthlyIncome) * 100 : 0;
+  const discretionary = Math.max(0, safeMonthlyIncome - safeMonthlyExpenses);
 
   return (
     <Layout>
@@ -37,7 +40,7 @@ export default function SavingsRate() {
             rows={[
               { label: "Expense ratio", value: `${expenseRatio.toFixed(1)}%`, emphasis: "amber" },
               { label: "Discretionary income", value: usd(discretionary), emphasis: "mint" },
-              { label: "Saved per month", value: usd(monthlySavings), emphasis: "mint" },
+              { label: "Saved per month", value: usd(safeMonthlySavings), emphasis: "mint" },
             ]}
           />
         }

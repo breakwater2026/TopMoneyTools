@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { NumberField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
 
 export default function BudgetPlanner() {
   const [income, setIncome] = useState(4500);
@@ -10,9 +10,12 @@ export default function BudgetPlanner() {
   const [variable, setVariable] = useState(1500);
   const [calculated, setCalculated] = useState(false);
 
-  const totalSpending = fixed + variable;
-  const surplus = income - totalSpending;
-  const savingsRate = income > 0 ? (surplus / income) * 100 : 0;
+  const safeIncome = toNumber(income, 0);
+  const safeFixed = toNumber(fixed, 0);
+  const safeVariable = toNumber(variable, 0);
+  const totalSpending = safeFixed + safeVariable;
+  const surplus = safeIncome - totalSpending;
+  const savingsRate = safeIncome > 0 ? (surplus / safeIncome) * 100 : 0;
   const deficit = surplus < 0;
 
   return (
@@ -29,9 +32,9 @@ export default function BudgetPlanner() {
             <NumberField label="Fixed expenses" helper="Rent, mortgage, utilities, minimums on debt, insurance." value={fixed} onChange={setFixed} prefix="$" ariaLabel="Fixed expenses" />
             <NumberField label="Variable spending" helper="Groceries, dining, subscriptions, transport — the discretionary part." value={variable} onChange={setVariable} prefix="$" ariaLabel="Variable spending" />
             <div className="flex h-3 overflow-hidden rounded-sm">
-              <div className="bg-[#A3FFD6]" style={{ width: income > 0 ? `${(fixed / income) * 100}%` : "0%" }} title="Fixed" />
-              <div className="bg-[#889988]" style={{ width: income > 0 ? `${(variable / income) * 100}%` : "0%" }} title="Variable" />
-              <div className={deficit ? "bg-[#FFD6A3]" : "bg-[#A3FFD6]/40"} style={{ width: income > 0 ? `${Math.abs(surplus) / income * 100}%` : "0%" }} title="Surplus" />
+              <div className="bg-[#A3FFD6]" style={{ width: safeIncome > 0 ? `${(safeFixed / safeIncome) * 100}%` : "0%" }} title="Fixed" />
+              <div className="bg-[#889988]" style={{ width: safeIncome > 0 ? `${(safeVariable / safeIncome) * 100}%` : "0%" }} title="Variable" />
+              <div className={deficit ? "bg-[#FFD6A3]" : "bg-[#A3FFD6]/40"} style={{ width: safeIncome > 0 ? `${Math.abs(surplus) / safeIncome * 100}%` : "0%" }} title="Surplus" />
             </div>
             <div className="flex justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-[#889988]">
               <span>Fixed</span><span>Variable</span><span>{deficit ? "Deficit" : "Surplus"}</span>
@@ -46,7 +49,7 @@ export default function BudgetPlanner() {
             rows={[
               { label: "Total Spending", value: usd(totalSpending) },
               { label: "Savings Rate", value: `${savingsRate.toFixed(1)}%`, emphasis: surplus >= 0 ? "mint" : "amber" },
-              { label: "Fixed as % of Income", value: `${income > 0 ? Math.round((fixed / income) * 100) : 0}%` },
+              { label: "Fixed as % of Income", value: `${safeIncome > 0 ? Math.round((safeFixed / safeIncome) * 100) : 0}%` },
             ]}
           />
         }

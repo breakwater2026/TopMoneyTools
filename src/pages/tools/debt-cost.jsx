@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, RangeField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { NumberField, RangeField, SelectField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
 
 export default function DebtCost() {
   const [principal, setPrincipal] = useState(10000);
@@ -30,16 +30,19 @@ export default function DebtCost() {
     return countryData ? countryData.value : 5.2;
   };
 
+  const safePrincipal = toNumber(principal, 0);
+  const safeYears = toNumber(years, 0);
   const rate = getRate(country);
-  const monthlyRate = rate / 100 / 12;
-  const months = years * 12;
+  const safeRate = toNumber(rate, 0);
+  const monthlyRate = safeRate / 100 / 12;
+  const months = safeYears * 12;
   const monthlyPayment =
     monthlyRate === 0
-      ? principal / months
-      : (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) /
+      ? safePrincipal / months
+      : (safePrincipal * monthlyRate * Math.pow(1 + monthlyRate, months)) /
         (Math.pow(1 + monthlyRate, months) - 1);
   const totalPaid = monthlyPayment * months;
-  const totalInterest = totalPaid - principal;
+  const totalInterest = totalPaid - safePrincipal;
 
   return (
     <Layout>
@@ -72,7 +75,7 @@ export default function DebtCost() {
             rows={[
               { label: "Total Interest Paid", value: usd(totalInterest), emphasis: "amber" },
               { label: "Total Repaid", value: usd(totalPaid) },
-              { label: "Interest as % of Loan", value: `${((totalInterest / principal) * 100).toFixed(1)}%` },
+              { label: "Interest as % of Loan", value: `${safePrincipal > 0 ? ((totalInterest / safePrincipal) * 100).toFixed(1) : 0}%` },
             ]}
           />
         }

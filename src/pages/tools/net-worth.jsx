@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { NumberField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
 
 export default function NetWorth() {
   const [assets, setAssets] = useState({ home: 300000, savings: 15000, investments: 25000, vehicle: 12000, other: 0 });
@@ -12,8 +12,8 @@ export default function NetWorth() {
   const setAsset = (k, v) => setAssets((s) => ({ ...s, [k]: Math.max(0, v) }));
   const setLiab = (k, v) => setLiabilities((s) => ({ ...s, [k]: Math.max(0, v) }));
 
-  const totalAssets = Object.values(assets).reduce((a, b) => a + b, 0);
-  const totalLiabilities = Object.values(liabilities).reduce((a, b) => a + b, 0);
+  const totalAssets = Object.values(assets).reduce((a, b) => a + toNumber(b, 0), 0);
+  const totalLiabilities = Object.values(liabilities).reduce((a, b) => a + toNumber(b, 0), 0);
   const netWorth = totalAssets - totalLiabilities;
 
   const assetFields = [

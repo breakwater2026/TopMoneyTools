@@ -2,7 +2,7 @@ import { lazy, Suspense, useMemo, useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, RangeField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { NumberField, RangeField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
 
 const InvestmentGrowthChart = lazy(() => import("@/components/tools/InvestmentGrowthChart"));
 
@@ -14,11 +14,15 @@ export default function InvestmentGrowth() {
   const [calculated, setCalculated] = useState(false);
 
   const { finalValue, totalContributed, totalGrowth, chartData } = useMemo(() => {
-    const monthlyRate = rate / 100 / 12;
-    const months = years * 12;
+    const safeInitial = toNumber(initial, 0);
+    const safeMonthly = toNumber(monthly, 0);
+    const safeRate = toNumber(rate, 0);
+    const safeYears = toNumber(years, 0);
+    const monthlyRate = safeRate / 100 / 12;
+    const months = safeYears * 12;
     const series = [];
-    let balance = initial;
-    let contributed = initial;
+    let balance = safeInitial;
+    let contributed = safeInitial;
 
     series.push({
       year: 0,
@@ -27,8 +31,8 @@ export default function InvestmentGrowth() {
     });
 
     for (let m = 1; m <= months; m++) {
-      balance = balance * (1 + monthlyRate) + monthly;
-      contributed += monthly;
+      balance = balance * (1 + monthlyRate) + safeMonthly;
+      contributed += safeMonthly;
 
       if (m % 12 === 0) {
         series.push({

@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
+import { NumberField, SelectField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
 
 export default function EmergencyFund() {
   const [monthlyExpenses, setMonthlyExpenses] = useState(3000);
@@ -10,10 +10,12 @@ export default function EmergencyFund() {
   const [targetMonths, setTargetMonths] = useState("6");
   const [calculated, setCalculated] = useState(false);
 
+  const safeMonthlyExpenses = toNumber(monthlyExpenses, 0);
+  const safeCurrentSavings = toNumber(currentSavings, 0);
   const months = Number(targetMonths);
-  const monthsCovered = monthlyExpenses > 0 ? currentSavings / monthlyExpenses : 0;
-  const targetAmount = monthlyExpenses * months;
-  const amountShort = Math.max(0, targetAmount - currentSavings);
+  const monthsCovered = safeMonthlyExpenses > 0 ? safeCurrentSavings / safeMonthlyExpenses : 0;
+  const targetAmount = safeMonthlyExpenses * months;
+  const amountShort = Math.max(0, targetAmount - safeCurrentSavings);
 
   return (
     <Layout>
@@ -37,7 +39,7 @@ export default function EmergencyFund() {
             headline={{ label: "Months of expenses covered", value: `${monthsCovered.toFixed(1)} months`, sub: amountShort > 0 ? `You're ${usd(amountShort)} short of your ${months}-month target.` : "Target reached — your safety net is fully funded." }}
             rows={[
               { label: "Target fund size", value: usd(targetAmount), emphasis: "mint" },
-              { label: "Current savings", value: usd(currentSavings), emphasis: "mint" },
+              { label: "Current savings", value: usd(safeCurrentSavings), emphasis: "mint" },
               { label: "Amount short", value: amountShort > 0 ? usd(amountShort) : "—", emphasis: amountShort > 0 ? "amber" : "default" },
             ]}
           />
