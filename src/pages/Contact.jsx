@@ -6,7 +6,7 @@ export default function Contact() {
     <Layout>
       <SEO
         title="Contact | TopMoneyTools"
-        description="Contact TopMoneyTools for questions, feedback, or support about our privacy-first financial calculators and educational tools."
+        description="Contact TopMoneyTools with questions, feedback, or support requests about our private calculators, education pages, and plain-English financial guidance."
         path="/contact"
         seoMeta={{
           url: "https://topmoneytools.com/contact",

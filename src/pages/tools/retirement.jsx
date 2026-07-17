@@ -62,10 +62,32 @@ export default function Retirement() {
           { title: "Time is your biggest ally", body: "Money saved at 30 has decades to compound. The same amount saved at 55 has far less time to grow — which is why starting early matters so much." },
           { title: "Inflation shrinks your nest egg", body: "Your target should account for future prices. $1M in 25 years buys meaningfully less than $1M today." },
         ]}
+        explanation="This estimate projects how your current savings and monthly contributions might grow by retirement age, then translates that balance into a simple 4% withdrawal estimate. It is a planning guide for comparison, not a promise of income in retirement."
+        assumptions={[
+          "The calculator assumes the same annual return rate applies steadily over the years to retirement.",
+          "It uses the 4% rule as a simple planning guideline and does not model taxes, Social Security, pensions, or healthcare costs.",
+          "It assumes your contributions stay constant and do not change with inflation."
+        ]}
+        dataSources={[
+          "The projection uses the standard compound growth formula for recurring contributions.",
+          "The 4% withdrawal estimate is a widely used planning guideline, not a guarantee."
+        ]}
         learnMore={[
           { label: "Glossary: Risk Tolerance", to: "/glossary#risk-tolerance" },
           { label: "Glossary: Compound Growth", to: "/glossary#compound-growth" },
           { label: "Use: Investment Growth Calculator", to: "/tools/investment-growth" },
+        ]}
+        relatedTools={[
+          { label: "Investment Growth Calculator", to: "/tools/investment-growth" },
+          { label: "Savings Goal Calculator", to: "/tools/savings-goal" },
+        ]}
+        relatedArticles={[
+          { label: "Retirement planning basics", to: "/education/retirement-planning-basics" },
+          { label: "Investing 101", to: "/education/investing-101" },
+        ]}
+        relatedGlossary={[
+          { label: "4% rule", to: "/glossary#4-percent-rule" },
+          { label: "Compound growth", to: "/glossary#compound-growth" },
         ]}
         sidebarTerms={[
           { q: "What is compound growth?", slug: "compound-growth" },

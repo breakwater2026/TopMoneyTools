@@ -46,10 +46,32 @@ export default function SavingsRate() {
           { title: "Every percent compounds", body: "Moving your rate from 5% to 10% doesn't just double your wealth — it can more than double it, because earlier savings get more time to compound." },
           { title: "Separate wants from needs", body: "A high expense ratio usually means wants disguised as needs. Trimming variable expenses is the fastest way to lift your savings rate." },
         ]}
+        explanation="This estimate shows how much of your income you are keeping versus spending. It is one of the clearest indicators of long-term financial progress because even small improvements in your savings rate can add up over time."
+        assumptions={[
+          "The calculator assumes your monthly income, expenses, and savings are all measured consistently.",
+          "It does not model taxes, irregular expenses, or income changes over time.",
+          "It does not tell you whether your spending is wise or whether your goals are realistic — only how much you are saving relative to what you earn."
+        ]}
+        dataSources={[
+          "The result is based on the income and spending values you enter.",
+          "The savings rate is calculated as the share of income you save each month."
+        ]}
         learnMore={[
           { label: "Glossary: Savings Rate", to: "/glossary#savings-rate" },
           { label: "Glossary: Discretionary Income", to: "/glossary#discretionary-income" },
           { label: "Use: Budget Planner", to: "/tools/budget-planner" },
+        ]}
+        relatedTools={[
+          { label: "Budget Planner", to: "/tools/budget-planner" },
+          { label: "Emergency Fund Calculator", to: "/tools/emergency-fund" },
+        ]}
+        relatedArticles={[
+          { label: "Budgeting 101", to: "/education/budgeting-101" },
+          { label: "Budgeting for beginners", to: "/education/budgeting-for-beginners" },
+        ]}
+        relatedGlossary={[
+          { label: "Savings rate", to: "/glossary#savings-rate" },
+          { label: "Discretionary income", to: "/glossary#discretionary-income" },
         ]}
         sidebarTerms={[
           { q: "What is a savings rate?", slug: "savings-rate" },

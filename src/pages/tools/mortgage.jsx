@@ -66,10 +66,32 @@ export default function Mortgage() {
           { title: "Down payment shrinks your loan", body: "A larger down payment reduces what you borrow, which lowers both your monthly payment and the total interest you'll pay." },
           { title: "Interest compounds against you", body: "Each month interest is charged on the remaining balance. A small rate difference adds up to a large difference over 30 years." },
         ]}
+        explanation="This estimate shows the monthly payment and total interest cost for a mortgage under the assumptions you enter. It helps you compare scenarios, but real mortgages may include taxes, insurance, PMI, fees, and changing repayment terms."
+        assumptions={[
+          "The calculator assumes a fixed interest rate and a level monthly payment over the entire term.",
+          "It ignores property taxes, homeowners insurance, PMI, and any additional lender fees.",
+          "The estimate is based on the home price and down payment you enter, not your full lender quote."
+        ]}
+        dataSources={[
+          "The calculator uses the standard fixed-rate mortgage amortization formula.",
+          "The estimate is intended for planning and comparison rather than a formal mortgage quote."
+        ]}
         learnMore={[
           { label: "Read: How to Compare Loans", to: "/education/how-to-compare-loans" },
           { label: "Glossary: Amortization", to: "/glossary#amortization" },
           { label: "Use: Debt Cost Calculator", to: "/tools/debt-cost" },
+        ]}
+        relatedTools={[
+          { label: "Debt Cost Calculator", to: "/tools/debt-cost" },
+          { label: "Net Worth Calculator", to: "/tools/net-worth" },
+        ]}
+        relatedArticles={[
+          { label: "How to compare loans", to: "/education/how-to-compare-loans" },
+          { label: "Understanding interest rates", to: "/education/understanding-interest-rates" },
+        ]}
+        relatedGlossary={[
+          { label: "Amortization", to: "/glossary#amortization" },
+          { label: "Down payment", to: "/glossary#down-payment" },
         ]}
         sidebarTerms={[
           { q: "What is amortization?", slug: "amortization" },

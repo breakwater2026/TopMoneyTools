@@ -77,10 +77,32 @@ export default function NetWorth() {
           { title: "Assets aren't only cash", body: "Home equity, retirement accounts, vehicles, and valuables all count. Many people undercount their assets by forgetting retirement savings." },
           { title: "Paying debt raises net worth", body: "Paying down a loan increases net worth just as surely as saving the same amount — because net worth is the gap between the two." },
         ]}
+        explanation="This view summarizes the gap between what you own and what you owe. It is a helpful snapshot of financial position over time, but it does not capture everything that affects your real-world financial health, such as taxes, future obligations, or the true cost of assets."
+        assumptions={[
+          "The calculator assumes the values you enter are current estimates of market value and outstanding debt.",
+          "It treats all assets and liabilities as simple dollar amounts without timing or interest adjustments.",
+          "It does not model changes in home value, loan balances, or investment performance over time."
+        ]}
+        dataSources={[
+          "The result is based on the asset and liability values you enter.",
+          "No external market data is used in this version of the tool."
+        ]}
         learnMore={[
           { label: "Glossary: Net Worth", to: "/glossary#net-worth" },
           { label: "Use: Debt Cost Calculator", to: "/tools/debt-cost" },
           { label: "Read: Budgeting for Beginners", to: "/education/budgeting-for-beginners-50-30-20-rule-explained" },
+        ]}
+        relatedTools={[
+          { label: "Debt Cost Calculator", to: "/tools/debt-cost" },
+          { label: "Budget Planner", to: "/tools/budget-planner" },
+        ]}
+        relatedArticles={[
+          { label: "Budgeting for beginners", to: "/education/budgeting-for-beginners" },
+          { label: "Budgeting 101", to: "/education/budgeting-101" },
+        ]}
+        relatedGlossary={[
+          { label: "Net worth", to: "/glossary#net-worth" },
+          { label: "Asset", to: "/glossary#asset" },
         ]}
         sidebarTerms={[
           { q: "What is net worth?", slug: "net-worth" },

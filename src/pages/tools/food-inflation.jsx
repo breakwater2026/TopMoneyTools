@@ -80,9 +80,31 @@ export default function FoodInflation() {
           { title: "Your salary has to keep up", body: "If food costs 20% more in 5 years but your pay doesn't rise, you've effectively taken a pay cut. Inflation is a hidden reduction in what your money can actually buy." },
           { title: "Food inflation ≠ general inflation", body: "The headline inflation figure covers everything from rent to electronics. Food prices often rise faster — especially for staples like bread, dairy, and vegetables — so your grocery bill can outpace the official number." },
         ]}
+        explanation="This estimate shows how the cost of the same grocery basket could rise over time if food prices continue at the selected rate. It is useful for planning around inflation, but it does not predict your actual shopping habits, local prices, or future market conditions."
+        assumptions={[
+          "The calculator assumes the same annual inflation rate applies every year for the full period you select.",
+          "It uses a single country average rather than your exact local price changes.",
+          "It does not account for changes in diet, household size, coupons, or special purchases."
+        ]}
+        dataSources={[
+          "Food inflation rates are based on the country averages bundled with this tool.",
+          "The calculation uses the standard compound growth formula for future value."
+        ]}
         learnMore={[
           { label: "Read: Why Inflation Compounds", to: "/education/how-inflation-affects-your-daily-budget" },
           { label: "Glossary: Purchasing Power", to: "/glossary#purchasing-power" },
+        ]}
+        relatedTools={[
+          { label: "Budget Planner", to: "/tools/budget-planner" },
+          { label: "Savings Rate Calculator", to: "/tools/savings-rate" },
+        ]}
+        relatedArticles={[
+          { label: "How inflation affects your daily budget", to: "/education/how-inflation-affects-your-daily-budget" },
+          { label: "How inflation works", to: "/education/how-inflation-works" },
+        ]}
+        relatedGlossary={[
+          { label: "Inflation", to: "/glossary#inflation" },
+          { label: "Purchasing power", to: "/glossary#purchasing-power" },
         ]}
         sidebarTerms={[
           { q: "What is inflation?", slug: "inflation" },

@@ -153,10 +153,32 @@ export default function InvestmentGrowth() {
             body: "7% is a long-run average for diversified stock portfolios, but real returns vary year to year. Use this as a planning estimate, not a promise.",
           },
         ]}
+        explanation="This estimate models how a lump sum and regular monthly contributions could grow over time if your chosen return rate is achieved each year. It is a planning tool, not a promise, because investment returns vary and market conditions change."
+        assumptions={[
+          "The calculator assumes the same annual rate of return every month for the full period.",
+          "It does not include taxes, fees, inflation, or changes in contribution amounts over time.",
+          "It treats the return as a smooth average rather than a real-world sequence of gains and losses."
+        ]}
+        dataSources={[
+          "The projection uses the standard compound growth formula for investments with regular contributions.",
+          "The example rates are educational and should be adjusted to fit your own expectations."
+        ]}
         learnMore={[
           { label: "Glossary: Compound Growth", to: "/glossary#compound-growth" },
           { label: "Glossary: Risk Tolerance", to: "/glossary#risk-tolerance" },
           { label: "Use: Retirement Calculator", to: "/tools/retirement" },
+        ]}
+        relatedTools={[
+          { label: "Retirement Savings Calculator", to: "/tools/retirement" },
+          { label: "Savings Goal Calculator", to: "/tools/savings-goal" },
+        ]}
+        relatedArticles={[
+          { label: "Investing 101", to: "/education/investing-101" },
+          { label: "Retirement planning basics", to: "/education/retirement-planning-basics" },
+        ]}
+        relatedGlossary={[
+          { label: "Compound growth", to: "/glossary#compound-growth" },
+          { label: "Risk tolerance", to: "/glossary#risk-tolerance" },
         ]}
         sidebarTerms={[
           { q: "What is compound growth?", slug: "compound-growth" },

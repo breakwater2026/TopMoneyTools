@@ -47,10 +47,32 @@ export default function EmergencyFund() {
           { title: "Three to six months is the standard", body: "A starter fund of three months handles most surprises; six months protects against longer disruptions. Self-employed or single-income households often aim higher." },
           { title: "Keep it liquid", body: "An emergency fund must be accessible in days, not weeks. High-yield savings beats investing it — resilience matters more than return." },
         ]}
+        explanation="This estimate shows how many months of essential expenses your current emergency savings could cover. It is a useful benchmark for resilience, especially if your income or expenses change unexpectedly."
+        assumptions={[
+          "The calculator assumes your monthly expenses are a fair proxy for the cost of covering a short-term emergency.",
+          "It does not adjust for irregular bills, one-off repairs, or long-term unemployment.",
+          "It uses the amount you enter as cash available immediately, not as invested assets that may be harder to access."
+        ]}
+        dataSources={[
+          "The result is based on the monthly expenses and current savings you enter.",
+          "The multiplier uses a simple months-of-coverage formula."
+        ]}
         learnMore={[
           { label: "Glossary: Emergency Fund", to: "/glossary#emergency-fund" },
           { label: "Glossary: Liquidity", to: "/glossary#liquidity" },
           { label: "Use: Budget Planner", to: "/tools/budget-planner" },
+        ]}
+        relatedTools={[
+          { label: "Budget Planner", to: "/tools/budget-planner" },
+          { label: "Savings Rate Calculator", to: "/tools/savings-rate" },
+        ]}
+        relatedArticles={[
+          { label: "Emergency funds and safety nets", to: "/education/emergency-funds-and-safety-nets" },
+          { label: "Budgeting 101", to: "/education/budgeting-101" },
+        ]}
+        relatedGlossary={[
+          { label: "Emergency fund", to: "/glossary#emergency-fund" },
+          { label: "Liquidity", to: "/glossary#liquidity" },
         ]}
         sidebarTerms={[
           { q: "What is an emergency fund?", slug: "emergency-fund" },

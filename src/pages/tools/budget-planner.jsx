@@ -55,9 +55,31 @@ export default function BudgetPlanner() {
           { title: "Track the variable slice", body: "Fixed costs are hard to change quickly. Variable spending — dining, subscriptions, shopping — is where most budgets gain or lose ground." },
           { title: "Aim for 20%+", body: "A 20% savings rate is the long-term benchmark in the 50/30/20 rule. It's a target, not a starting point — work toward it gradually." },
         ]}
+        explanation="This planner shows whether your current income covers your spending and how much might be left over for saving or investing. It is a snapshot of your inputs, so it works best as a simple budgeting check rather than a full household plan."
+        assumptions={[
+          "The calculator assumes your expenses can be grouped into fixed and variable costs without more detail.",
+          "It does not model irregular bills, annual expenses, or changing income from month to month.",
+          "It treats all numbers as monthly values for simplicity."
+        ]}
+        dataSources={[
+          "The calculation uses the income minus spending formula and a simple savings-rate transformation.",
+          "The result helps you see the balance between spending and available surplus."
+        ]}
         learnMore={[
           { label: "Read: Budgeting 50/30/20", to: "/education/budgeting-for-beginners-50-30-20-rule-explained" },
           { label: "Use: Savings Goal Calculator", to: "/tools/savings-goal" },
+        ]}
+        relatedTools={[
+          { label: "Emergency Fund Calculator", to: "/tools/emergency-fund" },
+          { label: "Savings Rate Calculator", to: "/tools/savings-rate" },
+        ]}
+        relatedArticles={[
+          { label: "Budgeting for beginners", to: "/education/budgeting-for-beginners" },
+          { label: "Budgeting 101", to: "/education/budgeting-101" },
+        ]}
+        relatedGlossary={[
+          { label: "Budget", to: "/glossary#budget" },
+          { label: "Surplus", to: "/glossary#surplus" },
         ]}
         sidebarTerms={[
           { q: "What is a budget?", slug: "budget" },

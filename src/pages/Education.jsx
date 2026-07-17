@@ -54,7 +54,7 @@ export default function Education() {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Intel Brief</p>
         <h1 className="mt-1 font-heading text-4xl font-bold tracking-tight text-[#E0E0E0]">Education Center</h1>
-        <p className="mt-2 max-w-xl text-[#889988]">Learn the basics, one clear step at a time. Ten plain-English articles on inflation, budgeting, loan terms, investing, and more.</p>
+        <p className="mt-2 max-w-xl text-[#889988]">Learn the basics, one clear step at a time. Choose the article that matches your current question, then move to the calculators when you want to test a scenario.</p>
 
         <div className="mt-6">
           <AdSlot slot="top" className="h-[60px]" />
@@ -73,9 +73,12 @@ export default function Education() {
           ))}
         </div>
 
-        <div className="mt-10 text-center">
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-6">
           <Link to="/resources" className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[#A3FFD6] hover:gap-3">
-            Explore All Resources <ArrowRight className="h-3 w-3" />
+            Explore all resources <ArrowRight className="h-3 w-3" />
+          </Link>
+          <Link to="/start-here" className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[#A3FFD6] hover:gap-3">
+            Start with the beginner path <ArrowRight className="h-3 w-3" />
           </Link>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import Layout from "@/components/Layout";
-import { TOOLS } from "@/config/site.config";
+import { TOOLS, GLOSSARY } from "@/config/site.config";
 import { ARTICLES } from "@/pages/Education";
 
 export default function StartHere() {
@@ -143,7 +143,7 @@ export default function StartHere() {
                 to="/glossary"
                 className="text-[#A3FFD6] hover:underline"
               >
-                Glossary — 35 key terms defined plainly
+                Glossary — {GLOSSARY.length} key terms defined plainly
               </Link>
               <p className="text-sm text-[#889988]">
                 Clear definitions for interest, APR, inflation, amortization, and
@@ -200,7 +200,7 @@ export default function StartHere() {
             © 2026 TopMoneyTools — Making money simple for everyone.
           </p>
           <p className="mt-2 text-sm text-[#889988]">
-            Last updated: June 2026
+            Last updated: July 2026
           </p>
         </section>
       </div>

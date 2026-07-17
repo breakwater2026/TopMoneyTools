@@ -24,8 +24,8 @@ export default function Terms() {
             please do not use the site.
           </p>
           <p>
-            The tools and content on TopMoneyTools are for general informational purposes only. They are not
-            personalized financial advice, and they do not replace the guidance of a licensed professional.
+            The tools and content on TopMoneyTools are for general informational purposes only. They are not personalized
+            financial advice, and they do not replace the guidance of a licensed professional.
           </p>
           <p>
             All calculators run in your browser on your device. We do not collect or store your calculator inputs,
@@ -37,6 +37,7 @@ export default function Terms() {
           </p>
           <p>
             We reserve the right to modify or discontinue the website, tools, or content at any time without notice.
+            The site may also include third-party advertising that is outside our direct control.
           </p>
           <p>
             If you have questions about these terms, contact us at <a href="mailto:contact@topmoneytools.com" className="text-[#A3FFD6] hover:underline">contact@topmoneytools.com</a>.

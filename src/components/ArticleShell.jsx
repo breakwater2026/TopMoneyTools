@@ -10,7 +10,7 @@ import { ARTICLES } from "@/pages/Education";
 
 // Shared shell for all Education articles.
 // props: title, description, path, sidebarTerms, children (article body), lastUpdated, author
-export default function ArticleShell({ title, description, path, sidebarTerms, relatedTools = [], seoMeta, structuredData, children, lastUpdated = "June 2026", author = "TopMoneyTools Editorial Team" }) {
+export default function ArticleShell({ title, description, path, sidebarTerms, relatedTools = [], seoMeta, structuredData, children, lastUpdated = "July 2026", author = "TopMoneyTools Editorial Team" }) {
   // Find current article index to get next/prev
   const currentIndex = ARTICLES.findIndex(a => `/education/${a.slug}` === path);
   const prevArticle = currentIndex > 0 ? ARTICLES[currentIndex - 1] : null;
@@ -39,10 +39,10 @@ export default function ArticleShell({ title, description, path, sidebarTerms, r
           <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Intel Brief</p>
           <h1 className="mt-1 max-w-3xl font-heading text-3xl font-bold leading-tight tracking-tight text-[#E0E0E0] sm:text-4xl">{title}</h1>
           <p className="mt-3 max-w-xl text-sm text-[#889988]">{description}</p>
-          {/* Meta info: Author + last updated */}
           <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-[#889988]/80">
             <span className="font-mono uppercase tracking-[0.15em]">By {author}</span>
             <span className="font-mono uppercase tracking-[0.15em]">Last Updated {lastUpdated}</span>
+            <Link to="/tools" className="font-mono uppercase tracking-[0.15em] text-[#A3FFD6] hover:underline">Browse calculators</Link>
           </div>
         </header>
 

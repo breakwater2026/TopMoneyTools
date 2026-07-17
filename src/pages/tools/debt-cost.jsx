@@ -81,9 +81,31 @@ export default function DebtCost() {
           { title: "Term length matters more than you think", body: "A longer-term loan feels cheaper month-to-month but costs far more in total interest. Doubling your repayment time can nearly double your total cost." },
           { title: "Small rate differences add up", body: "A 2% lower rate on a large loan can save thousands over the lifetime. That's why it pays to shop around and improve your credit score before applying." },
         ]}
+        explanation="This estimate shows the monthly payment and total interest you would pay if the loan carried the selected interest rate for the full term. It is useful for comparing options, but real loans may include fees, changing rates, or different payment structures."
+        assumptions={[
+          "The calculator assumes a fixed interest rate for the full loan term.",
+          "It uses equal monthly payments and does not include origination fees, late fees, or taxes.",
+          "It does not model variable-rate loans or unusual repayment schedules."
+        ]}
+        dataSources={[
+          "Country rates are based on the regional averages included with this tool.",
+          "The payment estimate uses the standard loan amortization formula."
+        ]}
         learnMore={[
           { label: "Read: How to Compare Loans", to: "/education/how-to-compare-loans" },
           { label: "Glossary: APR", to: "/glossary#apr" },
+        ]}
+        relatedTools={[
+          { label: "Mortgage Payment Calculator", to: "/tools/mortgage-payment" },
+          { label: "Net Worth Calculator", to: "/tools/net-worth" },
+        ]}
+        relatedArticles={[
+          { label: "How to compare loans", to: "/education/how-to-compare-loans" },
+          { label: "Understanding interest rates", to: "/education/understanding-interest-rates" },
+        ]}
+        relatedGlossary={[
+          { label: "Interest", to: "/glossary#interest" },
+          { label: "APR", to: "/glossary#apr" },
         ]}
         sidebarTerms={[
           { q: "What is interest?", slug: "interest" },

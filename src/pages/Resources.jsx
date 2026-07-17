@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import AdSlot from "@/components/AdSlot";
-import { TOOLS } from "@/config/site.config";
+import { TOOLS, GLOSSARY } from "@/config/site.config";
 import { ARTICLES } from "@/pages/Education";
 
 const EXTERNAL = [
@@ -110,7 +110,7 @@ export default function Resources() {
 
         {/* Glossary & Start Here */}
         <h2 className="mt-10 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Glossary</h2>
-        <p className="mt-1 text-sm text-[#889988]">35 plain-English definitions of every term used across our tools and articles.</p>
+        <p className="mt-1 text-sm text-[#889988]">{GLOSSARY.length} plain-English definitions of every term used across our tools and articles.</p>
         <Link to="/glossary" className="mt-3 inline-flex items-center gap-1 font-mono text-xs uppercase tracking-[0.2em] text-[#A3FFD6] hover:gap-2">
           Browse the full glossary <ArrowRight className="h-3 w-3" />
         </Link>

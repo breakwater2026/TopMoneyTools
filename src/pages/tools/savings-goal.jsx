@@ -76,10 +76,32 @@ export default function SavingsGoal() {
           { title: "Even small interest helps", body: "A high-yield savings account at 3-4% over years meaningfully shortens the timeline, especially on longer-term goals." },
           { title: "Goals need a number", body: "A vague goal like 'save money' rarely gets met. Giving it a dollar amount and a deadline turns it into something your brain can plan around." },
         ]}
+        explanation="This estimate shows how long a savings goal may take if you keep making the monthly contribution and earn the selected rate. It is a helpful planning number, but actual results can vary if your income, rate, or timing changes."
+        assumptions={[
+          "The calculator assumes the monthly contribution and rate stay constant until the goal is reached.",
+          "It does not account for irregular deposits, inflation, or changes in interest rate over time.",
+          "It projects a simple timeline rather than a detailed savings schedule."
+        ]}
+        dataSources={[
+          "The timeline uses the standard savings growth formula with regular monthly deposits.",
+          "The result is meant to guide planning rather than guarantee a real-world outcome."
+        ]}
         learnMore={[
           { label: "Glossary: Compound Growth", to: "/glossary#compound-growth" },
           { label: "Use: Budget Planner", to: "/tools/budget-planner" },
           { label: "Use: Investment Growth Calculator", to: "/tools/investment-growth" },
+        ]}
+        relatedTools={[
+          { label: "Budget Planner", to: "/tools/budget-planner" },
+          { label: "Emergency Fund Calculator", to: "/tools/emergency-fund" },
+        ]}
+        relatedArticles={[
+          { label: "Budgeting for beginners", to: "/education/budgeting-for-beginners" },
+          { label: "How inflation affects your daily budget", to: "/education/how-inflation-affects-your-daily-budget" },
+        ]}
+        relatedGlossary={[
+          { label: "Compound growth", to: "/glossary#compound-growth" },
+          { label: "Savings rate", to: "/glossary#savings-rate" },
         ]}
         sidebarTerms={[
           { q: "What is compound growth?", slug: "compound-growth" },

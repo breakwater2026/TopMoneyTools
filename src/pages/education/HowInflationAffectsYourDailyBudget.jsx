@@ -73,14 +73,14 @@ export default function HowInflationAffectsYourDailyBudget() {
   return (
     <ArticleShell
       title="How Inflation Affects Your Daily Budget"
-      description="A plain-English guide to inflation: why prices rise, how it affects groceries, rent, and bills, and what to do about it."
+      description="Understand how inflation affects groceries, rent, bills, savings, and daily budgeting — with plain-English explanations and practical next steps."
       path="/education/how-inflation-affects-your-daily-budget"
       sidebarTerms={[
         { q: "What is inflation?", slug: "inflation" },
         { q: "What is purchasing power?", slug: "purchasing-power" },
         { q: "What is cost of living?", slug: "cost-of-living" },
-        { q: "What is real income?", slug: "real-income" },
-        { q: "What is CPI?", slug: "cpi" },
+        { q: "What is a budget?", slug: "budget" },
+        { q: "What is a savings rate?", slug: "savings-rate" },
       ]}
       relatedTools={[
         { label: "Food Inflation Tool", to: "/tools/food-inflation" },
