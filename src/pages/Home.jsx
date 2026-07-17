@@ -65,7 +65,6 @@ export default function Home() {
           style={{ backgroundImage: "radial-gradient(circle at 50% 30%, hsl(158 100% 82% / 0.18) 0, transparent 55%)" }}
         />
         <div className="relative mx-auto max-w-7xl px-4 py-14 text-center sm:px-6 sm:py-28">
-          <p className="font-mono text-[11px] uppercase tracking-[0.4em] text-[#A3FFD6]">// The Navigator's Interface</p>
           <h1 className="mx-auto mt-4 max-w-3xl font-heading text-3xl font-bold leading-[1.05] tracking-tight text-[#E0E0E0] sm:text-6xl">
             Your <span className="text-[#A3FFD6]">personal financial</span> guide for everyday money decisions
           </h1>
