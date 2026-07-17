@@ -74,6 +74,17 @@ export default function ToolsIndex() {
             );
           })}
         </div>
+
+        <div className="mt-8 text-center">
+          <Link
+            to="/tools/how-our-calculators-work"
+            className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6] hover:text-[#A3FFD6]/80"
+          >
+            <span aria-hidden="true" className="h-3 w-3 rotate-45 border border-[#A3FFD6]" />
+            How our calculators work
+            <ArrowRight className="h-3 w-3" />
+          </Link>
+        </div>
       </section>
     </Layout>
   );
