@@ -67,7 +67,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-4 py-14 text-center sm:px-6 sm:py-28">
           <p className="font-mono text-[11px] uppercase tracking-[0.4em] text-[#A3FFD6]">// The Navigator's Interface</p>
           <h1 className="mx-auto mt-4 max-w-3xl font-heading text-3xl font-bold leading-[1.05] tracking-tight text-[#E0E0E0] sm:text-6xl">
-            A <span className="text-[#A3FFD6]">calm, private guide</span> to everyday money decisions
+            Your <span className="text-[#A3FFD6]">personal financial</span> guide for everyday money decisions
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#889988] sm:text-lg">
             When prices rise, bills shift, or choices feel overwhelming, TopMoneyTools helps you understand the numbers.
