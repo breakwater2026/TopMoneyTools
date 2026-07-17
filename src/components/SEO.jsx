@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import { SITE } from "@/config/site.config";
 
-export default function SEO({ title, description, path = "", seoMeta = {}, structuredData = [] }) {
+export default function SEO({ title, description, path = "", seoMeta = {}, structuredData }) {
   const {
     title: ogTitle = title,
     description: ogDescription = description,
