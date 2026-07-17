@@ -7,7 +7,7 @@ import { ADSENSE, ADS_ENABLED, SLOT_MAP } from "@/config/adsense.config";
 // ads feel like a native part of the interface rather than an intrusion.
 //
 // slot: "top" | "mid" | "sidebar" | "footer"
-export default function AdSlot({ slot, className = "", format = "auto", style, layout }) {
+export default function AdSlot({ slot, className = "", format = "auto", style = null, layout = null }) {
   const ref = useRef(null);
   const slotKey = SLOT_MAP[slot];
   const adUnitId = slotKey ? ADSENSE[slotKey] : "";
@@ -19,6 +19,7 @@ export default function AdSlot({ slot, className = "", format = "auto", style, l
     const loadAd = () => {
       try {
         // eslint-disable-next-line no-undef
+        // @ts-ignore
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (e) {
         // no-op
