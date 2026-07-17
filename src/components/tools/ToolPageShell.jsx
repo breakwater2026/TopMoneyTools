@@ -150,8 +150,7 @@ export default function ToolPageShell({
                 )}
               </section>
             )}
-            {/* Mid-content ad */}
-            <AdSlot slot="mid" className="mt-8 h-[120px]" />
+            {/* Assumptions and limitations removed — kept for future use */}
           </article>
 
           {/* Intel sidebar — sticky */}
