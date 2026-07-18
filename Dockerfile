@@ -2,11 +2,11 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Explicitly copy both package.json and package-lock.json first
+# Explicitly copy package configuration first
 COPY package*.json ./
 
-# Run clean install (this will now find the lockfile perfectly)
-RUN npm ci
+# Changed from npm ci to npm install since package-lock.json is missing
+RUN npm install
 
 # Copy the rest of your application code
 COPY . .
