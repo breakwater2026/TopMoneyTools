@@ -2,11 +2,11 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Explicitly copy package configuration first
+# Copy package configuration first
 COPY package*.json ./
 
-# Changed from npm ci to npm install since package-lock.json is missing
-RUN npm install
+# Deterministic install from lockfile
+RUN npm ci
 
 # Copy the rest of your application code
 COPY . .
