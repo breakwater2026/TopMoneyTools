@@ -1,35 +1,35 @@
-Ad unit placeholders and suggested names
+# Ad Units — TopMoneyTools
 
-This file lists every `data-ad-slot="XXXXXXXXXX"` placeholder in the `public_v2` site and suggests a clear ad-unit name to create in AdSense.
+The site uses 4 manual AdSense slots, mapped in `src/config/adsense.config.js`.
+All four IDs are currently the placeholder `"0000000000"` — until real IDs are
+entered, every slot renders a "Financial Sponsorship" placeholder and no ads serve.
 
-- Homepage
-  - `homepage_top_banner`: [public_v2/index.html](public_v2/index.html#L109)
-  - `homepage_mid_rect`: [public_v2/index.html](public_v2/index.html#L210)
+## Ad units to create in AdSense (Ads → By ad unit → New)
 
-- Food Inflation Calculator
-  - `inflation_top_banner`: [public_v2/tools/food-inflation-calculator/index.html](public_v2/tools/food-inflation-calculator/index.html#L44)
-  - `inflation_mid_rect`: [public_v2/tools/food-inflation-calculator/index.html](public_v2/tools/food-inflation-calculator/index.html#L123)
-  - `inflation_footer`: [public_v2/tools/food-inflation-calculator/index.html](public_v2/tools/food-inflation-calculator/index.html#L155)
+| Config key        | Suggested unit name | Type                     | Used on |
+|-------------------|---------------------|--------------------------|---------|
+| `AD_UNIT_TOP`     | tmt_top_banner      | Display (horizontal)     | Home, tool pages, all index pages |
+| `AD_UNIT_MID`     | tmt_mid_inarticle   | In-article (fluid)       | Home mid, article pages (in-content) |
+| `AD_UNIT_SIDEBAR` | tmt_sidebar_rect    | Display (vertical/rect)  | Tool pages + article pages (MoneyBasicsSidebar) |
+| `AD_UNIT_FOOTER`  | tmt_footer_banner   | Display (horizontal)     | Every page (Layout Footer) |
 
-- Debt Cost Calculator
-  - `debt_top_banner`: [public_v2/tools/debt-cost-calculator/index.html](public_v2/tools/debt-cost-calculator/index.html#L46)
-  - `debt_mid_rect`: [public_v2/tools/debt-cost-calculator/index.html](public_v2/tools/debt-cost-calculator/index.html#L128)
-  - `debt_footer`: [public_v2/tools/debt-cost-calculator/index.html](public_v2/tools/debt-cost-calculator/index.html#L151)
+## Ad density per page (max 3 — policy limit)
 
-How to use
+- Tool pages:   top + sidebar + footer = 3
+- Article pages: mid (in-article) + sidebar + footer = 3
+- Home:         top + mid + footer = 3
+- Index pages:  top + footer = 2
 
-1. In AdSense → Ads → By ad unit, create ad units with the suggested names (or your own).
-2. For each created unit, copy the numeric Slot ID (`data-ad-slot`) and paste it next to the name below in this file or send them to me.
+## Steps
 
-Paste Slot IDs here (example):
+1. Create the 4 units in AdSense, copy each numeric Slot ID (`data-ad-slot`).
+2. Paste them into `src/config/adsense.config.js` replacing the `"0000000000"` values.
+3. Deploy, then verify a live page renders a real `<ins>` instead of the placeholder.
 
-- inflation_top_banner: 1234567890
-- inflation_mid_rect: 2345678901
-- inflation_footer: 3456789012
-- debt_top_banner: 4567890123
-- debt_mid_rect: 5678901234
-- debt_footer: 6789012345
-- homepage_top_banner: 7890123456
-- homepage_mid_rect: 8901234567
+## Notes
 
-Once you provide Slot IDs I will replace all `XXXXXXXXXX` placeholders atomically and verify.
+- Slot heights use `min-h-*` reservations (not fixed heights) so larger
+  high-RPM creatives (300x250, 336x280, 728x90, 300x600) can serve without CLS.
+- The mid unit on article pages is created as **In-article** and rendered with
+  `data-ad-format="fluid"` + `data-ad-layout="in-article"`.
+- Consider also enabling Auto Ads (anchor on mobile) in AdSense → Ads → By site.

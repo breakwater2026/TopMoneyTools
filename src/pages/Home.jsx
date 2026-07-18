@@ -86,7 +86,7 @@ export default function Home() {
       {/* Top banner */}
       <div className="border-y border-[#A3FFD6]/10 bg-obsidian">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
-          <AdSlot slot="top" className="h-[60px]" />
+          <AdSlot slot="top" className="min-h-[100px]" />
         </div>
       </div>
 
@@ -202,7 +202,7 @@ export default function Home() {
 
       {/* Mid-content ad */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <AdSlot slot="mid" className="h-[120px]" />
+        <AdSlot slot="mid" className="min-h-[280px]" />
       </div>
 
       {/* Education preview */}
@@ -321,9 +321,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <div className="mx-auto max-w-7xl px-4 pb-10 sm:px-6">
-        <AdSlot slot="footer" className="h-[60px]" />
-      </div>
     </Layout>
   );
 }

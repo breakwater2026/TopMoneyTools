@@ -45,7 +45,7 @@ export default function ToolsIndex() {
         <p className="mt-2 max-w-xl text-[#889988]">Ten free, private calculators that run entirely in your browser. They help you compare inflation, debt, retirement, budgeting, and savings decisions without pressure or accounts.</p>
 
         <div className="mt-6">
-          <AdSlot slot="top" className="h-[60px]" />
+          <AdSlot slot="top" className="min-h-[100px]" />
         </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

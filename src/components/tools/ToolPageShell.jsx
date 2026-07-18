@@ -95,7 +95,7 @@ export default function ToolPageShell({
       {/* Top banner ad — integrated "status bar" */}
       <div className="border-b border-[#A3FFD6]/10 bg-obsidian">
         <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
-          <AdSlot slot="top" className="h-[60px]" />
+          <AdSlot slot="top" className="min-h-[100px]" />
         </div>
       </div>
 

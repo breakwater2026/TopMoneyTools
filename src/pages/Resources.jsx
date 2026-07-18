@@ -66,7 +66,7 @@ export default function Resources() {
         </div>
 
         <div className="mt-6">
-          <AdSlot slot="top" className="h-[60px]" />
+          <AdSlot slot="top" className="min-h-[100px]" />
         </div>
 
         {/* Tools */}

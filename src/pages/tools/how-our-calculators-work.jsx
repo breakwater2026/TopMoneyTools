@@ -131,7 +131,7 @@ export default function HowOurCalculatorsWork() {
         </p>
 
         <div className="mt-6">
-          <AdSlot slot="top" className="h-[60px]" />
+          <AdSlot slot="top" className="min-h-[100px]" />
         </div>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2">

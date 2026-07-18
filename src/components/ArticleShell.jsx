@@ -20,12 +20,6 @@ export default function ArticleShell({ title, description, path, sidebarTerms, r
     <Layout>
       <SEO title={title} description={description} path={path} seoMeta={seoMeta} structuredData={structuredData} />
 
-      <div className="border-b border-[#A3FFD6]/10 bg-obsidian">
-        <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
-          <AdSlot slot="top" className="h-[60px]" />
-        </div>
-      </div>
-
       <div className="mx-auto max-w-7xl px-3 py-6 sm:px-6 sm:py-10">
         <BreadcrumbNav items={[
           { label: "Education", to: "/education" },
@@ -49,6 +43,9 @@ export default function ArticleShell({ title, description, path, sidebarTerms, r
         <div className="grid gap-6 lg:grid-cols-[65%_32%] lg:gap-8">
           <article className="instrument-surface rounded-sm p-4 sm:p-8 prose-headings:font-heading prose-headings:text-[#E0E0E0] prose-p:text-[#889988] prose-p:leading-relaxed">
             {children}
+
+            {/* In-article native ad — fluid format blends with content, earns higher CTR */}
+            <AdSlot slot="mid" format="fluid" layout="in-article" className="my-8 min-h-[250px]" />
 
             {relatedTools.length > 0 && (
               <div className="mt-8 border-t border-[#A3FFD6]/15 pt-6">
@@ -83,7 +80,6 @@ export default function ArticleShell({ title, description, path, sidebarTerms, r
               </div>
             )}
 
-            <AdSlot slot="mid" className="mt-8 h-[120px]" />
           </article>
 
           <MoneyBasicsSidebar terms={sidebarTerms} />

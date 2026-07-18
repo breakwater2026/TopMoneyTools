@@ -57,7 +57,7 @@ export default function Education() {
         <p className="mt-2 max-w-xl text-[#889988]">Learn the basics, one clear step at a time. Choose the article that matches your current question, then move to the calculators when you want to test a scenario.</p>
 
         <div className="mt-6">
-          <AdSlot slot="top" className="h-[60px]" />
+          <AdSlot slot="top" className="min-h-[100px]" />
         </div>
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
