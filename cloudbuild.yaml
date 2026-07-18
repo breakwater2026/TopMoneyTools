@@ -5,6 +5,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
+      - '--no-cache'
       - '-t'
       - 'us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:$COMMIT_SHA'
       - '.'
@@ -27,3 +28,4 @@ steps:
 
 images:
   - 'us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:$COMMIT_SHA'
+  
