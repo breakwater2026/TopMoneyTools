@@ -84,9 +84,9 @@ export default function UnderstandingInterestRates() {
         { q: "What is term length?", slug: "term-length" },
       ]}
       relatedTools={[
-        { label: "Interest Calculator", to: "/tools/interest" },
-        { label: "Loan Comparison Calculator", to: "/tools/loan-comparison" },
-        { label: "Debt Payoff Calculator", to: "/tools/debt-payoff" },
+        { label: "Mortgage Payment Calculator", to: "/tools/mortgage-payment" },
+        { label: "Debt Cost Calculator", to: "/tools/debt-cost" },
+        { label: "Investment Growth Calculator", to: "/tools/investment-growth" },
       ]}
       seoMeta={openGraphMeta}
       structuredData={[structuredData, faqStructuredData, breadcrumbSchema]}
@@ -132,10 +132,10 @@ export default function UnderstandingInterestRates() {
       <p className="text-[#889988]">
         If you borrow $10,000 at 6% over 5 years, your total interest will be lower than borrowing the same amount at
         the same rate over 7 years. Use the{" "}
-        <Link to="/tools/interest" className="text-[#A3FFD6] hover:underline">
-          Interest Calculator
+        <Link to="/tools/mortgage-payment" className="text-[#A3FFD6] hover:underline">
+          Mortgage Payment Calculator
         </Link>{" "}
-        to see how term length changes total cost.
+        to compare loan scenarios.
       </p>
 
       <h2 className="mt-6 text-xl font-semibold text-[#E0E0E0]">Common interest rate mistakes</h2>
@@ -206,12 +206,12 @@ export default function UnderstandingInterestRates() {
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]">// Next Steps</p>
         <p className="mt-2 text-sm text-[#889988]">
           Compare different loan scenarios using the{" "}
-          <Link to="/tools/loan-comparison" className="text-[#A3FFD6] hover:underline">
-            Loan Comparison Calculator
+          <Link to="/tools/mortgage-payment" className="text-[#A3FFD6] hover:underline">
+            Mortgage Payment Calculator
           </Link>
-          . Then build a payoff plan with the{" "}
-          <Link to="/tools/debt-payoff" className="text-[#A3FFD6] hover:underline">
-            Debt Payoff Calculator
+          . Then plan debt repayment with the{" "}
+          <Link to="/tools/debt-cost" className="text-[#A3FFD6] hover:underline">
+            Debt Cost Calculator
           </Link>
           .
         </p>

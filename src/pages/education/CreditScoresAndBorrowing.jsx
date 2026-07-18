@@ -84,8 +84,8 @@ export default function CreditScoresAndBorrowing() {
         { q: "What is payment history?", slug: "payment-history" },
       ]}
       relatedTools={[
-        { label: "Debt Payoff Calculator", to: "/tools/debt-payoff" },
-        { label: "Loan Comparison Calculator", to: "/tools/loan-comparison" },
+        { label: "Debt Cost Calculator", to: "/tools/debt-cost" },
+        { label: "Mortgage Payment Calculator", to: "/tools/mortgage-payment" },
         { label: "Budget Planner", to: "/tools/budget-planner" },
       ]}
       seoMeta={openGraphMeta}
@@ -203,12 +203,12 @@ export default function CreditScoresAndBorrowing() {
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]">// Next Steps</p>
         <p className="mt-2 text-sm text-[#889988]">
           Use the{" "}
-          <Link to="/tools/debt-payoff" className="text-[#A3FFD6] hover:underline">
-            Debt Payoff Calculator
+          <Link to="/tools/debt-cost" className="text-[#A3FFD6] hover:underline">
+            Debt Cost Calculator
           </Link>{" "}
-          to plan reducing balances. Then compare future borrowing scenarios with the{" "}
-          <Link to="/tools/loan-comparison" className="text-[#A3FFD6] hover:underline">
-            Loan Comparison Calculator
+          to plan reducing balances. Then compare loan scenarios with the{" "}
+          <Link to="/tools/mortgage-payment" className="text-[#A3FFD6] hover:underline">
+            Mortgage Payment Calculator
           </Link>
           .
         </p>
