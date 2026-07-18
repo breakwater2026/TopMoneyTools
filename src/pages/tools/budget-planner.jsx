@@ -26,6 +26,21 @@ export default function BudgetPlanner() {
         num="06"
         title="Split Your Income Simply — Needs, Wants, and Surplus."
         subtitle="Enter your monthly take-home income, fixed expenses (rent, bills), and variable spending (dining, shopping) to see your surplus and savings rate."
+        introParagraph={
+          <>
+            A budget helps you see exactly where your money goes each month and identify
+            opportunities to save more or spend more intentionally. This planner breaks down
+            your income into common categories so you can build a realistic spending plan.
+          </>
+        }
+        example={
+          <>
+            With a monthly income of $5,000, the 50/30/20 rule suggests $2,500 for needs
+            (housing, food, transport), $1,500 for wants (entertainment, dining), and
+            $1,000 for savings and debt payments. Adjust the categories to fit your life.
+          </>
+        }
+        updatedDate="Updated July 2026"
         inputs={
           <>
             <NumberField label="Monthly take-home income" helper="Income after taxes — what lands in your account each month." value={income} onChange={setIncome} prefix="$" ariaLabel="Monthly income" />

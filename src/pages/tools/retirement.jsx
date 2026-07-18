@@ -36,6 +36,21 @@ export default function Retirement() {
         num="05"
         title="Project What You'll Actually Have Saved — and Whether It's Enough."
         subtitle="Enter your age, current savings, monthly contribution, and expected return to see your projected nest egg and a simple monthly income estimate."
+        introParagraph={
+          <>
+            Retirement planning starts with understanding how much you will need and whether your
+            current savings are on track. This calculator estimates your retirement gap based on
+            your age, income, current savings, and desired retirement lifestyle.
+          </>
+        }
+        example={
+          <>
+            A 35-year-old earning $75,000 with $50,000 already saved and a goal of replacing 80%
+            of income in retirement would need to save approximately 12-15% of income annually
+            to stay on track, assuming a 6% real return.
+          </>
+        }
+        updatedDate="Updated July 2026"
         inputs={
           <>
             <div className="grid gap-5 sm:grid-cols-2">

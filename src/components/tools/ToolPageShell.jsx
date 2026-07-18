@@ -5,6 +5,7 @@ import AdSlot from "@/components/AdSlot";
 import MoneyBasicsSidebar from "@/components/MoneyBasicsSidebar";
 import Reveal from "@/components/Reveal";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
+import MethodologyBlock from "@/components/tools/MethodologyBlock";
 
 // The Instrument Stage — shared shell for every calculator.
 // Layout per PRD §4.1 + design spec §3.II:
@@ -14,7 +15,7 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 //   - Intel Brief (scroll-triggered reveal)
 //   - Closing editorial image ("The Explorer's Artifacts")
 export default function ToolPageShell({
-  slug, name, num, title, subtitle, inputs, calculate, results, intelBrief = [], learnMore = [], sidebarTerms, imageUrl, imageAlt, imageCaption, faqs = [], explanation, assumptions = [], dataSources = [], updatedDate = "Updated July 2026", relatedTools = [], relatedArticles = [], relatedGlossary = [],
+  slug, name, num, title, subtitle, introParagraph, inputs, calculate, results, intelBrief = [], learnMore = [], sidebarTerms, imageUrl, imageAlt, imageCaption, faqs = [], explanation, assumptions = [], dataSources = [], updatedDate = "Updated July 2026", example, relatedTools = [], relatedArticles = [], relatedGlossary = [],
 }) {
   const softwareApplicationSchema = {
     "@context": "https://schema.org",
@@ -121,6 +122,13 @@ export default function ToolPageShell({
           <span className="rounded-full border border-[#A3FFD6]/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]">{updatedDate}</span>
         </div>
 
+        {/* Intro paragraph — added for content depth */}
+        {introParagraph && (
+          <div className="mb-6 rounded-sm border border-[#A3FFD6]/10 bg-[#081008]/60 p-5 text-sm leading-relaxed text-[#889988]">
+            {introParagraph}
+          </div>
+        )}
+
         {/* 2:1 asymmetric balance */}
         <div className="grid gap-6 lg:grid-cols-[65%_32%] lg:gap-8">
           {/* Main Stage — engine + result HUD */}
@@ -128,29 +136,12 @@ export default function ToolPageShell({
             <div className="space-y-6">{inputs}</div>
             {calculate && <div className="mt-8">{calculate}</div>}
             {results}
-            {(explanation || assumptionsList.length > 0 || sourceList.length > 0) && (
-              <section className="mt-8 rounded-sm border border-[#A3FFD6]/10 bg-void/40 p-5">
-                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// What this result means</p>
-                {explanation && <p className="mt-3 text-sm leading-relaxed text-[#889988]">{explanation}</p>}
-                {sourceList.length > 0 && (
-                  <div className="mt-4">
-                    <h4 className="font-heading text-sm font-semibold text-[#E0E0E0]">Data sources</h4>
-                    <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-[#889988]">
-                      {sourceList.map((source, index) => <li key={index}>{source}</li>)}
-                    </ul>
-                  </div>
-                )}
-                {assumptionsList.length > 0 && (
-                  <div className="mt-4">
-                    <h4 className="font-heading text-sm font-semibold text-[#E0E0E0]">Assumptions and limitations</h4>
-                    <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-[#889988]">
-                      {assumptionsList.map((assumption, index) => <li key={index}>{assumption}</li>)}
-                    </ul>
-                  </div>
-                )}
-              </section>
-            )}
-            {/* Assumptions and limitations removed — kept for future use */}
+            <MethodologyBlock
+              explanation={explanation}
+              assumptions={assumptionsList}
+              dataSources={sourceList}
+              example={example}
+            />
           </article>
 
           {/* Intel sidebar — sticky */}

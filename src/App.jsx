@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClientInstance } from "@/lib/query-client";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 
 import PageNotFound from "./lib/PageNotFound";
 import ScrollToTop from "./components/ScrollToTop";
@@ -142,6 +142,9 @@ function App() {
             <Route path="/terms" element={<Terms />} />
             <Route path="/start-here" element={<StartHere />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
+            <Route path="/private-policy" element={<Navigate to="/privacy" replace />} />
+            <Route path="/terms-of-service" element={<Navigate to="/terms" replace />} />
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>

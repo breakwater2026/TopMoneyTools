@@ -51,6 +51,21 @@ export default function FoodInflation() {
         num="01"
         title="What Will Your Groceries Cost in the Future?"
         subtitle="Enter your monthly grocery spend and see how inflation could quietly increase that cost over time — in plain, honest numbers."
+        introParagraph={
+          <>
+            Food costs tend to rise gradually, which makes them easy to overlook until the grocery
+            bill feels noticeably heavier. This tool helps you estimate how inflation affects your
+            monthly and yearly food spending so you can plan ahead instead of reacting later.
+          </>
+        }
+        example={
+          <>
+            If you spend $400 per month on groceries and food inflation averages 3.5% per year,
+            in 5 years the same basket of food would cost about $475 — an extra $75 per month or
+            $900 per year that your budget needs to absorb.
+          </>
+        }
+        updatedDate="Updated July 2026"
         inputs={
           <>
             <NumberField label="What is your monthly grocery spend?" helper="Include all food shopping — supermarket, market, everything." value={spend} onChange={setSpend} prefix="$" ariaLabel="Monthly grocery spend" />

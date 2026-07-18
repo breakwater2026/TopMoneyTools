@@ -311,6 +311,16 @@ export default function Home() {
       </section>
 
       {/* Footer banner ad */}
+      {/* Trust section */}
+      <section className="border-t border-[#A3FFD6]/10 bg-obsidian py-10">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">Built with care</p>
+          <p className="mt-4 text-sm leading-relaxed text-[#889988]">
+            Updated regularly. Built for educational use. Inputs stay on your device.
+            TopMoneyTools is a free, privacy-first resource for everyday financial decisions.
+          </p>
+        </div>
+      </section>
       <div className="mx-auto max-w-7xl px-4 pb-10 sm:px-6">
         <AdSlot slot="footer" className="h-[60px]" />
       </div>

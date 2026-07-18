@@ -52,6 +52,22 @@ export default function DebtCost() {
         num="02"
         title="Find Out the True Cost of Any Loan."
         subtitle="The price tag on a loan isn't just what you borrow. Enter your loan details and see exactly how much you'll really pay — including the extra cost of interest, in plain numbers."
+        introParagraph={
+          <>
+            The total cost of a loan goes far beyond what you borrow. Interest adds up over time,
+            and the length of your repayment term dramatically affects how much extra you pay.
+            This calculator shows the true cost so you can compare loan offers with clarity.
+          </>
+        }
+        example={
+          <>
+            Borrowing $10,000 at 7% APR over 5 years means a monthly payment of about $198 and
+            total interest of roughly $1,880. The same loan over 3 years would cost about $309 per
+            month but only $1,120 in total interest — a tradeoff between monthly affordability and
+            long-term cost.
+          </>
+        }
+        updatedDate="Updated July 2026"
         inputs={
           <>
             <NumberField label="How much do you want to borrow?" helper="The total loan amount — e.g. car, personal loan, or credit card balance." value={principal} onChange={setPrincipal} prefix="$" ariaLabel="Loan amount" />

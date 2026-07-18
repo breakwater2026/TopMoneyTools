@@ -35,6 +35,22 @@ export default function Mortgage() {
         num="03"
         title="See What Your Home Really Costs You — Every Month and Over Time."
         subtitle="Enter your home price, down payment, and loan details to see your true monthly payment and the full cost of interest across the life of the loan."
+        introParagraph={
+          <>
+            Your monthly mortgage payment depends on the home price, down payment, loan term, and
+            interest rate. Even a small change in rate or term can change both your monthly bill and
+            the total interest you pay over the life of the loan. This calculator helps you compare
+            scenarios before you talk to a lender.
+          </>
+        }
+        example={
+          <>
+            On a $400,000 home with a 20% down payment ($80,000), a 30-year loan at 6.5% APR,
+            the monthly payment would be approximately $2,024. The total interest paid over 30 years
+            would be about $328,000 — nearly the same as the original loan amount.
+          </>
+        }
+        updatedDate="Updated July 2026"
         inputs={
           <>
             <NumberField label="Home price" helper="Enter the total purchase price of the home." value={price} onChange={setPrice} prefix="$" ariaLabel="Home price" />

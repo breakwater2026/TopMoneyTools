@@ -59,6 +59,22 @@ export default function InvestmentGrowth() {
         num="04"
         title="Watch Your Money Grow — and See Where the Growth Comes From."
         subtitle="Enter your starting amount, monthly contributions, expected return, and time horizon to see how compounding builds wealth, year by year."
+        introParagraph={
+          <>
+            Understanding how your investments can grow over time helps you make informed decisions
+            about saving for retirement, education, or other long-term goals. This calculator
+            projects future value based on your initial investment, monthly contributions, and
+            expected return rate.
+          </>
+        }
+        example={
+          <>
+            Investing $10,000 initially with $500 added monthly at a 7% annual return would grow
+            to approximately $95,000 after 10 years. The same strategy over 20 years would reach
+            about $290,000 — showing the power of time in the market.
+          </>
+        }
+        updatedDate="Updated July 2026"
         inputs={
           <>
             <NumberField

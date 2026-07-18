@@ -25,6 +25,21 @@ export default function SavingsRate() {
         num="10"
         title="What Percentage of Your Income Are You Actually Keeping?"
         subtitle="Your savings rate is the single best predictor of long-term wealth. Enter your income, expenses, and what you save each month to see where you stand."
+        introParagraph={
+          <>
+            Your savings rate — the percentage of income you save — is one of the most powerful
+            levers for building financial security. This calculator shows how your current rate
+            compares to common benchmarks and what it means for your future.
+          </>
+        }
+        example={
+          <>
+            Earning $60,000 per year and saving $9,000 gives you a 15% savings rate — the commonly
+            recommended minimum. Increasing to 20% ($12,000/year) could meaningfully accelerate
+            your progress toward major financial goals.
+          </>
+        }
+        updatedDate="Updated July 2026"
         inputs={
           <div className="space-y-6">
             <NumberField label="Monthly income" helper="Take-home pay after taxes" value={monthlyIncome} onChange={setMonthlyIncome} prefix="$" ariaLabel="Monthly income" />

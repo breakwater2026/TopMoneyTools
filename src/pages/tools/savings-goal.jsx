@@ -41,6 +41,21 @@ export default function SavingsGoal() {
         num="08"
         title="Find Out How Long It'll Take to Reach Any Goal — and By What Date."
         subtitle="Whether it's a vacation, an emergency fund, or a house deposit, enter your numbers to see the timeline in months, a target date, and projected interest."
+        introParagraph={
+          <>
+            Setting a specific savings target makes it easier to stay motivated and measure progress.
+            This calculator shows how much you need to save each month to reach your goal within
+            your chosen timeframe, including the impact of compound interest.
+          </>
+        }
+        example={
+          <>
+            Saving $10,000 over 3 years with a 4% annual return means setting aside about $262 per
+            month. Without the interest, you would need $278 per month — the difference shows how
+            letting your money work for you adds up over time.
+          </>
+        }
+        updatedDate="Updated July 2026"
         inputs={
           <>
             <div className="grid gap-5 sm:grid-cols-2">

@@ -38,6 +38,22 @@ export default function NetWorth() {
         num="07"
         title="Add Up Everything You Own and Owe — See the Real Number That Matters."
         subtitle="Your net worth is your assets minus your liabilities — the clearest single picture of your financial health. Enter the numbers below."
+        introParagraph={
+          <>
+            Net worth is the value of what you own minus what you owe. It is not a judgment of success —
+            it is simply a snapshot that can help you track progress over time and make better saving,
+            spending, and debt decisions. Assets may include cash, savings, investments, and property.
+            Liabilities may include credit card balances, loans, and mortgages.
+          </>
+        }
+        example={
+          <>
+            If you own a home worth $300,000, have $40,000 in savings and investments, and owe
+            $200,000 on your mortgage plus $12,000 in other debts, your net worth is $128,000.
+            Tracking this number annually helps you see whether you are building wealth over time.
+          </>
+        }
+        updatedDate="Updated July 2026"
         inputs={
           <div className="grid gap-6 sm:grid-cols-2">
             <fieldset className="rounded-sm border border-[#A3FFD6]/20 bg-void/40 p-4">

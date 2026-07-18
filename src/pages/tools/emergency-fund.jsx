@@ -25,6 +25,21 @@ export default function EmergencyFund() {
         num="09"
         title="How Many Months of Expenses Does Your Savings Cushion Cover?"
         subtitle="An emergency fund is your financial shock absorber. Enter your monthly expenses and current savings to see how many months of runway you have — and what's left to reach 3, 6, or 12 months."
+        introParagraph={
+          <>
+            An emergency fund gives you breathing room when income drops or expenses spike.
+            This calculator shows how many months of essential expenses your current savings can
+            cover and how far you are from common targets such as 3, 6, or 12 months.
+          </>
+        }
+        example={
+          <>
+            If your essential monthly expenses are $3,000 and you have $9,000 saved, you are
+            covered for 3 months — the minimum recommended cushion. Reaching a 6-month target
+            would require an additional $9,000 in savings.
+          </>
+        }
+        updatedDate="Updated July 2026"
         inputs={
           <div className="space-y-6">
             <NumberField label="Monthly expenses" helper="Fixed + variable costs your fund must cover" value={monthlyExpenses} onChange={setMonthlyExpenses} prefix="$" ariaLabel="Monthly expenses" />
