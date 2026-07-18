@@ -4,6 +4,15 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 
 export default function About() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://topmoneytools.com" },
+      { "@type": "ListItem", "position": 2, "name": "About", "item": "https://topmoneytools.com/about" },
+    ],
+  };
+
   return (
     <Layout>
       <SEO
@@ -14,6 +23,7 @@ export default function About() {
           url: "https://topmoneytools.com/about",
           type: "website",
         }}
+        structuredData={[breadcrumbSchema]}
       />
 
       <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6">

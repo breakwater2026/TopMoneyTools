@@ -2,6 +2,15 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 
 export default function Privacy() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://topmoneytools.com" },
+      { "@type": "ListItem", "position": 2, "name": "Privacy", "item": "https://topmoneytools.com/privacy" },
+    ],
+  };
+
   return (
     <Layout>
       <SEO
@@ -12,6 +21,7 @@ export default function Privacy() {
           url: "https://topmoneytools.com/privacy",
           type: "website",
         }}
+        structuredData={[breadcrumbSchema]}
       />
 
       <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6">

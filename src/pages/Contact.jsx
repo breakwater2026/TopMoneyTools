@@ -3,6 +3,15 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 
 export default function Contact() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://topmoneytools.com" },
+      { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://topmoneytools.com/contact" },
+    ],
+  };
+
   return (
     <Layout>
       <SEO
@@ -13,6 +22,7 @@ export default function Contact() {
           url: "https://topmoneytools.com/contact",
           type: "website",
         }}
+        structuredData={[breadcrumbSchema]}
       />
 
       <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
@@ -21,7 +31,7 @@ export default function Contact() {
 
         <div className="mt-6 space-y-4 text-[#889988] leading-relaxed">
           <p>
-            Have a question, suggestion, or feedback? We’d love to hear from you. Our tools are built to be helpful,
+            Have a question, suggestion, or feedback? We'd love to hear from you. Our tools are built to be helpful,
             private, and easy to use — and your input helps us improve.
           </p>
 
@@ -46,7 +56,7 @@ export default function Contact() {
           </div>
 
           <p>
-            Please don’t send sensitive financial or personal data by email. Our calculators are designed to run locally
+            Please don't send sensitive financial or personal data by email. Our calculators are designed to run locally
             in your browser, and we do not collect or store your inputs.
           </p>
         </div>
