@@ -3,17 +3,10 @@ options:
 
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'build'
-      - '--no-cache'
-      - '-t'
-      - 'us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:$COMMIT_SHA'
-      - '.'
+    args: ['build', '--no-cache', '-t', 'us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:$COMMIT_SHA', '.']
 
   - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'push'
-      - 'us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:$COMMIT_SHA'
+    args: ['push', 'us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:$COMMIT_SHA']
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
