@@ -9,7 +9,6 @@ export default function Reveal({ children, delay = 0 }) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (shown) return;
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -21,13 +20,13 @@ export default function Reveal({ children, delay = 0 }) {
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [shown]);
+  }, []);
 
   return (
     <div
       ref={ref}
-      className={shown ? "reveal" : "opacity-0"}
-      style={{ transitionDelay: shown ? `${delay}ms` : "0ms" }}
+      className={shown ? "animate-fade-in-up" : ""}
+      style={{ animationDelay: shown ? `${delay}ms` : "0ms" }}
     >
       {children}
     </div>

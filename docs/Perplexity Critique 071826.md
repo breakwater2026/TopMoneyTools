@@ -379,3 +379,249 @@ Important for finance/YMYL quality.
 Helps navigation, authority, and session depth.
 Overall, the site now has a credible foundation and a much better homepage than before, but the fastest gains will come from making every calculator and article page feel like a complete destination, not just a route with a tool or a summary.
 
+Pass #2.
+
+I reviewed the updated live site, and the answer is: some of the recommended changes were implemented well, but not all of them made it through the crash. The homepage messaging is noticeably improved, the Resources page is more complete, and some tool-page explanatory copy exists, but there are still clear signs of incomplete implementation: the homepage FAQ appears broken again, ad placeholders remain too exposed in fetched content, some tool pages are still thin, and policy/URL consistency is still not fully cleaned up.
+
+What was implemented
+The homepage now has stronger user-facing copy than before. The hero is clearer, the plain-language value proposition is improved, the privacy message is stronger, and the site explains its purpose in a more welcoming way.
+
+The Resources page also improved in structure. It now clearly groups calculators, education articles, government references, glossary, and a “New Here?” path, which is much closer to the hub-style page I recommended. The Terms page also appears more site-specific and includes informational-use language plus a visible “Last updated” date, which is a meaningful trust improvement.
+
+What is still missing
+The biggest miss is the homepage FAQ. In the fetched live content, the FAQ section still shows multiple blank headings with no visible question text or answers, which strongly suggests the section is broken, hidden, or failing to render properly. That is exactly the kind of partial implementation a crash can leave behind.
+
+The other major incomplete area is the calculator pages. The mortgage and net worth pages still have useful “Intel Brief” sections, but they do not yet show the fuller intro/method/example/support content I recommended, and the “Learn More” sections still appear stub-like rather than finished. These pages still risk feeling like tool shells rather than complete educational destinations.
+
+Page-by-page status
+Page	Status	Notes
+Homepage	Partial	Stronger copy and structure, but FAQ appears broken again 
+.
+Resources	Good but incomplete	Better hub structure, but still directory-like and government links lack helper descriptions 
+.
+Terms	Improved	More specific and includes informational-use wording and update date 
+.
+Privacy	Not fully resolved	Search still shows inconsistent privacy-related paths; /private-policy/ remains problematic 
+.
+Mortgage Calculator	Partial	Better explanatory section, but still thin and incomplete below the tool 
+.
+Net Worth Calculator	Partial	Intel Brief is useful, but no clear intro/example/full learn-more support 
+.
+Emergency Fund Calculator	Improved	Snippet and explanatory content are stronger and more practical 
+.
+Retirement Calculator	Improved	Search content suggests added update/status/method language 
+.
+Some education pages	Mixed	Some snippets are specific and improved, but others still appear generic 
+.
+Highest-priority fixes now
+Fix the homepage FAQ immediately so all questions and answers render visibly on the live site.
+
+Finish the calculator-page support sections by adding: intro, how it works, example, assumptions, and real related links on every major tool page.
+
+Clean up privacy and legal routing so there is one canonical privacy page and no conflicting or broken policy URLs.
+
+Reduce visible ad-placeholder language in the public experience, because “Financial Sponsorship / Ad slot” still reads like scaffolding rather than production UX in fetched output.
+
+Improve metadata consistency on pages that still generate generic search snippets, especially some education and tool pages.
+
+Additional comments
+Two extra things stand out beyond my earlier recommendations. First, the homepage now reads better in tone, but the “Use the ToolsLearn the Basics” and glossary highlight text in fetched output suggests some spacing or rendering issues still exist in the live markup. Second, the tools and articles are getting closer to a strong topical cluster, but the site still needs more visible interlinking between specific calculators and their matching educational pages to fully realize that advantage.
+
+So the bottom line is: good progress, incomplete finish. The crash appears to have interrupted some of the most important polish work rather than the broad structure. If you want, I can next turn this into a recovery punch list with “implemented / partially implemented / missing” checkboxes for every recommendation so your developer can finish the remaining items systematically.
+
+That would be great.
+
+Here’s a recovery punch list with each prior recommendation marked as implemented, partial, or still missing. Overall: good progress, but not complete — the homepage FAQ, privacy/legal consistency, and several calculator-page depth items still need attention.
+
+Status summary
+The homepage copy, privacy promise, and resource-hub structure are much better than before, and the FAQ content now appears to exist in search-visible content, which is a positive sign. But there are still split legal URLs, generic snippets on some calculator pages, and uneven depth across tools, which means the crash likely interrupted the finishing pass rather than the foundational work.
+
+Recovery checklist
+Item	Status	Notes
+Homepage hero clarity	Implemented	Homepage now clearly says the site offers 10 free, private calculators and plain-English guidance 
+.
+Homepage privacy reassurance	Implemented	“Inputs never leave your device” and “No accounts, no tracking” are visible and repeated clearly 
+.
+Homepage FAQ populated	Implemented	Search-visible content shows real FAQ answers for free use, privacy, and accuracy 
+.
+Reduce theme jargon	Partial	The homepage is clearer, but branded terms still remain prominent and could still be simplified a bit more 
+.
+Resources page as real hub	Partial	It functions as a stronger hub, but still appears directory-like and could use more “why this link matters” helper text 
+.
+Government reference descriptions	Missing	Search-visible evidence still suggests the resources page lists references more than it explains them 
+.
+Calculator intro text	Partial	Some calculators have stronger snippets and explanatory text, but this is still inconsistent across tools 
+.
+“How this works” on calculators	Partial	Present in spirit on some tools, but not clearly and consistently surfaced sitewide 
+.
+Calculator example scenarios	Partial	Some pages hint at examples or interpretive guidance, but not all major calculators clearly show worked examples 
+.
+Related internal links on tools	Partial	Internal topical relationships exist, but the linking system still does not appear fully systematic from the public evidence 
+.
+Net worth page depth	Partial	Snippet is improved, but it still appears thinner than it should be for such an important page 
+.
+Mortgage page depth	Partial	Good snippet and purpose statement, but still needs stronger visible explanatory content beyond the form 
+.
+Emergency fund page depth	Implemented / Partial	This page appears materially improved and more practical, though it can still be expanded further 
+.
+Retirement calculator explanation	Partial	Better than before, but snippet still shows some generic-page behavior in parts 
+.
+Article metadata uniqueness	Partial	Some articles have strong snippets, but some still look generic or homepage-like 
+.
+Privacy page canonical cleanup	Missing	Both /privacy and /private-policy/ are still showing up, which is a trust and maintenance issue 
+.
+Terms page specificity	Partial	A more specific “Base44 APP” version exists, but the older template-like /terms/ version is also still indexed 
+.
+Update dates / trust signals	Partial	Present on at least some legal pages, but not clearly consistent across calculators and articles 
+.
+Ad placeholder cleanup	Partial	Hard to verify fully from search snippets, but this still likely needs visual QA on-page 
+.
+Highest-priority unfinished items
+These are the remaining fixes I would treat as urgent:
+
+Canonicalize legal pages: pick one live Terms URL and one live Privacy URL, then redirect the alternates so users and search engines stop seeing duplicates.
+
+Finish the thin calculators: especially Net Worth, Mortgage, Investment Growth, and Retirement, where public evidence still suggests not enough destination-level content.
+
+Add helper text on Resources: every external reference should say why a user would click it.
+
+Clean up generic snippets: pages like Investing 101 and some tool pages still show signs of weak metadata or weak on-page uniqueness.
+
+Developer punch list
+Use this as the direct implementation list:
+
+Set /privacy as canonical and 301-redirect /private-policy/ to it.
+
+Set one Terms URL as canonical and redirect the alternate version.
+
+Add a standard block to every calculator:
+
+What this tool does.
+
+How the math works.
+
+Example scenario.
+
+What it does not include.
+
+Related article/tool links.
+
+Expand Net Worth and Mortgage first, because they still look the thinnest among important tools.
+
+Add short descriptions beside each government resource link on the Resources page.
+
+Audit all article title tags and meta descriptions, especially pages that still surface generic snippets.
+
+Add “Last updated” on every article and calculator page, not just legal pages.
+
+Do a live visual check for any leftover ad placeholder labels or broken spacing on homepage/tool pages.
+
+Additional comments
+The strongest improvement is that the homepage now sounds like a coherent product rather than a loose collection of pages, and the privacy promise is much clearer and more believable. The biggest remaining risk is not design anymore — it is consistency: duplicate legal routes, uneven calculator depth, and inconsistent snippet quality can still make the site look less mature than it actually is.
+
+If you want, I can next turn this into a page-by-page QA worksheet with a checkbox list for Homepage, Resources, Privacy, Terms, and each calculator individually.
+
+yes, please do so.
+
+Here is a page-by-page QA worksheet for the live site. Overall, the site is in much better shape, but the remaining issues are concentrated in legal-page duplication, thin or generic snippets on some deeper pages, and uneven support content across tools and articles.
+
+Core pages
+Page	Pass	Needs work
+Homepage	Clear value proposition, strong privacy-first promise, full calculator set, visible FAQ answers, glossary and contact/privacy links 
+.	Reduce theme jargon slightly and visually confirm FAQ spacing/accordion behavior on mobile and desktop, because search-visible content is correct but live rendering should still be checked manually 
+.
+Resources	Stronger hub structure with all ten calculators, guides, glossary, and government references 
+.	Add one-line descriptions for each external reference and make article/resource guidance more action-oriented by goal 
+.
+Glossary	Good concept and clear plain-English definitions for many core terms 
+.	The glossary snippet is still somewhat generic in search, so improve metadata and consider adding stronger intro copy plus internal links to related calculators/articles 
+.
+Contact/About footer pathing	Homepage clearly exposes contact and privacy links 
+.	Verify all footer links resolve to the intended canonical URLs with no duplicates or legacy paths 
+.
+Legal pages
+Page	Pass	Needs work
+Terms	/terms is much better: specific to the site, mentions educational purpose, browser-side calculations, and no stored calculator inputs 
+.	/terms/ still exists as an older, more template-like version, so pick one canonical Terms URL and redirect the other 
+.
+Privacy	Privacy positioning is strong on the homepage and search-visible privacy copy aligns with your site promise 
+.	/private-policy/ is still indexed and looks like a legacy or inconsistent path; choose one canonical privacy URL and redirect all alternates 
+.
+Disclaimer	The educational/not-advice framing is reinforced across site messaging 
+.	Verify the disclaimer page is still live, specific, and linked consistently from footer/legal navigation, because it did not surface strongly in the latest reviewed set 
+.
+Calculator pages
+Page	Pass	Needs work
+Food Inflation Calculator	Strong concept and useful snippet focused on grocery inflation and salary share 
+.	Confirm there is a visible “why this matters” intro, example, and linked article support on-page, not just in metadata 
+.
+Debt Cost Calculator	Clear snippet and strong practical framing around interest costs and monthly payments 
+.	Add or verify a visible worked example, “how it works,” and stronger links to rates/borrowing explainers 
+.
+Mortgage Payment Calculator	Strong search promise: monthly payment, total interest, lifetime cost 
+.	Still too thin from public evidence; add or verify intro, assumptions, what is included/excluded, worked example, and related links 
+.
+Investment Growth Calculator	Important topic and included in site architecture 
+.	Search snippet still looks generic/homepage-like, which suggests metadata or on-page uniqueness still needs work 
+.
+Retirement Savings Calculator	Better than before; snippet now explains projected balance plus 4% estimate 
+.	Title/snippet still partially generic; add or verify stronger page-specific metadata and richer support content 
+.
+Budget Planner	Confirmed in resources and homepage inventory 
+.	Needs direct QA of title, snippet, intro, example, and explanatory support because it did not surface clearly as a dedicated page in the latest evidence 
+.
+Net Worth Calculator	Clear snippet and useful framing about assets minus liabilities 
+.	Still likely too thin; add or verify opening definition, example household, asset/liability guidance, and deeper support content 
+.
+Savings Goal Calculator	Present in resource inventory 
+.	Needs direct QA of metadata, intro, method, and example because no strong dedicated evidence surfaced in the latest pass 
+.
+Emergency Fund Calculator	Good snippet and practical framing around runway and 3/6/12 month targets 
+.	Still worth expanding with assumptions, example scenario, and links to budgeting/safety-net content 
+.
+Savings Rate Calculator	Present in resource inventory and strategically useful 
+.	Needs direct QA of title, snippet, intro, and explanatory support because it did not surface strongly in search results 
+.
+Education pages
+Page	Pass	Needs work
+Page	Pass	Needs work
+How Inflation Works	Strong, specific snippet and clear opening explanation 
+.	Add or verify deeper body sections, example, and next-step calculator link 
+.
+Understanding Interest Rates	Strong snippet and very relevant to multiple calculators 
+.	Ensure strong internal links to debt and mortgage tools plus visible examples and glossary references 
+.
+Retirement Planning Basics	Good snippet and useful glossary-support structure 
+.	Search evidence still leans light; add or verify stronger on-page depth and clearer next-step actions 
+.
+Emergency Funds & Financial Safety Nets	Specific and helpful snippet 
+.	Make sure the page strongly links back to Emergency Fund and Budget tools 
+.
+Investing 101	Topic is important and indexed 
+.	Snippet is still too generic and appears contaminated by sitewide nav copy; this is one of the clearest metadata/render issues left 
+.
+Budgeting 101	Useful snippet with 50/30/20 explanation 
+.	The title still appears generic in search; clarify canonical article naming and avoid overlap with “Budgeting for Beginners” if both exist 
+.
+Credit Scores & Borrowing	Strong, specific snippet and good lending relevance 
+.	Verify stronger cross-links from debt/mortgage pages and a clear “what to do next” block 
+.
+Remaining guides	Site architecture suggests ten guides total 
+.	Audit all article pages for unique titles, meta descriptions, intro depth, examples, and calculator links 
+.
+Priority checklist
+Use this as the next implementation order:
+
+Canonicalize Privacy and Terms so duplicate legal URLs disappear.
+
+Fix generic snippet pages first: Investing 101, Investment Growth, Retirement, and any other pages still inheriting homepage-style search text.
+
+Expand the thin calculator pages: Mortgage, Net Worth, Savings Goal, Savings Rate, Budget Planner.
+
+Add helper descriptions to Resources government links and “start here by goal” guidance.
+
+Audit every page for a visible Last updated line and a consistent educational-use / not-personal-advice note.
+
+Additional comments
+The site’s strongest improvement is that it now feels like a real product with a coherent promise instead of a loose collection of tools. The biggest remaining weakness is consistency across deeper pages: some now read well, while others still show signs of incomplete metadata, legacy routing, or thinner supporting content than a finance site should have.
+
