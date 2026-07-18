@@ -3,15 +3,16 @@
 # Usage: ./deploy.sh [branch]
 #   branch: git branch to deploy (default: DSRebuild)
 #
+# Also updates Cloudflare tunnel config with the correct Cloud Run URL.
+# After deploy, restart the tunnel: cloudflared tunnel run topmoneytools
+#
 # Prerequisites:
 #   - .env file with GCP_CLIENT_ID, GCP_CLIENT_SECRET, GCP_REFRESH_TOKEN
-#   - Copy .env.example to .env and fill in credentials
-#
-# No Docker or gcloud CLI needed.
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+TUNNEL_CONFIG="$HOME/.cloudflared/config.yml"
 
 # ── 0. Load credentials ──
 if [ -f "$SCRIPT_DIR/.env" ]; then
@@ -24,11 +25,13 @@ fi
 
 BRANCH="${1:-DSRebuild}"
 PROJECT="tmtwebsite-501119"
-REPO_URL="https://github.com/breakwater2026/TopMoneyTools.git"
+SERVICE="my-website-service"
+REGION="us-central1"
+IMAGE_BASE="us-central1-docker.pkg.dev/$PROJECT/my-website-image/my-website-image"
 COMMIT=$(git rev-parse HEAD)
 SHORT_SHA=$(echo "$COMMIT" | head -c 7)
 
-echo "=== Deploying $BRANCH @ $SHORT_SHA → $PROJECT ==="
+echo "=== Deploying $BRANCH @ $SHORT_SHA → $PROJECT/$SERVICE ==="
 
 # ── 1. Get access token ──
 echo "→ Getting access token..."
@@ -52,7 +55,7 @@ BODY=$(cat <<BODYEOF
 {
   "source": {
     "gitSource": {
-      "url": "$REPO_URL",
+      "url": "https://github.com/breakwater2026/TopMoneyTools.git",
       "revision": "refs/heads/$BRANCH"
     }
   },
@@ -61,27 +64,27 @@ BODY=$(cat <<BODYEOF
       "name": "gcr.io/cloud-builders/docker",
       "args": [
         "build", "--no-cache",
-        "-t", "us-central1-docker.pkg.dev/$PROJECT/my-website-image/my-website-image:\$COMMIT_SHA",
-        "-t", "us-central1-docker.pkg.dev/$PROJECT/my-website-image/my-website-image:latest",
+        "-t", "$IMAGE_BASE:$COMMIT",
+        "-t", "$IMAGE_BASE:latest",
         "."
       ]
     },
     {
       "name": "gcr.io/cloud-builders/docker",
-      "args": ["push", "us-central1-docker.pkg.dev/$PROJECT/my-website-image/my-website-image:\$COMMIT_SHA"]
+      "args": ["push", "$IMAGE_BASE:$COMMIT"]
     },
     {
       "name": "gcr.io/cloud-builders/docker",
-      "args": ["push", "us-central1-docker.pkg.dev/$PROJECT/my-website-image/my-website-image:latest"]
+      "args": ["push", "$IMAGE_BASE:latest"]
     },
     {
       "name": "gcr.io/google.com/cloudsdktool/cloud-sdk",
       "entrypoint": "gcloud",
       "args": [
-        "run", "deploy", "my-website-service",
-        "--image=us-central1-docker.pkg.dev/$PROJECT/my-website-image/my-website-image:\$COMMIT_SHA",
+        "run", "deploy", "$SERVICE",
+        "--image=$IMAGE_BASE:$COMMIT",
         "--project=$PROJECT",
-        "--region=us-central1",
+        "--region=$REGION",
         "--platform=managed",
         "--allow-unauthenticated",
         "--quiet"
@@ -89,8 +92,8 @@ BODY=$(cat <<BODYEOF
     }
   ],
   "images": [
-    "us-central1-docker.pkg.dev/$PROJECT/my-website-image/my-website-image:\$COMMIT_SHA",
-    "us-central1-docker.pkg.dev/$PROJECT/my-website-image/my-website-image:latest"
+    "$IMAGE_BASE:$COMMIT",
+    "$IMAGE_BASE:latest"
   ]
 }
 BODYEOF
@@ -122,12 +125,8 @@ while true; do
     echo ""
     echo "=== ✅ DEPLOYMENT SUCCESSFUL ==="
     echo "Commit: $COMMIT ($SHORT_SHA)"
-    echo "Branch: $BRANCH"
     echo "Project: $PROJECT"
-    echo "Service: my-website-service"
-    echo "Region: us-central1"
-    echo ""
-    echo "Check: curl -s https://www.topmoneytools.com/ | grep '/assets/index-'"
+    echo "Service: $SERVICE"
     break
   elif [ "$STATUS" = "FAILURE" ] || [ "$STATUS" = "TIMEOUT" ] || [ "$STATUS" = "INTERNAL_ERROR" ]; then
     echo "ERROR: Build failed with status $STATUS"
@@ -141,3 +140,34 @@ for s in b.get('steps',[]):
     exit 1
   fi
 done
+
+# ── 4. Update Cloudflare tunnel config with correct Cloud Run URL ──
+echo ""
+echo "→ Fetching Cloud Run URL..."
+RUN_URL=$(curl -s -H "Authorization: Bearer $ACCESS_TOKEN" \
+  "https://run.googleapis.com/v1/projects/$PROJECT/locations/$REGION/services/$SERVICE" \
+  | python3 -c "import sys,json;print(json.load(sys.stdin).get('status',{}).get('url',''))" 2>/dev/null)
+
+if [ -z "$RUN_URL" ]; then
+  echo "⚠  Could not fetch Cloud Run URL — skipping tunnel config update"
+else
+  echo "→ Cloud Run URL: $RUN_URL"
+
+  if [ -f "$TUNNEL_CONFIG" ]; then
+    echo "→ Updating tunnel config: $TUNNEL_CONFIG"
+    # Replace old URL references with the current one
+    TUNNEL_HOST=$(echo "$RUN_URL" | sed 's|https://||')
+    sed -i "s|service: https://my-website-service-[^.]*\.us-central1\.run\.app|service: $RUN_URL|g" "$TUNNEL_CONFIG"
+    sed -i "s|httpHostHeader: my-website-service-[^.]*\.us-central1\.run\.app|httpHostHeader: $TUNNEL_HOST|g" "$TUNNEL_CONFIG"
+    sed -i "s|originServerName: my-website-service-[^.]*\.us-central1\.run\.app|originServerName: $TUNNEL_HOST|g" "$TUNNEL_CONFIG"
+    echo "✓ Tunnel config updated"
+    echo ""
+    echo "=== NEXT STEP: Restart Cloudflare tunnel ==="
+    echo "  cloudflared tunnel run topmoneytools"
+    echo ""
+    echo "Then purge Cloudflare cache and test:"
+    echo "  curl -s https://www.topmoneytools.com/ | grep '/assets/index-'"
+  else
+    echo "⚠  No tunnel config found at $TUNNEL_CONFIG"
+  fi
+fi
