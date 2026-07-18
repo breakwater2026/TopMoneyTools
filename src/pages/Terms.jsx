@@ -24,6 +24,17 @@ export default function Terms() {
             please do not use the site.
           </p>
 
+          {/* Purpose of the site */}
+          <div>
+            <h2 className="font-heading text-lg font-semibold text-[#E0E0E0]">Purpose of this site</h2>
+            <p className="mt-1">
+              TopMoneyTools provides free, educational financial calculators and articles to help you
+              understand everyday money decisions. Everything on this site is for informational and
+              educational purposes only. It is not personalized financial advice, and it does not
+              replace consultation with a qualified financial professional.
+            </p>
+          </div>
+
           {/* Liability disclaimer */}
           <div className="rounded-sm border border-[#FFD6A3]/20 bg-[#1a1008]/60 p-5">
             <h2 className="font-heading text-lg font-semibold text-[#E0E0E0]">Liability disclaimer</h2>
@@ -72,6 +83,16 @@ export default function Terms() {
           <p>
             If you have questions about these terms, contact us at <a href="mailto:contact@topmoneytools.com" className="text-[#A3FFD6] hover:underline">contact@topmoneytools.com</a>.
           </p>
+
+          {/* Governing law */}
+          <div>
+            <h2 className="font-heading text-lg font-semibold text-[#E0E0E0]">Governing law</h2>
+            <p className="mt-1">
+              These terms are governed by the laws of the Province of Quebec and the applicable laws
+              of Canada. Any disputes arising from the use of this site shall be resolved in the
+              courts of Montreal, Quebec, Canada.
+            </p>
+          </div>
         </div>
       </section>
     </Layout>

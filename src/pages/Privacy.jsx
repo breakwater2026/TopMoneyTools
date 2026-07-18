@@ -29,6 +29,19 @@ export default function Privacy() {
             </p>
           </div>
 
+          {/* Calculator privacy */}
+          <div>
+            <h2 className="font-heading text-lg font-semibold text-[#E0E0E0]">Calculator privacy</h2>
+            <p className="mt-1">
+              Your calculator entries run in your browser on your device. We do not store the financial
+              numbers you type into the tools. When you refresh or leave a page, those numbers disappear.
+              No input data is sent to our servers, saved to a database, or shared with advertisers.
+            </p>
+            <p className="mt-2">
+              This separation is intentional: the calculators are private by design, while advertising
+              services operate under their own policies that cover cookie-based ad delivery and measurement.
+            </p>
+          </div>
           {/* Cookies */}
           <div>
             <h2 className="font-heading text-lg font-semibold text-[#E0E0E0]">Cookies</h2>
