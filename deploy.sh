@@ -1,7 +1,7 @@
 #!/bin/bash
 # deploy.sh — Build + push + deploy to Cloud Run in one command
 # Usage: ./deploy.sh [branch]
-#   branch: git branch to deploy (default: DSRebuild)
+#   branch: git branch to deploy (default: main)
 #
 # Also updates Cloudflare tunnel config with the correct Cloud Run URL.
 # After deploy, restart the tunnel: cloudflared tunnel run topmoneytools
@@ -23,7 +23,7 @@ fi
 : "${GCP_CLIENT_SECRET:?Missing GCP_CLIENT_SECRET in .env}"
 : "${GCP_REFRESH_TOKEN:?Missing GCP_REFRESH_TOKEN in .env}"
 
-BRANCH="${1:-DSRebuild}"
+BRANCH="${1:-main}"
 PROJECT="tmtwebsite-501119"
 SERVICE="my-website-service"
 REGION="us-central1"
