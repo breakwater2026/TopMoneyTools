@@ -58,7 +58,7 @@ export default function InvestmentGrowth() {
         name="Investment Growth Calculator"
         num="04"
         title="Watch Your Money Grow — and See Where the Growth Comes From."
-        subtitle="Enter your starting amount, monthly contributions, expected return, and time horizon to see how compounding builds wealth, year by year."
+        subtitle="See how $10,000 grows with monthly contributions over time — compound growth calculator with chart, projections, and year-by-year breakdown."
         introParagraph={
           <>
             Understanding how your investments can grow over time helps you make informed decisions
