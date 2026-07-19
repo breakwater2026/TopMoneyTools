@@ -103,6 +103,6 @@
 
 1. **Submit sitemap.xml to Google Search Console** — ensures all pages are indexed
 2. **Create ads.txt** — place at `https://topmoneytools.com/ads.txt` with:  
-   `google.com, pub-1540793589237523, DIRECT, f08c47fec0942fa0`
+   `google.com, pub-1946389838026565, DIRECT, f08c47fec0942fa0`
 3. **Set proper Ad Unit IDs** — update `src/config/adsense.config.js` with real ad unit IDs (currently use placeholder "0000000000")
 4. **Optional: Add contact form** — for stronger trust signal, but email-only is acceptable
