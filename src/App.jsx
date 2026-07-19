@@ -106,7 +106,7 @@ function App() {
             />
             <Route
               path="/education/budgeting-for-beginners-50-30-20-rule-explained"
-              element={<BudgetingForBeginners />}
+              element={<Navigate to="/education/budgeting-for-beginners" replace />}
             />
             <Route
               path="/education/how-to-compare-loans"

@@ -10,7 +10,7 @@ import { ARTICLES } from "@/pages/Education";
 
 // Shared shell for all Education articles.
 // props: title, description, path, sidebarTerms, children (article body), lastUpdated, author
-export default function ArticleShell({ title, description, path, sidebarTerms, relatedTools = [], seoMeta, structuredData, children, lastUpdated = "July 2026", author = "TopMoneyTools Editorial Team" }) {
+export default function ArticleShell({ title, description, path, sidebarTerms, relatedTools = [], seoMeta, structuredData, children, lastUpdated = "July 2026", author = "Andre Denis" }) {
   // Find current article index to get next/prev
   const currentIndex = ARTICLES.findIndex(a => `/education/${a.slug}` === path);
   const prevArticle = currentIndex > 0 ? ARTICLES[currentIndex - 1] : null;
