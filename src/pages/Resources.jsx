@@ -62,7 +62,7 @@ export default function Resources() {
         </div>
 
         {/* Tools */}
-        <h2 className="mt-10 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Calculators — All Ten Instruments</h2>
+        <h2 className="mt-10 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Calculators — All Instruments</h2>
         <p className="mt-1 text-sm text-[#889988]">Free, private — all calculations run in your browser.</p>
         <ul className="mt-4 space-y-2">
           {TOOLS.map((t) => (
