@@ -42,7 +42,7 @@ export default function ToolsIndex() {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// The Tool Hangar</p>
         <h1 className="mt-1 font-heading text-4xl font-bold tracking-tight text-[#E0E0E0]">All Instruments</h1>
-        <p className="mt-2 max-w-xl text-[#889988]">Ten free, private calculators that run entirely in your browser. No accounts, no data stored.</p>
+        <p className="mt-2 max-w-xl text-[#889988]">Twenty-five free, private calculators that run entirely in your browser. No accounts, no data stored.</p>
 
         <div className="mt-6">
           <AdSlot slot="top" className="h-[60px]" />

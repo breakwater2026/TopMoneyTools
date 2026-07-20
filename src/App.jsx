@@ -31,6 +31,18 @@ const EmergencyFund = lazy(() => import("@/pages/tools/emergency-fund"));
 const SavingsRate = lazy(() => import("@/pages/tools/savings-rate"));
 const InflationImpact = lazy(() => import("@/pages/tools/inflation-impact"));
 const FutureValue = lazy(() => import("@/pages/tools/future-value"));
+const TaxBrackets = lazy(() => import("@/pages/tools/tax-brackets"));
+const RentVsBuyCalc = lazy(() => import("@/pages/tools/rent-vs-buy"));
+const CreditCardPayoff = lazy(() => import("@/pages/tools/credit-card-payoff"));
+const CompoundInterest = lazy(() => import("@/pages/tools/compound-interest"));
+const HomeAffordabilityCalc = lazy(() => import("@/pages/tools/home-affordability"));
+const AutoLoan = lazy(() => import("@/pages/tools/auto-loan"));
+const RetirementWithdrawal = lazy(() => import("@/pages/tools/retirement-withdrawal"));
+const StudentLoan = lazy(() => import("@/pages/tools/student-loan"));
+const DcaVsLumpSum = lazy(() => import("@/pages/tools/dca-vs-lump-sum"));
+const InsuranceGap = lazy(() => import("@/pages/tools/insurance-gap"));
+const NetWorthProjection = lazy(() => import("@/pages/tools/net-worth-projection"));
+const FireNumber = lazy(() => import("@/pages/tools/fire-number"));
 
 const HowInflationAffectsYourDailyBudget = lazy(() =>
   import("@/pages/education/HowInflationAffectsYourDailyBudget")
@@ -56,6 +68,21 @@ const CreditScoresAndBorrowing = lazy(() =>
 const EmergencyFundsAndSafetyNets = lazy(() =>
   import("@/pages/education/EmergencyFundsAndSafetyNets")
 );
+const TaxBracketsExplained = lazy(() => import("@/pages/education/TaxBracketsExplained"));
+const RentVsBuy = lazy(() => import("@/pages/education/RentVsBuy"));
+const CreditCardInterest = lazy(() => import("@/pages/education/CreditCardInterest"));
+const CompoundInterestGuide = lazy(() => import("@/pages/education/CompoundInterestGuide"));
+const HomeAffordability = lazy(() => import("@/pages/education/HomeAffordability"));
+const CarBuyingGuide = lazy(() => import("@/pages/education/CarBuyingGuide"));
+const SafeWithdrawalRates = lazy(() => import("@/pages/education/SafeWithdrawalRates"));
+const StudentLoanStrategies = lazy(() => import("@/pages/education/StudentLoanStrategies"));
+const DollarCostAveraging = lazy(() => import("@/pages/education/DollarCostAveraging"));
+const InsuranceEssentials = lazy(() => import("@/pages/education/InsuranceEssentials"));
+const SideHustleEconomics = lazy(() => import("@/pages/education/SideHustleEconomics"));
+const CouplesAndMoney = lazy(() => import("@/pages/education/CouplesAndMoney"));
+const InflationProofingSavings = lazy(() => import("@/pages/education/InflationProofingSavings"));
+const NetWorthByAge = lazy(() => import("@/pages/education/NetWorthByAge"));
+const FireMovement = lazy(() => import("@/pages/education/FireMovement"));
 
 function RouteLoader() {
   return (
@@ -96,6 +123,18 @@ function App() {
             <Route path="/tools/savings-rate" element={<SavingsRate />} />
             <Route path="/tools/inflation-impact" element={<InflationImpact />} />
             <Route path="/tools/future-value" element={<FutureValue />} />
+            <Route path="/tools/tax-brackets" element={<TaxBrackets />} />
+            <Route path="/tools/rent-vs-buy" element={<RentVsBuyCalc />} />
+            <Route path="/tools/credit-card-payoff" element={<CreditCardPayoff />} />
+            <Route path="/tools/compound-interest" element={<CompoundInterest />} />
+            <Route path="/tools/home-affordability" element={<HomeAffordabilityCalc />} />
+            <Route path="/tools/auto-loan" element={<AutoLoan />} />
+            <Route path="/tools/retirement-withdrawal" element={<RetirementWithdrawal />} />
+            <Route path="/tools/student-loan" element={<StudentLoan />} />
+            <Route path="/tools/dca-vs-lump-sum" element={<DcaVsLumpSum />} />
+            <Route path="/tools/insurance-gap" element={<InsuranceGap />} />
+            <Route path="/tools/net-worth-projection" element={<NetWorthProjection />} />
+            <Route path="/tools/fire-number" element={<FireNumber />} />
 
             <Route path="/education" element={<Education />} />
             <Route
@@ -136,6 +175,21 @@ function App() {
               path="/education/emergency-funds-and-safety-nets"
               element={<EmergencyFundsAndSafetyNets />}
             />
+            <Route path="/education/tax-brackets-explained" element={<TaxBracketsExplained />} />
+            <Route path="/education/rent-vs-buy" element={<RentVsBuy />} />
+            <Route path="/education/credit-card-interest" element={<CreditCardInterest />} />
+            <Route path="/education/compound-interest-guide" element={<CompoundInterestGuide />} />
+            <Route path="/education/home-affordability" element={<HomeAffordability />} />
+            <Route path="/education/car-buying-guide" element={<CarBuyingGuide />} />
+            <Route path="/education/safe-withdrawal-rates" element={<SafeWithdrawalRates />} />
+            <Route path="/education/student-loan-strategies" element={<StudentLoanStrategies />} />
+            <Route path="/education/dollar-cost-averaging" element={<DollarCostAveraging />} />
+            <Route path="/education/insurance-essentials" element={<InsuranceEssentials />} />
+            <Route path="/education/side-hustle-economics" element={<SideHustleEconomics />} />
+            <Route path="/education/couples-and-money" element={<CouplesAndMoney />} />
+            <Route path="/education/inflation-proofing-savings" element={<InflationProofingSavings />} />
+            <Route path="/education/net-worth-by-age" element={<NetWorthByAge />} />
+            <Route path="/education/fire-movement" element={<FireMovement />} />
 
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/resources" element={<Resources />} />
