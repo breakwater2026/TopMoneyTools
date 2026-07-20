@@ -82,7 +82,7 @@ export default function FireNumber() {
           { title: "FIRE is about freedom, not retirement", body: "Most people pursuing FIRE don't plan to stop working entirely. They want the freedom to choose work they care about, take risks, or spend more time with family — without the anxiety of needing a paycheck. The 'RE' is optional." },
         ]}
         learnMore={[
-          { label: "Read: The Simple Math Behind FIRE", to: "/education/fire-movement-math" },
+          { label: "Read: The FIRE Movement Explained", to: "/education/fire-movement" },
           { label: "Glossary: FIRE", to: "/glossary#fire" },
           { label: "Glossary: Safe Withdrawal Rate", to: "/glossary#safe-withdrawal-rate" },
           { label: "Use: Retirement Withdrawal Calculator", to: "/tools/retirement-withdrawal" },

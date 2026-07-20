@@ -61,7 +61,7 @@ export default function InsuranceGap() {
           { title: "Term life is usually the right answer", body: "For most families, term life insurance (20-30 year terms) provides the best value. It's affordable when you're young and covers the years when your family depends on your income — typically until kids are through college and the mortgage is paid." },
         ]}
         learnMore={[
-          { label: "Read: How Much Life Insurance Do You Need?", to: "/education/life-insurance-coverage-guide" },
+          { label: "Read: Insurance Essentials Guide", to: "/education/insurance-essentials" },
           { label: "Glossary: Insurance Premium", to: "/glossary#insurance-premium" },
           { label: "Glossary: Deductible", to: "/glossary#deductible" },
         ]}

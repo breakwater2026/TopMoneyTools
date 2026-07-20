@@ -129,7 +129,7 @@ export default function HomeAffordability() {
           { title: "Affordable ≠ comfortable", body: "Just because a lender says you can afford a certain home doesn't mean you should buy at that price. The lender doesn't account for your lifestyle, savings goals, or childcare costs. A good rule of thumb: keep housing under 25% of take-home pay." },
         ]}
         learnMore={[
-          { label: "Read: How Much Home Can You Afford?", to: "/education/home-affordability-guide" },
+          { label: "Read: How Much Home Can You Afford?", to: "/education/home-affordability" },
           { label: "Glossary: Mortgage", to: "/glossary#mortgage" },
           { label: "Glossary: Debt-to-Income", to: "/glossary#debt-to-income" },
           { label: "Use: Mortgage Calculator", to: "/tools/mortgage" },

@@ -60,7 +60,7 @@ export default function CompoundInterest() {
           { title: "The Rule of 72", body: "To quickly estimate how long it takes money to double, divide 72 by your annual return. At 7%, your money doubles roughly every 10.3 years (72 ÷ 7). That means $10,000 becomes ~$40,000 over ~30 years — without adding another dollar." },
         ]}
         learnMore={[
-          { label: "Read: The Power of Compound Interest", to: "/education/compound-interest-explained" },
+          { label: "Read: The Power of Compound Interest", to: "/education/compound-interest-guide" },
           { label: "Glossary: Compound Growth", to: "/glossary#compound-growth" },
           { label: "Use: Investment Growth Calculator", to: "/tools/investment-growth" },
         ]}

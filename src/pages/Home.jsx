@@ -49,7 +49,7 @@ export default function Home() {
     <Layout>
       <SEO
         title="Privacy-First Financial Calculators & Plain-English Guides"
-        description="TopMoneyTools offers 10 free, private financial calculators for inflation, debt, mortgages, budgeting, and more — all running entirely in your browser with no accounts or tracking."
+        description="TopMoneyTools offers 25 free, private financial calculators for inflation, debt, mortgages, budgeting, taxes, and more — all running entirely in your browser with no accounts or tracking."
         seoMeta={{
           url: "https://topmoneytools.com/",
           type: "website",
@@ -71,7 +71,7 @@ export default function Home() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#889988] sm:text-lg">
             When prices rise, bills shift, or choices feel overwhelming, TopMoneyTools helps you navigate the journey. {" "}
-            Ten free, private calculators and clear guidance — all run entirely on your device. No accounts. No tracking.
+            Powerful free calculators and clear guidance — all run entirely on your device. No accounts. No tracking.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link to="/tools" className="rounded-sm bg-[#A3FFD6] px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#081008] transition hover:bg-[#88E6B8] hover:instrument-glow">
@@ -127,7 +127,7 @@ export default function Home() {
       {/* The Tool Hangar — 2x4 tactical grid (PRD §3.I) */}
       <section aria-labelledby="tools-heading" className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// The Tool Hangar</p>
-        <h2 id="tools-heading" className="mt-1 font-heading text-3xl font-bold tracking-tight text-[#E0E0E0]">The Power of Ten</h2>
+        <h2 id="tools-heading" className="mt-1 font-heading text-3xl font-bold tracking-tight text-[#E0E0E0]">The Power of Our Tools</h2>
         <p className="mt-2 text-[#889988]">Free, private instruments that run entirely in your browser. No accounts, no data stored.</p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

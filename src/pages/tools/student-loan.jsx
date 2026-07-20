@@ -78,7 +78,7 @@ export default function StudentLoan() {
           { title: "Refinancing can save thousands — but has tradeoffs", body: "Refinancing federal loans to a private lender can lower your rate significantly, but you lose federal protections like income-driven repayment, deferment, and forgiveness programs. Make sure you won't need those before you refinance." },
         ]}
         learnMore={[
-          { label: "Read: Federal vs Private Student Loans", to: "/education/federal-vs-private-student-loans" },
+          { label: "Read: Student Loan Strategies", to: "/education/student-loan-strategies" },
           { label: "Glossary: Student Loan", to: "/glossary#student-loan" },
         ]}
         sidebarTerms={[

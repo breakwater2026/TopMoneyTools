@@ -62,8 +62,7 @@ export default function RentVsBuy() {
     totalMaintenance +
     insuranceEstimate +
     opCost -
-    equityAtSale +
-    remainingPrincipal;
+    equityAtSale;
 
   // Simplified: totalBuyCost vs totalRentCost
   const netDifference = totalRentCost - totalBuyCost; // positive = buying cheaper
@@ -90,14 +89,7 @@ export default function RentVsBuy() {
           const r2 = monthlyRate;
           if (r2 === 0) return loanAmount * (1 - n2 / m2);
           return loanAmount * (Math.pow(1 + r2, m2) - Math.pow(1 + r2, n2)) / (Math.pow(1 + r2, m2) - 1);
-        })()) +
-      (() => {
-        const n2 = y * 12;
-        const m2 = numPayments;
-        const r2 = monthlyRate;
-        if (r2 === 0) return loanAmount * (1 - n2 / m2);
-        return loanAmount * (Math.pow(1 + r2, m2) - Math.pow(1 + r2, n2)) / (Math.pow(1 + r2, m2) - 1);
-      })();
+        })());
 
     if (breakevenYear === null && cumBuy <= cumRent) {
       breakevenYear = y;
@@ -145,7 +137,7 @@ export default function RentVsBuy() {
           { title: "Don't forget the hidden costs of ownership", body: "Maintenance (~1% of home value per year), property taxes, insurance, and closing costs add up. These 'invisible' costs can make renting cheaper than you'd expect." },
         ]}
         learnMore={[
-          { label: "Read: The True Cost of Homeownership", to: "/education/true-cost-of-buying-a-home" },
+          { label: "Read: The True Cost of Homeownership", to: "/education/rent-vs-buy" },
           { label: "Glossary: Mortgage", to: "/glossary#mortgage" },
           { label: "Use: Mortgage Calculator", to: "/tools/mortgage" },
         ]}

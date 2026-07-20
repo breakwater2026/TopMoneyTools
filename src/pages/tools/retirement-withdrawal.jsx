@@ -80,7 +80,7 @@ export default function RetirementWithdrawal() {
           { title: "Inflation is retirement's silent killer", body: "A $40,000/year withdrawal today needs to be about $72,000 after 20 years of 3% inflation just to maintain the same purchasing power. Your withdrawals must grow, which means your portfolio must too." },
         ]}
         learnMore={[
-          { label: "Read: Understanding the 4% Rule", to: "/education/4-percent-rule-retirement" },
+          { label: "Read: Safe Withdrawal Rates", to: "/education/safe-withdrawal-rates" },
           { label: "Glossary: Safe Withdrawal Rate", to: "/glossary#safe-withdrawal-rate" },
           { label: "Glossary: FIRE", to: "/glossary#fire" },
           { label: "Use: FIRE Number Calculator", to: "/tools/fire-number" },

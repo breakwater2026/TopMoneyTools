@@ -94,7 +94,7 @@ export default function CreditCardPayoff() {
           { title: "Snowball vs. avalanche method", body: "The avalanche method (paying highest APR first) saves the most money mathematically. The snowball method (smallest balance first) builds momentum psychologically. Both work — pick the one you'll stick with." },
         ]}
         learnMore={[
-          { label: "Read: Credit Card Debt Payoff Strategies", to: "/education/credit-card-debt-payoff-strategies" },
+          { label: "Read: Credit Card Interest Guide", to: "/education/credit-card-interest" },
           { label: "Glossary: Credit Score", to: "/glossary#credit-score" },
           { label: "Glossary: Debt-to-Income", to: "/glossary#debt-to-income" },
         ]}

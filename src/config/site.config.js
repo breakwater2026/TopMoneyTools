@@ -5,7 +5,7 @@ export const SITE = {
   tagline: "Navigating the private wealth landscape.",
   baseUrl: "https://www.topmoneytools.com",
   defaultDescription:
-    "A privacy-first collection of free financial calculators. 10 instruments for inflation, debt, mortgages, retirement, budgeting, net worth and more — all run privately on your device.",
+    "A privacy-first collection of free financial calculators. 25 instruments covering inflation, debt, mortgages, retirement, budgeting, net worth, and more — all run privately on your device.",
 };
 
 // 25 tools total — expanded from 10 to 25 instruments (DSExpansion).

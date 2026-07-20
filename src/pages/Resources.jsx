@@ -43,7 +43,7 @@ export default function Resources() {
     <Layout>
       <SEO
         title="Financial Resources | TopMoneyTools"
-        description="A curated collection of all ten TopMoneyTools calculators, ten plain-English guides, and trusted government references for confident money decisions."
+        description="A curated collection of all TopMoneyTools calculators, plain-English guides, and trusted government references for confident money decisions."
         path="/resources"
         seoMeta={{
           url: "https://topmoneytools.com/resources",

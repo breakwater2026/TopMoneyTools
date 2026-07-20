@@ -81,7 +81,7 @@ export default function AutoLoan() {
           { title: "The 20/4/10 rule for car buying", body: "A healthy guideline: put 20% down, finance for no more than 4 years (48 months), and keep total monthly car expenses under 10% of gross income. This protects you from being underwater on your loan." },
         ]}
         learnMore={[
-          { label: "Read: How to Get the Best Auto Loan Rate", to: "/education/auto-loan-guide" },
+          { label: "Read: Car Buying Guide", to: "/education/car-buying-guide" },
           { label: "Glossary: Interest Rate", to: "/glossary#interest-rate" },
         ]}
         sidebarTerms={[

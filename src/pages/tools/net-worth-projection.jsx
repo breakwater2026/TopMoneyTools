@@ -71,7 +71,7 @@ export default function NetWorthProjection() {
           { title: "Net worth grows slowly, then suddenly", body: "The first $100K is the hardest. After that, compounding takes over — your investments start earning more each year than you contribute. This 'crossover point' is when wealth building shifts from effort-driven to momentum-driven." },
         ]}
         learnMore={[
-          { label: "Read: How to Calculate Net Worth", to: "/education/how-to-calculate-net-worth" },
+          { label: "Read: Net Worth Benchmarks by Age", to: "/education/net-worth-by-age" },
           { label: "Glossary: Net Worth", to: "/glossary#net-worth" },
           { label: "Use: Net Worth Calculator", to: "/tools/net-worth" },
         ]}

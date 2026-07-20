@@ -93,7 +93,7 @@ export default function DcaVsLumpSum() {
           { title: "DCA works best in volatile or declining markets", body: "When markets are choppy, buying at regular intervals means you catch some shares at lower prices. This 'averaging down' can outperform lump sum during downturns, which is why the strategy is most valuable when you're nervous." },
         ]}
         learnMore={[
-          { label: "Read: Lump Sum vs Dollar Cost Averaging", to: "/education/lump-sum-vs-dca" },
+          { label: "Read: Dollar-Cost Averaging Guide", to: "/education/dollar-cost-averaging" },
           { label: "Glossary: Dollar-Cost Averaging", to: "/glossary#dollar-cost-averaging" },
           { label: "Use: Compound Interest Calculator", to: "/tools/compound-interest" },
         ]}

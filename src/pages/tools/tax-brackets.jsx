@@ -153,7 +153,7 @@ export default function TaxBrackets() {
           { title: "Tax brackets shift with inflation", body: "The IRS adjusts bracket thresholds each year to prevent 'bracket creep' — where inflation pushes you into a higher bracket without a real increase in purchasing power." },
         ]}
         learnMore={[
-          { label: "Read: Understanding Tax Brackets", to: "/education/how-tax-brackets-work" },
+          { label: "Read: How Tax Brackets Work", to: "/education/tax-brackets-explained" },
           { label: "Glossary: Tax Bracket", to: "/glossary#tax-bracket" },
         ]}
         sidebarTerms={[
