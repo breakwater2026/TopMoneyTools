@@ -10,7 +10,7 @@ const structuredData = {
   "author": { "@type": "Organization", "name": "TopMoneyTools" },
   "publisher": { "@type": "Organization", "name": "TopMoneyTools" },
   "mainEntityOfPage":
-    "https://topmoneytools.com/education/budgeting-for-beginners-50-30-20-rule-explained",
+    "https://topmoneytools.com/education/budgeting-for-beginners",
 };
 
 const faqStructuredData = {
@@ -41,7 +41,7 @@ const openGraphMeta = {
     "Budgeting for Beginners — The 50/30/20 Rule Explained — TopMoneyTools",
   description:
     "Learn how to build your first budget using the 50/30/20 rule, with examples, tips, and common mistakes to avoid.",
-  url: "https://topmoneytools.com/education/budgeting-for-beginners-50-30-20-rule-explained",
+  url: "https://topmoneytools.com/education/budgeting-for-beginners",
   image:
     "https://topmoneytools.com/og/budgeting-for-beginners-50-30-20-rule-explained.png",
   type: "article",
@@ -68,7 +68,7 @@ export default function BudgetingForBeginners() {
         "@type": "ListItem",
         "position": 3,
         "name": "Budgeting for Beginners — The 50/30/20 Rule Explained",
-        "item": "https://topmoneytools.com/education/budgeting-for-beginners-50-30-20-rule-explained",
+        "item": "https://topmoneytools.com/education/budgeting-for-beginners",
       },
     ],
   };
@@ -77,7 +77,7 @@ export default function BudgetingForBeginners() {
     <ArticleShell
       title="Budgeting for Beginners — The 50/30/20 Rule Explained"
       description="A simple, beginner‑friendly guide to building your first budget using the 50/30/20 rule."
-      path="/education/budgeting-for-beginners-50-30-20-rule-explained"
+      path="/education/budgeting-for-beginners"
       sidebarTerms={[
         { q: "What is a budget?", slug: "budget" },
         { q: "What are fixed expenses?", slug: "fixed-expenses" },

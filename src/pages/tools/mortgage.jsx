@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, RangeField, SelectField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
+import { NumberField, RangeField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
 
 export default function Mortgage() {
   const [price, setPrice] = useState(400000);
@@ -11,14 +11,10 @@ export default function Mortgage() {
   const [term, setTerm] = useState("30");
   const [calculated, setCalculated] = useState(false);
 
-  const safePrice = toNumber(price, 0);
-  const safeDownPct = toNumber(downPct, 0);
-  const safeRate = toNumber(rate, 0);
-  const safeTerm = toNumber(term, 0);
-  const downPayment = (safePrice * safeDownPct) / 100;
-  const loanAmount = safePrice - downPayment;
-  const monthlyRate = safeRate / 100 / 12;
-  const months = safeTerm * 12;
+  const downPayment = (price * downPct) / 100;
+  const loanAmount = price - downPayment;
+  const monthlyRate = rate / 100 / 12;
+  const months = +term * 12;
   const monthlyPayment =
     monthlyRate === 0
       ? loanAmount / months
@@ -35,22 +31,6 @@ export default function Mortgage() {
         num="03"
         title="See What Your Home Really Costs You — Every Month and Over Time."
         subtitle="Enter your home price, down payment, and loan details to see your true monthly payment and the full cost of interest across the life of the loan."
-        introParagraph={
-          <>
-            Your monthly mortgage payment depends on the home price, down payment, loan term, and
-            interest rate. Even a small change in rate or term can change both your monthly bill and
-            the total interest you pay over the life of the loan. This calculator helps you compare
-            scenarios before you talk to a lender.
-          </>
-        }
-        example={
-          <>
-            On a $400,000 home with a 20% down payment ($80,000), a 30-year loan at 6.5% APR,
-            the monthly payment would be approximately $2,024. The total interest paid over 30 years
-            would be about $328,000 — nearly the same as the original loan amount.
-          </>
-        }
-        updatedDate="Updated July 2026"
         inputs={
           <>
             <NumberField label="Home price" helper="Enter the total purchase price of the home." value={price} onChange={setPrice} prefix="$" ariaLabel="Home price" />
@@ -86,32 +66,10 @@ export default function Mortgage() {
           { title: "Down payment shrinks your loan", body: "A larger down payment reduces what you borrow, which lowers both your monthly payment and the total interest you'll pay." },
           { title: "Interest compounds against you", body: "Each month interest is charged on the remaining balance. A small rate difference adds up to a large difference over 30 years." },
         ]}
-        explanation="This estimate shows the monthly payment and total interest cost for a mortgage under the assumptions you enter. It helps you compare scenarios, but real mortgages may include taxes, insurance, PMI, fees, and changing repayment terms."
-        assumptions={[
-          "The calculator assumes a fixed interest rate and a level monthly payment over the entire term.",
-          "It ignores property taxes, homeowners insurance, PMI, and any additional lender fees.",
-          "The estimate is based on the home price and down payment you enter, not your full lender quote."
-        ]}
-        dataSources={[
-          "The calculator uses the standard fixed-rate mortgage amortization formula.",
-          "The estimate is intended for planning and comparison rather than a formal mortgage quote."
-        ]}
         learnMore={[
           { label: "Read: How to Compare Loans", to: "/education/how-to-compare-loans" },
           { label: "Glossary: Amortization", to: "/glossary#amortization" },
           { label: "Use: Debt Cost Calculator", to: "/tools/debt-cost" },
-        ]}
-        relatedTools={[
-          { label: "Debt Cost Calculator", to: "/tools/debt-cost" },
-          { label: "Net Worth Calculator", to: "/tools/net-worth" },
-        ]}
-        relatedArticles={[
-          { label: "How to compare loans", to: "/education/how-to-compare-loans" },
-          { label: "Understanding interest rates", to: "/education/understanding-interest-rates" },
-        ]}
-        relatedGlossary={[
-          { label: "Amortization", to: "/glossary#amortization" },
-          { label: "Down payment", to: "/glossary#down-payment" },
         ]}
         sidebarTerms={[
           { q: "What is amortization?", slug: "amortization" },

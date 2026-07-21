@@ -132,7 +132,7 @@ export default function HomeAffordability() {
           { label: "Read: How Much Home Can You Afford?", to: "/education/home-affordability" },
           { label: "Glossary: Mortgage", to: "/glossary#mortgage" },
           { label: "Glossary: Debt-to-Income", to: "/glossary#debt-to-income" },
-          { label: "Use: Mortgage Calculator", to: "/tools/mortgage" },
+          { label: "Use: Mortgage Calculator", to: "/tools/mortgage-payment" },
         ]}
         sidebarTerms={[
           { q: "What is a mortgage?", slug: "mortgage" },

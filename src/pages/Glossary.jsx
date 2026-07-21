@@ -64,7 +64,7 @@ export default function Glossary() {
         <p className="mt-2 text-[#889988]">Plain-English definitions of the {GLOSSARY.length} terms used across our tools and articles.</p>
 
         <div className="mt-6">
-          <AdSlot slot="top" className="min-h-[100px]" />
+          <AdSlot slot="top" />
         </div>
 
         {/* Search bar */}

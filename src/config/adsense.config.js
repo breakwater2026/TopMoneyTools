@@ -1,18 +1,22 @@
 // Google AdSense configuration.
-// Replace these placeholders with your real AdSense IDs, then set ADS_ENABLED = true.
-// Also update the <script src="...client=ca-pub-..."> in index.html <head> to match PUBLISHER_ID.
+// PUBLISHER_ID must match ads.txt + index.html client= query.
+// AD_UNIT_* are numeric IDs from AdSense → By ad unit (NOT ca-pub-…).
+//
+// Layout target (Domain 6): max 3 ads/page
+//   Desktop tools: top + sidebar + footer
+//   Articles: mid (in-article) + sidebar + footer
+//   Mobile: no sidebar (desktopOnly)
 export const ADSENSE = {
   PUBLISHER_ID: "ca-pub-1946389838026565",
-  AD_UNIT_TOP: "0000000000",
-  AD_UNIT_MID: "0000000000",
-  AD_UNIT_SIDEBAR: "0000000000",
-  AD_UNIT_FOOTER: "0000000000",
+  AD_UNIT_TOP: "01", // TMT Top banner
+  AD_UNIT_MID: "02", // TMT In-article
+  AD_UNIT_SIDEBAR: "03", // TMT Sidebar
+  AD_UNIT_FOOTER: "04", // TMT Footer
 };
 
-// Set to true once your Publisher ID + Ad Unit IDs are filled in.
+// true = load script path + show shells or live units; placeholders stay shells
 export const ADS_ENABLED = true;
 
-// Slot -> AdUnit constant key
 export const SLOT_MAP = {
   top: "AD_UNIT_TOP",
   mid: "AD_UNIT_MID",

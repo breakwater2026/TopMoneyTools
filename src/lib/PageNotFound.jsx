@@ -1,46 +1,54 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import Layout from "@/components/Layout";
-import SEO from "@/components/SEO";
 
-// Themed 404. Emits noindex so bogus URLs (which the SPA necessarily serves as
-// HTTP 200) are not flagged as soft 404s by Google.
+// Soft-404 mitigation: SPA always returns HTTP 200; noindex stops indexation.
 export default function PageNotFound() {
+  const { pathname } = useLocation();
+  const pageName = pathname === "/" ? "home" : pathname.replace(/^\//, "");
+
   return (
     <Layout>
-      <SEO
-        title="Page Not Found | TopMoneyTools"
-        description="The page you are looking for does not exist. Browse our free financial calculators and plain-English guides instead."
-        seoMeta={{ robots: "noindex,follow" }}
-      />
-      <div className="mx-auto flex max-w-2xl flex-col items-center px-4 py-24 text-center sm:px-6">
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Error 404</p>
-        <h1 className="mt-3 font-heading text-4xl font-bold tracking-tight text-[#E0E0E0] sm:text-5xl">
+      <Helmet>
+        <title>Page not found | TopMoneyTools</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <meta
+          name="description"
+          content="This page does not exist on TopMoneyTools. Return home or browse our financial calculators and guides."
+        />
+      </Helmet>
+
+      <section className="mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6">
+        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// 404</p>
+        <h1 className="mt-2 font-heading text-5xl font-bold tracking-tight text-[#E0E0E0] sm:text-6xl">
           Page not found
         </h1>
-        <p className="mt-4 max-w-md text-sm leading-relaxed text-[#889988]">
-          This URL does not match any tool or guide. It may have moved, or the link may be outdated.
+        <p className="mt-4 text-sm leading-relaxed text-[#889988]">
+          We couldn’t find{" "}
+          <span className="font-mono text-[#E0E0E0]/80">“{pageName}”</span>. It may have moved or never existed.
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-sm bg-[#A3FFD6] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#081008] transition hover:bg-[#88e4b9]"
+            className="rounded-sm bg-[#A3FFD6] px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[#081008] transition hover:bg-[#88e4b9]"
           >
-            Back to home
+            Go home
           </Link>
           <Link
             to="/tools"
-            className="inline-flex items-center justify-center rounded-sm border border-[#A3FFD6]/30 px-5 py-3 text-xs uppercase tracking-[0.18em] text-[#A3FFD6] transition hover:bg-[#A3FFD6]/10"
+            className="rounded-sm border border-[#A3FFD6]/30 px-4 py-2 font-mono text-xs uppercase tracking-[0.18em] text-[#A3FFD6] transition hover:bg-[#A3FFD6]/10"
           >
-            Browse calculators
+            All tools
           </Link>
           <Link
             to="/education"
-            className="inline-flex items-center justify-center rounded-sm border border-[#A3FFD6]/30 px-5 py-3 text-xs uppercase tracking-[0.18em] text-[#A3FFD6] transition hover:bg-[#A3FFD6]/10"
+            className="rounded-sm border border-[#A3FFD6]/30 px-4 py-2 font-mono text-xs uppercase tracking-[0.18em] text-[#A3FFD6] transition hover:bg-[#A3FFD6]/10"
           >
-            Read the guides
+            Education
           </Link>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 }

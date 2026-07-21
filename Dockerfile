@@ -2,15 +2,15 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Copy package configuration first
+# Explicitly copy both package.json and package-lock.json first
 COPY package*.json ./
 
-# Deterministic install from lockfile
+# Run clean install (this will now find the lockfile perfectly)
 RUN npm ci
 
 # Copy the rest of your application code
 COPY . .
-RUN npm run build
+RUN node scripts/gen-spa-routes.mjs && npm run build
 
 # Stage 2: Serve assets using Nginx
 FROM nginx:alpine
@@ -18,7 +18,8 @@ FROM nginx:alpine
 # Remove default Nginx config files
 RUN rm -rf /etc/nginx/conf.d/*
 
-# Copy custom static Nginx config directly
+# SPA route map (true 404 for unknown paths) + site config
+COPY --from=builder /app/nginx/spa-routes.map /etc/nginx/spa-routes.map
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy compiled assets from builder stage

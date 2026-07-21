@@ -139,7 +139,7 @@ export default function RentVsBuy() {
         learnMore={[
           { label: "Read: The True Cost of Homeownership", to: "/education/rent-vs-buy" },
           { label: "Glossary: Mortgage", to: "/glossary#mortgage" },
-          { label: "Use: Mortgage Calculator", to: "/tools/mortgage" },
+          { label: "Use: Mortgage Calculator", to: "/tools/mortgage-payment" },
         ]}
         sidebarTerms={[
           { q: "What is a mortgage?", slug: "mortgage" },

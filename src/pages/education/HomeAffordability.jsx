@@ -91,7 +91,7 @@ export default function HomeAffordability() {
         { q: "What is net worth?", slug: "net-worth" },
       ]}
       relatedTools={[
-        { label: "Mortgage Calculator", to: "/tools/mortgage" },
+        { label: "Mortgage Calculator", to: "/tools/mortgage-payment" },
         { label: "Budget Planner", to: "/tools/budget-planner" },
         { label: "Net Worth Tool", to: "/tools/net-worth" },
       ]}
@@ -213,7 +213,7 @@ export default function HomeAffordability() {
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]">// Next Steps</p>
         <p className="mt-2 text-sm text-[#889988]">
           Run real numbers with the{" "}
-          <Link to="/tools/mortgage" className="text-[#A3FFD6] hover:underline">
+          <Link to="/tools/mortgage-payment" className="text-[#A3FFD6] hover:underline">
             Mortgage Calculator
           </Link>
           . Then build a realistic monthly plan with the{" "}

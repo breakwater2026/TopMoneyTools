@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClientInstance } from "@/lib/query-client";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 
 import PageNotFound from "./lib/PageNotFound";
 import ScrollToTop from "./components/ScrollToTop";
@@ -14,6 +14,7 @@ const Education = lazy(() => import("@/pages/Education"));
 const Glossary = lazy(() => import("@/pages/Glossary"));
 const Resources = lazy(() => import("@/pages/Resources"));
 const About = lazy(() => import("@/pages/About"));
+const TheEditor = lazy(() => import("@/pages/TheEditor"));
 const StartHere = lazy(() => import("@/pages/StartHere"));
 const Privacy = lazy(() => import("@/pages/Privacy"));
 const Contact = lazy(() => import("@/pages/Contact"));
@@ -29,8 +30,6 @@ const NetWorth = lazy(() => import("@/pages/tools/net-worth"));
 const SavingsGoal = lazy(() => import("@/pages/tools/savings-goal"));
 const EmergencyFund = lazy(() => import("@/pages/tools/emergency-fund"));
 const SavingsRate = lazy(() => import("@/pages/tools/savings-rate"));
-const InflationImpact = lazy(() => import("@/pages/tools/inflation-impact"));
-const FutureValue = lazy(() => import("@/pages/tools/future-value"));
 const TaxBrackets = lazy(() => import("@/pages/tools/tax-brackets"));
 const RentVsBuyCalc = lazy(() => import("@/pages/tools/rent-vs-buy"));
 const CreditCardPayoff = lazy(() => import("@/pages/tools/credit-card-payoff"));
@@ -43,6 +42,7 @@ const DcaVsLumpSum = lazy(() => import("@/pages/tools/dca-vs-lump-sum"));
 const InsuranceGap = lazy(() => import("@/pages/tools/insurance-gap"));
 const NetWorthProjection = lazy(() => import("@/pages/tools/net-worth-projection"));
 const FireNumber = lazy(() => import("@/pages/tools/fire-number"));
+const HowOurCalculatorsWork = lazy(() => import("@/pages/tools/how-our-calculators-work"));
 
 const HowInflationAffectsYourDailyBudget = lazy(() =>
   import("@/pages/education/HowInflationAffectsYourDailyBudget")
@@ -121,8 +121,6 @@ function App() {
             <Route path="/tools/savings-goal" element={<SavingsGoal />} />
             <Route path="/tools/emergency-fund" element={<EmergencyFund />} />
             <Route path="/tools/savings-rate" element={<SavingsRate />} />
-            <Route path="/tools/inflation-impact" element={<InflationImpact />} />
-            <Route path="/tools/future-value" element={<FutureValue />} />
             <Route path="/tools/tax-brackets" element={<TaxBrackets />} />
             <Route path="/tools/rent-vs-buy" element={<RentVsBuyCalc />} />
             <Route path="/tools/credit-card-payoff" element={<CreditCardPayoff />} />
@@ -135,6 +133,7 @@ function App() {
             <Route path="/tools/insurance-gap" element={<InsuranceGap />} />
             <Route path="/tools/net-worth-projection" element={<NetWorthProjection />} />
             <Route path="/tools/fire-number" element={<FireNumber />} />
+            <Route path="/tools/how-our-calculators-work" element={<HowOurCalculatorsWork />} />
 
             <Route path="/education" element={<Education />} />
             <Route
@@ -147,7 +146,7 @@ function App() {
             />
             <Route
               path="/education/budgeting-for-beginners-50-30-20-rule-explained"
-              element={<BudgetingForBeginners />}
+              element={<Navigate to="/education/budgeting-for-beginners" replace />}
             />
             <Route
               path="/education/how-to-compare-loans"
@@ -194,6 +193,7 @@ function App() {
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/about" element={<About />} />
+            <Route path="/the-editor" element={<TheEditor />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/start-here" element={<StartHere />} />

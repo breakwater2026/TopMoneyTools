@@ -3,12 +3,12 @@
 export const SITE = {
   name: "TopMoneyTools",
   tagline: "Navigating the private wealth landscape.",
-  baseUrl: "https://www.topmoneytools.com",
+  baseUrl: "https://topmoneytools.com",
   defaultDescription:
-    "A privacy-first collection of free financial calculators. 25 instruments covering inflation, debt, mortgages, retirement, budgeting, net worth, and more — all run privately on your device.",
+    "A privacy-first collection of free financial calculators covering inflation, debt, mortgages, retirement, budgeting, net worth, and more — all run privately on your device.",
 };
 
-// 25 tools total — expanded from 10 to 25 instruments (DSExpansion).
+// Live calculator registry (DSExpansion). Keep in sync with App.jsx routes.
 export const TOOLS = [
   { slug: "food-inflation", num: "01", name: "Food Inflation Calculator", short: "See how rising grocery prices compound over time." },
   { slug: "debt-cost", num: "02", name: "Debt Cost Calculator", short: "Understand the true cost of any loan with amortization." },
@@ -20,28 +20,29 @@ export const TOOLS = [
   { slug: "savings-goal", num: "08", name: "Savings Goal Calculator", short: "Find the timeline and monthly rate to reach any goal." },
   { slug: "emergency-fund", num: "09", name: "Emergency Fund Calculator", short: "See how many months of expenses your savings cover — and what's missing." },
   { slug: "savings-rate", num: "10", name: "Savings Rate Calculator", short: "Measure the share of income you keep — the habit behind every goal." },
-  { slug: "tax-brackets", num: "14", name: "Tax Bracket Visualizer", short: "See exactly how progressive tax brackets apply to your income." },
-  { slug: "rent-vs-buy", num: "15", name: "Rent vs. Buy Calculator", short: "Compare the full financial picture of renting versus buying a home." },
-  { slug: "credit-card-payoff", num: "16", name: "Credit Card Payoff Calculator", short: "See how long it takes to clear your balance and the interest you'll pay." },
-  { slug: "compound-interest", num: "17", name: "Compound Interest Visualizer", short: "Watch your money grow with contributions, earnings, and time." },
-  { slug: "home-affordability", num: "18", name: "Home Affordability Calculator", short: "Find out how much house you can actually afford." },
-  { slug: "auto-loan", num: "19", name: "Auto Loan Calculator", short: "Calculate monthly payments and total cost of your next car." },
-  { slug: "retirement-withdrawal", num: "20", name: "Retirement Withdrawal Calculator", short: "Test if your savings will last through retirement." },
-  { slug: "student-loan", num: "21", name: "Student Loan Repayment Calculator", short: "Map out your path to being debt-free from student loans." },
-  { slug: "dca-vs-lump-sum", num: "22", name: "DCA vs. Lump Sum Simulator", short: "Compare dollar-cost averaging against investing all at once." },
-  { slug: "insurance-gap", num: "23", name: "Insurance Gap Analyzer", short: "Find out if you have enough coverage to protect your family." },
-  { slug: "net-worth-projection", num: "24", name: "Net Worth Projection Tool", short: "See your future net worth based on your current savings rate." },
-  { slug: "fire-number", num: "25", name: "FIRE Number Calculator", short: "Calculate your Financial Independence number and timeline." },
+  { slug: "tax-brackets", num: "11", name: "Tax Bracket Visualizer", short: "See exactly how progressive tax brackets apply to your income." },
+  { slug: "rent-vs-buy", num: "12", name: "Rent vs. Buy Calculator", short: "Compare the full financial picture of renting versus buying a home." },
+  { slug: "credit-card-payoff", num: "13", name: "Credit Card Payoff Calculator", short: "See how long it takes to clear your balance and the interest you'll pay." },
+  { slug: "compound-interest", num: "14", name: "Compound Interest Visualizer", short: "Watch your money grow with contributions, earnings, and time." },
+  { slug: "home-affordability", num: "15", name: "Home Affordability Calculator", short: "Find out how much house you can actually afford." },
+  { slug: "auto-loan", num: "16", name: "Auto Loan Calculator", short: "Calculate monthly payments and total cost of your next car." },
+  { slug: "retirement-withdrawal", num: "17", name: "Retirement Withdrawal Calculator", short: "Test if your savings will last through retirement." },
+  { slug: "student-loan", num: "18", name: "Student Loan Repayment Calculator", short: "Map out your path to being debt-free from student loans." },
+  { slug: "dca-vs-lump-sum", num: "19", name: "DCA vs. Lump Sum Simulator", short: "Compare dollar-cost averaging against investing all at once." },
+  { slug: "insurance-gap", num: "20", name: "Insurance Gap Analyzer", short: "Find out if you have enough coverage to protect your family." },
+  { slug: "net-worth-projection", num: "21", name: "Net Worth Projection Tool", short: "See your future net worth based on your current savings rate." },
+  { slug: "fire-number", num: "22", name: "FIRE Number Calculator", short: "Calculate your Financial Independence number and timeline." },
 ];
 
-export const LIVE_TOOLS = TOOLS.filter((t) => true);
-export const FUTURE_TOOLS = [];
+export const LIVE_TOOLS = TOOLS;
+export const TOOL_COUNT = TOOLS.length;
 
 export const NAV_LINKS = [
   { label: "Education", path: "/education" },
   { label: "Glossary", path: "/glossary" },
   { label: "Resources", path: "/resources" },
   { label: "About", path: "/about" },
+  { label: "The Editor", path: "/the-editor" },
   { label: "Contact", path: "/contact" },
 ];
 

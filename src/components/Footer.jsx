@@ -15,7 +15,9 @@ export default function Footer() {
           <ul className="mt-3 space-y-2 text-sm text-[#E0E0E0]/80">
             {TOOLS.map((t) => (
               <li key={t.slug}>
-                <Link to={`/tools/${t.slug}`} className="hover:text-[#A3FFD6]">{t.name}</Link>
+                <Link to={`/tools/${t.slug}`} className="hover:text-[#A3FFD6]">
+                  <span className="font-mono text-[10px] text-[#889988]">{t.num}</span> {t.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -26,7 +28,9 @@ export default function Footer() {
           <ul className="mt-3 space-y-2 text-sm text-[#E0E0E0]/80">
             {ARTICLES.map((a) => (
               <li key={a.slug}>
-                <Link to={`/education/${a.slug}`} className="hover:text-[#A3FFD6]">{a.t}</Link>
+                <Link to={`/education/${a.slug}`} className="hover:text-[#A3FFD6]">
+                  <span className="font-mono text-[10px] text-[#889988]">{a.num}</span> {a.t}
+                </Link>
               </li>
             ))}
           </ul>
@@ -36,11 +40,13 @@ export default function Footer() {
           <h2 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">Resources</h2>
           <ul className="mt-3 space-y-2 text-sm text-[#E0E0E0]/80">
             <li><Link to="/tools" className="hover:text-[#A3FFD6]">All Tools</Link></li>
+            <li><Link to="/tools/how-our-calculators-work" className="hover:text-[#A3FFD6]">How Calculators Work</Link></li>
             <li><Link to="/education" className="hover:text-[#A3FFD6]">Education Center</Link></li>
             <li><Link to="/glossary" className="hover:text-[#A3FFD6]">Glossary ({GLOSSARY.length} terms)</Link></li>
             <li><Link to="/resources" className="hover:text-[#A3FFD6]">Resources</Link></li>
             <li><Link to="/start-here" className="hover:text-[#A3FFD6]">Start Here</Link></li>
             <li><Link to="/about" className="hover:text-[#A3FFD6]">About</Link></li>
+            <li><Link to="/the-editor" className="hover:text-[#A3FFD6]">The Editor</Link></li>
           </ul>
         </nav>
 
@@ -50,6 +56,8 @@ export default function Footer() {
             <li><Link to="/privacy" className="hover:text-[#A3FFD6]">Privacy Policy</Link></li>
             <li><Link to="/terms" className="hover:text-[#A3FFD6]">Terms of Use</Link></li>
             <li><Link to="/contact" className="hover:text-[#A3FFD6]">Contact</Link></li>
+            <li><a href="/ads.txt" className="hover:text-[#A3FFD6]">ads.txt</a></li>
+            <li><a href="/sitemap.xml" className="hover:text-[#A3FFD6]">Sitemap</a></li>
           </ul>
           <div className="mt-6">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#889988]">Private by design</p>
@@ -62,7 +70,7 @@ export default function Footer() {
       {/* Footer ad */}
       <div className="border-t border-[#A3FFD6]/10 py-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <AdSlot slot="footer" className="min-h-[90px]" />
+          <AdSlot slot="footer" />
         </div>
       </div>
 

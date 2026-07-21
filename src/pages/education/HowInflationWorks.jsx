@@ -83,7 +83,7 @@ export default function HowInflationWorks() {
         { q: "What is wage growth?", slug: "wage-growth" },
       ]}
       relatedTools={[
-        { label: "Inflation Calculator", to: "/tools/inflation" },
+        { label: "Inflation Calculator", to: "/tools/food-inflation" },
         { label: "Budget Planner", to: "/tools/budget-planner" },
         { label: "Investment Growth Calculator", to: "/tools/investment-growth" },
       ]}
@@ -121,7 +121,7 @@ export default function HowInflationWorks() {
       <h2 className="mt-6 text-xl font-semibold text-[#E0E0E0]">Mini‑calculation: inflation over time</h2>
       <p className="text-[#889988]">
         At 3% annual inflation, prices roughly double in about 24 years. Use the{" "}
-        <Link to="/tools/inflation" className="text-[#A3FFD6] hover:underline">
+        <Link to="/tools/food-inflation" className="text-[#A3FFD6] hover:underline">
           Inflation Calculator
         </Link>{" "}
         to see how today’s prices compare to future costs.
@@ -195,7 +195,7 @@ export default function HowInflationWorks() {
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]">// Next Steps</p>
         <p className="mt-2 text-sm text-[#889988]">
           Use the{" "}
-          <Link to="/tools/inflation" className="text-[#A3FFD6] hover:underline">
+          <Link to="/tools/food-inflation" className="text-[#A3FFD6] hover:underline">
             Inflation Calculator
           </Link>{" "}
           to see how inflation affects your savings and future expenses. Then adjust your budget and investing plan to
@@ -207,7 +207,7 @@ export default function HowInflationWorks() {
         <h3 className="font-heading text-lg text-[#E0E0E0]">Read Next</h3>
         <ul className="mt-2 list-disc pl-6 text-[#889988]">
           <li>
-            <Link to="/education/how-inflation-effects-your-daily-budget" className="text-[#A3FFD6] hover:underline">
+            <Link to="/education/how-inflation-affects-your-daily-budget" className="text-[#A3FFD6] hover:underline">
               How Inflation Affects Your Daily Budget
             </Link>
           </li>

@@ -2,7 +2,7 @@ import { lazy, Suspense, useMemo, useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, RangeField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
+import { NumberField, RangeField, CalculateButton, usd } from "@/components/tools/FormControls";
 
 const InvestmentGrowthChart = lazy(() => import("@/components/tools/InvestmentGrowthChart"));
 
@@ -14,15 +14,11 @@ export default function InvestmentGrowth() {
   const [calculated, setCalculated] = useState(false);
 
   const { finalValue, totalContributed, totalGrowth, chartData } = useMemo(() => {
-    const safeInitial = toNumber(initial, 0);
-    const safeMonthly = toNumber(monthly, 0);
-    const safeRate = toNumber(rate, 0);
-    const safeYears = toNumber(years, 0);
-    const monthlyRate = safeRate / 100 / 12;
-    const months = safeYears * 12;
+    const monthlyRate = rate / 100 / 12;
+    const months = years * 12;
     const series = [];
-    let balance = safeInitial;
-    let contributed = safeInitial;
+    let balance = initial;
+    let contributed = initial;
 
     series.push({
       year: 0,
@@ -31,8 +27,8 @@ export default function InvestmentGrowth() {
     });
 
     for (let m = 1; m <= months; m++) {
-      balance = balance * (1 + monthlyRate) + safeMonthly;
-      contributed += safeMonthly;
+      balance = balance * (1 + monthlyRate) + monthly;
+      contributed += monthly;
 
       if (m % 12 === 0) {
         series.push({
@@ -58,23 +54,7 @@ export default function InvestmentGrowth() {
         name="Investment Growth Calculator"
         num="04"
         title="Watch Your Money Grow — and See Where the Growth Comes From."
-        subtitle="See how $10,000 grows with monthly contributions over time — compound growth calculator with chart, projections, and year-by-year breakdown."
-        introParagraph={
-          <>
-            Understanding how your investments can grow over time helps you make informed decisions
-            about saving for retirement, education, or other long-term goals. This calculator
-            projects future value based on your initial investment, monthly contributions, and
-            expected return rate.
-          </>
-        }
-        example={
-          <>
-            Investing $10,000 initially with $500 added monthly at a 7% annual return would grow
-            to approximately $95,000 after 10 years. The same strategy over 20 years would reach
-            about $290,000 — showing the power of time in the market.
-          </>
-        }
-        updatedDate="Updated July 2026"
+        subtitle="Enter your starting amount, monthly contributions, expected return, and time horizon to see how compounding builds wealth, year by year."
         inputs={
           <>
             <NumberField
@@ -173,32 +153,10 @@ export default function InvestmentGrowth() {
             body: "7% is a long-run average for diversified stock portfolios, but real returns vary year to year. Use this as a planning estimate, not a promise.",
           },
         ]}
-        explanation="This estimate models how a lump sum and regular monthly contributions could grow over time if your chosen return rate is achieved each year. It is a planning tool, not a promise, because investment returns vary and market conditions change."
-        assumptions={[
-          "The calculator assumes the same annual rate of return every month for the full period.",
-          "It does not include taxes, fees, inflation, or changes in contribution amounts over time.",
-          "It treats the return as a smooth average rather than a real-world sequence of gains and losses."
-        ]}
-        dataSources={[
-          "The projection uses the standard compound growth formula for investments with regular contributions.",
-          "The example rates are educational and should be adjusted to fit your own expectations."
-        ]}
         learnMore={[
           { label: "Glossary: Compound Growth", to: "/glossary#compound-growth" },
           { label: "Glossary: Risk Tolerance", to: "/glossary#risk-tolerance" },
           { label: "Use: Retirement Calculator", to: "/tools/retirement" },
-        ]}
-        relatedTools={[
-          { label: "Retirement Savings Calculator", to: "/tools/retirement" },
-          { label: "Savings Goal Calculator", to: "/tools/savings-goal" },
-        ]}
-        relatedArticles={[
-          { label: "Investing 101", to: "/education/investing-101" },
-          { label: "Retirement planning basics", to: "/education/retirement-planning-basics" },
-        ]}
-        relatedGlossary={[
-          { label: "Compound growth", to: "/glossary#compound-growth" },
-          { label: "Risk tolerance", to: "/glossary#risk-tolerance" },
         ]}
         sidebarTerms={[
           { q: "What is compound growth?", slug: "compound-growth" },

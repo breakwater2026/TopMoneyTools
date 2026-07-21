@@ -2,42 +2,28 @@ options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
 
 steps:
-  # Build with no-cache to prevent stale layers
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
-      - '--no-cache'
       - '-t'
-      - 'us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:$COMMIT_SHA'
-      - '-t'
-      - 'us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:latest'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'
       - '.'
 
-  # Push both tags
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:$COMMIT_SHA'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'
 
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'push'
-      - 'us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:latest'
-
-  # Deploy commit-specific image, explicitly target the serving project
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
       - 'run'
       - 'deploy'
       - 'my-website-service'
-      - '--image=us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:$COMMIT_SHA'
-      - '--project=tmtwebsite-501119'
+      - '--image=us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'
       - '--region=us-central1'
       - '--platform=managed'
       - '--allow-unauthenticated'
-      - '--quiet'
 
 images:
-  - 'us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:$COMMIT_SHA'
-  - 'us-central1-docker.pkg.dev/tmtwebsite-501119/my-website-image/my-website-image:latest'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-website-image/my-website-image:$COMMIT_SHA'

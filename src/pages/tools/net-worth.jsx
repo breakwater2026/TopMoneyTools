@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
+import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
 
 export default function NetWorth() {
   const [assets, setAssets] = useState({ home: 300000, savings: 15000, investments: 25000, vehicle: 12000, other: 0 });
@@ -12,8 +12,8 @@ export default function NetWorth() {
   const setAsset = (k, v) => setAssets((s) => ({ ...s, [k]: Math.max(0, v) }));
   const setLiab = (k, v) => setLiabilities((s) => ({ ...s, [k]: Math.max(0, v) }));
 
-  const totalAssets = Object.values(assets).reduce((a, b) => a + toNumber(b, 0), 0);
-  const totalLiabilities = Object.values(liabilities).reduce((a, b) => a + toNumber(b, 0), 0);
+  const totalAssets = Object.values(assets).reduce((a, b) => a + b, 0);
+  const totalLiabilities = Object.values(liabilities).reduce((a, b) => a + b, 0);
   const netWorth = totalAssets - totalLiabilities;
 
   const assetFields = [
@@ -38,22 +38,6 @@ export default function NetWorth() {
         num="07"
         title="Add Up Everything You Own and Owe — See the Real Number That Matters."
         subtitle="Your net worth is your assets minus your liabilities — the clearest single picture of your financial health. Enter the numbers below."
-        introParagraph={
-          <>
-            Net worth is the value of what you own minus what you owe. It is not a judgment of success —
-            it is simply a snapshot that can help you track progress over time and make better saving,
-            spending, and debt decisions. Assets may include cash, savings, investments, and property.
-            Liabilities may include credit card balances, loans, and mortgages.
-          </>
-        }
-        example={
-          <>
-            If you own a home worth $300,000, have $40,000 in savings and investments, and owe
-            $200,000 on your mortgage plus $12,000 in other debts, your net worth is $128,000.
-            Tracking this number annually helps you see whether you are building wealth over time.
-          </>
-        }
-        updatedDate="Updated July 2026"
         inputs={
           <div className="grid gap-6 sm:grid-cols-2">
             <fieldset className="rounded-sm border border-[#A3FFD6]/20 bg-void/40 p-4">
@@ -93,32 +77,10 @@ export default function NetWorth() {
           { title: "Assets aren't only cash", body: "Home equity, retirement accounts, vehicles, and valuables all count. Many people undercount their assets by forgetting retirement savings." },
           { title: "Paying debt raises net worth", body: "Paying down a loan increases net worth just as surely as saving the same amount — because net worth is the gap between the two." },
         ]}
-        explanation="This view summarizes the gap between what you own and what you owe. It is a helpful snapshot of financial position over time, but it does not capture everything that affects your real-world financial health, such as taxes, future obligations, or the true cost of assets."
-        assumptions={[
-          "The calculator assumes the values you enter are current estimates of market value and outstanding debt.",
-          "It treats all assets and liabilities as simple dollar amounts without timing or interest adjustments.",
-          "It does not model changes in home value, loan balances, or investment performance over time."
-        ]}
-        dataSources={[
-          "The result is based on the asset and liability values you enter.",
-          "No external market data is used in this version of the tool."
-        ]}
         learnMore={[
           { label: "Glossary: Net Worth", to: "/glossary#net-worth" },
           { label: "Use: Debt Cost Calculator", to: "/tools/debt-cost" },
-          { label: "Read: Budgeting for Beginners", to: "/education/budgeting-for-beginners-50-30-20-rule-explained" },
-        ]}
-        relatedTools={[
-          { label: "Debt Cost Calculator", to: "/tools/debt-cost" },
-          { label: "Budget Planner", to: "/tools/budget-planner" },
-        ]}
-        relatedArticles={[
-          { label: "Budgeting for beginners", to: "/education/budgeting-for-beginners" },
-          { label: "Budgeting 101", to: "/education/budgeting-101" },
-        ]}
-        relatedGlossary={[
-          { label: "Net worth", to: "/glossary#net-worth" },
-          { label: "Asset", to: "/glossary#asset" },
+          { label: "Read: Budgeting for Beginners", to: "/education/budgeting-for-beginners" },
         ]}
         sidebarTerms={[
           { q: "What is net worth?", slug: "net-worth" },

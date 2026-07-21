@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, RangeField, SelectField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
+import { NumberField, RangeField, SelectField, CalculateButton, usd } from "@/components/tools/FormControls";
 
 export default function DebtCost() {
   const [principal, setPrincipal] = useState(10000);
@@ -30,19 +30,16 @@ export default function DebtCost() {
     return countryData ? countryData.value : 5.2;
   };
 
-  const safePrincipal = toNumber(principal, 0);
-  const safeYears = toNumber(years, 0);
   const rate = getRate(country);
-  const safeRate = toNumber(rate, 0);
-  const monthlyRate = safeRate / 100 / 12;
-  const months = safeYears * 12;
+  const monthlyRate = rate / 100 / 12;
+  const months = years * 12;
   const monthlyPayment =
     monthlyRate === 0
-      ? safePrincipal / months
-      : (safePrincipal * monthlyRate * Math.pow(1 + monthlyRate, months)) /
+      ? principal / months
+      : (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) /
         (Math.pow(1 + monthlyRate, months) - 1);
   const totalPaid = monthlyPayment * months;
-  const totalInterest = totalPaid - safePrincipal;
+  const totalInterest = totalPaid - principal;
 
   return (
     <Layout>
@@ -52,22 +49,6 @@ export default function DebtCost() {
         num="02"
         title="Find Out the True Cost of Any Loan."
         subtitle="The price tag on a loan isn't just what you borrow. Enter your loan details and see exactly how much you'll really pay — including the extra cost of interest, in plain numbers."
-        introParagraph={
-          <>
-            The total cost of a loan goes far beyond what you borrow. Interest adds up over time,
-            and the length of your repayment term dramatically affects how much extra you pay.
-            This calculator shows the true cost so you can compare loan offers with clarity.
-          </>
-        }
-        example={
-          <>
-            Borrowing $10,000 at 7% APR over 5 years means a monthly payment of about $198 and
-            total interest of roughly $1,880. The same loan over 3 years would cost about $309 per
-            month but only $1,120 in total interest — a tradeoff between monthly affordability and
-            long-term cost.
-          </>
-        }
-        updatedDate="Updated July 2026"
         inputs={
           <>
             <NumberField label="How much do you want to borrow?" helper="The total loan amount — e.g. car, personal loan, or credit card balance." value={principal} onChange={setPrincipal} prefix="$" ariaLabel="Loan amount" />
@@ -91,7 +72,7 @@ export default function DebtCost() {
             rows={[
               { label: "Total Interest Paid", value: usd(totalInterest), emphasis: "amber" },
               { label: "Total Repaid", value: usd(totalPaid) },
-              { label: "Interest as % of Loan", value: `${safePrincipal > 0 ? ((totalInterest / safePrincipal) * 100).toFixed(1) : 0}%` },
+              { label: "Interest as % of Loan", value: `${((totalInterest / principal) * 100).toFixed(1)}%` },
             ]}
           />
         }
@@ -100,31 +81,9 @@ export default function DebtCost() {
           { title: "Term length matters more than you think", body: "A longer-term loan feels cheaper month-to-month but costs far more in total interest. Doubling your repayment time can nearly double your total cost." },
           { title: "Small rate differences add up", body: "A 2% lower rate on a large loan can save thousands over the lifetime. That's why it pays to shop around and improve your credit score before applying." },
         ]}
-        explanation="This estimate shows the monthly payment and total interest you would pay if the loan carried the selected interest rate for the full term. It is useful for comparing options, but real loans may include fees, changing rates, or different payment structures."
-        assumptions={[
-          "The calculator assumes a fixed interest rate for the full loan term.",
-          "It uses equal monthly payments and does not include origination fees, late fees, or taxes.",
-          "It does not model variable-rate loans or unusual repayment schedules."
-        ]}
-        dataSources={[
-          "Country rates are based on the regional averages included with this tool.",
-          "The payment estimate uses the standard loan amortization formula."
-        ]}
         learnMore={[
           { label: "Read: How to Compare Loans", to: "/education/how-to-compare-loans" },
           { label: "Glossary: APR", to: "/glossary#apr" },
-        ]}
-        relatedTools={[
-          { label: "Mortgage Payment Calculator", to: "/tools/mortgage-payment" },
-          { label: "Net Worth Calculator", to: "/tools/net-worth" },
-        ]}
-        relatedArticles={[
-          { label: "How to compare loans", to: "/education/how-to-compare-loans" },
-          { label: "Understanding interest rates", to: "/education/understanding-interest-rates" },
-        ]}
-        relatedGlossary={[
-          { label: "Interest", to: "/glossary#interest" },
-          { label: "APR", to: "/glossary#apr" },
         ]}
         sidebarTerms={[
           { q: "What is interest?", slug: "interest" },
