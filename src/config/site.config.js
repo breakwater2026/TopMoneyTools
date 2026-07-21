@@ -5,10 +5,10 @@ export const SITE = {
   tagline: "Navigating the private wealth landscape.",
   baseUrl: "https://topmoneytools.com",
   defaultDescription:
-    "A privacy-first collection of free financial calculators. 25 instruments covering inflation, debt, mortgages, retirement, budgeting, net worth, and more — all run privately on your device.",
+    "A privacy-first collection of free financial calculators covering inflation, debt, mortgages, retirement, budgeting, net worth, and more — all run privately on your device.",
 };
 
-// 25 tools total — expanded from 10 to 25 instruments (DSExpansion).
+// Live calculator registry (DSExpansion). Keep in sync with App.jsx routes.
 export const TOOLS = [
   { slug: "food-inflation", num: "01", name: "Food Inflation Calculator", short: "See how rising grocery prices compound over time." },
   { slug: "debt-cost", num: "02", name: "Debt Cost Calculator", short: "Understand the true cost of any loan with amortization." },
@@ -34,8 +34,8 @@ export const TOOLS = [
   { slug: "fire-number", num: "25", name: "FIRE Number Calculator", short: "Calculate your Financial Independence number and timeline." },
 ];
 
-export const LIVE_TOOLS = TOOLS.filter((t) => true);
-export const FUTURE_TOOLS = [];
+export const LIVE_TOOLS = TOOLS;
+export const TOOL_COUNT = TOOLS.length;
 
 export const NAV_LINKS = [
   { label: "Education", path: "/education" },

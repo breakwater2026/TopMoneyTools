@@ -80,7 +80,7 @@ export default function Resources() {
 
         {/* Education articles */}
         <h2 className="mt-10 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Education Articles</h2>
-        <p className="mt-1 text-sm text-[#889988]">Ten plain-English guides on the financial topics that matter most.</p>
+        <p className="mt-1 text-sm text-[#889988]">Plain-English guides on the financial topics that matter most.</p>
         <ul className="mt-4 space-y-2 text-sm">
           {ARTICLES.map((a) => (
             <li key={a.slug}>

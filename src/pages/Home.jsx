@@ -4,7 +4,7 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import AdSlot from "@/components/AdSlot";
 import Reveal from "@/components/Reveal";
-import { LIVE_TOOLS, FUTURE_TOOLS } from "@/config/site.config";
+import { LIVE_TOOLS } from "@/config/site.config";
 
 const FAQS = [
   { q: "Are these calculators really free?", a: "Yes. All instruments are completely free — no account, paywall, or upsell." },
@@ -150,24 +150,8 @@ export default function Home() {
               </span>
             </Link>
           ))}
-
-          {/* Future / scaffolded tools */}
-          {FUTURE_TOOLS.map((t) => (
-            <Link
-              key={t.slug}
-              to="/tools"
-              className="flex flex-col rounded-sm border border-dashed border-[#A3FFD6]/20 bg-obsidian/50 p-5 opacity-60"
-            >
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">{t.num}</span>
-              <h3 className="mt-4 font-heading text-lg font-semibold text-[#E0E0E0]">{t.name}</h3>
-              <p className="mt-2 flex-1 text-sm text-[#889988]">{t.short}</p>
-              <span className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-[#889988]">// In Development</span>
-            </Link>
-          ))}
         </div>
       </section>
-
-      {/* Mid ad removed — max 3 with Layout footer; home has top + footer only */}
 
       {/* Education preview */}
       <section aria-labelledby="edu-heading" className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
@@ -178,7 +162,7 @@ export default function Home() {
         <div className="mt-8 grid gap-5 sm:grid-cols-3">
           {[
             { e: "▮", t: "How Inflation Affects Your Daily Budget", d: "Why prices rise and how to stay ahead of them.", s: "how-inflation-affects-your-daily-budget" },
-            { e: "▣", t: "Budgeting for Beginners (50/30/20)", d: "A simple method to bring balance and clarity to your spending.", s: "budgeting-for-beginners-50-30-20-rule-explained" },
+            { e: "▣", t: "Budgeting for Beginners (50/30/20)", d: "A simple method to bring balance and clarity to your spending.", s: "budgeting-for-beginners" },
             { e: "◈", t: "How to Compare Loans", d: "The three numbers that matter most when choosing a loan.", s: "how-to-compare-loans" },
           ].map((a) => (
             <Link key={a.s} to={`/education/${a.s}`} className="group instrument-surface rounded-sm p-5 transition hover:instrument-glow">
