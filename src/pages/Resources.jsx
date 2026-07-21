@@ -58,7 +58,7 @@ export default function Resources() {
         <p className="mt-2 text-[#889988]">A curated collection of free calculators, plain-English guides, and trusted government references.</p>
 
         <div className="mt-6">
-          <AdSlot slot="top" className="h-[60px]" />
+          <AdSlot slot="top" />
         </div>
 
         {/* Tools */}

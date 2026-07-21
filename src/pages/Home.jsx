@@ -87,7 +87,7 @@ export default function Home() {
       {/* Top banner */}
       <div className="border-y border-[#A3FFD6]/10 bg-obsidian">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
-          <AdSlot slot="top" className="h-[60px]" />
+          <AdSlot slot="top" />
         </div>
       </div>
 
@@ -167,10 +167,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mid-content ad */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <AdSlot slot="mid" className="h-[120px]" />
-      </div>
+      {/* Mid ad removed — max 3 with Layout footer; home has top + footer only */}
 
       {/* Education preview */}
       <section aria-labelledby="edu-heading" className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
@@ -276,11 +273,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer banner ad */}
-      <div className="mx-auto max-w-7xl px-4 pb-10 sm:px-6">
-        <AdSlot slot="footer" className="h-[60px]" />
-      </div>
+      {/* Footer ad lives in Layout <Footer /> — avoid double slot */}
     </Layout>
   );
 }

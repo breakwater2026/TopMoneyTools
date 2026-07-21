@@ -3,7 +3,7 @@
 export const SITE = {
   name: "TopMoneyTools",
   tagline: "Navigating the private wealth landscape.",
-  baseUrl: "https://www.topmoneytools.com",
+  baseUrl: "https://topmoneytools.com",
   defaultDescription:
     "A privacy-first collection of free financial calculators. 25 instruments covering inflation, debt, mortgages, retirement, budgeting, net worth, and more — all run privately on your device.",
 };

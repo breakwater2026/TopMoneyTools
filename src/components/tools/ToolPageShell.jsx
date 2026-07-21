@@ -88,7 +88,7 @@ export default function ToolPageShell({
       {/* Top banner ad — integrated "status bar" */}
       <div className="border-b border-[#A3FFD6]/10 bg-obsidian">
         <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
-          <AdSlot slot="top" className="h-[60px]" />
+          <AdSlot slot="top" />
         </div>
       </div>
 
@@ -116,8 +116,7 @@ export default function ToolPageShell({
             <div className="space-y-6">{inputs}</div>
             {calculate && <div className="mt-8">{calculate}</div>}
             {results}
-            {/* Mid-content ad */}
-            <AdSlot slot="mid" className="mt-8 h-[120px]" />
+            {/* Mid ad removed — max 3: top + sidebar + footer */}
           </article>
 
           {/* Intel sidebar — sticky */}

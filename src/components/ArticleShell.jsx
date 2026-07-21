@@ -22,7 +22,7 @@ export default function ArticleShell({ title, description, path, sidebarTerms, r
 
       <div className="border-b border-[#A3FFD6]/10 bg-obsidian">
         <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
-          <AdSlot slot="top" className="h-[60px]" />
+          <AdSlot slot="top" />
         </div>
       </div>
 
@@ -83,7 +83,7 @@ export default function ArticleShell({ title, description, path, sidebarTerms, r
               </div>
             )}
 
-            <AdSlot slot="mid" className="mt-8 h-[120px]" />
+            {/* Mid ad removed — max 3: top + sidebar + footer (Domain 6) */}
           </article>
 
           <MoneyBasicsSidebar terms={sidebarTerms} />

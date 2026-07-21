@@ -50,6 +50,8 @@ export default function Footer() {
             <li><Link to="/privacy" className="hover:text-[#A3FFD6]">Privacy Policy</Link></li>
             <li><Link to="/terms" className="hover:text-[#A3FFD6]">Terms of Use</Link></li>
             <li><Link to="/contact" className="hover:text-[#A3FFD6]">Contact</Link></li>
+            <li><a href="/ads.txt" className="hover:text-[#A3FFD6]">ads.txt</a></li>
+            <li><a href="/sitemap.xml" className="hover:text-[#A3FFD6]">Sitemap</a></li>
           </ul>
           <div className="mt-6">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#889988]">Private by design</p>
@@ -62,7 +64,7 @@ export default function Footer() {
       {/* Footer ad */}
       <div className="border-t border-[#A3FFD6]/10 py-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <AdSlot slot="footer" className="h-[90px]" />
+          <AdSlot slot="footer" />
         </div>
       </div>
 

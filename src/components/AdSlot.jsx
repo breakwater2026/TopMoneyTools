@@ -1,17 +1,33 @@
 import { useEffect, useRef } from "react";
 import { ADSENSE, ADS_ENABLED, SLOT_MAP } from "@/config/adsense.config";
 
-// AdSense ad slot. When ADS_ENABLED is false (or IDs are placeholders), it
-// renders a labeled "FINANCIAL SPONSORSHIP" placeholder framed with the same
-// mint hairline border as the instrument cards, so the layout is preserved and
-// ads feel like a native part of the interface rather than an intrusion.
-//
+// Min heights sized for standard creatives (skill Domain 6) — reserve space
+// with min-h so 300x250 / 728x90 / 300x600 can serve without hard-capping RPM.
+const SLOT_MIN_H = {
+  top: "min-h-[90px] sm:min-h-[100px]",
+  mid: "min-h-[250px] sm:min-h-[280px]",
+  sidebar: "min-h-[250px] lg:min-h-[600px]",
+  footer: "min-h-[90px] sm:min-h-[100px]",
+};
+
+// AdSense ad slot. Placeholders render a themed shell until real unit IDs ship.
 // slot: "top" | "mid" | "sidebar" | "footer"
-export default function AdSlot({ slot, className = "", format = "auto", style, layout }) {
+// layout: pass "in-article" for fluid in-article units on long-form pages
+export default function AdSlot({
+  slot,
+  className = "",
+  format = "auto",
+  style,
+  layout,
+  // Hide on mobile (e.g. sidebar) — recommended desktop-only placements
+  desktopOnly = false,
+}) {
   const ref = useRef(null);
   const slotKey = SLOT_MAP[slot];
   const adUnitId = slotKey ? ADSENSE[slotKey] : "";
   const placeholder = !ADS_ENABLED || !adUnitId || adUnitId === "0000000000";
+  const minH = SLOT_MIN_H[slot] || "min-h-[90px]";
+  const hideClass = desktopOnly ? "hidden lg:flex" : "flex";
 
   useEffect(() => {
     if (placeholder || !ref.current) return;
@@ -20,7 +36,7 @@ export default function AdSlot({ slot, className = "", format = "auto", style, l
       try {
         // eslint-disable-next-line no-undef
         (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
+      } catch {
         // no-op
       }
     };
@@ -38,19 +54,22 @@ export default function AdSlot({ slot, className = "", format = "auto", style, l
     );
 
     observer.observe(ref.current);
-
     return () => observer.disconnect();
   }, [placeholder]);
 
   return (
-    <div className={`flex flex-col items-center justify-center ${className}`} style={style}>
+    <div
+      className={`${hideClass} flex-col items-center justify-center ${minH} ${className}`}
+      style={style}
+    >
       <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]/70">
         Financial Sponsorship
       </span>
-      <div className="mt-2 w-full flex-1 hairline-border rounded-sm bg-void/40 p-1">
+      <div className={`mt-2 w-full flex-1 hairline-border rounded-sm bg-void/40 p-1 ${minH}`}>
         {placeholder ? (
-          <div className="flex h-full w-full items-center justify-center font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]/30">
+          <div className="flex h-full min-h-[inherit] w-full items-center justify-center font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]/30">
             Ad slot • {slot}
+            {layout ? ` • ${layout}` : ""}
           </div>
         ) : (
           <ins
@@ -59,7 +78,7 @@ export default function AdSlot({ slot, className = "", format = "auto", style, l
             style={{ display: "block", ...(layout ? { textAlign: "center" } : {}) }}
             data-ad-client={ADSENSE.PUBLISHER_ID}
             data-ad-slot={adUnitId}
-            data-ad-format={format}
+            data-ad-format={layout ? "fluid" : format}
             {...(layout ? { "data-ad-layout": layout } : {})}
             data-full-width-responsive="true"
           />

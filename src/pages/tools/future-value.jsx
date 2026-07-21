@@ -28,7 +28,7 @@ export default function FutureValueTool() {
         </p>
 
         <div className="mx-auto mt-10">
-          <AdSlot slot="top" className="h-[60px]" />
+          <AdSlot slot="top" />
         </div>
 
         <h2 className="mt-12 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">

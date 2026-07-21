@@ -37,7 +37,7 @@ export default function MoneyBasicsSidebar({ terms }) {
         </div>
       </aside>
 
-      <AdSlot slot="sidebar" className="h-[320px]" />
+      <AdSlot slot="sidebar" desktopOnly />
     </div>
   );
 }
