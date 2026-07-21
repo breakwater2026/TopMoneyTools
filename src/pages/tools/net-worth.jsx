@@ -80,7 +80,7 @@ export default function NetWorth() {
         learnMore={[
           { label: "Glossary: Net Worth", to: "/glossary#net-worth" },
           { label: "Use: Debt Cost Calculator", to: "/tools/debt-cost" },
-          { label: "Read: Budgeting for Beginners", to: "/education/budgeting-for-beginners-50-30-20-rule-explained" },
+          { label: "Read: Budgeting for Beginners", to: "/education/budgeting-for-beginners" },
         ]}
         sidebarTerms={[
           { q: "What is net worth?", slug: "net-worth" },

@@ -16,15 +16,28 @@ export default function ArticleShell({
   path,
   sidebarTerms,
   relatedTools = [],
+  relatedArticles = [],
   seoMeta,
   structuredData,
   children,
-  lastUpdated = "June 2026",
+  lastUpdated = "July 2026",
   author = "The Editor",
 }) {
   const currentIndex = ARTICLES.findIndex((a) => `/education/${a.slug}` === path);
+  const current = currentIndex >= 0 ? ARTICLES[currentIndex] : null;
+  const articleNum = current?.num;
   const prevArticle = currentIndex > 0 ? ARTICLES[currentIndex - 1] : null;
   const nextArticle = currentIndex >= 0 && currentIndex < ARTICLES.length - 1 ? ARTICLES[currentIndex + 1] : null;
+
+  // Auto related articles: neighbors if none provided
+  const autoRelated =
+    relatedArticles.length > 0
+      ? relatedArticles
+      : [prevArticle, nextArticle].filter(Boolean).slice(0, 2).map((a) => ({
+          label: a.t,
+          to: `/education/${a.slug}`,
+          num: a.num,
+        }));
 
   return (
     <Layout>
@@ -45,7 +58,9 @@ export default function ArticleShell({
           >
             ← Back to Education
           </Link>
-          <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Intel Brief</p>
+          <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">
+            {articleNum ? `// Article-${articleNum}` : "// Intel Brief"}
+          </p>
           <h1 className="mt-1 max-w-3xl font-heading text-3xl font-bold leading-tight tracking-tight text-[#E0E0E0] sm:text-4xl">
             {title}
           </h1>
@@ -83,6 +98,25 @@ export default function ArticleShell({
               </div>
             )}
 
+            {autoRelated.length > 0 && (
+              <div className="mt-6 border-t border-[#A3FFD6]/15 pt-6">
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]/60">// Related Articles</p>
+                <ul className="mt-3 flex flex-wrap gap-3">
+                  {autoRelated.map((t) => (
+                    <li key={t.to}>
+                      <Link
+                        to={t.to}
+                        className="inline-flex items-center gap-2 rounded-sm border border-[#A3FFD6]/20 px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-[#E0E0E0] hover:border-[#A3FFD6]/50 hover:text-[#A3FFD6]"
+                      >
+                        {t.num ? `${t.num} · ` : ""}
+                        {t.label} <ArrowRight className="h-3 w-3" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {(prevArticle || nextArticle) && (
               <div className="mt-8 grid gap-4 border-t border-[#A3FFD6]/15 pt-6 md:grid-cols-2">
                 {prevArticle && (
@@ -94,6 +128,7 @@ export default function ArticleShell({
                       ← Previous Article
                     </span>
                     <span className="text-sm font-semibold text-[#E0E0E0] group-hover:text-[#A3FFD6]">
+                      {prevArticle.num ? `${prevArticle.num} · ` : ""}
                       {prevArticle.t}
                     </span>
                   </Link>
@@ -107,6 +142,7 @@ export default function ArticleShell({
                       Next Article →
                     </span>
                     <span className="text-sm font-semibold text-[#E0E0E0] group-hover:text-[#A3FFD6]">
+                      {nextArticle.num ? `${nextArticle.num} · ` : ""}
                       {nextArticle.t}
                     </span>
                   </Link>

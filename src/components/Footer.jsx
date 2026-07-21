@@ -15,7 +15,9 @@ export default function Footer() {
           <ul className="mt-3 space-y-2 text-sm text-[#E0E0E0]/80">
             {TOOLS.map((t) => (
               <li key={t.slug}>
-                <Link to={`/tools/${t.slug}`} className="hover:text-[#A3FFD6]">{t.name}</Link>
+                <Link to={`/tools/${t.slug}`} className="hover:text-[#A3FFD6]">
+                  <span className="font-mono text-[10px] text-[#889988]">{t.num}</span> {t.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -26,7 +28,9 @@ export default function Footer() {
           <ul className="mt-3 space-y-2 text-sm text-[#E0E0E0]/80">
             {ARTICLES.map((a) => (
               <li key={a.slug}>
-                <Link to={`/education/${a.slug}`} className="hover:text-[#A3FFD6]">{a.t}</Link>
+                <Link to={`/education/${a.slug}`} className="hover:text-[#A3FFD6]">
+                  <span className="font-mono text-[10px] text-[#889988]">{a.num}</span> {a.t}
+                </Link>
               </li>
             ))}
           </ul>

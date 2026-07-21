@@ -56,7 +56,7 @@ export default function BudgetPlanner() {
           { title: "Aim for 20%+", body: "A 20% savings rate is the long-term benchmark in the 50/30/20 rule. It's a target, not a starting point — work toward it gradually." },
         ]}
         learnMore={[
-          { label: "Read: Budgeting 50/30/20", to: "/education/budgeting-for-beginners-50-30-20-rule-explained" },
+          { label: "Read: Budgeting 50/30/20", to: "/education/budgeting-for-beginners" },
           { label: "Use: Savings Goal Calculator", to: "/tools/savings-goal" },
         ]}
         sidebarTerms={[

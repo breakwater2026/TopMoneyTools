@@ -85,6 +85,7 @@ export default function Resources() {
           {ARTICLES.map((a) => (
             <li key={a.slug}>
               <Link to={`/education/${a.slug}`} className="inline-flex items-center gap-1 text-[#E0E0E0] hover:text-[#A3FFD6]">
+                <span className="font-mono text-[10px] text-[#889988]">{a.num}</span>
                 {a.t} <ArrowRight className="h-3 w-3 shrink-0" />
               </Link>
             </li>
