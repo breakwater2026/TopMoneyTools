@@ -4,14 +4,14 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import AdSlot from "@/components/AdSlot";
 import Reveal from "@/components/Reveal";
-import { LIVE_TOOLS } from "@/config/site.config";
+import { LIVE_TOOLS, FUTURE_TOOLS, GLOSSARY } from "@/config/site.config";
 
 const FAQS = [
-  { q: "Are these calculators really free?", a: "Yes. All instruments are completely free — no account, paywall, or upsell." },
-  { q: "Do you store any of my information?", a: "No. Every calculation runs in your browser. Inputs never leave your device and are never tracked." },
-  { q: "How accurate are the results?", a: "Results use standard formulas (compound interest, amortization, the 4% rule). They are planning estimates, not personalized financial advice." },
-  { q: "What is inflation, in simple terms?", a: "The rate at which prices rise over time — so the same money buys less in the future than today." },
-  { q: "Why does my loan cost more than what I borrowed?", a: "Interest. Lenders charge a yearly percentage on what you owe, which adds up across the loan's life." },
+  { q: "Are these calculators really free?", a: "Yes. Every calculator is free to use and does not require an account, subscription, or payment to unlock the basic tools." },
+  { q: "Do you store any of my information?", a: "No. Every calculation runs in your browser. Inputs remain on your device and are not stored or shared by TopMoneyTools." },
+  { q: "Is this personalized financial advice?", a: "No. These tools are educational planning estimates. They are useful for understanding likely outcomes, but they do not replace professional advice for your specific situation." },
+  { q: "How accurate are the results?", a: "Results use standard formulas such as compound growth and loan amortization. They are estimates, so it is wise to double-check assumptions and important decisions with a qualified professional." },
+  { q: "What should I use if I do not know my exact numbers?", a: "Use reasonable estimates and compare a few scenarios. The goal is to understand the range of outcomes, not to pretend the math is more precise than it is." },
 ];
 
 const VALUES = [
@@ -49,7 +49,7 @@ export default function Home() {
     <Layout>
       <SEO
         title="Privacy-First Financial Calculators & Plain-English Guides"
-        description="TopMoneyTools offers 25 free, private financial calculators for inflation, debt, mortgages, budgeting, taxes, and more — all running entirely in your browser with no accounts or tracking."
+        description="TopMoneyTools offers 10 free, private financial calculators for inflation, debt, mortgages, budgeting, and more — all running entirely in your browser with no accounts or tracking."
         seoMeta={{
           url: "https://topmoneytools.com/",
           type: "website",
@@ -65,20 +65,19 @@ export default function Home() {
           style={{ backgroundImage: "radial-gradient(circle at 50% 30%, hsl(158 100% 82% / 0.18) 0, transparent 55%)" }}
         />
         <div className="relative mx-auto max-w-7xl px-4 py-14 text-center sm:px-6 sm:py-28">
-          <p className="font-mono text-[11px] uppercase tracking-[0.4em] text-[#A3FFD6]">// The Navigator's Interface</p>
           <h1 className="mx-auto mt-4 max-w-3xl font-heading text-3xl font-bold leading-[1.05] tracking-tight text-[#E0E0E0] sm:text-6xl">
-            A <span className="text-[#A3FFD6]">Tactical Financial Instrument</span> for Everyday Money Decisions
+            Your <span className="text-[#A3FFD6]">personal financial</span> guide for everyday money decisions
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#889988] sm:text-lg">
-            When prices rise, bills shift, or choices feel overwhelming, TopMoneyTools helps you navigate the journey. {" "}
-            Powerful free calculators and clear guidance — all run entirely on your device. No accounts. No tracking.
+            When prices rise, bills shift, or choices feel overwhelming, TopMoneyTools helps you understand the numbers.
+            Ten free calculators and plain-English guides run entirely in your browser — no accounts, no tracking, no hidden data collection.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link to="/tools" className="rounded-sm bg-[#A3FFD6] px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#081008] transition hover:bg-[#88E6B8] hover:instrument-glow">
-              Open the Tool Hangar
+              Explore the calculators
             </Link>
             <Link to="/start-here" className="rounded-sm border-2 border-[#A3FFD6] px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#A3FFD6] transition hover:bg-[#A3FFD6] hover:text-[#081008]">
-              Start Here
+              Start here
             </Link>
           </div>
         </div>
@@ -87,7 +86,7 @@ export default function Home() {
       {/* Top banner */}
       <div className="border-y border-[#A3FFD6]/10 bg-obsidian">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
-          <AdSlot slot="top" />
+          <AdSlot slot="top" className="min-h-[100px]" />
         </div>
       </div>
 
@@ -102,6 +101,40 @@ export default function Home() {
             TopMoneyTools gives you calm, clear guidance — calibrated for real, everyday decisions.
           </p>
         </Reveal>
+      </section>
+
+      {/* Trust and guidance */}
+      <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6">
+        <div className="rounded-sm border border-[#A3FFD6]/15 bg-[#0c1610]/80 p-6 sm:p-8">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// How these tools work</p>
+              <h3 className="mt-2 font-heading text-2xl font-semibold text-[#E0E0E0]">Built for understanding, not hype</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#889988]">
+                Each calculator runs locally in your browser using standard financial formulas. The purpose is simple: help you understand likely outcomes for everyday decisions such as debt, inflation, retirement, and budgeting.
+              </p>
+              <ul className="mt-4 space-y-2 text-sm text-[#889988]">
+                <li>• Clear, plain-English explanations alongside every result.</li>
+                <li>• No accounts, no saved financial history, and no hidden tracking.</li>
+                <li>• Best used as a planning guide, not a promise of what will happen in your life.</li>
+              </ul>
+            </div>
+            <div className="rounded-sm border border-[#A3FFD6]/10 bg-void/70 p-5">
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Start with what matters</p>
+              <ul className="mt-4 space-y-2 text-sm text-[#889988]">
+                <li><Link to="/tools/food-inflation" className="text-[#A3FFD6] hover:underline">Food Inflation Calculator</Link></li>
+                <li><Link to="/tools/debt-cost" className="text-[#A3FFD6] hover:underline">Debt Cost Calculator</Link></li>
+                <li><Link to="/tools/budget-planner" className="text-[#A3FFD6] hover:underline">Budget Planner</Link></li>
+                <li><Link to="/tools/emergency-fund" className="text-[#A3FFD6] hover:underline">Emergency Fund Calculator</Link></li>
+              </ul>
+              <div className="mt-5 flex flex-wrap gap-2">
+                <Link to="/education" className="rounded-sm border border-[#A3FFD6]/20 px-3 py-2 text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6] hover:bg-[#A3FFD6]/10">Read articles</Link>
+                <Link to="/glossary" className="rounded-sm border border-[#A3FFD6]/20 px-3 py-2 text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6] hover:bg-[#A3FFD6]/10">Browse glossary</Link>
+                <Link to="/resources" className="rounded-sm border border-[#A3FFD6]/20 px-3 py-2 text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6] hover:bg-[#A3FFD6]/10">See resources</Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Values */}
@@ -127,7 +160,7 @@ export default function Home() {
       {/* The Tool Hangar — 2x4 tactical grid (PRD §3.I) */}
       <section aria-labelledby="tools-heading" className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// The Tool Hangar</p>
-        <h2 id="tools-heading" className="mt-1 font-heading text-3xl font-bold tracking-tight text-[#E0E0E0]">The Power of Our Tools</h2>
+        <h2 id="tools-heading" className="mt-1 font-heading text-3xl font-bold tracking-tight text-[#E0E0E0]">The Power of Ten</h2>
         <p className="mt-2 text-[#889988]">Free, private instruments that run entirely in your browser. No accounts, no data stored.</p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -150,8 +183,27 @@ export default function Home() {
               </span>
             </Link>
           ))}
+
+          {/* Future / scaffolded tools */}
+          {FUTURE_TOOLS.map((t) => (
+            <Link
+              key={t.slug}
+              to="/tools"
+              className="flex flex-col rounded-sm border border-dashed border-[#A3FFD6]/20 bg-obsidian/50 p-5 opacity-60"
+            >
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">{t.num}</span>
+              <h3 className="mt-4 font-heading text-lg font-semibold text-[#E0E0E0]">{t.name}</h3>
+              <p className="mt-2 flex-1 text-sm text-[#889988]">{t.short}</p>
+              <span className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-[#889988]">// In Development</span>
+            </Link>
+          ))}
         </div>
       </section>
+
+      {/* Mid-content ad */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <AdSlot slot="mid" className="min-h-[280px]" />
+      </div>
 
       {/* Education preview */}
       <section aria-labelledby="edu-heading" className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
@@ -162,7 +214,7 @@ export default function Home() {
         <div className="mt-8 grid gap-5 sm:grid-cols-3">
           {[
             { e: "▮", t: "How Inflation Affects Your Daily Budget", d: "Why prices rise and how to stay ahead of them.", s: "how-inflation-affects-your-daily-budget" },
-            { e: "▣", t: "Budgeting for Beginners (50/30/20)", d: "A simple method to bring balance and clarity to your spending.", s: "budgeting-for-beginners" },
+            { e: "▣", t: "Budgeting for Beginners (50/30/20)", d: "A simple method to bring balance and clarity to your spending.", s: "budgeting-for-beginners-50-30-20-rule-explained" },
             { e: "◈", t: "How to Compare Loans", d: "The three numbers that matter most when choosing a loan.", s: "how-to-compare-loans" },
           ].map((a) => (
             <Link key={a.s} to={`/education/${a.s}`} className="group instrument-surface rounded-sm p-5 transition hover:instrument-glow">
@@ -185,7 +237,7 @@ export default function Home() {
         <div className="grid gap-5 sm:grid-cols-2">
           <Link to="/glossary" className="instrument-surface rounded-sm p-6 transition hover:instrument-glow">
             <h3 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Glossary</h3>
-            <p className="mt-2 font-heading text-xl font-semibold text-[#E0E0E0]">35 Plain-English Terms</p>
+            <p className="mt-2 font-heading text-xl font-semibold text-[#E0E0E0]">{GLOSSARY.length} Plain-English Terms</p>
             <p className="mt-2 text-sm text-[#889988]">Every financial word used across our tools, defined simply.</p>
             <span className="mt-3 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6]">View glossary <ArrowRight className="h-3 w-3" /></span>
           </Link>
@@ -257,7 +309,18 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* Footer ad lives in Layout <Footer /> — avoid double slot */}
+
+      {/* Footer banner ad */}
+      {/* Trust section */}
+      <section className="border-t border-[#A3FFD6]/10 bg-obsidian py-10">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">Built with care</p>
+          <p className="mt-4 text-sm leading-relaxed text-[#889988]">
+            Updated regularly. Built for educational use. Inputs stay on your device.
+            TopMoneyTools is a free, privacy-first resource for everyday financial decisions.
+          </p>
+        </div>
+      </section>
     </Layout>
   );
 }
