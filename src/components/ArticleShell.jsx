@@ -10,7 +10,7 @@ import { ARTICLES } from "@/pages/Education";
 
 // Shared shell for all Education articles.
 // props: title, description, path, sidebarTerms, children (article body), lastUpdated, author
-export default function ArticleShell({ title, description, path, sidebarTerms, relatedTools = [], seoMeta, structuredData, children, lastUpdated = "July 2026", author = "Andre Denis" }) {
+export default function ArticleShell({ title, description, path, sidebarTerms, relatedTools = [], seoMeta, structuredData, children, lastUpdated = "June 2026", author = "TopMoneyTools Editorial Team" }) {
   // Find current article index to get next/prev
   const currentIndex = ARTICLES.findIndex(a => `/education/${a.slug}` === path);
   const prevArticle = currentIndex > 0 ? ARTICLES[currentIndex - 1] : null;
@@ -19,6 +19,12 @@ export default function ArticleShell({ title, description, path, sidebarTerms, r
   return (
     <Layout>
       <SEO title={title} description={description} path={path} seoMeta={seoMeta} structuredData={structuredData} />
+
+      <div className="border-b border-[#A3FFD6]/10 bg-obsidian">
+        <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
+          <AdSlot slot="top" className="h-[60px]" />
+        </div>
+      </div>
 
       <div className="mx-auto max-w-7xl px-3 py-6 sm:px-6 sm:py-10">
         <BreadcrumbNav items={[
@@ -33,19 +39,16 @@ export default function ArticleShell({ title, description, path, sidebarTerms, r
           <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Intel Brief</p>
           <h1 className="mt-1 max-w-3xl font-heading text-3xl font-bold leading-tight tracking-tight text-[#E0E0E0] sm:text-4xl">{title}</h1>
           <p className="mt-3 max-w-xl text-sm text-[#889988]">{description}</p>
+          {/* Meta info: Author + last updated */}
           <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-[#889988]/80">
             <span className="font-mono uppercase tracking-[0.15em]">By {author}</span>
             <span className="font-mono uppercase tracking-[0.15em]">Last Updated {lastUpdated}</span>
-            <Link to="/tools" className="font-mono uppercase tracking-[0.15em] text-[#A3FFD6] hover:underline">Browse calculators</Link>
           </div>
         </header>
 
         <div className="grid gap-6 lg:grid-cols-[65%_32%] lg:gap-8">
           <article className="instrument-surface rounded-sm p-4 sm:p-8 prose-headings:font-heading prose-headings:text-[#E0E0E0] prose-p:text-[#889988] prose-p:leading-relaxed">
             {children}
-
-            {/* In-article native ad — fluid format blends with content, earns higher CTR */}
-            <AdSlot slot="mid" format="fluid" layout="in-article" className="my-8 min-h-[250px]" />
 
             {relatedTools.length > 0 && (
               <div className="mt-8 border-t border-[#A3FFD6]/15 pt-6">
@@ -80,6 +83,7 @@ export default function ArticleShell({ title, description, path, sidebarTerms, r
               </div>
             )}
 
+            <AdSlot slot="mid" className="mt-8 h-[120px]" />
           </article>
 
           <MoneyBasicsSidebar terms={sidebarTerms} />

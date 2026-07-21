@@ -86,7 +86,7 @@ export default function EmergencyFundsAndSafetyNets() {
       relatedTools={[
         { label: "Savings Goal Calculator", to: "/tools/savings-goal" },
         { label: "Budget Planner", to: "/tools/budget-planner" },
-        { label: "Debt Cost Calculator", to: "/tools/debt-cost" },
+        { label: "Debt Payoff Calculator", to: "/tools/debt-payoff" },
       ]}
       seoMeta={openGraphMeta}
       structuredData={[structuredData, faqStructuredData, breadcrumbSchema]}

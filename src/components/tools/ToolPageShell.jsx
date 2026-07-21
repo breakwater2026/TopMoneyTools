@@ -5,7 +5,6 @@ import AdSlot from "@/components/AdSlot";
 import MoneyBasicsSidebar from "@/components/MoneyBasicsSidebar";
 import Reveal from "@/components/Reveal";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
-import MethodologyBlock from "@/components/tools/MethodologyBlock";
 
 // The Instrument Stage — shared shell for every calculator.
 // Layout per PRD §4.1 + design spec §3.II:
@@ -15,7 +14,7 @@ import MethodologyBlock from "@/components/tools/MethodologyBlock";
 //   - Intel Brief (scroll-triggered reveal)
 //   - Closing editorial image ("The Explorer's Artifacts")
 export default function ToolPageShell({
-  slug, name, num, title, subtitle, introParagraph, inputs, calculate, results, intelBrief = [], learnMore = [], sidebarTerms, imageUrl, imageAlt, imageCaption, faqs = [], explanation, assumptions = [], dataSources = [], updatedDate = "Updated July 2026", example, relatedTools = [], relatedArticles = [], relatedGlossary = [],
+  slug, name, num, title, subtitle, inputs, calculate, results, intelBrief = [], learnMore = [], sidebarTerms, imageUrl, imageAlt, imageCaption, faqs = [],
 }) {
   const softwareApplicationSchema = {
     "@context": "https://schema.org",
@@ -70,12 +69,6 @@ export default function ToolPageShell({
     })),
   } : null;
 
-  const assumptionsList = Array.isArray(assumptions) ? assumptions : assumptions ? [assumptions] : [];
-  const sourceList = Array.isArray(dataSources) ? dataSources : dataSources ? [dataSources] : [];
-  const toolLinks = relatedTools.length > 0 ? relatedTools : [{ label: "Browse all calculators", to: "/tools" }, { label: "How our calculators work", to: "/tools/how-our-calculators-work" }];
-  const articleLinks = relatedArticles.length > 0 ? relatedArticles : [{ label: "Start here", to: "/start-here" }, { label: "Education overview", to: "/education" }];
-  const glossaryLinks = relatedGlossary.length > 0 ? relatedGlossary : [{ label: "Glossary overview", to: "/glossary" }];
-
   const structuredDataArray = [softwareApplicationSchema, breadcrumbSchema];
   if (faqSchema) structuredDataArray.push(faqSchema);
 
@@ -95,7 +88,7 @@ export default function ToolPageShell({
       {/* Top banner ad — integrated "status bar" */}
       <div className="border-b border-[#A3FFD6]/10 bg-obsidian">
         <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
-          <AdSlot slot="top" className="min-h-[100px]" />
+          <AdSlot slot="top" className="h-[60px]" />
         </div>
       </div>
 
@@ -116,19 +109,6 @@ export default function ToolPageShell({
           <p className="mt-3 max-w-xl text-sm text-[#889988]">{subtitle}</p>
         </header>
 
-        <div className="mb-6 flex flex-wrap gap-3 rounded-sm border border-[#A3FFD6]/10 bg-[#081008]/80 p-4 text-sm text-[#889988]">
-          <span className="rounded-full border border-[#A3FFD6]/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]">Runs in your browser</span>
-          <span className="rounded-full border border-[#A3FFD6]/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]">Informational use only</span>
-          <span className="rounded-full border border-[#A3FFD6]/20 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]">{updatedDate}</span>
-        </div>
-
-        {/* Intro paragraph — added for content depth */}
-        {introParagraph && (
-          <div className="mb-6 rounded-sm border border-[#A3FFD6]/10 bg-[#081008]/60 p-5 text-sm leading-relaxed text-[#889988]">
-            {introParagraph}
-          </div>
-        )}
-
         {/* 2:1 asymmetric balance */}
         <div className="grid gap-6 lg:grid-cols-[65%_32%] lg:gap-8">
           {/* Main Stage — engine + result HUD */}
@@ -136,12 +116,8 @@ export default function ToolPageShell({
             <div className="space-y-6">{inputs}</div>
             {calculate && <div className="mt-8">{calculate}</div>}
             {results}
-            <MethodologyBlock
-              explanation={explanation}
-              assumptions={assumptionsList}
-              dataSources={sourceList}
-              example={example}
-            />
+            {/* Mid-content ad */}
+            <AdSlot slot="mid" className="mt-8 h-[120px]" />
           </article>
 
           {/* Intel sidebar — sticky */}
@@ -154,10 +130,9 @@ export default function ToolPageShell({
         <section aria-labelledby="intel-brief" className="border-t border-[#A3FFD6]/10 bg-obsidian">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
             <h2 id="intel-brief" className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">
-              // How this works
+              // Intel Brief
             </h2>
-            <h3 className="mt-1 font-heading text-2xl font-bold text-[#E0E0E0]">Behind the numbers</h3>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#889988]">These estimates use standard financial formulas and your own inputs to show what could happen. They are meant to help you compare scenarios and think clearly, not to guarantee a particular result.</p>
+            <h3 className="mt-1 font-heading text-2xl font-bold text-[#E0E0E0]">Why does this happen?</h3>
             <ol className="mt-8 space-y-10">
               {intelBrief.map((b, i) => (
                 <Reveal key={i}>
@@ -199,56 +174,21 @@ export default function ToolPageShell({
         </section>
       )}
 
-      {/* Related tools and educational resources */}
-      {(learnMore.length > 0 || toolLinks.length > 0 || glossaryLinks.length > 0) && (
+      {/* Learn more — glossary preview links */}
+      {learnMore.length > 0 && (
         <section className="border-t border-[#A3FFD6]/10">
           <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-            <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Related resources</h2>
-            <div className="mt-5 grid gap-5 md:grid-cols-3">
-              <div>
-                <h3 className="font-heading text-lg font-semibold text-[#E0E0E0]">Related calculators</h3>
-                <ul className="mt-3 space-y-2">
-                  {toolLinks.map((link, i) => (
-                    <li key={i}>
-                      <Link to={link.to} className="inline-flex items-center gap-2 text-sm text-[#889988] hover:text-[#A3FFD6]">
-                        {link.label} <ArrowRight className="h-3 w-3" />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-heading text-lg font-semibold text-[#E0E0E0]">Related articles</h3>
-                <ul className="mt-3 space-y-2">
-                  {learnMore.map((link, i) => (
-                    <li key={i}>
-                      <Link to={link.to} className="inline-flex items-center gap-2 text-sm text-[#889988] hover:text-[#A3FFD6]">
-                        {link.label} <ArrowRight className="h-3 w-3" />
-                      </Link>
-                    </li>
-                  ))}
-                  {articleLinks.map((link, i) => (
-                    <li key={i}>
-                      <Link to={link.to} className="inline-flex items-center gap-2 text-sm text-[#889988] hover:text-[#A3FFD6]">
-                        {link.label} <ArrowRight className="h-3 w-3" />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-heading text-lg font-semibold text-[#E0E0E0]">Glossary terms</h3>
-                <ul className="mt-3 space-y-2">
-                  {glossaryLinks.map((link, i) => (
-                    <li key={i}>
-                      <Link to={link.to} className="inline-flex items-center gap-2 text-sm text-[#889988] hover:text-[#A3FFD6]">
-                        {link.label} <ArrowRight className="h-3 w-3" />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Learn More</h2>
+            <p className="mt-1 text-sm text-[#889988]">Want to understand the concepts behind these numbers?</p>
+            <ul className="mt-4 flex flex-wrap gap-3">
+              {learnMore.map((l, i) => (
+                <li key={i}>
+                  <Link to={l.to} className="inline-flex items-center gap-2 rounded-sm border border-[#A3FFD6]/30 px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-[#A3FFD6] hover:bg-[#A3FFD6]/10">
+                    {l.label} <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}

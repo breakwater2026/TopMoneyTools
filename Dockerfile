@@ -2,10 +2,10 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Copy package configuration first
+# Explicitly copy both package.json and package-lock.json first
 COPY package*.json ./
 
-# Deterministic install from lockfile
+# Run clean install (this will now find the lockfile perfectly)
 RUN npm ci
 
 # Copy the rest of your application code

@@ -1,29 +1,19 @@
 import { Link } from "react-router-dom";
-import { ShieldCheck, Sparkles, Compass, User, Target, Scale } from "lucide-react";
+import { ShieldCheck, Sparkles, Compass } from "lucide-react";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 
 export default function About() {
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://topmoneytools.com" },
-      { "@type": "ListItem", "position": 2, "name": "About", "item": "https://topmoneytools.com/about" },
-    ],
-  };
-
   return (
     <Layout>
       <SEO
-        title="About TopMoneyTools — Free, Private Financial Calculators"
-        description="TopMoneyTools is built by Andre Denis in Montreal, QC — a collection of free, privacy-first financial calculators and plain-English education guides. No accounts, no tracking, no data stored."
+        title="About TopMoneyTools"
+        description="TopMoneyTools is built for people who want to understand their finances without complexity or pressure — ten private calculators plus plain-English education, all on your device."
         path="/about"
         seoMeta={{
           url: "https://topmoneytools.com/about",
           type: "website",
         }}
-        structuredData={[breadcrumbSchema]}
       />
 
       <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
@@ -32,12 +22,12 @@ export default function About() {
 
         <div className="mt-6 space-y-4 text-[#889988] leading-relaxed">
           <p>
-            TopMoneyTools is a privacy-first collection of free financial calculators and plain-English education
-            guides. It was created to help people understand everyday money decisions — inflation, debt, mortgages,
-            budgeting, retirement — without complexity, pressure, or data collection.
+            TopMoneyTools is built for people who want to understand their finances without complexity or pressure. Our
+            calculators and education center explain inflation, budgeting, loan terms, and credit scores in everyday
+            language.
           </p>
           <p>
-            Everything runs privately on your device. No accounts, no tracking, no data collection. Just calm, clear
+            Everything runs privately on your device — no accounts, no tracking, no data collection. Just calm, clear
             financial guidance you can trust. Whether you're planning a monthly budget or comparing loan options, we
             help you make decisions with clarity and comfort.
           </p>
@@ -49,20 +39,6 @@ export default function About() {
         </div>
 
         <div className="mt-8 space-y-8">
-          {/* Who runs it */}
-          <div className="instrument-surface rounded-sm p-6">
-            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#A3FFD6]/10 text-[#A3FFD6]">
-              <User className="h-5 w-5" />
-            </div>
-            <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Who runs TopMoneyTools</p>
-            <h2 className="mt-3 font-heading text-xl font-semibold text-[#E0E0E0]">Built by Andre Denis, Montreal, QC</h2>
-            <p className="mt-2 text-sm text-[#889988]">
-              TopMoneyTools is a one-person project built and maintained by Andre Denis, an automation architect and
-              financial tools builder based in Montreal, Quebec. The site reflects a commitment to clear,
-              honest financial information — free of upsells, affiliate pressure, or data harvesting.
-            </p>
-          </div>
-
           <section className="grid gap-6 lg:grid-cols-3">
             <div className="instrument-surface rounded-sm p-6">
               <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#A3FFD6]/10 text-[#A3FFD6]">
@@ -92,31 +68,17 @@ export default function About() {
 
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="instrument-surface rounded-sm p-5">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#A3FFD6]/10 text-[#A3FFD6]">
-                <Target className="h-5 w-5" />
-              </div>
-              <h2 className="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Neutrality & accuracy</h2>
-              <p className="mt-2 text-sm text-[#889988]">
-                TopMoneyTools is committed to neutrality and accuracy. All calculators use standard financial formulas
-                applied consistently. The site contains no affiliate links, no product endorsements, and no paid
-                placement. Educational content is written to inform, not to persuade.
-              </p>
+              <h2 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// How the tools work</h2>
+              <p className="mt-2 text-sm text-[#889988]">Every calculation runs in your browser. No inputs are sent to a server, stored, or tracked. Refresh the page and your numbers are gone — by design.</p>
             </div>
 
             <div className="instrument-surface rounded-sm p-5">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#A3FFD6]/10 text-[#A3FFD6]">
-                <Scale className="h-5 w-5" />
-              </div>
-              <h2 className="mt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// How the tools work</h2>
-              <p className="mt-2 text-sm text-[#889988]">Every calculation runs in your browser. No inputs are sent to a server, stored, or tracked. Refresh the page and your numbers are gone — by design.</p>
+              <h2 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Need help or feedback?</h2>
+              <p className="mt-2 text-sm text-[#889988]">If you have questions, want to suggest a new calculator, or want help interpreting a result, we’re here for you.</p>
+              <p className="mt-4 text-sm text-[#889988]">Email <a href="mailto:contact@topmoneytools.com" className="text-[#A3FFD6] hover:underline">contact@topmoneytools.com</a> or visit our <a href="/contact" className="text-[#A3FFD6] hover:underline">Contact page</a>.</p>
+              <p className="mt-4 text-sm text-[#889988]">These tools are planning instruments only, not personalized financial advice. For major decisions, consult a licensed advisor.</p>
             </div>
           </div>
-
-          <p className="mt-4 text-sm text-[#889988]">
-            TopMoneyTools serves free educational content supported by ad revenue from Google AdSense. We do not
-            accept sponsored content, paid reviews, or affiliate arrangements. If you have questions, feedback, or
-            suggestions, <Link to="/contact" className="text-[#A3FFD6] hover:underline">contact us</Link>.
-          </p>
         </div>
 
         <p className="mt-8">

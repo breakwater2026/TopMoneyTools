@@ -24,9 +24,8 @@ export default function CookieBanner() {
     <div className="fixed inset-x-0 bottom-0 z-50 border-t border-[#A3FFD6]/15 bg-[#081008]/95 px-4 py-4 text-sm text-[#E0E0E0] backdrop-blur sm:px-6">
       <div className="mx-auto flex max-w-7xl flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <p className="max-w-3xl leading-relaxed text-[#E0E0E0]/90">
-          This website uses cookies and similar technologies from Google AdSense to display ads, measure ad
-          performance, and prevent fraud. We do not collect, store, or share your calculator inputs — all
-          calculations run privately on your device.
+          TopMoneyTools uses browser-based calculators and may display Google AdSense ads. Google may use cookies or similar
+          technologies to personalize ads and measure performance, while we do not collect or store your calculator inputs.
         </p>
 
         <div className="flex flex-wrap gap-2">

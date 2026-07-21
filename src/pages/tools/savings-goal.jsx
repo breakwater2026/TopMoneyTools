@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
+import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
 
 export default function SavingsGoal() {
   const [goal, setGoal] = useState(15000);
@@ -11,19 +11,15 @@ export default function SavingsGoal() {
   const [rate, setRate] = useState(2);
   const [calculated, setCalculated] = useState(false);
 
-  const safeGoal = toNumber(goal, 0);
-  const safeCurrent = toNumber(current, 0);
-  const safeMonthly = toNumber(monthly, 0);
-  const safeRate = toNumber(rate, 0);
-  const remaining = Math.max(0, safeGoal - safeCurrent);
-  const monthlyRate = safeRate / 100 / 12;
+  const remaining = Math.max(0, goal - current);
+  const monthlyRate = rate / 100 / 12;
 
   let months = 0;
-  let balance = safeCurrent;
+  let balance = current;
   if (remaining > 0 && (monthly > 0 || monthlyRate > 0)) {
     let safety = 0;
-    while (balance < safeGoal && safety < 2400) {
-      balance = balance * (1 + monthlyRate) + safeMonthly;
+    while (balance < goal && safety < 2400) {
+      balance = balance * (1 + monthlyRate) + monthly;
       months++;
       safety++;
     }
@@ -31,7 +27,7 @@ export default function SavingsGoal() {
 
   const futureDate = new Date();
   futureDate.setMonth(futureDate.getMonth() + months);
-  const totalInterest = Math.round(balance > safeCurrent ? balance - safeCurrent - safeMonthly * months < 0 ? 0 : balance - safeCurrent - safeMonthly * months : 0);
+  const totalInterest = Math.round(balance > current ? balance - current - monthly * months < 0 ? 0 : balance - current - monthly * months : 0);
 
   return (
     <Layout>
@@ -41,21 +37,6 @@ export default function SavingsGoal() {
         num="08"
         title="Find Out How Long It'll Take to Reach Any Goal — and By What Date."
         subtitle="Whether it's a vacation, an emergency fund, or a house deposit, enter your numbers to see the timeline in months, a target date, and projected interest."
-        introParagraph={
-          <>
-            Setting a specific savings target makes it easier to stay motivated and measure progress.
-            This calculator shows how much you need to save each month to reach your goal within
-            your chosen timeframe, including the impact of compound interest.
-          </>
-        }
-        example={
-          <>
-            Saving $10,000 over 3 years with a 4% annual return means setting aside about $262 per
-            month. Without the interest, you would need $278 per month — the difference shows how
-            letting your money work for you adds up over time.
-          </>
-        }
-        updatedDate="Updated July 2026"
         inputs={
           <>
             <div className="grid gap-5 sm:grid-cols-2">
@@ -81,9 +62,9 @@ export default function SavingsGoal() {
             }
             rows={
               remaining === 0
-                ? [{ label: "Currently Saved", value: usd(safeCurrent), emphasis: "mint" }]
+                ? [{ label: "Currently Saved", value: usd(current), emphasis: "mint" }]
                 : [
-                    { label: "Per Month", value: usd(safeMonthly), emphasis: "mint" },
+                    { label: "Per Month", value: usd(monthly), emphasis: "mint" },
                     { label: "Amount Remaining", value: usd(remaining) },
                     { label: "Projected Interest", value: usd(totalInterest), emphasis: "mint" },
                   ]
@@ -95,32 +76,10 @@ export default function SavingsGoal() {
           { title: "Even small interest helps", body: "A high-yield savings account at 3-4% over years meaningfully shortens the timeline, especially on longer-term goals." },
           { title: "Goals need a number", body: "A vague goal like 'save money' rarely gets met. Giving it a dollar amount and a deadline turns it into something your brain can plan around." },
         ]}
-        explanation="This estimate shows how long a savings goal may take if you keep making the monthly contribution and earn the selected rate. It is a helpful planning number, but actual results can vary if your income, rate, or timing changes."
-        assumptions={[
-          "The calculator assumes the monthly contribution and rate stay constant until the goal is reached.",
-          "It does not account for irregular deposits, inflation, or changes in interest rate over time.",
-          "It projects a simple timeline rather than a detailed savings schedule."
-        ]}
-        dataSources={[
-          "The timeline uses the standard savings growth formula with regular monthly deposits.",
-          "The result is meant to guide planning rather than guarantee a real-world outcome."
-        ]}
         learnMore={[
           { label: "Glossary: Compound Growth", to: "/glossary#compound-growth" },
           { label: "Use: Budget Planner", to: "/tools/budget-planner" },
           { label: "Use: Investment Growth Calculator", to: "/tools/investment-growth" },
-        ]}
-        relatedTools={[
-          { label: "Budget Planner", to: "/tools/budget-planner" },
-          { label: "Emergency Fund Calculator", to: "/tools/emergency-fund" },
-        ]}
-        relatedArticles={[
-          { label: "Budgeting for beginners", to: "/education/budgeting-for-beginners" },
-          { label: "How inflation affects your daily budget", to: "/education/how-inflation-affects-your-daily-budget" },
-        ]}
-        relatedGlossary={[
-          { label: "Compound growth", to: "/glossary#compound-growth" },
-          { label: "Savings rate", to: "/glossary#savings-rate" },
         ]}
         sidebarTerms={[
           { q: "What is compound growth?", slug: "compound-growth" },

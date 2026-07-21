@@ -62,7 +62,7 @@ export default function Footer() {
       {/* Footer ad */}
       <div className="border-t border-[#A3FFD6]/10 py-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <AdSlot slot="footer" className="min-h-[90px]" />
+          <AdSlot slot="footer" className="h-[90px]" />
         </div>
       </div>
 

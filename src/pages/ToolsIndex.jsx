@@ -42,10 +42,10 @@ export default function ToolsIndex() {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// The Tool Hangar</p>
         <h1 className="mt-1 font-heading text-4xl font-bold tracking-tight text-[#E0E0E0]">All Instruments</h1>
-        <p className="mt-2 max-w-xl text-[#889988]">Ten free, private calculators that run entirely in your browser. They help you compare inflation, debt, retirement, budgeting, and savings decisions without pressure or accounts.</p>
+        <p className="mt-2 max-w-xl text-[#889988]">Twenty-five free, private calculators that run entirely in your browser. No accounts, no data stored.</p>
 
         <div className="mt-6">
-          <AdSlot slot="top" className="min-h-[100px]" />
+          <AdSlot slot="top" className="h-[60px]" />
         </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -73,25 +73,6 @@ export default function ToolsIndex() {
               </Link>
             );
           })}
-        </div>
-
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-6">
-          <Link
-            to="/tools/how-our-calculators-work"
-            className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6] hover:text-[#A3FFD6]/80"
-          >
-            <span aria-hidden="true" className="h-3 w-3 rotate-45 border border-[#A3FFD6]" />
-            How our calculators work
-            <ArrowRight className="h-3 w-3" />
-          </Link>
-          <Link
-            to="/start-here"
-            className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6] hover:text-[#A3FFD6]/80"
-          >
-            <span aria-hidden="true" className="h-3 w-3 rotate-45 border border-[#A3FFD6]" />
-            Start with the beginner guide
-            <ArrowRight className="h-3 w-3" />
-          </Link>
         </div>
       </section>
     </Layout>

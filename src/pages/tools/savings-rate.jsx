@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
+import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
 
 export default function SavingsRate() {
   const [monthlyIncome, setMonthlyIncome] = useState(5000);
@@ -10,12 +10,9 @@ export default function SavingsRate() {
   const [monthlySavings, setMonthlySavings] = useState(1500);
   const [calculated, setCalculated] = useState(false);
 
-  const safeMonthlyIncome = toNumber(monthlyIncome, 0);
-  const safeMonthlyExpenses = toNumber(monthlyExpenses, 0);
-  const safeMonthlySavings = toNumber(monthlySavings, 0);
-  const savingsRate = safeMonthlyIncome > 0 ? (safeMonthlySavings / safeMonthlyIncome) * 100 : 0;
-  const expenseRatio = safeMonthlyIncome > 0 ? (safeMonthlyExpenses / safeMonthlyIncome) * 100 : 0;
-  const discretionary = Math.max(0, safeMonthlyIncome - safeMonthlyExpenses);
+  const savingsRate = monthlyIncome > 0 ? (monthlySavings / monthlyIncome) * 100 : 0;
+  const expenseRatio = monthlyIncome > 0 ? (monthlyExpenses / monthlyIncome) * 100 : 0;
+  const discretionary = Math.max(0, monthlyIncome - monthlyExpenses);
 
   return (
     <Layout>
@@ -25,21 +22,6 @@ export default function SavingsRate() {
         num="10"
         title="What Percentage of Your Income Are You Actually Keeping?"
         subtitle="Your savings rate is the single best predictor of long-term wealth. Enter your income, expenses, and what you save each month to see where you stand."
-        introParagraph={
-          <>
-            Your savings rate — the percentage of income you save — is one of the most powerful
-            levers for building financial security. This calculator shows how your current rate
-            compares to common benchmarks and what it means for your future.
-          </>
-        }
-        example={
-          <>
-            Earning $60,000 per year and saving $9,000 gives you a 15% savings rate — the commonly
-            recommended minimum. Increasing to 20% ($12,000/year) could meaningfully accelerate
-            your progress toward major financial goals.
-          </>
-        }
-        updatedDate="Updated July 2026"
         inputs={
           <div className="space-y-6">
             <NumberField label="Monthly income" helper="Take-home pay after taxes" value={monthlyIncome} onChange={setMonthlyIncome} prefix="$" ariaLabel="Monthly income" />
@@ -55,7 +37,7 @@ export default function SavingsRate() {
             rows={[
               { label: "Expense ratio", value: `${expenseRatio.toFixed(1)}%`, emphasis: "amber" },
               { label: "Discretionary income", value: usd(discretionary), emphasis: "mint" },
-              { label: "Saved per month", value: usd(safeMonthlySavings), emphasis: "mint" },
+              { label: "Saved per month", value: usd(monthlySavings), emphasis: "mint" },
             ]}
           />
         }
@@ -64,32 +46,10 @@ export default function SavingsRate() {
           { title: "Every percent compounds", body: "Moving your rate from 5% to 10% doesn't just double your wealth — it can more than double it, because earlier savings get more time to compound." },
           { title: "Separate wants from needs", body: "A high expense ratio usually means wants disguised as needs. Trimming variable expenses is the fastest way to lift your savings rate." },
         ]}
-        explanation="This estimate shows how much of your income you are keeping versus spending. It is one of the clearest indicators of long-term financial progress because even small improvements in your savings rate can add up over time."
-        assumptions={[
-          "The calculator assumes your monthly income, expenses, and savings are all measured consistently.",
-          "It does not model taxes, irregular expenses, or income changes over time.",
-          "It does not tell you whether your spending is wise or whether your goals are realistic — only how much you are saving relative to what you earn."
-        ]}
-        dataSources={[
-          "The result is based on the income and spending values you enter.",
-          "The savings rate is calculated as the share of income you save each month."
-        ]}
         learnMore={[
           { label: "Glossary: Savings Rate", to: "/glossary#savings-rate" },
           { label: "Glossary: Discretionary Income", to: "/glossary#discretionary-income" },
           { label: "Use: Budget Planner", to: "/tools/budget-planner" },
-        ]}
-        relatedTools={[
-          { label: "Budget Planner", to: "/tools/budget-planner" },
-          { label: "Emergency Fund Calculator", to: "/tools/emergency-fund" },
-        ]}
-        relatedArticles={[
-          { label: "Budgeting 101", to: "/education/budgeting-101" },
-          { label: "Budgeting for beginners", to: "/education/budgeting-for-beginners" },
-        ]}
-        relatedGlossary={[
-          { label: "Savings rate", to: "/glossary#savings-rate" },
-          { label: "Discretionary income", to: "/glossary#discretionary-income" },
         ]}
         sidebarTerms={[
           { q: "What is a savings rate?", slug: "savings-rate" },

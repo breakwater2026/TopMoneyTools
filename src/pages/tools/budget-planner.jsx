@@ -2,7 +2,7 @@ import { useState } from "react";
 import ToolPageShell from "@/components/tools/ToolPageShell";
 import ToolResultBlock from "@/components/tools/ToolResultBlock";
 import Layout from "@/components/Layout";
-import { NumberField, CalculateButton, usd, toNumber } from "@/components/tools/FormControls";
+import { NumberField, CalculateButton, usd } from "@/components/tools/FormControls";
 
 export default function BudgetPlanner() {
   const [income, setIncome] = useState(4500);
@@ -10,12 +10,9 @@ export default function BudgetPlanner() {
   const [variable, setVariable] = useState(1500);
   const [calculated, setCalculated] = useState(false);
 
-  const safeIncome = toNumber(income, 0);
-  const safeFixed = toNumber(fixed, 0);
-  const safeVariable = toNumber(variable, 0);
-  const totalSpending = safeFixed + safeVariable;
-  const surplus = safeIncome - totalSpending;
-  const savingsRate = safeIncome > 0 ? (surplus / safeIncome) * 100 : 0;
+  const totalSpending = fixed + variable;
+  const surplus = income - totalSpending;
+  const savingsRate = income > 0 ? (surplus / income) * 100 : 0;
   const deficit = surplus < 0;
 
   return (
@@ -26,30 +23,15 @@ export default function BudgetPlanner() {
         num="06"
         title="Split Your Income Simply — Needs, Wants, and Surplus."
         subtitle="Enter your monthly take-home income, fixed expenses (rent, bills), and variable spending (dining, shopping) to see your surplus and savings rate."
-        introParagraph={
-          <>
-            A budget helps you see exactly where your money goes each month and identify
-            opportunities to save more or spend more intentionally. This planner breaks down
-            your income into common categories so you can build a realistic spending plan.
-          </>
-        }
-        example={
-          <>
-            With a monthly income of $5,000, the 50/30/20 rule suggests $2,500 for needs
-            (housing, food, transport), $1,500 for wants (entertainment, dining), and
-            $1,000 for savings and debt payments. Adjust the categories to fit your life.
-          </>
-        }
-        updatedDate="Updated July 2026"
         inputs={
           <>
             <NumberField label="Monthly take-home income" helper="Income after taxes — what lands in your account each month." value={income} onChange={setIncome} prefix="$" ariaLabel="Monthly income" />
             <NumberField label="Fixed expenses" helper="Rent, mortgage, utilities, minimums on debt, insurance." value={fixed} onChange={setFixed} prefix="$" ariaLabel="Fixed expenses" />
             <NumberField label="Variable spending" helper="Groceries, dining, subscriptions, transport — the discretionary part." value={variable} onChange={setVariable} prefix="$" ariaLabel="Variable spending" />
             <div className="flex h-3 overflow-hidden rounded-sm">
-              <div className="bg-[#A3FFD6]" style={{ width: safeIncome > 0 ? `${(safeFixed / safeIncome) * 100}%` : "0%" }} title="Fixed" />
-              <div className="bg-[#889988]" style={{ width: safeIncome > 0 ? `${(safeVariable / safeIncome) * 100}%` : "0%" }} title="Variable" />
-              <div className={deficit ? "bg-[#FFD6A3]" : "bg-[#A3FFD6]/40"} style={{ width: safeIncome > 0 ? `${Math.abs(surplus) / safeIncome * 100}%` : "0%" }} title="Surplus" />
+              <div className="bg-[#A3FFD6]" style={{ width: income > 0 ? `${(fixed / income) * 100}%` : "0%" }} title="Fixed" />
+              <div className="bg-[#889988]" style={{ width: income > 0 ? `${(variable / income) * 100}%` : "0%" }} title="Variable" />
+              <div className={deficit ? "bg-[#FFD6A3]" : "bg-[#A3FFD6]/40"} style={{ width: income > 0 ? `${Math.abs(surplus) / income * 100}%` : "0%" }} title="Surplus" />
             </div>
             <div className="flex justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-[#889988]">
               <span>Fixed</span><span>Variable</span><span>{deficit ? "Deficit" : "Surplus"}</span>
@@ -64,7 +46,7 @@ export default function BudgetPlanner() {
             rows={[
               { label: "Total Spending", value: usd(totalSpending) },
               { label: "Savings Rate", value: `${savingsRate.toFixed(1)}%`, emphasis: surplus >= 0 ? "mint" : "amber" },
-              { label: "Fixed as % of Income", value: `${safeIncome > 0 ? Math.round((safeFixed / safeIncome) * 100) : 0}%` },
+              { label: "Fixed as % of Income", value: `${income > 0 ? Math.round((fixed / income) * 100) : 0}%` },
             ]}
           />
         }
@@ -73,31 +55,9 @@ export default function BudgetPlanner() {
           { title: "Track the variable slice", body: "Fixed costs are hard to change quickly. Variable spending — dining, subscriptions, shopping — is where most budgets gain or lose ground." },
           { title: "Aim for 20%+", body: "A 20% savings rate is the long-term benchmark in the 50/30/20 rule. It's a target, not a starting point — work toward it gradually." },
         ]}
-        explanation="This planner shows whether your current income covers your spending and how much might be left over for saving or investing. It is a snapshot of your inputs, so it works best as a simple budgeting check rather than a full household plan."
-        assumptions={[
-          "The calculator assumes your expenses can be grouped into fixed and variable costs without more detail.",
-          "It does not model irregular bills, annual expenses, or changing income from month to month.",
-          "It treats all numbers as monthly values for simplicity."
-        ]}
-        dataSources={[
-          "The calculation uses the income minus spending formula and a simple savings-rate transformation.",
-          "The result helps you see the balance between spending and available surplus."
-        ]}
         learnMore={[
           { label: "Read: Budgeting 50/30/20", to: "/education/budgeting-for-beginners-50-30-20-rule-explained" },
           { label: "Use: Savings Goal Calculator", to: "/tools/savings-goal" },
-        ]}
-        relatedTools={[
-          { label: "Emergency Fund Calculator", to: "/tools/emergency-fund" },
-          { label: "Savings Rate Calculator", to: "/tools/savings-rate" },
-        ]}
-        relatedArticles={[
-          { label: "Budgeting for beginners", to: "/education/budgeting-for-beginners" },
-          { label: "Budgeting 101", to: "/education/budgeting-101" },
-        ]}
-        relatedGlossary={[
-          { label: "Budget", to: "/glossary#budget" },
-          { label: "Surplus", to: "/glossary#surplus" },
         ]}
         sidebarTerms={[
           { q: "What is a budget?", slug: "budget" },
