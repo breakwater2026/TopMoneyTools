@@ -36,6 +36,7 @@ export default function Footer() {
           <h2 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">Resources</h2>
           <ul className="mt-3 space-y-2 text-sm text-[#E0E0E0]/80">
             <li><Link to="/tools" className="hover:text-[#A3FFD6]">All Tools</Link></li>
+            <li><Link to="/tools/how-our-calculators-work" className="hover:text-[#A3FFD6]">How Calculators Work</Link></li>
             <li><Link to="/education" className="hover:text-[#A3FFD6]">Education Center</Link></li>
             <li><Link to="/glossary" className="hover:text-[#A3FFD6]">Glossary ({GLOSSARY.length} terms)</Link></li>
             <li><Link to="/resources" className="hover:text-[#A3FFD6]">Resources</Link></li>

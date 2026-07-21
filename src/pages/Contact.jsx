@@ -24,8 +24,20 @@ export default function Contact() {
             private, and easy to use — and your input helps us improve.
           </p>
           <p>
-            Email us at <a href="mailto:contact@topmoneytools.com" className="text-[#A3FFD6] hover:underline">contact@topmoneytools.com</a>.
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]/70">Email</span>
+            <br />
+            <a href="mailto:contact@topmoneytools.com" className="text-[#A3FFD6] hover:underline">
+              contact@topmoneytools.com
+            </a>
+            <br />
             We typically respond within 48 hours.
+          </p>
+          <p>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]/70">Location</span>
+            <br />
+            Operated by Andre Denis
+            <br />
+            Montreal, Quebec, Canada
           </p>
           <p>
             Please don’t send sensitive financial or personal data by email. Our calculators are designed to run locally

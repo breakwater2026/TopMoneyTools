@@ -1,72 +1,54 @@
-import { useLocation } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import { Link, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import Layout from "@/components/Layout";
 
-export default function PageNotFound({}) {
-    const location = useLocation();
-    const pageName = location.pathname.substring(1);
+// Soft-404 mitigation: SPA always returns HTTP 200; noindex stops indexation.
+export default function PageNotFound() {
+  const { pathname } = useLocation();
+  const pageName = pathname === "/" ? "home" : pathname.replace(/^\//, "");
 
-    const { data: authData, isFetched } = useQuery({
-        queryKey: ['user'],
-        queryFn: async () => {
-            try {
-                return { user, isAuthenticated: true };
-            } catch (error) {
-                return { user: null, isAuthenticated: false };
-            }
-        }
-    });
-    
-    return (
-        <div className="min-h-screen flex items-center justify-center p-6 bg-slate-50">
-            <div className="max-w-md w-full">
-                <div className="text-center space-y-6">
-                    {/* 404 Error Code */}
-                    <div className="space-y-2">
-                        <h1 className="text-7xl font-light text-slate-300">404</h1>
-                        <div className="h-0.5 w-16 bg-slate-200 mx-auto"></div>
-                    </div>
-                    
-                    {/* Main Message */}
-                    <div className="space-y-3">
-                        <h2 className="text-2xl font-medium text-slate-800">
-                            Page Not Found
-                        </h2>
-                        <p className="text-slate-600 leading-relaxed">
-                            The page <span className="font-medium text-slate-700">"{pageName}"</span> could not be found in this application.
-                        </p>
-                    </div>
-                    
-                    {/* Admin Note */}
-                    {isFetched && authData.isAuthenticated && authData.user?.role === 'admin' && (
-                        <div className="mt-8 p-4 bg-slate-100 rounded-lg border border-slate-200">
-                            <div className="flex items-start space-x-3">
-                                <div className="flex-shrink-0 w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center mt-0.5">
-                                    <div className="w-2 h-2 rounded-full bg-orange-400"></div>
-                                </div>
-                                <div className="text-left space-y-1">
-                                    <p className="text-sm font-medium text-slate-700">Admin Note</p>
-                                    <p className="text-sm text-slate-600 leading-relaxed">
-                                        This could mean that the AI hasn't implemented this page yet. Ask it to implement it in the chat.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                    
-                    {/* Action Button */}
-                    <div className="pt-6">
-                        <button 
-                            onClick={() => window.location.href = '/'} 
-                            className="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500"
-                        >
-                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                            </svg>
-                            Go Home
-                        </button>
-                    </div>
-                </div>
-            </div>
+  return (
+    <Layout>
+      <Helmet>
+        <title>Page not found | TopMoneyTools</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <meta
+          name="description"
+          content="This page does not exist on TopMoneyTools. Return home or browse our financial calculators and guides."
+        />
+      </Helmet>
+
+      <section className="mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6">
+        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// 404</p>
+        <h1 className="mt-2 font-heading text-5xl font-bold tracking-tight text-[#E0E0E0] sm:text-6xl">
+          Page not found
+        </h1>
+        <p className="mt-4 text-sm leading-relaxed text-[#889988]">
+          We couldn’t find{" "}
+          <span className="font-mono text-[#E0E0E0]/80">“{pageName}”</span>. It may have moved or never existed.
+        </p>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            to="/"
+            className="rounded-sm bg-[#A3FFD6] px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[#081008] transition hover:bg-[#88e4b9]"
+          >
+            Go home
+          </Link>
+          <Link
+            to="/tools"
+            className="rounded-sm border border-[#A3FFD6]/30 px-4 py-2 font-mono text-xs uppercase tracking-[0.18em] text-[#A3FFD6] transition hover:bg-[#A3FFD6]/10"
+          >
+            All tools
+          </Link>
+          <Link
+            to="/education"
+            className="rounded-sm border border-[#A3FFD6]/30 px-4 py-2 font-mono text-xs uppercase tracking-[0.18em] text-[#A3FFD6] transition hover:bg-[#A3FFD6]/10"
+          >
+            Education
+          </Link>
         </div>
-    )
+      </section>
+    </Layout>
+  );
 }
