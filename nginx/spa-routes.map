@@ -68,6 +68,8 @@ map $uri $spa_route {
     /start-here/ 1;
     /terms 1;
     /terms/ 1;
+    /the-editor 1;
+    /the-editor/ 1;
     /tools 1;
     /tools/ 1;
     /tools/auto-loan 1;

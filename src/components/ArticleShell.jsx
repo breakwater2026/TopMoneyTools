@@ -20,7 +20,7 @@ export default function ArticleShell({
   structuredData,
   children,
   lastUpdated = "June 2026",
-  author = "TopMoneyTools Editorial Team",
+  author = "The Editor",
 }) {
   const currentIndex = ARTICLES.findIndex((a) => `/education/${a.slug}` === path);
   const prevArticle = currentIndex > 0 ? ARTICLES[currentIndex - 1] : null;

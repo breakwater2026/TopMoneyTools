@@ -22,9 +22,13 @@ export default function About() {
 
         <div className="mt-6 space-y-4 text-[#889988] leading-relaxed">
           <p>
-            TopMoneyTools is operated by Andre Denis in Montreal, Quebec, Canada. The site is built for people who want
-            to understand their finances without complexity or pressure. Our calculators and education center explain
-            inflation, budgeting, loan terms, and credit scores in everyday language.
+            TopMoneyTools is published from Montreal, Quebec, Canada, and edited by{" "}
+            <Link to="/the-editor" className="text-[#A3FFD6] hover:underline">
+              The Editor
+            </Link>
+            . The site is built for people who want to understand their finances without complexity or pressure. Our
+            calculators and education center explain inflation, budgeting, loan terms, and credit scores in everyday
+            language.
           </p>
           <p>
             Everything runs privately on your device — no accounts, no tracking, no data collection. Just calm, clear
@@ -81,8 +85,13 @@ export default function About() {
           </div>
         </div>
 
-        <p className="mt-8">
-          <Link to="/start-here" className="font-mono text-xs uppercase tracking-[0.2em] text-[#A3FFD6] hover:underline">Start Here →</Link>
+        <p className="mt-8 flex flex-wrap gap-4">
+          <Link to="/the-editor" className="font-mono text-xs uppercase tracking-[0.2em] text-[#A3FFD6] hover:underline">
+            About the Editor →
+          </Link>
+          <Link to="/start-here" className="font-mono text-xs uppercase tracking-[0.2em] text-[#A3FFD6] hover:underline">
+            Start Here →
+          </Link>
         </p>
       </section>
     </Layout>

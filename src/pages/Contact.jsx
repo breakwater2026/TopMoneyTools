@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
+import { Link } from "react-router-dom";
 
 export default function Contact() {
   return (
@@ -33,9 +34,12 @@ export default function Contact() {
             We typically respond within 48 hours.
           </p>
           <p>
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]/70">Location</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]/70">Publisher</span>
             <br />
-            Operated by Andre Denis
+            Edited by{" "}
+            <Link to="/the-editor" className="text-[#A3FFD6] hover:underline">
+              The Editor
+            </Link>
             <br />
             Montreal, Quebec, Canada
           </p>

@@ -42,6 +42,7 @@ export const NAV_LINKS = [
   { label: "Glossary", path: "/glossary" },
   { label: "Resources", path: "/resources" },
   { label: "About", path: "/about" },
+  { label: "The Editor", path: "/the-editor" },
   { label: "Contact", path: "/contact" },
 ];
 

@@ -14,6 +14,7 @@ const Education = lazy(() => import("@/pages/Education"));
 const Glossary = lazy(() => import("@/pages/Glossary"));
 const Resources = lazy(() => import("@/pages/Resources"));
 const About = lazy(() => import("@/pages/About"));
+const TheEditor = lazy(() => import("@/pages/TheEditor"));
 const StartHere = lazy(() => import("@/pages/StartHere"));
 const Privacy = lazy(() => import("@/pages/Privacy"));
 const Contact = lazy(() => import("@/pages/Contact"));
@@ -192,6 +193,7 @@ function App() {
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/about" element={<About />} />
+            <Route path="/the-editor" element={<TheEditor />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/start-here" element={<StartHere />} />

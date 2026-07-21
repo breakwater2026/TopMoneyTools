@@ -42,6 +42,7 @@ export default function Footer() {
             <li><Link to="/resources" className="hover:text-[#A3FFD6]">Resources</Link></li>
             <li><Link to="/start-here" className="hover:text-[#A3FFD6]">Start Here</Link></li>
             <li><Link to="/about" className="hover:text-[#A3FFD6]">About</Link></li>
+            <li><Link to="/the-editor" className="hover:text-[#A3FFD6]">The Editor</Link></li>
           </ul>
         </nav>
 

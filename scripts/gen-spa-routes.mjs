@@ -35,6 +35,7 @@ const staticPaths = [
   "/glossary",
   "/resources",
   "/about",
+  "/the-editor",
   "/contact",
   "/terms",
   "/privacy",
