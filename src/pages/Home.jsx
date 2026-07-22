@@ -160,7 +160,7 @@ export default function Home() {
       {/* The Tool Hangar — 2x4 tactical grid (PRD §3.I) */}
       <section aria-labelledby="tools-heading" className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// The Tool Hangar</p>
-        <h2 id="tools-heading" className="mt-1 font-heading text-3xl font-bold tracking-tight text-[#E0E0E0]">The Power of Ten</h2>
+        <h2 id="tools-heading" className="mt-1 font-heading text-3xl font-bold tracking-tight text-[#E0E0E0]">The Power of our Tools</h2>
         <p className="mt-2 text-[#889988]">Free, private instruments that run entirely in your browser. No accounts, no data stored.</p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
