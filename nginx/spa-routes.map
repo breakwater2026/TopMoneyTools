@@ -70,6 +70,8 @@ map $uri $spa_route {
     /terms/ 1;
     /the-editor 1;
     /the-editor/ 1;
+    /full-directory 1;
+    /full-directory/ 1;
     /tools 1;
     /tools/ 1;
     /tools/auto-loan 1;

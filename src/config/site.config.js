@@ -44,6 +44,7 @@ export const NAV_LINKS = [
   { label: "About", path: "/about" },
   { label: "The Editor", path: "/the-editor" },
   { label: "Contact", path: "/contact" },
+  { label: "Full Directory", path: "/full-directory" },
 ];
 
 // 90 glossary terms covering all tools and education articles

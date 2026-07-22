@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { TOOLS, GLOSSARY } from "@/config/site.config";
-import { ARTICLES } from "@/pages/Education";
+import { GLOSSARY } from "@/config/site.config";
 import AdSlot from "@/components/AdSlot";
 
 // Single global footer — 4-column layout.
@@ -13,26 +12,18 @@ export default function Footer() {
         <nav aria-label="Tools (footer)">
           <h2 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">Tools</h2>
           <ul className="mt-3 space-y-2 text-sm text-[#E0E0E0]/80">
-            {TOOLS.map((t) => (
-              <li key={t.slug}>
-                <Link to={`/tools/${t.slug}`} className="hover:text-[#A3FFD6]">
-                  <span className="font-mono text-[10px] text-[#889988]">{t.num}</span> {t.name}
-                </Link>
-              </li>
-            ))}
+            <li><Link to="/tools" className="hover:text-[#A3FFD6]">All Calculators</Link></li>
+            <li><Link to="/tools/how-our-calculators-work" className="hover:text-[#A3FFD6]">How They Work</Link></li>
+            <li><Link to="/full-directory" className="hover:text-[#A3FFD6]">Full Directory</Link></li>
           </ul>
         </nav>
 
         <nav aria-label="Articles (footer)">
-          <h2 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">Articles</h2>
+          <h2 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">Learn</h2>
           <ul className="mt-3 space-y-2 text-sm text-[#E0E0E0]/80">
-            {ARTICLES.map((a) => (
-              <li key={a.slug}>
-                <Link to={`/education/${a.slug}`} className="hover:text-[#A3FFD6]">
-                  <span className="font-mono text-[10px] text-[#889988]">{a.num}</span> {a.t}
-                </Link>
-              </li>
-            ))}
+            <li><Link to="/education" className="hover:text-[#A3FFD6]">Education Center</Link></li>
+            <li><Link to="/start-here" className="hover:text-[#A3FFD6]">Start Here</Link></li>
+            <li><Link to="/glossary" className="hover:text-[#A3FFD6]">Glossary ({GLOSSARY.length} terms)</Link></li>
           </ul>
         </nav>
 
