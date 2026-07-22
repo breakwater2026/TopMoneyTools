@@ -55,6 +55,7 @@ export default function Footer() {
             <p className="mt-1 text-xs text-[#889988]/70">All calculations run in your browser.</p>
             <p className="text-xs text-[#889988]/70">No data stored.</p>
             <p className="text-xs text-[#889988]/70">No account required.</p>
+            <p className="mt-4 font-mono text-[10px] text-[#889988]/50">Build 20260722</p>
           </div>
         </nav>
 

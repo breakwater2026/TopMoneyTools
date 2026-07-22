@@ -93,10 +93,6 @@ export default function About() {
             Start Here →
           </Link>
         </p>
-
-        <p className="mt-6 font-mono text-[10px] text-[#889988]/50">
-          Build 20260722
-        </p>
       </section>
     </Layout>
   );
