@@ -52,7 +52,9 @@ export default function Footer() {
           </ul>
           <div className="mt-6">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#889988]">Private by design</p>
-            <p className="mt-1 text-xs text-[#889988]/70">All calculations run in your browser. No data stored. No account required.</p>
+            <p className="mt-1 text-xs text-[#889988]/70">All calculations run in your browser.</p>
+            <p className="text-xs text-[#889988]/70">No data stored.</p>
+            <p className="text-xs text-[#889988]/70">No account required.</p>
           </div>
         </nav>
 
