@@ -4,7 +4,7 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import AdSlot from "@/components/AdSlot";
 import Reveal from "@/components/Reveal";
-import { LIVE_TOOLS, FUTURE_TOOLS, GLOSSARY } from "@/config/site.config";
+import { LIVE_TOOLS, GLOSSARY } from "@/config/site.config";
 
 const FAQS = [
   { q: "Are these calculators really free?", a: "Yes. Every calculator is free to use and does not require an account, subscription, or payment to unlock the basic tools." },
@@ -181,20 +181,6 @@ export default function Home() {
               <span className="mt-4 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6]">
                 Open Instrument <ArrowRight className="h-3 w-3 transition group-hover:gap-2" />
               </span>
-            </Link>
-          ))}
-
-          {/* Future / scaffolded tools */}
-          {FUTURE_TOOLS.map((t) => (
-            <Link
-              key={t.slug}
-              to="/tools"
-              className="flex flex-col rounded-sm border border-dashed border-[#A3FFD6]/20 bg-obsidian/50 p-5 opacity-60"
-            >
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">{t.num}</span>
-              <h3 className="mt-4 font-heading text-lg font-semibold text-[#E0E0E0]">{t.name}</h3>
-              <p className="mt-2 flex-1 text-sm text-[#889988]">{t.short}</p>
-              <span className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-[#889988]">// In Development</span>
             </Link>
           ))}
         </div>
