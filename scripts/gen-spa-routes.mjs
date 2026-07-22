@@ -40,6 +40,7 @@ const staticPaths = [
   "/terms",
   "/privacy",
   "/start-here",
+  "/full-directory",
   "/tools/how-our-calculators-work",
 ];
 
