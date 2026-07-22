@@ -21,7 +21,7 @@ export default function TheEditor() {
 
         <div className="mt-8 space-y-5 text-[#889988] leading-relaxed">
           <p>
-            After earning his MBA from Ivey Business School, our Editor spent decades in the highest circles of finance —
+            The Editor has 45+ years of experience in all sectors of the financial industry. After earning his MBA from Ivey Business School, our Editor spent decades in the highest circles of finance —
             as an investment banker, merchant banker, venture capitalist, and private equity investor. He went on to lead
             as CEO of a publicly traded early-stage private equity fund, and later as CEO of a private family office,
             overseeing capital and strategy at the highest level.
