@@ -8,7 +8,7 @@ export default function About() {
     <Layout>
       <SEO
         title="About TopMoneyTools"
-        description="TopMoneyTools is built by Andre Denis in Montréal — free calculators and plain-English education. Calculator inputs stay on your device; the site may be supported by AdSense as described in Privacy."
+        description="TopMoneyTools is built by André Denis in Montreal — free calculators and plain-English education. Calculator inputs stay on your device; the site may be supported by AdSense as described in Privacy."
         path="/about"
         seoMeta={{
           url: "https://topmoneytools.com/about",
@@ -22,11 +22,11 @@ export default function About() {
 
         <div className="mt-6 space-y-4 text-[#889988] leading-relaxed">
           <p>
-            TopMoneyTools is published from Montréal, Québec, Canada, and edited by{" "}
+            TopMoneyTools is published from Montreal, Quebec, Canada, and edited by{" "}
             <Link to="/the-editor" className="text-[#A3FFD6] hover:underline">
               The Editor
             </Link>{" "}
-            (Andre Denis). The site is built for people who want to understand their finances without complexity or
+            (André Denis). The site is built for people who want to understand their finances without complexity or
             pressure. Our calculators and education center explain inflation, budgeting, loan terms, and credit scores
             in everyday language.
           </p>

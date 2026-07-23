@@ -3,26 +3,34 @@ import { ArrowRight, ShieldCheck, Sparkles, Compass } from "lucide-react";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import Reveal from "@/components/Reveal";
+import ToolCard from "@/components/ToolCard";
+import FaqAccordion from "@/components/content/FaqAccordion";
+import SiteButton from "@/components/ui/SiteButton";
 import { LIVE_TOOLS, GLOSSARY, TOOL_COUNT } from "@/config/site.config";
 
 const FAQS = [
   {
+    id: "free",
     q: "Are these calculators really free?",
     a: "Yes. Every calculator is free. No account or subscription is required. The site is supported by display advertising so the tools can stay free.",
   },
   {
+    id: "store",
     q: "Do you store any of my information?",
     a: "Calculator inputs stay on your device and are not stored by TopMoneyTools as account or profile data. If you email us, we receive what you send so we can reply. When ads are enabled, Google AdSense may use cookies as described in our Privacy Policy — that is separate from your calculator inputs.",
   },
   {
+    id: "advice",
     q: "Is this personalized financial advice?",
     a: "No. These tools are educational planning estimates. They are useful for understanding likely outcomes, but they do not replace professional advice for your specific situation.",
   },
   {
+    id: "accuracy",
     q: "How accurate are the results?",
     a: "Results use standard formulas such as compound growth and loan amortization. They are estimates, so it is wise to double-check assumptions and important decisions with a qualified professional.",
   },
   {
+    id: "estimates",
     q: "What should I use if I do not know my exact numbers?",
     a: "Use reasonable estimates and compare a few scenarios. The goal is to understand the range of outcomes, not to pretend the math is more precise than it is.",
   },
@@ -97,19 +105,13 @@ export default function Home() {
             </Link>
             .
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              to="/tools"
-              className="rounded-sm bg-[#A3FFD6] px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#081008] transition hover:bg-[#88E6B8] hover:instrument-glow"
-            >
+          <div className="mt-8 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:max-w-none sm:flex-row sm:items-center">
+            <SiteButton to="/tools" variant="primary" size="lg" className="w-full sm:w-auto">
               Explore the calculators
-            </Link>
-            <Link
-              to="/start-here"
-              className="rounded-sm border-2 border-[#A3FFD6] px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#A3FFD6] transition hover:bg-[#A3FFD6] hover:text-[#081008]"
-            >
+            </SiteButton>
+            <SiteButton to="/start-here" variant="secondary" size="lg" className="w-full sm:w-auto">
               Start here
-            </Link>
+            </SiteButton>
           </div>
           <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[#889988]/70">
             No account · Browser-local inputs · Free
@@ -247,25 +249,7 @@ export default function Home() {
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {LIVE_TOOLS.map((t) => (
-            <Link
-              key={t.slug}
-              to={`/tools/${t.slug}`}
-              className="group flex flex-col rounded-sm bg-obsidian p-5 transition hover:-translate-y-0.5 hover:bg-void hover:instrument-glow"
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">{t.num}</span>
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#A3FFD6]/20 bg-[#A3FFD6]/10 text-[#A3FFD6]">
-                  <span className="text-sm font-semibold uppercase tracking-[0.2em]">
-                    {t.name.split(" ")[0].slice(0, 1)}
-                  </span>
-                </div>
-              </div>
-              <h3 className="mt-4 font-heading text-lg font-semibold text-[#E0E0E0]">{t.name}</h3>
-              <p className="mt-2 flex-1 text-sm text-[#889988]">{t.short}</p>
-              <span className="mt-4 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6]">
-                Open Instrument <ArrowRight className="h-3 w-3 transition group-hover:gap-2" />
-              </span>
-            </Link>
+            <ToolCard key={t.slug} tool={t} letterBadge />
           ))}
         </div>
       </section>
@@ -319,18 +303,12 @@ export default function Home() {
         </div>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link
-            to="/education"
-            className="rounded-sm bg-[#A3FFD6] px-5 py-2.5 text-center font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#081008]"
-          >
+          <SiteButton to="/education" variant="primary">
             Explore All Articles
-          </Link>
-          <Link
-            to="/start-here"
-            className="rounded-sm border-2 border-[#A3FFD6] px-5 py-2.5 text-center font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#A3FFD6] hover:bg-[#A3FFD6] hover:text-[#081008]"
-          >
+          </SiteButton>
+          <SiteButton to="/start-here" variant="secondary">
             New? Start Here →
-          </Link>
+          </SiteButton>
         </div>
       </section>
 
@@ -370,16 +348,9 @@ export default function Home() {
             Common Questions, Plain Answers
           </h2>
         </Reveal>
-        <dl className="mt-8 space-y-3">
-          {FAQS.map((f, i) => (
-            <Reveal key={i}>
-              <div className="instrument-surface rounded-sm p-5">
-                <dt className="font-heading font-semibold text-[#E0E0E0]">{f.q}</dt>
-                <dd className="mt-1 text-sm text-[#889988]">{f.a}</dd>
-              </div>
-            </Reveal>
-          ))}
-        </dl>
+        <div className="mt-8">
+          <FaqAccordion items={FAQS} />
+        </div>
       </section>
 
       {/* Privacy block */}
@@ -426,18 +397,12 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center rounded-sm bg-[#A3FFD6] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#081008] transition hover:bg-[#88E6B8]"
-              >
+              <SiteButton to="/contact" variant="primary">
                 Contact us
-              </Link>
-              <Link
-                to="/privacy"
-                className="inline-flex items-center justify-center rounded-sm border border-[#A3FFD6]/30 px-5 py-3 text-xs uppercase tracking-[0.18em] text-[#A3FFD6] transition hover:bg-[#A3FFD6]/10"
-              >
+              </SiteButton>
+              <SiteButton to="/privacy" variant="ghost">
                 View privacy policy
-              </Link>
+              </SiteButton>
             </div>
           </div>
         </div>

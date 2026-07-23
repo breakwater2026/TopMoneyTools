@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
-import AdSlot from "@/components/AdSlot";
-import { TOOLS } from "@/config/site.config";
+import ToolCard from "@/components/ToolCard";
+import Kicker from "@/components/ui/Kicker";
+import SiteButton from "@/components/ui/SiteButton";
+import { TOOLS, TOOL_COUNT } from "@/config/site.config";
 
 export default function ToolsIndex() {
   const breadcrumbSchema = {
@@ -19,43 +19,32 @@ export default function ToolsIndex() {
     <Layout>
       <SEO
         title="All Tools | TopMoneyTools"
-        description={`Browse every TopMoneyTools calculator — ${TOOLS.length} free, private financial instruments covering inflation, debt, mortgages, retirement, budgeting, net worth, savings goals and more.`}
+        description={`Browse every TopMoneyTools calculator — ${TOOL_COUNT} free financial instruments. Calculator inputs stay on your device.`}
         path="/tools"
         seoMeta={{ url: "https://topmoneytools.com/tools", type: "website" }}
         structuredData={[breadcrumbSchema]}
       />
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// The Tool Hangar</p>
+        <Kicker>// The Tool Hangar</Kicker>
         <h1 className="mt-1 font-heading text-4xl font-bold tracking-tight text-[#E0E0E0]">All Instruments</h1>
         <p className="mt-2 max-w-xl text-[#889988]">
-          {TOOLS.length} free, private calculators that run entirely in your browser. No accounts, no data stored.
+          {TOOL_COUNT} free calculators that run entirely in your browser. No accounts. Calculator inputs are not stored
+          on our servers.
+        </p>
+        <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6]/70">
+          {TOOL_COUNT} instruments · 01–{String(TOOL_COUNT).padStart(2, "0")}
         </p>
 
         <div className="mt-6">
-          <AdSlot slot="top" />
+          <SiteButton to="/start-here" variant="ghost" size="sm">
+            New here? Start here
+          </SiteButton>
         </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {TOOLS.map((t) => (
-            <Link
-              key={t.slug}
-              to={`/tools/${t.slug}`}
-              className="group flex flex-col rounded-sm bg-obsidian p-5 transition hover:-translate-y-0.5 hover:bg-void hover:instrument-glow"
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">{t.num}</span>
-                <span
-                  aria-hidden="true"
-                  className="h-3 w-3 rotate-45 border border-[#A3FFD6] transition group-hover:bg-[#A3FFD6]"
-                />
-              </div>
-              <h2 className="mt-4 font-heading text-lg font-semibold text-[#E0E0E0]">{t.name}</h2>
-              <p className="mt-2 flex-1 text-sm text-[#889988]">{t.short}</p>
-              <span className="mt-4 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6]">
-                Open instrument <ArrowRight className="h-3 w-3" />
-              </span>
-            </Link>
+            <ToolCard key={t.slug} tool={t} />
           ))}
         </div>
       </section>

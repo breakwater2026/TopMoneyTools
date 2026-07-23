@@ -62,6 +62,50 @@
   .hairline-border { @apply border border-[hsl(var(--primary)/0.18)]; }
 }
 
+@layer base {
+  /* Sitewide keyboard focus — never remove without replacement */
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Legal / article reading measure */
+  .prose-legal {
+    max-width: 68ch;
+  }
+  .prose-legal h2 {
+    @apply font-heading text-xl font-semibold text-[#E0E0E0];
+  }
+  .prose-legal h3 {
+    @apply font-heading text-lg font-semibold text-[#E0E0E0];
+  }
+  .prose-legal a {
+    @apply text-[#A3FFD6] hover:underline;
+  }
+  .prose-legal strong {
+    @apply text-[#E0E0E0] font-semibold;
+  }
+
+  /* Calculator result metrics */
+  .metric-value,
+  .results {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+}
+
 @layer utilities {
   .text-primary { color: hsl(var(--primary)); }
   .pulse-glow { animation: pulseGlow 2.4s ease-in-out infinite; }

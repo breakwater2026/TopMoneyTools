@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
+import LegalDoc from "@/components/content/LegalDoc";
 
 export default function Privacy() {
   return (
@@ -15,21 +16,22 @@ export default function Privacy() {
         }}
       />
 
-      <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Privacy</p>
-        <h1 className="mt-1 font-heading text-4xl font-bold tracking-tight text-[#E0E0E0]">Privacy Policy</h1>
-        <div className="mt-3 space-y-1 font-mono text-[11px] text-[#889988]/80">
-          <p>Last updated: 22 July 2026</p>
-          <p>Operator: Andre Denis, operating TopMoneyTools · Montréal, Québec, Canada</p>
-          <p>
-            Contact:{" "}
-            <a href="mailto:contact@topmoneytools.com" className="text-[#A3FFD6] hover:underline">
-              contact@topmoneytools.com
-            </a>
-          </p>
-        </div>
-
-        <div className="mt-8 space-y-8 text-[#889988] leading-relaxed">
+      <LegalDoc
+        kicker="// Privacy"
+        title="Privacy Policy"
+        lastUpdated="22 July 2026"
+        meta={
+          <>
+            <p>Operator: André Denis, operating TopMoneyTools · Montreal, Quebec, Canada</p>
+            <p>
+              Contact:{" "}
+              <a href="mailto:contact@topmoneytools.com" className="text-[#A3FFD6] hover:underline">
+                contact@topmoneytools.com
+              </a>
+            </p>
+          </>
+        }
+      >
           <section>
             <h2 className="font-heading text-xl font-semibold text-[#E0E0E0]">1. Summary</h2>
             <p className="mt-3">
@@ -55,7 +57,7 @@ export default function Privacy() {
           <section>
             <h2 className="font-heading text-xl font-semibold text-[#E0E0E0]">2. Who we are</h2>
             <p className="mt-3">
-              TopMoneyTools is a one-person project built and maintained by Andre Denis in Montréal, Québec. For privacy
+              TopMoneyTools is a one-person project built and maintained by André Denis in Montreal, Quebec. For privacy
               questions:{" "}
               <a href="mailto:contact@topmoneytools.com" className="text-[#A3FFD6] hover:underline">
                 contact@topmoneytools.com
@@ -330,7 +332,7 @@ export default function Privacy() {
           <section>
             <h2 className="font-heading text-xl font-semibold text-[#E0E0E0]">12. International visitors</h2>
             <p className="mt-3">
-              The site is operated from Québec, Canada. If you access it from another country, your information may be
+              The site is operated from Quebec, Canada. If you access it from another country, your information may be
               processed in Canada or in countries where our processors (including Google) operate. Those countries may
               have different data-protection rules.
             </p>
@@ -339,7 +341,7 @@ export default function Privacy() {
           <section>
             <h2 className="font-heading text-xl font-semibold text-[#E0E0E0]">13. Your rights</h2>
             <p className="mt-3">
-              Depending on Québec’s Law 25, PIPEDA principles, and other laws that may apply to you, you may have rights
+              Depending on Quebec’s Law 25, PIPEDA principles, and other laws that may apply to you, you may have rights
               to:
             </p>
             <ul className="mt-2 list-disc space-y-1 pl-5">
@@ -348,7 +350,7 @@ export default function Privacy() {
               <li>Withdraw consent (where processing is consent-based)</li>
               <li>Request deletion of information you sent us, subject to legal limits</li>
               <li>
-                Lodge a complaint with a supervisory authority (e.g., Commission d’accès à l’information du Québec, or
+                Lodge a complaint with a supervisory authority (e.g., Commission d’accès à l’information du Quebec, or
                 your local authority)
               </li>
             </ul>
@@ -390,9 +392,9 @@ export default function Privacy() {
           <section>
             <h2 className="font-heading text-xl font-semibold text-[#E0E0E0]">17. Contact</h2>
             <p className="mt-3">
-              <strong className="text-[#E0E0E0]">Andre Denis — TopMoneyTools</strong>
+              <strong className="text-[#E0E0E0]">André Denis — TopMoneyTools</strong>
               <br />
-              Montréal, Québec, Canada
+              Montreal, Quebec, Canada
               <br />
               Email:{" "}
               <a href="mailto:contact@topmoneytools.com" className="text-[#A3FFD6] hover:underline">
@@ -405,8 +407,7 @@ export default function Privacy() {
               </Link>
             </p>
           </section>
-        </div>
-      </section>
+      </LegalDoc>
     </Layout>
   );
 }

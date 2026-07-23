@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
+import LegalDoc from "@/components/content/LegalDoc";
 
 export default function Terms() {
   return (
@@ -15,21 +16,22 @@ export default function Terms() {
         }}
       />
 
-      <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Terms</p>
-        <h1 className="mt-1 font-heading text-4xl font-bold tracking-tight text-[#E0E0E0]">Terms of Use</h1>
-        <div className="mt-3 space-y-1 font-mono text-[11px] text-[#889988]/80">
-          <p>Last updated: 22 July 2026</p>
-          <p>Operator: Andre Denis, Montréal, Québec, Canada</p>
-          <p>
-            Contact:{" "}
-            <a href="mailto:contact@topmoneytools.com" className="text-[#A3FFD6] hover:underline">
-              contact@topmoneytools.com
-            </a>
-          </p>
-        </div>
-
-        <div className="mt-8 space-y-8 text-[#889988] leading-relaxed">
+      <LegalDoc
+        kicker="// Terms"
+        title="Terms of Use"
+        lastUpdated="22 July 2026"
+        meta={
+          <>
+            <p>Operator: André Denis, Montreal, Quebec, Canada</p>
+            <p>
+              Contact:{" "}
+              <a href="mailto:contact@topmoneytools.com" className="text-[#A3FFD6] hover:underline">
+                contact@topmoneytools.com
+              </a>
+            </p>
+          </>
+        }
+      >
           <section>
             <h2 className="font-heading text-xl font-semibold text-[#E0E0E0]">1. Acceptance</h2>
             <p className="mt-3">
@@ -106,7 +108,7 @@ export default function Terms() {
           <section>
             <h2 className="font-heading text-xl font-semibold text-[#E0E0E0]">6. Intellectual property</h2>
             <p className="mt-3">
-              Unless otherwise noted, site design, branding, text, graphics, and code are owned by Andre Denis /
+              Unless otherwise noted, site design, branding, text, graphics, and code are owned by André Denis /
               TopMoneyTools or used under license. You may:
             </p>
             <ul className="mt-2 list-disc space-y-1 pl-5">
@@ -142,7 +144,7 @@ export default function Terms() {
           <section>
             <h2 className="font-heading text-xl font-semibold text-[#E0E0E0]">9. Limitation of liability</h2>
             <p className="mt-3">
-              To the fullest extent permitted by applicable law, Andre Denis and TopMoneyTools will not be liable for any
+              To the fullest extent permitted by applicable law, André Denis and TopMoneyTools will not be liable for any
               indirect, incidental, special, consequential, or punitive damages, or any loss of profits, data, or
               opportunities, arising from your use of the site or reliance on any calculation or article.
             </p>
@@ -152,14 +154,14 @@ export default function Terms() {
             </p>
             <p className="mt-3">
               <strong className="text-[#E0E0E0]">Consumer rights:</strong> Nothing in these Terms limits rights that
-              cannot be waived under Québec consumer protection law or other mandatory rules.
+              cannot be waived under Quebec consumer protection law or other mandatory rules.
             </p>
           </section>
 
           <section>
             <h2 className="font-heading text-xl font-semibold text-[#E0E0E0]">10. Indemnity</h2>
             <p className="mt-3">
-              You agree to indemnify and hold harmless Andre Denis / TopMoneyTools from claims arising out of your misuse
+              You agree to indemnify and hold harmless André Denis / TopMoneyTools from claims arising out of your misuse
               of the site or violation of these Terms, to the extent permitted by law.
             </p>
           </section>
@@ -186,9 +188,9 @@ export default function Terms() {
           <section>
             <h2 className="font-heading text-xl font-semibold text-[#E0E0E0]">13. Governing law</h2>
             <p className="mt-3">
-              These Terms are governed by the laws of the Province of Québec and the federal laws of Canada applicable
+              These Terms are governed by the laws of the Province of Quebec and the federal laws of Canada applicable
               therein, without regard to conflict-of-law rules that would apply another jurisdiction’s laws. Courts of
-              Québec (district of Montréal) shall have jurisdiction, subject to mandatory consumer protections that
+              Quebec (district of Montreal) shall have jurisdiction, subject to mandatory consumer protections that
               require otherwise.
             </p>
           </section>
@@ -205,8 +207,7 @@ export default function Terms() {
               </Link>
             </p>
           </section>
-        </div>
-      </section>
+      </LegalDoc>
     </Layout>
   );
 }

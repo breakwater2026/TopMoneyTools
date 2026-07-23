@@ -22,8 +22,8 @@ export default function Contact() {
         <div className="mt-6 space-y-6 text-[#889988] leading-relaxed">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#A3FFD6]/70">Operator</p>
-            <p className="mt-1 text-[#E0E0E0]">Andre Denis</p>
-            <p>Montréal, Québec, Canada</p>
+            <p className="mt-1 text-[#E0E0E0]">André Denis</p>
+            <p>Montreal, Quebec, Canada</p>
           </div>
 
           <div>

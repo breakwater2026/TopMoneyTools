@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
+import LegalDoc from "@/components/content/LegalDoc";
 
 export default function Disclaimer() {
   return (
@@ -15,12 +16,7 @@ export default function Disclaimer() {
         }}
       />
 
-      <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Disclaimer</p>
-        <h1 className="mt-1 font-heading text-4xl font-bold tracking-tight text-[#E0E0E0]">Disclaimer</h1>
-        <p className="mt-3 font-mono text-[11px] text-[#889988]/80">Last updated: 22 July 2026</p>
-
-        <div className="mt-8 space-y-8 text-[#889988] leading-relaxed">
+      <LegalDoc kicker="// Disclaimer" title="Disclaimer" lastUpdated="22 July 2026">
           <section>
             <h2 className="font-heading text-xl font-semibold text-[#E0E0E0]">Educational purpose only</h2>
             <p className="mt-3">
@@ -34,7 +30,7 @@ export default function Disclaimer() {
             <h2 className="font-heading text-xl font-semibold text-[#E0E0E0]">No professional relationship</h2>
             <p className="mt-3">
               Using a calculator or reading an article does <strong className="text-[#E0E0E0]">not</strong> create a
-              client, advisory, or fiduciary relationship with Andre Denis or TopMoneyTools.
+              client, advisory, or fiduciary relationship with André Denis or TopMoneyTools.
             </p>
           </section>
 
@@ -109,8 +105,7 @@ export default function Disclaimer() {
               </Link>
             </p>
           </section>
-        </div>
-      </section>
+      </LegalDoc>
     </Layout>
   );
 }

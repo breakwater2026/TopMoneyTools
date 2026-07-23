@@ -16,7 +16,7 @@ export default function Footer() {
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-[#E0E0E0]/80">
             Free financial calculators and plain-English guides. Calculator inputs run in your browser.
           </p>
-          <p className="mt-4 text-xs text-[#889988]/70">Montréal, Québec · Operated by Andre Denis</p>
+          <p className="mt-4 text-xs text-[#889988]/70">Montreal, Quebec · Operated by André Denis</p>
         </div>
 
         <nav aria-label="Tools (footer)">
