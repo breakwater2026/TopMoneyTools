@@ -5,7 +5,11 @@ import AdSlot from "@/components/AdSlot";
 import MoneyBasicsSidebar from "@/components/MoneyBasicsSidebar";
 import Reveal from "@/components/Reveal";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
+import TrustStrip from "@/components/tools/TrustStrip";
+import ToolExplainer from "@/components/tools/ToolExplainer";
+import FaqAccordion from "@/components/content/FaqAccordion";
 import { TOOLS } from "@/config/site.config";
+import { getToolExplainer } from "@/data/toolExplainers";
 import { ARTICLES } from "@/pages/Education";
 
 // Shared shell for every calculator.
@@ -18,6 +22,7 @@ export default function ToolPageShell({
   inputs,
   calculate,
   results,
+  explainer,
   intelBrief = [],
   learnMore = [],
   sidebarTerms,
@@ -29,6 +34,7 @@ export default function ToolPageShell({
   const registry = TOOLS.find((t) => t.slug === slug);
   const toolNum = registry?.num || num || "—";
   const toolName = registry?.name || name;
+  const explainerData = explainer === null ? null : explainer || getToolExplainer(slug);
 
   const suggestedArticles =
     learnMore.length > 0
@@ -86,10 +92,12 @@ export default function ToolPageShell({
   const structuredDataArray = [softwareApplicationSchema, breadcrumbSchema];
   if (faqSchema) structuredDataArray.push(faqSchema);
 
+  const faqItems = faqs.map((f, i) => ({ id: f.id || `faq-${i}`, q: f.q, a: f.a }));
+
   return (
     <>
       <SEO
-        title={toolName}
+        title={`${toolName} | TopMoneyTools`}
         description={subtitle}
         path={`/tools/${slug}`}
         seoMeta={{ url: `https://topmoneytools.com/tools/${slug}`, type: "SoftwareApplication" }}
@@ -118,20 +126,46 @@ export default function ToolPageShell({
             {title}
           </h1>
           <p className="mt-3 max-w-xl text-sm text-[#889988]">{subtitle}</p>
+          <TrustStrip />
         </header>
 
-        <div className="grid gap-6 lg:grid-cols-[65%_32%] lg:gap-8">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start lg:gap-8">
+          {/* Inputs column */}
           <article className="instrument-surface rounded-sm p-4 sm:p-8">
             <div className="space-y-6">{inputs}</div>
             {calculate && <div className="mt-8">{calculate}</div>}
-            {results}
-            <p className="mt-6 border-t border-[#A3FFD6]/10 pt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-[#889988]/80">
-              Informational use only · Not financial advice · Results stay on your device
+
+            {/* Reserved results region reduces CLS when HUD appears */}
+            <div className="results mt-6 min-h-[12rem]">{results}</div>
+
+            <p className="mt-6 border-t border-[#A3FFD6]/10 pt-4 text-xs leading-relaxed text-[#889988]/90">
+              Educational estimates only — not personalized financial advice. Calculator inputs stay on your device.{" "}
+              <Link to="/disclaimer" className="text-[#A3FFD6] hover:underline">
+                Disclaimer
+              </Link>
+              {" · "}
+              <Link to="/privacy" className="text-[#A3FFD6] hover:underline">
+                Privacy
+              </Link>
             </p>
           </article>
 
-          <MoneyBasicsSidebar terms={sidebarTerms} />
+          {/* Sticky results/help column on desktop */}
+          <aside className="space-y-4 lg:sticky lg:top-20 lg:self-start">
+            <MoneyBasicsSidebar terms={sidebarTerms} />
+          </aside>
         </div>
+
+        {/* Long-form explainer — body depth for AdSense/value */}
+        {explainerData ? (
+          <div className="mt-4 max-w-3xl">
+            {typeof explainerData === "object" && explainerData.what ? (
+              <ToolExplainer data={explainerData} />
+            ) : (
+              explainerData
+            )}
+          </div>
+        ) : null}
       </div>
 
       {intelBrief.length > 0 && (
@@ -160,23 +194,16 @@ export default function ToolPageShell({
         </section>
       )}
 
-      {faqs.length > 0 && (
+      {faqItems.length > 0 && (
         <section aria-labelledby="tool-faq" className="border-t border-[#A3FFD6]/10 bg-obsidian">
-          <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+          <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
             <h2 id="tool-faq" className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">
               // Pre-Flight Checks
             </h2>
             <h3 className="mt-1 font-heading text-2xl font-bold text-[#E0E0E0]">Frequently Asked Questions</h3>
-            <dl className="mt-8 space-y-3">
-              {faqs.map((faq, i) => (
-                <Reveal key={i}>
-                  <div className="instrument-surface rounded-sm p-5">
-                    <dt className="font-heading font-semibold text-[#E0E0E0]">{faq.q}</dt>
-                    <dd className="mt-1 text-sm text-[#889988]">{faq.a}</dd>
-                  </div>
-                </Reveal>
-              ))}
-            </dl>
+            <div className="mt-8">
+              <FaqAccordion items={faqItems} />
+            </div>
           </div>
         </section>
       )}
@@ -191,7 +218,7 @@ export default function ToolPageShell({
                 <li key={i}>
                   <Link
                     to={l.to}
-                    className="inline-flex items-center gap-2 rounded-sm border border-[#A3FFD6]/30 px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-[#A3FFD6] hover:bg-[#A3FFD6]/10"
+                    className="inline-flex min-h-10 items-center gap-2 rounded-sm border border-[#A3FFD6]/30 px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-[#A3FFD6] hover:bg-[#A3FFD6]/10"
                   >
                     {l.label} <ArrowRight className="h-3 w-3" />
                   </Link>

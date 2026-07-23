@@ -4,16 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --quiet",
-    "lint:fix": "eslint . --fix",
-    "typecheck": "tsc -p ./jsconfig.json",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:ui": "vitest --ui",
-    "preview": "vite preview"
-  },
+      "dev": "node ./node_modules/vite/bin/vite.js",
+      "build": "node ./node_modules/vite/bin/vite.js build",
+      "lint": "eslint . --quiet",
+      "lint:fix": "eslint . --fix",
+      "typecheck": "tsc -p ./jsconfig.json",
+      "test": "node ./node_modules/vitest/vitest.mjs run",
+      "test:watch": "node ./node_modules/vitest/vitest.mjs",
+      "test:ui": "node ./node_modules/vitest/vitest.mjs --ui",
+      "preview": "node ./node_modules/vite/bin/vite.js preview"
+    },
   "dependencies": {
     "@hello-pangea/dnd": "^17.0.0",
     "@hookform/resolvers": "^4.1.2",

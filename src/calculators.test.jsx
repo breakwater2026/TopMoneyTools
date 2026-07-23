@@ -793,6 +793,7 @@ describe('ToolPageShell Rendering', () => {
     expect(screen.getByText('Test Title')).toBeInTheDocument();
     expect(screen.getByText('Test subtitle')).toBeInTheDocument();
     expect(screen.getByText('Calculate')).toBeInTheDocument();
-    expect(screen.getByText(/informational use only/i)).toBeInTheDocument();
+    expect(screen.getByText(/educational estimates only/i)).toBeInTheDocument();
+    expect(screen.getByText(/browser-local inputs/i)).toBeInTheDocument();
   });
 });

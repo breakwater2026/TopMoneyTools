@@ -43,7 +43,7 @@ export default function FireNumber() {
       <ToolPageShell
         slug="fire-number"
         name="FIRE Number Calculator"
-        num="25"
+        num="22"
         title="How Much Do You Need to Retire Early and Never Worry About Money Again?"
         subtitle="Calculate your FIRE (Financial Independence, Retire Early) number — the amount you need invested to live off your investments forever."
         inputs={

@@ -16,11 +16,11 @@ export default function ToolResultBlock({ headline, rows = [], visible }) {
 
       {/* Headline — pulsing mint window */}
       {headline && (
-        <div className="mt-3 rounded-sm border border-[#A3FFD6]/40 bg-[#A3FFD6]/5 p-6 pulse-glow">
-          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">{headline.label}</p>
-          <p className="mt-1 font-data text-4xl font-semibold text-[#A3FFD6] sm:text-5xl">{headline.value}</p>
-          {headline.sub && <p className="mt-1 text-sm text-[#889988]">{headline.sub}</p>}
-        </div>
+        <div className={`mt-3 rounded-sm border border-[#A3FFD6]/40 bg-[#A3FFD6]/5 p-6 pulse-glow`}>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">{headline.label}</p>
+                  <p className="metric-value mt-1 font-data text-4xl font-semibold text-[#A3FFD6] sm:text-5xl">{headline.value}</p>
+                  {headline.sub && <p className="mt-1 text-sm text-[#889988]">{headline.sub}</p>}
+                </div>
       )}
 
       {/* Breakdown grid */}
