@@ -43,12 +43,12 @@ export default function StartHere() {
       <div className="mx-auto max-w-4xl px-4 py-10 text-[#E0E0E0]">
         <SEO
           title="Start Here — Your First Steps with TopMoneyTools"
-          description="New here? This page gives you the exact steps to get started — no financial experience needed, no account, no tracking, and every calculation runs entirely in your browser."
-          path="/start-here"
-          seoMeta={{
-            title: "Start Here — Your First Steps with TopMoneyTools",
-            description:
-              "Learn the basics, use simple tools, and build a financial plan you can stick to — all private, free, and beginner‑friendly.",
+          description="New here? Exact steps to get started — no financial experience needed, no account required. Calculator inputs stay on your device."
+                    path="/start-here"
+                    seoMeta={{
+                      title: "Start Here — Your First Steps with TopMoneyTools",
+                      description:
+                        "Learn the basics, use simple tools, and build a financial plan you can stick to — free, beginner-friendly, with browser-local calculator inputs.",
             url: "https://topmoneytools.com/start-here",
             image: "https://topmoneytools.com/og/start-here.png",
             type: "article",
@@ -62,10 +62,14 @@ export default function StartHere() {
         </h1>
 
         <p className="mb-10 text-[#889988]">
-          New here? This page gives you the exact steps to get started — no
-          financial experience needed, no account, no tracking, and every
-          calculation runs entirely in your browser.
-        </p>
+                  New here? This page gives you the exact steps to get started — no financial experience needed, no account
+                  required, and every calculation runs entirely in your browser. Calculator inputs stay on your device. Site ads,
+                  when enabled, are described in our{" "}
+                  <Link to="/privacy" className="text-[#A3FFD6] hover:underline">
+                    Privacy Policy
+                  </Link>
+                  .
+                </p>
 
         {/* Step 01 */}
         <section className="mb-14">

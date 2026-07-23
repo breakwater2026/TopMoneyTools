@@ -5,8 +5,8 @@ export const SITE = {
   tagline: "Navigating the private wealth landscape.",
   baseUrl: "https://topmoneytools.com",
   defaultDescription:
-    "A privacy-first collection of free financial calculators covering inflation, debt, mortgages, retirement, budgeting, net worth, and more — all run privately on your device.",
-};
+      "Free financial calculators and plain-English guides covering inflation, debt, mortgages, retirement, budgeting, net worth, and more. Calculator inputs run in your browser. Supported by advertising as described in Privacy.",
+  };
 
 // Live calculator registry (DSExpansion). Keep in sync with App.jsx routes.
 export const TOOLS = [

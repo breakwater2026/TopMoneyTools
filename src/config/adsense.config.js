@@ -14,8 +14,9 @@ export const ADSENSE = {
   AD_UNIT_FOOTER: "04", // TMT Footer
 };
 
-// true = load script path + show shells or live units; placeholders stay shells
-export const ADS_ENABLED = true;
+// true = load script path + show live units when real ad unit IDs are configured.
+// Keep false until AdSense units are approved — avoids "Ad slot / Financial Sponsorship" chrome.
+export const ADS_ENABLED = false;
 
 export const SLOT_MAP = {
   top: "AD_UNIT_TOP",

@@ -19,6 +19,7 @@ const StartHere = lazy(() => import("@/pages/StartHere"));
 const Privacy = lazy(() => import("@/pages/Privacy"));
 const Contact = lazy(() => import("@/pages/Contact"));
 const Terms = lazy(() => import("@/pages/Terms"));
+const Disclaimer = lazy(() => import("@/pages/Disclaimer"));
 const FullDirectory = lazy(() => import("@/pages/FullDirectory"));
 
 const FoodInflation = lazy(() => import("@/pages/tools/food-inflation"));
@@ -198,8 +199,9 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/full-directory" element={<FullDirectory />} />
             <Route path="/terms" element={<Terms />} />
-            <Route path="/start-here" element={<StartHere />} />
-            <Route path="/privacy" element={<Privacy />} />
+                        <Route path="/disclaimer" element={<Disclaimer />} />
+                        <Route path="/start-here" element={<StartHere />} />
+                        <Route path="/privacy" element={<Privacy />} />
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>

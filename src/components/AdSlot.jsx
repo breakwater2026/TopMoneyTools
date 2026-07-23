@@ -1,8 +1,7 @@
 import { useEffect, useRef } from "react";
 import { ADSENSE, ADS_ENABLED, SLOT_MAP } from "@/config/adsense.config";
 
-// Min heights sized for standard creatives (skill Domain 6) — reserve space
-// with min-h so 300x250 / 728x90 / 300x600 can serve without hard-capping RPM.
+// Min heights sized for standard creatives — reserve space so units can serve without CLS.
 const SLOT_MIN_H = {
   top: "min-h-[90px] sm:min-h-[100px]",
   mid: "min-h-[250px] sm:min-h-[280px]",
@@ -10,9 +9,10 @@ const SLOT_MIN_H = {
   footer: "min-h-[90px] sm:min-h-[100px]",
 };
 
-// AdSense ad slot. Placeholders render a themed shell until real unit IDs ship.
+// AdSense ad slot.
 // slot: "top" | "mid" | "sidebar" | "footer"
 // layout: pass "in-article" for fluid in-article units on long-form pages
+// P0: never render fake "Ad slot / Financial Sponsorship" chrome pre-approval.
 export default function AdSlot({
   slot,
   className = "",
@@ -25,7 +25,9 @@ export default function AdSlot({
   const ref = useRef(null);
   const slotKey = SLOT_MAP[slot];
   const adUnitId = slotKey ? ADSENSE[slotKey] : "";
-  const placeholder = !ADS_ENABLED || !adUnitId || adUnitId === "0000000000";
+  // Treat missing/placeholder unit IDs as inactive (do not render fake ad chrome).
+  const looksLikeRealUnit = typeof adUnitId === "string" && /^\d{6,}$/.test(adUnitId);
+  const placeholder = !ADS_ENABLED || !adUnitId || adUnitId === "0000000000" || !looksLikeRealUnit;
   const minH = SLOT_MIN_H[slot] || "min-h-[90px]";
   const hideClass = desktopOnly ? "hidden lg:flex" : "flex";
 
@@ -57,32 +59,27 @@ export default function AdSlot({
     return () => observer.disconnect();
   }, [placeholder]);
 
+  if (placeholder) return null;
+
   return (
     <div
       className={`${hideClass} flex-col items-center justify-center ${minH} ${className}`}
       style={style}
     >
       <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]/70">
-        Financial Sponsorship
+        Advertisement
       </span>
       <div className={`mt-2 w-full flex-1 hairline-border rounded-sm bg-void/40 p-1 ${minH}`}>
-        {placeholder ? (
-          <div className="flex h-full min-h-[inherit] w-full items-center justify-center font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]/30">
-            Ad slot • {slot}
-            {layout ? ` • ${layout}` : ""}
-          </div>
-        ) : (
-          <ins
-            ref={ref}
-            className="adsbygoogle block"
-            style={{ display: "block", ...(layout ? { textAlign: "center" } : {}) }}
-            data-ad-client={ADSENSE.PUBLISHER_ID}
-            data-ad-slot={adUnitId}
-            data-ad-format={layout ? "fluid" : format}
-            {...(layout ? { "data-ad-layout": layout } : {})}
-            data-full-width-responsive="true"
-          />
-        )}
+        <ins
+          ref={ref}
+          className="adsbygoogle block"
+          style={{ display: "block", ...(layout ? { textAlign: "center" } : {}) }}
+          data-ad-client={ADSENSE.PUBLISHER_ID}
+          data-ad-slot={adUnitId}
+          data-ad-format={layout ? "fluid" : format}
+          {...(layout ? { "data-ad-layout": layout } : {})}
+          data-full-width-responsive="true"
+        />
       </div>
     </div>
   );
