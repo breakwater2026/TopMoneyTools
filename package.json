@@ -4,16 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-      "dev": "node ./node_modules/vite/bin/vite.js",
-      "build": "node ./node_modules/vite/bin/vite.js build",
-      "lint": "eslint . --quiet",
-      "lint:fix": "eslint . --fix",
-      "typecheck": "tsc -p ./jsconfig.json",
-      "test": "node ./node_modules/vitest/vitest.mjs run",
-      "test:watch": "node ./node_modules/vitest/vitest.mjs",
-      "test:ui": "node ./node_modules/vitest/vitest.mjs --ui",
-      "preview": "node ./node_modules/vite/bin/vite.js preview"
-    },
+        "dev": "node ./node_modules/vite/bin/vite.js",
+        "build": "node ./node_modules/vite/bin/vite.js build",
+        "lint": "eslint . --quiet",
+        "lint:fix": "eslint . --fix",
+        "typecheck": "tsc -p ./jsconfig.json",
+        "test": "node ./node_modules/vitest/vitest.mjs run",
+        "test:watch": "node ./node_modules/vitest/vitest.mjs",
+        "test:ui": "node ./node_modules/vitest/vitest.mjs --ui",
+        "preview": "node ./node_modules/vite/bin/vite.js preview",
+        "sitemap": "python3 scripts/gen-sitemap.py",
+        "qa:phase5": "python3 scripts/phase5-qa-audit.py"
+      },
   "dependencies": {
     "@hello-pangea/dnd": "^17.0.0",
     "@hookform/resolvers": "^4.1.2",
