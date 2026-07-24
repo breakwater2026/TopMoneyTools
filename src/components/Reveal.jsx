@@ -1,33 +1,51 @@
 import { useEffect, useRef, useState } from "react";
 
-// Scroll-triggered reveal — fades content in from 20px below as it enters
-// the viewport. Used by the Intel Brief pacing per the design spec.
-export default function Reveal({ children, delay = 0 }) {
+/**
+ * Scroll-triggered reveal — progressive enhancement only.
+ * Content is ALWAYS visible (never left at opacity-0), so grids and
+ * long pages cannot show blank “dead space” if IntersectionObserver
+ * is delayed, unsupported, or not yet fired.
+ */
+export default function Reveal({ children, delay = 0, className = "" }) {
   const ref = useRef(null);
-  const [shown, setShown] = useState(false);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (shown) return;
+
+    // Prefer reduced motion: no animation class needed
+    const prefersReduce =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (prefersReduce) {
+      setActive(true);
+      return;
+    }
+
+    if (typeof IntersectionObserver === "undefined") {
+      setActive(true);
+      return;
+    }
+
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setShown(true);
+          setActive(true);
           obs.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.08, rootMargin: "40px 0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [shown]);
+  }, []);
 
   return (
     <div
       ref={ref}
-      className={shown ? "reveal" : "opacity-0"}
-      style={{ transitionDelay: shown ? `${delay}ms` : "0ms" }}
+      className={`${active ? "reveal" : ""} ${className}`.trim()}
+      style={active && delay ? { animationDelay: `${delay}ms` } : undefined}
     >
       {children}
     </div>

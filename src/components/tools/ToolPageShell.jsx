@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
 import AdSlot from "@/components/AdSlot";
 import MoneyBasicsSidebar from "@/components/MoneyBasicsSidebar";
-import Reveal from "@/components/Reveal";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import TrustStrip from "@/components/tools/TrustStrip";
 import ToolExplainer from "@/components/tools/ToolExplainer";
@@ -135,8 +134,8 @@ export default function ToolPageShell({
             <div className="space-y-6">{inputs}</div>
             {calculate && <div className="mt-8">{calculate}</div>}
 
-            {/* Reserved results region reduces CLS when HUD appears */}
-            <div className="results mt-6 min-h-[12rem]">{results}</div>
+            {/* Results region — modest reserve only when empty to limit dead space */}
+            <div className="results mt-6 min-h-[4.5rem]">{results}</div>
 
             <p className="mt-6 border-t border-[#A3FFD6]/10 pt-4 text-xs leading-relaxed text-[#889988]/90">
               Educational estimates only — not personalized financial advice. Calculator inputs stay on your device.{" "}
@@ -170,24 +169,24 @@ export default function ToolPageShell({
 
       {intelBrief.length > 0 && (
         <section aria-labelledby="intel-brief" className="border-t border-[#A3FFD6]/10 bg-obsidian">
-          <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
             <h2 id="intel-brief" className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">
               // Intel Brief
             </h2>
             <h3 className="mt-1 font-heading text-2xl font-bold text-[#E0E0E0]">Why does this happen?</h3>
-            <ol className="mt-8 space-y-10">
+            <ol className="mt-6 space-y-6">
               {intelBrief.map((b, i) => (
-                <Reveal key={i}>
-                  <li className="grid gap-3 sm:grid-cols-[4rem_1fr]">
-                    <span className="font-mono text-2xl font-bold text-[#A3FFD6]/40" aria-hidden="true">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div>
-                      <h4 className="font-heading text-lg font-semibold text-[#E0E0E0]">{b.title}</h4>
-                      <p className="mt-1 max-w-2xl text-sm leading-relaxed text-[#889988]">{b.body}</p>
-                    </div>
-                  </li>
-                </Reveal>
+                <li key={i} className="grid gap-2 sm:grid-cols-[3.5rem_1fr] sm:gap-3">
+                  <span className="font-mono text-2xl font-bold text-[#A3FFD6]/40" aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h4 className="font-heading text-lg font-semibold text-[#E0E0E0]">{b.title}</h4>
+                    <p className="mt-1 max-w-2xl text-sm leading-relaxed text-[#889988] sm:text-[0.95rem] sm:leading-7">
+                      {b.body}
+                    </p>
+                  </div>
+                </li>
               ))}
             </ol>
           </div>
@@ -196,12 +195,12 @@ export default function ToolPageShell({
 
       {faqItems.length > 0 && (
         <section aria-labelledby="tool-faq" className="border-t border-[#A3FFD6]/10 bg-obsidian">
-          <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+          <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-10">
             <h2 id="tool-faq" className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">
               // Pre-Flight Checks
             </h2>
             <h3 className="mt-1 font-heading text-2xl font-bold text-[#E0E0E0]">Frequently Asked Questions</h3>
-            <div className="mt-8">
+            <div className="mt-6">
               <FaqAccordion items={faqItems} />
             </div>
           </div>
@@ -210,7 +209,7 @@ export default function ToolPageShell({
 
       {suggestedArticles.length > 0 && (
         <section className="border-t border-[#A3FFD6]/10">
-          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
             <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Learn More</h2>
             <p className="mt-1 text-sm text-[#889988]">Want to understand the concepts behind these numbers?</p>
             <ul className="mt-4 flex flex-wrap gap-3">

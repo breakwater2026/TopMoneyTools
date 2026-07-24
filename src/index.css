@@ -99,6 +99,28 @@
     @apply text-[#E0E0E0] font-semibold;
   }
 
+  /* Mobile long-form / legal readability (P1) */
+  @media (max-width: 640px) {
+    .prose-legal,
+    article.instrument-surface,
+    article.instrument-surface p,
+    article.instrument-surface li {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .prose-legal p,
+    .prose-legal li {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    footer p,
+    footer li,
+    footer a {
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+  }
+
   /* Calculator result metrics */
   .metric-value,
   .results {

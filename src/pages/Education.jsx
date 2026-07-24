@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import AdSlot from "@/components/AdSlot";
-import Reveal from "@/components/Reveal";
 
 export const ARTICLES = [
   { num: "101", slug: "how-inflation-affects-your-daily-budget", mark: "▮", t: "How Inflation Affects Your Daily Budget", d: "Understand why prices rise and how to stay ahead of them." },
@@ -105,21 +104,25 @@ export default function Education() {
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {ARTICLES.map((a) => (
-            <Reveal key={a.slug}>
-              <Link to={`/education/${a.slug}`} className="group instrument-surface flex flex-col rounded-sm p-5 transition hover:instrument-glow">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">
-                    Article-{a.num}
-                  </span>
-                  <span aria-hidden="true" className="font-mono text-xl text-[#A3FFD6]">{a.mark}</span>
-                </div>
-                <h2 className="mt-3 font-heading text-lg font-semibold text-[#E0E0E0]">{a.t}</h2>
-                <p className="mt-1 flex-1 text-sm text-[#889988]">{a.d}</p>
-                <span className="mt-3 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6] group-hover:gap-2">
-                  Read article <ArrowRight className="h-3 w-3" />
+            <Link
+              key={a.slug}
+              to={`/education/${a.slug}`}
+              className="group instrument-surface flex flex-col rounded-sm p-5 transition hover:instrument-glow"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#889988]">
+                  Article-{a.num}
                 </span>
-              </Link>
-            </Reveal>
+                <span aria-hidden="true" className="font-mono text-xl text-[#A3FFD6]">
+                  {a.mark}
+                </span>
+              </div>
+              <h2 className="mt-3 font-heading text-lg font-semibold text-[#E0E0E0]">{a.t}</h2>
+              <p className="mt-1 flex-1 text-sm text-[#889988]">{a.d}</p>
+              <span className="mt-3 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6] group-hover:gap-2">
+                Read article <ArrowRight className="h-3 w-3" />
+              </span>
+            </Link>
           ))}
         </div>
 
