@@ -4,11 +4,13 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import CompassLogo from "@/components/CompassLogo";
 import { siteButtonClassName } from "@/components/ui/SiteButton";
 import { TOOLS, NAV_LINKS } from "@/config/site.config";
+import { ARTICLES } from "@/pages/Education";
 import { cn } from "@/lib/utils";
 
 // Global header — sticky, accessible mobile drawer (Esc, body scroll lock).
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const [eduOpen, setEduOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { pathname } = useLocation();
   const menuButtonRef = useRef(null);
@@ -16,7 +18,8 @@ export default function Header() {
 
   useEffect(() => {
     setMobileMenuOpen(false);
-    setOpen(false);
+    setToolsOpen(false);
+    setEduOpen(false);
   }, [pathname]);
 
   // Body scroll lock when mobile menu open
@@ -31,17 +34,18 @@ export default function Header() {
 
   // Esc closes menus
   useEffect(() => {
-    if (!mobileMenuOpen && !open) return;
+    if (!mobileMenuOpen && !toolsOpen && !eduOpen) return;
     const onKey = (e) => {
       if (e.key === "Escape") {
         setMobileMenuOpen(false);
-        setOpen(false);
+        setToolsOpen(false);
+        setEduOpen(false);
         menuButtonRef.current?.focus();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [mobileMenuOpen, open]);
+  }, [mobileMenuOpen, toolsOpen, eduOpen]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#A3FFD6]/15 bg-obsidian/95 backdrop-blur supports-[backdrop-filter]:bg-obsidian/80">
@@ -51,32 +55,38 @@ export default function Header() {
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
+          {/* Tools dropdown */}
           <div
             className="relative"
-            onMouseEnter={() => setOpen(true)}
-            onMouseLeave={() => setOpen(false)}
+            onMouseEnter={() => setToolsOpen(true)}
+            onMouseLeave={() => {
+              setToolsOpen(false);
+            }}
           >
             <button
               type="button"
               aria-haspopup="true"
-              aria-expanded={open}
-              onClick={() => setOpen((v) => !v)}
+              aria-expanded={toolsOpen}
+              onClick={() => {
+                setToolsOpen((v) => !v);
+                setEduOpen(false);
+              }}
               className={cn(
                 "flex items-center gap-1 px-3 py-2 font-mono text-xs uppercase tracking-[0.2em] text-[#E0E0E0] hover:text-[#A3FFD6]",
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A3FFD6]",
-                (pathname.startsWith("/tools") || open) && "text-[#A3FFD6]"
+                (pathname.startsWith("/tools") || toolsOpen) && "text-[#A3FFD6]"
               )}
             >
               Tools
-              <ChevronDown className={`h-3 w-3 transition-transform ${open ? "rotate-180" : ""}`} />
+              <ChevronDown className={`h-3 w-3 transition-transform ${toolsOpen ? "rotate-180" : ""}`} />
             </button>
-            {open && (
+            {toolsOpen && (
               <div className="absolute right-0 top-full max-h-[70vh] w-80 overflow-y-auto instrument-surface rounded-sm p-2 shadow-2xl instrument-glow">
                 {TOOLS.map((t) => (
                   <Link
                     key={t.slug}
                     to={`/tools/${t.slug}`}
-                    onClick={() => setOpen(false)}
+                    onClick={() => setToolsOpen(false)}
                     className="flex items-center gap-3 rounded-sm px-3 py-2 hover:bg-[#A3FFD6]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A3FFD6]"
                   >
                     <span className="font-mono text-xs text-[#889988]">{t.num}</span>
@@ -87,7 +97,53 @@ export default function Header() {
             )}
           </div>
 
-          {NAV_LINKS.map((l) => {
+          {/* Education dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setEduOpen(true)}
+            onMouseLeave={() => {
+              setEduOpen(false);
+            }}
+          >
+            <button
+              type="button"
+              aria-haspopup="true"
+              aria-expanded={eduOpen}
+              onClick={() => {
+                setEduOpen((v) => !v);
+                setToolsOpen(false);
+              }}
+              className={cn(
+                "flex items-center gap-1 px-3 py-2 font-mono text-xs uppercase tracking-[0.2em] text-[#E0E0E0] hover:text-[#A3FFD6]",
+                "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A3FFD6]",
+                (pathname.startsWith("/education") || eduOpen) && "text-[#A3FFD6]"
+              )}
+            >
+              Education
+              <ChevronDown className={`h-3 w-3 transition-transform ${eduOpen ? "rotate-180" : ""}`} />
+            </button>
+            {eduOpen && (
+              <div className="absolute right-0 top-full max-h-[70vh] w-96 overflow-y-auto instrument-surface rounded-sm p-2 shadow-2xl instrument-glow">
+                {ARTICLES.map((a) => (
+                  <Link
+                    key={a.slug}
+                    to={`/education/${a.slug}`}
+                    onClick={() => setEduOpen(false)}
+                    className="flex items-start gap-3 rounded-sm px-3 py-2 hover:bg-[#A3FFD6]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A3FFD6]"
+                  >
+                    <span className="mt-0.5 shrink-0 font-mono text-[10px] text-[#889988]">{a.num}</span>
+                    <div className="min-w-0 flex-1">
+                      <span className="block truncate text-sm text-[#E0E0E0]">{a.t}</span>
+                      <span className="block truncate text-[11px] text-[#889988]">{a.d}</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Other nav links (skip Education since it has its own dropdown) */}
+          {NAV_LINKS.filter((l) => l.path !== "/education").map((l) => {
             const active = pathname === l.path || pathname.startsWith(`${l.path}/`);
             return (
               <Link
@@ -150,6 +206,7 @@ export default function Header() {
             className="relative z-50 max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-t border-[#A3FFD6]/10 bg-obsidian"
           >
             <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-3 sm:px-6">
+              {/* Tools section */}
               <Link
                 to="/tools"
                 onClick={() => setMobileMenuOpen(false)}
@@ -170,7 +227,31 @@ export default function Header() {
                   </Link>
                 ))}
               </div>
-              {NAV_LINKS.map((l) => (
+
+              {/* Education section */}
+              <Link
+                to="/education"
+                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-sm px-3 py-3 font-mono text-xs uppercase tracking-[0.2em] text-[#E0E0E0] hover:bg-[#A3FFD6]/10 hover:text-[#A3FFD6]"
+              >
+                All articles
+              </Link>
+              <div className="rounded-sm border border-[#A3FFD6]/10 p-2">
+                {ARTICLES.map((a) => (
+                  <Link
+                    key={a.slug}
+                    to={`/education/${a.slug}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex min-h-11 items-center gap-3 rounded-sm px-2 py-2 text-sm text-[#E0E0E0] hover:bg-[#A3FFD6]/10 hover:text-[#A3FFD6]"
+                  >
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#889988]">{a.num}</span>
+                    <span className="truncate">{a.t}</span>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Other nav links */}
+              {NAV_LINKS.filter((l) => l.path !== "/education").map((l) => (
                 <Link
                   key={l.path}
                   to={l.path}
