@@ -31,7 +31,22 @@ export const ARTICLES = [
   { num: "123", slug: "inflation-proofing-savings", mark: "◘", t: "Inflation-Proofing Your Savings", d: "Real returns, TIPS, I-bonds, and stock market as inflation hedge." },
   { num: "124", slug: "net-worth-by-age", mark: "◙", t: "Net Worth Benchmarks by Age", d: "How to calculate, age benchmarks, and tracking progress." },
   { num: "125", slug: "fire-movement", mark: "◆", t: "Financial Independence Retire Early (FIRE)", d: "FIRE number, Lean vs Fat FIRE, and the savings rate math." },
-];
+    { num: "126", slug: "net-worth-habit", mark: "◇", t: "How to Build a Simple Net Worth Habit", d: "A 20-minute quarterly ritual that makes your balance sheet trend visible." },
+    { num: "127", slug: "needs-wants-gray-zone", mark: "◆", t: "Needs, Wants, and the Gray Zone", d: "Classify spending honestly when 50/30/20 meets real life." },
+    { num: "128", slug: "minimum-payments-cost", mark: "○", t: "The True Cost of Minimum Payments", d: "Why minimums prolong high-APR debt—and how fixed payoffs change the math." },
+    { num: "129", slug: "fixed-vs-variable-rates", mark: "●", t: "Fixed vs Variable Rate Loans", d: "Payment certainty versus rate risk, with a simple stress test." },
+    { num: "130", slug: "down-payment-tradeoffs", mark: "□", t: "Down Payments: 5%, 10%, or 20%?", d: "Cash today vs interest over time—and why reserves still matter." },
+    { num: "131", slug: "renting-longer-myth", mark: "■", t: "Renting Longer Isn't Always Throwing Money Away", d: "When renting is the rational financial choice." },
+    { num: "132", slug: "windfall-plan", mark: "△", t: "What to Do With a Windfall (Bonus, Tax Refund, Gift)", d: "Bonus and refund order of operations without lifestyle creep." },
+    { num: "133", slug: "index-funds-plain-english", mark: "▲", t: "Index Funds in Plain English", d: "Diversification, fees, and realistic expectations—no product hype." },
+    { num: "134", slug: "risk-tolerance-vs-capacity", mark: "☆", t: "Risk Tolerance vs Risk Capacity", d: "Feelings about risk vs ability to absorb losses." },
+    { num: "135", slug: "sequence-of-returns", mark: "★", t: "Sequence of Returns Risk (Why Early Retirement Is Harder)", d: "Why average returns mislead in early retirement." },
+    { num: "136", slug: "how-much-house-too-much", mark: "◎", t: "How Much House Is Too Much?", d: "Comfort ceilings below lender maximums." },
+    { num: "137", slug: "car-buying-cash-loan-wait", mark: "◉", t: "Car Buying: Cash, Loan, or Wait", d: "Total cost of ownership and financing traps." },
+    { num: "138", slug: "student-loans-first-90-days", mark: "◈", t: "Student Loans After Graduation: First 90 Days", d: "Inventory, cash flow, and strategy after graduation." },
+    { num: "139", slug: "insurance-basics-gaps", mark: "▣", t: "Insurance Basics: What Gap Are You Actually Filling?", d: "Coverage as a goals inventory before you talk to an advisor." },
+    { num: "140", slug: "monthly-money-review", mark: "▤", t: "A One-Hour Monthly Money Review", d: "A repeatable monthly agenda for households." },
+  ];
 
 export const ARTICLE_COUNT = ARTICLES.length;
 

@@ -1,0 +1,137 @@
+[
+  {
+    "num": "126",
+    "slug": "net-worth-habit",
+    "comp": "NetWorthHabit",
+    "title": "How to Build a Simple Net Worth Habit",
+    "blurb": "A 20-minute quarterly ritual that makes your balance sheet trend visible.",
+    "meta": "Track net worth in 20 minutes a quarter. What to include, what to skip, and how the trend matters more than one number.",
+    "mark": "\u25c7"
+  },
+  {
+    "num": "127",
+    "slug": "needs-wants-gray-zone",
+    "comp": "NeedsWantsGrayZone",
+    "title": "Needs, Wants, and the Gray Zone",
+    "blurb": "Classify spending honestly when 50/30/20 meets real life.",
+    "meta": "Make 50/30/20 work in real life. How to classify spending when categories blur\u2014and how to fix a needs-heavy budget.",
+    "mark": "\u25c6"
+  },
+  {
+    "num": "128",
+    "slug": "minimum-payments-cost",
+    "comp": "MinimumPaymentsCost",
+    "title": "The True Cost of Minimum Payments",
+    "blurb": "Why minimums prolong high-APR debt\u2014and how fixed payoffs change the math.",
+    "meta": "Why minimum payments keep you in debt for years and how fixed payoff amounts change interest and time.",
+    "mark": "\u25cb"
+  },
+  {
+    "num": "129",
+    "slug": "fixed-vs-variable-rates",
+    "comp": "FixedVsVariableRates",
+    "title": "Fixed vs Variable Rate Loans",
+    "blurb": "Payment certainty versus rate risk, with a simple stress test.",
+    "meta": "Payment certainty versus rate risk. How to stress-test a variable rate and choose with eyes open.",
+    "mark": "\u25cf"
+  },
+  {
+    "num": "130",
+    "slug": "down-payment-tradeoffs",
+    "comp": "DownPaymentTradeoffs",
+    "title": "Down Payments: 5%, 10%, or 20%?",
+    "blurb": "Cash today vs interest over time\u2014and why reserves still matter.",
+    "meta": "How down payment size changes payment, interest, cash reserves, and risk\u2014not just \u201chow soon can we buy.\u201d",
+    "mark": "\u25a1"
+  },
+  {
+    "num": "131",
+    "slug": "renting-longer-myth",
+    "comp": "RentingLongerMyth",
+    "title": "Renting Longer Isn\u2019t Always \u201cThrowing Money Away\u201d",
+    "blurb": "When renting is the rational financial choice.",
+    "meta": "When renting is financially rational: flexibility, transaction costs, short horizons, and opportunity cost.",
+    "mark": "\u25a0"
+  },
+  {
+    "num": "132",
+    "slug": "windfall-plan",
+    "comp": "WindfallPlan",
+    "title": "What to Do With a Windfall (Bonus, Tax Refund, Gift)",
+    "blurb": "Bonus and refund order of operations without lifestyle creep.",
+    "meta": "A calm order of operations for bonuses and tax refunds\u2014debt, buffer, goals, then investing.",
+    "mark": "\u25b3"
+  },
+  {
+    "num": "133",
+    "slug": "index-funds-plain-english",
+    "comp": "IndexFundsPlainEnglish",
+    "title": "Index Funds in Plain English",
+    "blurb": "Diversification, fees, and realistic expectations\u2014no product hype.",
+    "meta": "What an index fund is, why fees matter, and how diversification works\u2014without product hype.",
+    "mark": "\u25b2"
+  },
+  {
+    "num": "134",
+    "slug": "risk-tolerance-vs-capacity",
+    "comp": "RiskToleranceVsCapacity",
+    "title": "Risk Tolerance vs Risk Capacity",
+    "blurb": "Feelings about risk vs ability to absorb losses.",
+    "meta": "Feelings about volatility are not the same as the ability to absorb losses. Align investing with both.",
+    "mark": "\u2606"
+  },
+  {
+    "num": "135",
+    "slug": "sequence-of-returns",
+    "comp": "SequenceOfReturns",
+    "title": "Sequence of Returns Risk (Why Early Retirement Is Harder)",
+    "blurb": "Why average returns mislead in early retirement.",
+    "meta": "Why average returns mislead early retirees and how bad markets at the start of withdrawals change outcomes.",
+    "mark": "\u2605"
+  },
+  {
+    "num": "136",
+    "slug": "how-much-house-too-much",
+    "comp": "HowMuchHouseTooMuch",
+    "title": "How Much House Is Too Much?",
+    "blurb": "Comfort ceilings below lender maximums.",
+    "meta": "Payment comfort, maintenance, and opportunity cost\u2014why lender maximum is not the same as enough life left over.",
+    "mark": "\u25ce"
+  },
+  {
+    "num": "137",
+    "slug": "car-buying-cash-loan-wait",
+    "comp": "CarBuyingCashLoanWait",
+    "title": "Car Buying: Cash, Loan, or Wait",
+    "blurb": "Total cost of ownership and financing traps.",
+    "meta": "Depreciation, total cost of ownership, and when financing is tool versus trap.",
+    "mark": "\u25c9"
+  },
+  {
+    "num": "138",
+    "slug": "student-loans-first-90-days",
+    "comp": "StudentLoansFirst90Days",
+    "title": "Student Loans After Graduation: First 90 Days",
+    "blurb": "Inventory, cash flow, and strategy after graduation.",
+    "meta": "A practical first-three-months checklist: inventory loans, build a budget, and choose a payment approach.",
+    "mark": "\u25c8"
+  },
+  {
+    "num": "139",
+    "slug": "insurance-basics-gaps",
+    "comp": "InsuranceBasicsGaps",
+    "title": "Insurance Basics: What Gap Are You Actually Filling?",
+    "blurb": "Coverage as a goals inventory before you talk to an advisor.",
+    "meta": "Life insurance as a goals inventory, not a fear purchase. How to use a gap estimate before you talk to a licensed advisor.",
+    "mark": "\u25a3"
+  },
+  {
+    "num": "140",
+    "slug": "monthly-money-review",
+    "comp": "MonthlyMoneyReview",
+    "title": "A One-Hour Monthly Money Review",
+    "blurb": "A repeatable monthly agenda for households.",
+    "meta": "A repeatable 60-minute agenda: accounts, budget variance, debts, goals, and a net-worth note.",
+    "mark": "\u25a4"
+  }
+]

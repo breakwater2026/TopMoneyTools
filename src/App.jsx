@@ -85,6 +85,21 @@ const CouplesAndMoney = lazy(() => import("@/pages/education/CouplesAndMoney"));
 const InflationProofingSavings = lazy(() => import("@/pages/education/InflationProofingSavings"));
 const NetWorthByAge = lazy(() => import("@/pages/education/NetWorthByAge"));
 const FireMovement = lazy(() => import("@/pages/education/FireMovement"));
+const NetWorthHabit = lazy(() => import("@/pages/education/NetWorthHabit"));
+const NeedsWantsGrayZone = lazy(() => import("@/pages/education/NeedsWantsGrayZone"));
+const MinimumPaymentsCost = lazy(() => import("@/pages/education/MinimumPaymentsCost"));
+const FixedVsVariableRates = lazy(() => import("@/pages/education/FixedVsVariableRates"));
+const DownPaymentTradeoffs = lazy(() => import("@/pages/education/DownPaymentTradeoffs"));
+const RentingLongerMyth = lazy(() => import("@/pages/education/RentingLongerMyth"));
+const WindfallPlan = lazy(() => import("@/pages/education/WindfallPlan"));
+const IndexFundsPlainEnglish = lazy(() => import("@/pages/education/IndexFundsPlainEnglish"));
+const RiskToleranceVsCapacity = lazy(() => import("@/pages/education/RiskToleranceVsCapacity"));
+const SequenceOfReturns = lazy(() => import("@/pages/education/SequenceOfReturns"));
+const HowMuchHouseTooMuch = lazy(() => import("@/pages/education/HowMuchHouseTooMuch"));
+const CarBuyingCashLoanWait = lazy(() => import("@/pages/education/CarBuyingCashLoanWait"));
+const StudentLoansFirst90Days = lazy(() => import("@/pages/education/StudentLoansFirst90Days"));
+const InsuranceBasicsGaps = lazy(() => import("@/pages/education/InsuranceBasicsGaps"));
+const MonthlyMoneyReview = lazy(() => import("@/pages/education/MonthlyMoneyReview"));
 
 function RouteLoader() {
   return (
@@ -191,6 +206,21 @@ function App() {
             <Route path="/education/inflation-proofing-savings" element={<InflationProofingSavings />} />
             <Route path="/education/net-worth-by-age" element={<NetWorthByAge />} />
             <Route path="/education/fire-movement" element={<FireMovement />} />
+            <Route path="/education/net-worth-habit" element={<NetWorthHabit />} />
+            <Route path="/education/needs-wants-gray-zone" element={<NeedsWantsGrayZone />} />
+            <Route path="/education/minimum-payments-cost" element={<MinimumPaymentsCost />} />
+            <Route path="/education/fixed-vs-variable-rates" element={<FixedVsVariableRates />} />
+            <Route path="/education/down-payment-tradeoffs" element={<DownPaymentTradeoffs />} />
+            <Route path="/education/renting-longer-myth" element={<RentingLongerMyth />} />
+            <Route path="/education/windfall-plan" element={<WindfallPlan />} />
+            <Route path="/education/index-funds-plain-english" element={<IndexFundsPlainEnglish />} />
+            <Route path="/education/risk-tolerance-vs-capacity" element={<RiskToleranceVsCapacity />} />
+            <Route path="/education/sequence-of-returns" element={<SequenceOfReturns />} />
+            <Route path="/education/how-much-house-too-much" element={<HowMuchHouseTooMuch />} />
+            <Route path="/education/car-buying-cash-loan-wait" element={<CarBuyingCashLoanWait />} />
+            <Route path="/education/student-loans-first-90-days" element={<StudentLoansFirst90Days />} />
+            <Route path="/education/insurance-basics-gaps" element={<InsuranceBasicsGaps />} />
+            <Route path="/education/monthly-money-review" element={<MonthlyMoneyReview />} />
 
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/resources" element={<Resources />} />
