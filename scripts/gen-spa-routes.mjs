@@ -39,6 +39,7 @@ const staticPaths = [
   "/contact",
   "/terms",
   "/privacy",
+  "/disclaimer",
   "/start-here",
   "/full-directory",
   "/tools/how-our-calculators-work",
