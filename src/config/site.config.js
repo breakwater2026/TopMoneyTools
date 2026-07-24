@@ -47,7 +47,7 @@ export const NAV_LINKS = [
   { label: "Full Directory", path: "/full-directory" },
 ];
 
-// 90 glossary terms covering all tools and education articles
+// Glossary terms covering all tools and education articles
 export const GLOSSARY = [
   ["inflation", "Inflation", "The rate at which prices rise over time — so the same money buys less in the future than today."],
   ["interest", "Interest", "What lenders charge (or pay) for using money, expressed as a yearly percentage — the interest rate."],

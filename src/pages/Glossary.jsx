@@ -48,7 +48,7 @@ export default function Glossary() {
   return (
     <Layout>
       <SEO
-        title={`Financial Glossary — ${GLOSSARY.length} Plain-English Terms`}
+        title="Financial Glossary — Plain-English Definitions"
         description="Plain-English definitions of every term used across TopMoneyTools — inflation, interest, compound growth, amortization, net worth, APR, credit score and more."
         path="/glossary"
         seoMeta={{
@@ -61,7 +61,7 @@ export default function Glossary() {
       <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A3FFD6]/60">// Intel Brief</p>
         <h1 className="mt-1 font-heading text-4xl font-bold tracking-tight text-[#E0E0E0]">Financial Glossary</h1>
-        <p className="mt-2 text-[#889988]">Plain-English definitions of the {GLOSSARY.length} terms used across our tools and articles.</p>
+        <p className="mt-2 text-[#889988]">Plain-English definitions of the key terms used across our tools and articles.</p>
 
         <div className="mt-6">
           <AdSlot slot="top" />
