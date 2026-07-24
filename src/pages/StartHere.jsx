@@ -147,7 +147,7 @@ export default function StartHere() {
                 to="/glossary"
                 className="text-[#A3FFD6] hover:underline"
               >
-                Glossary — 35 key terms defined plainly
+                Glossary — key terms defined plainly
               </Link>
               <p className="text-sm text-[#889988]">
                 Clear definitions for interest, APR, inflation, amortization, and
