@@ -91,14 +91,36 @@ export default function HomeAffordability() {
         { q: "What is net worth?", slug: "net-worth" },
       ]}
       relatedTools={[
-        { label: "Mortgage Calculator", to: "/tools/mortgage-payment" },
-        { label: "Budget Planner", to: "/tools/budget-planner" },
-        { label: "Net Worth Tool", to: "/tools/net-worth" },
-      ]}
-      seoMeta={openGraphMeta}
-      structuredData={[structuredData, faqStructuredData, breadcrumbSchema]}
-    >
-      <h2 className="mt-0 text-xl font-semibold text-[#E0E0E0]">How lenders determine what you can afford</h2>
+              { label: "Mortgage Calculator", to: "/tools/mortgage-payment" },
+              { label: "Home Affordability Calculator", to: "/tools/home-affordability" },
+              { label: "Budget Planner", to: "/tools/budget-planner" },
+              { label: "Net Worth Tool", to: "/tools/net-worth" },
+            ]}
+            relatedArticles={[
+              { label: "How Much House Is Too Much?", to: "/education/how-much-house-too-much", num: "136" },
+              { label: "Down Payments: 5%, 10%, or 20%?", to: "/education/down-payment-tradeoffs", num: "130" },
+              { label: "Rent vs. Buy: The Full Math", to: "/education/rent-vs-buy", num: "112" },
+            ]}
+            seoMeta={openGraphMeta}
+            structuredData={[structuredData, faqStructuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">Housing reading path:</strong> (1) This page — what lenders allow (DTI,
+              28/36, PMI, closing costs). (2){" "}
+              <Link to="/education/how-much-house-too-much" className="text-[#A3FFD6] hover:underline">
+                How Much House Is Too Much?
+              </Link>{" "}
+              — your comfort ceiling below the bank’s max. (3){" "}
+              <Link to="/education/down-payment-tradeoffs" className="text-[#A3FFD6] hover:underline">
+                Down Payments: 5%, 10%, or 20%?
+              </Link>{" "}
+              — cash-up-front tradeoffs. Compare paths with{" "}
+              <Link to="/education/rent-vs-buy" className="text-[#A3FFD6] hover:underline">
+                Rent vs. Buy
+              </Link>
+              .
+            </p>
+            <h2 className="mt-6 text-xl font-semibold text-[#E0E0E0]">How lenders determine what you can afford</h2>
       <p className="text-[#889988]">
         Lenders look primarily at your debt-to-income (DTI) ratio. They calculate your front-end DTI — housing costs
         divided by gross monthly income — and your back-end DTI — all monthly debt payments divided by income. Most

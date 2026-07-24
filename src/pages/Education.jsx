@@ -9,7 +9,7 @@ export const ARTICLES = [
   { num: "101", slug: "how-inflation-affects-your-daily-budget", mark: "▮", t: "How Inflation Affects Your Daily Budget", d: "Understand why prices rise and how to stay ahead of them." },
   { num: "102", slug: "budgeting-for-beginners", mark: "▣", t: "Budgeting for Beginners (50/30/20 Rule)", d: "A simple method to bring balance and clarity to your spending." },
   { num: "103", slug: "how-to-compare-loans", mark: "◈", t: "How to Compare Loans", d: "Learn the three numbers that matter most when choosing a loan." },
-  { num: "104", slug: "budgeting-101", mark: "▤", t: "Budgeting 101", d: "The beginner's complete guide to building a budget that actually works." },
+  { num: "104", slug: "budgeting-101", mark: "▤", t: "Budgeting 101: Systems That Stick", d: "After the first budget: irregular bills, pay cycles, light tracking, and recovering when a month breaks." },
   { num: "105", slug: "investing-101", mark: "▦", t: "Investing 101", d: "How to start growing your money — compound growth, risk, and time explained." },
   { num: "106", slug: "retirement-planning-basics", mark: "▧", t: "Retirement Planning Basics", d: "How much you need, the 4% rule, and how to project your nest egg." },
   { num: "107", slug: "understanding-interest-rates", mark: "▨", t: "Understanding Interest Rates", d: "What APR means, how amortization works, and why 1% matters." },

@@ -83,14 +83,30 @@ export default function BudgetingForBeginners() {
         { q: "What is discretionary spending?", slug: "discretionary-spending" },
       ]}
       relatedTools={[
-        { label: "Budget Planner", to: "/tools/budget-planner" },
-        { label: "Savings Goal Calculator", to: "/tools/savings-goal" },
-        { label: "Net Worth Tool", to: "/tools/net-worth" },
-      ]}
-      seoMeta={openGraphMeta}
-      structuredData={[structuredData, faqStructuredData, breadcrumbSchema]}
-    >
-      <h2 className="mt-0 text-xl font-semibold text-[#E0E0E0]">Why budgeting helps</h2>
+              { label: "Budget Planner", to: "/tools/budget-planner" },
+              { label: "Savings Goal Calculator", to: "/tools/savings-goal" },
+              { label: "Net Worth Tool", to: "/tools/net-worth" },
+            ]}
+            relatedArticles={[
+              { label: "Budgeting 101: Systems That Stick", to: "/education/budgeting-101", num: "104" },
+              { label: "Needs, Wants, and the Gray Zone", to: "/education/needs-wants-gray-zone", num: "127" },
+            ]}
+            seoMeta={openGraphMeta}
+            structuredData={[structuredData, faqStructuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">Start here if you’re new.</strong> This page is the 50/30/20 map. When the
+              plan is in place, go to{" "}
+              <Link to="/education/budgeting-101" className="text-[#A3FFD6] hover:underline">
+                Budgeting 101: Systems That Stick
+              </Link>{" "}
+              for pay cycles, annual bills, and recovery. For fuzzy labels, see{" "}
+              <Link to="/education/needs-wants-gray-zone" className="text-[#A3FFD6] hover:underline">
+                Needs, Wants, and the Gray Zone
+              </Link>
+              .
+            </p>
+            <h2 className="mt-6 text-xl font-semibold text-[#E0E0E0]">Why budgeting helps</h2>
       <p className="text-[#889988]">
         Budgeting gives your money a job before it disappears. Instead of guessing at the end of the month, you decide
         in advance how much should go to needs, wants, savings, and debt.
@@ -209,8 +225,8 @@ export default function BudgetingForBeginners() {
           </li>
           <li>
             <Link to="/education/budgeting-101" className="text-[#A3FFD6] hover:underline">
-              Budgeting 101
-            </Link>
+                          Budgeting 101: Systems That Stick
+                        </Link>
           </li>
           <li>
             <Link to="/education/emergency-funds-and-safety-nets" className="text-[#A3FFD6] hover:underline">
