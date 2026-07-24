@@ -13,7 +13,7 @@ export default function DebtCost() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/tools/debt-cost-calculator/Countries-Debt.json")
+    fetch("/tools/debt-cost/Countries-Debt.json")
       .then(response => response.json())
       .then(data => {
         setCountries(data.countries);
