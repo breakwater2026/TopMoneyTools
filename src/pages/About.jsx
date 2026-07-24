@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { ShieldCheck, Sparkles, Compass } from "lucide-react";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 
@@ -76,39 +75,6 @@ export default function About() {
                 </Link>
               </li>
             </ul>
-          </section>
-
-          <section className="grid gap-6 lg:grid-cols-3">
-            <div className="instrument-surface rounded-sm p-6">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#A3FFD6]/10 text-[#A3FFD6]">
-                <Sparkles className="h-5 w-5" />
-              </div>
-              <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Why TopMoneyTools</p>
-              <h2 className="mt-3 font-heading text-xl font-semibold text-[#E0E0E0]">Fast financial clarity</h2>
-              <p className="mt-2 text-sm text-[#889988]">
-                Turn complex numbers into simple outcomes so you can act with confidence.
-              </p>
-            </div>
-            <div className="instrument-surface rounded-sm p-6">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#A3FFD6]/10 text-[#A3FFD6]">
-                <ShieldCheck className="h-5 w-5" />
-              </div>
-              <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Why TopMoneyTools</p>
-              <h2 className="mt-3 font-heading text-xl font-semibold text-[#E0E0E0]">Private by design</h2>
-              <p className="mt-2 text-sm text-[#889988]">
-                No accounts and no server-side storage of calculator inputs. Ads, if shown, are disclosed in Privacy.
-              </p>
-            </div>
-            <div className="instrument-surface rounded-sm p-6">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#A3FFD6]/10 text-[#A3FFD6]">
-                <Compass className="h-5 w-5" />
-              </div>
-              <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Why TopMoneyTools</p>
-              <h2 className="mt-3 font-heading text-xl font-semibold text-[#E0E0E0]">Built for everyday use</h2>
-              <p className="mt-2 text-sm text-[#889988]">
-                Designed for real people with real questions about budgets, loans, retirement, and inflation.
-              </p>
-            </div>
           </section>
 
           <section className="instrument-surface rounded-sm p-5">
