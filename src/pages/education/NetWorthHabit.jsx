@@ -35,21 +35,29 @@ export default function NetWorthHabit() {
         { q: "What is a liability?", slug: "liability" }
       ]}
       relatedTools={[
-        { label: "Net Worth Calculator", to: "/tools/net-worth" },
-        { label: "Net Worth Projection", to: "/tools/net-worth-projection" },
-        { label: "Budget Planner", to: "/tools/budget-planner" }
-      ]}
-      seoMeta={{
-        title: "How to Build a Simple Net Worth Habit | TopMoneyTools",
-        description: "Track net worth in 20 minutes a quarter. What to include, what to skip, and how the trend matters more than one number.",
-        url: "https://topmoneytools.com/education/net-worth-habit",
-        type: "article",
-      }}
-      structuredData={[structuredData, breadcrumbSchema]}
-    >
-      <p className="mt-3 text-[#889988]">
-        Net worth is not a personality score. It is a balance sheet: what you own minus what you owe. Checked once and forgotten, it is trivia. Checked on a simple schedule, it becomes one of the clearest habits in personal finance.
-      </p>
+              { label: "Net Worth Calculator", to: "/tools/net-worth" },
+              { label: "Net Worth Projection", to: "/tools/net-worth-projection" },
+              { label: "Budget Planner", to: "/tools/budget-planner" }
+            ]}
+            relatedArticles={[
+              { label: "Net Worth Benchmarks by Age", to: "/education/net-worth-by-age", num: "124" },
+            ]}
+            seoMeta={{
+              title: "How to Build a Simple Net Worth Habit | TopMoneyTools",
+              description: "Track net worth in 20 minutes a quarter. What to include, what to skip, and how the trend matters more than one number.",
+              url: "https://topmoneytools.com/education/net-worth-habit",
+              type: "article",
+            }}
+            structuredData={[structuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">How this differs:</strong>{" "}
+              <Link to="/education/net-worth-by-age" className="text-[#A3FFD6] hover:underline">Net Worth Benchmarks by Age</Link>
+              {" "}explains the formula and optional age benchmarks. This article is the operating system — a 20-minute quarterly ritual and what to write down after the number.
+            </p>
+            <p className="mt-3 text-[#889988]">
+              Net worth is not a personality score. It is a balance sheet: what you own minus what you owe. Checked once and forgotten, it is trivia. Checked on a simple schedule, it becomes one of the clearest habits in personal finance.
+            </p>
       <p className="mt-3 text-[#889988]">
         This guide shows a lightweight system you can run in about twenty minutes, four times a year—without spreadsheets becoming a second job.
       </p>

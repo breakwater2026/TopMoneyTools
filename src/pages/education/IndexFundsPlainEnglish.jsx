@@ -35,20 +35,31 @@ export default function IndexFundsPlainEnglish() {
         { q: "What is diversification?", slug: "diversification" }
       ]}
       relatedTools={[
-        { label: "Investment Growth", to: "/tools/investment-growth" },
-        { label: "Compound Interest", to: "/tools/compound-interest" }
-      ]}
-      seoMeta={{
-        title: "Index Funds in Plain English | TopMoneyTools",
-        description: "What an index fund is, why fees matter, and how diversification works\u2014without product hype.",
-        url: "https://topmoneytools.com/education/index-funds-plain-english",
-        type: "article",
-      }}
-      structuredData={[structuredData, breadcrumbSchema]}
-    >
-      <p className="mt-3 text-[#889988]">
-        An <strong className="text-[#E0E0E0]">index</strong> is a list of assets chosen by rules (for example, a broad stock market index). An <strong className="text-[#E0E0E0]">index fund</strong> is built to track that list rather than bet heavily on a few hand-picked winners.
-      </p>
+              { label: "Investment Growth", to: "/tools/investment-growth" },
+              { label: "Compound Interest", to: "/tools/compound-interest" }
+            ]}
+            relatedArticles={[
+              { label: "Investing 101", to: "/education/investing-101", num: "105" },
+              { label: "Dollar-Cost Averaging Deep Dive", to: "/education/dollar-cost-averaging", num: "119" },
+            ]}
+            seoMeta={{
+              title: "Index Funds in Plain English | TopMoneyTools",
+              description: "What an index fund is, why fees matter, and how diversification works—without product hype.",
+              url: "https://topmoneytools.com/education/index-funds-plain-english",
+              type: "article",
+            }}
+            structuredData={[structuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">How this differs:</strong>{" "}
+              <Link to="/education/investing-101" className="text-[#A3FFD6] hover:underline">Investing 101</Link>
+              {" "}is the broad primer (risk, diversification, time).{" "}
+              <Link to="/education/dollar-cost-averaging" className="text-[#A3FFD6] hover:underline">DCA</Link>
+              {" "}is about timing contributions. This article is only the index-fund idea — tracking a list, fees as a leak, no product picks.
+            </p>
+            <p className="mt-3 text-[#889988]">
+              An <strong className="text-[#E0E0E0]">index</strong> is a list of assets chosen by rules (for example, a broad stock market index). An <strong className="text-[#E0E0E0]">index fund</strong> is built to track that list rather than bet heavily on a few hand-picked winners.
+            </p>
       <p className="mt-3 text-[#889988]">
         This is education—not a recommendation to buy any specific fund or product.
       </p>

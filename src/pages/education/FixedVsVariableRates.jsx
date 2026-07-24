@@ -34,20 +34,31 @@ export default function FixedVsVariableRates() {
         { q: "What is APR?", slug: "apr" }
       ]}
       relatedTools={[
-        { label: "Mortgage Payment", to: "/tools/mortgage-payment" },
-        { label: "Debt Cost Calculator", to: "/tools/debt-cost" }
-      ]}
-      seoMeta={{
-        title: "Fixed vs Variable Rate Loans | TopMoneyTools",
-        description: "Payment certainty versus rate risk. How to stress-test a variable rate and choose with eyes open.",
-        url: "https://topmoneytools.com/education/fixed-vs-variable-rates",
-        type: "article",
-      }}
-      structuredData={[structuredData, breadcrumbSchema]}
-    >
-      <p className="mt-3 text-[#889988]">
-        A <strong className="text-[#E0E0E0]">fixed rate</strong> stays the same for a defined term. A <strong className="text-[#E0E0E0]">variable (or adjustable) rate</strong> can move with a reference index. One buys certainty; the other can start cheaper and then change the payment story.
-      </p>
+              { label: "Mortgage Payment", to: "/tools/mortgage-payment" },
+              { label: "Debt Cost Calculator", to: "/tools/debt-cost" }
+            ]}
+            relatedArticles={[
+              { label: "Understanding Interest Rates", to: "/education/understanding-interest-rates", num: "107" },
+              { label: "How to Compare Loans", to: "/education/how-to-compare-loans", num: "103" },
+            ]}
+            seoMeta={{
+              title: "Fixed vs Variable Rate Loans | TopMoneyTools",
+              description: "Payment certainty versus rate risk. How to stress-test a variable rate and choose with eyes open.",
+              url: "https://topmoneytools.com/education/fixed-vs-variable-rates",
+              type: "article",
+            }}
+            structuredData={[structuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">How this differs:</strong>{" "}
+              <Link to="/education/understanding-interest-rates" className="text-[#A3FFD6] hover:underline">Understanding Interest Rates</Link>
+              {" "}covers APR and amortization basics.{" "}
+              <Link to="/education/how-to-compare-loans" className="text-[#A3FFD6] hover:underline">How to Compare Loans</Link>
+              {" "}is a shopping checklist. This article is only fixed vs variable — certainty versus payment shock, with a +2% stress test.
+            </p>
+            <p className="mt-3 text-[#889988]">
+              A <strong className="text-[#E0E0E0]">fixed rate</strong> stays the same for a defined term. A <strong className="text-[#E0E0E0]">variable (or adjustable) rate</strong> can move with a reference index. One buys certainty; the other can start cheaper and then change the payment story.
+            </p>
       <p className="mt-3 text-[#889988]">
         Neither is morally superior. The fit depends on your cash-flow flexibility, time horizon, and tolerance for payment shock.
       </p>

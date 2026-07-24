@@ -34,21 +34,32 @@ export default function DownPaymentTradeoffs() {
         { q: "What is PMI?", slug: "pmi" }
       ]}
       relatedTools={[
-        { label: "Home Affordability", to: "/tools/home-affordability" },
-        { label: "Mortgage Payment", to: "/tools/mortgage-payment" },
-        { label: "Emergency Fund", to: "/tools/emergency-fund" }
-      ]}
-      seoMeta={{
-        title: "Down Payments: 5%, 10%, or 20%? | TopMoneyTools",
-        description: "How down payment size changes payment, interest, cash reserves, and risk\u2014not just \u201chow soon can we buy.\u201d",
-        url: "https://topmoneytools.com/education/down-payment-tradeoffs",
-        type: "article",
-      }}
-      structuredData={[structuredData, breadcrumbSchema]}
-    >
-      <p className="mt-3 text-[#889988]">
-        A larger down payment usually means a smaller loan, less interest, and sometimes cheaper default insurance requirements. A smaller down payment preserves cash and can get you into a home sooner—if the payment and reserves still work.
-      </p>
+              { label: "Home Affordability", to: "/tools/home-affordability" },
+              { label: "Mortgage Payment", to: "/tools/mortgage-payment" },
+              { label: "Emergency Fund", to: "/tools/emergency-fund" }
+            ]}
+            relatedArticles={[
+              { label: "Home Affordability: How Much House?", to: "/education/home-affordability", num: "115" },
+              { label: "How Much House Is Too Much?", to: "/education/how-much-house-too-much", num: "136" },
+            ]}
+            seoMeta={{
+              title: "Down Payments: 5%, 10%, or 20%? | TopMoneyTools",
+              description: "How down payment size changes payment, interest, cash reserves, and risk—not just how soon can we buy.",
+              url: "https://topmoneytools.com/education/down-payment-tradeoffs",
+              type: "article",
+            }}
+            structuredData={[structuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">How this differs:</strong>{" "}
+              <Link to="/education/home-affordability" className="text-[#A3FFD6] hover:underline">Home Affordability</Link>
+              {" "}sets a price range from income and DTI.{" "}
+              <Link to="/education/how-much-house-too-much" className="text-[#A3FFD6] hover:underline">How Much House Is Too Much?</Link>
+              {" "}is the comfort ceiling. This article is only the cash-up-front decision: 5% vs 10% vs 20% and the reserve tradeoff.
+            </p>
+            <p className="mt-3 text-[#889988]">
+              A larger down payment usually means a smaller loan, less interest, and sometimes cheaper default insurance requirements. A smaller down payment preserves cash and can get you into a home sooner—if the payment and reserves still work.
+            </p>
       <p className="mt-3 text-[#889988]">
         The right answer is a tradeoff, not a slogan.
       </p>

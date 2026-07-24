@@ -34,21 +34,29 @@ export default function CarBuyingCashLoanWait() {
         { q: "What is opportunity cost?", slug: "opportunity-cost" }
       ]}
       relatedTools={[
-        { label: "Auto Loan Calculator", to: "/tools/auto-loan" },
-        { label: "Savings Goal", to: "/tools/savings-goal" },
-        { label: "Budget Planner", to: "/tools/budget-planner" }
-      ]}
-      seoMeta={{
-        title: "Car Buying: Cash, Loan, or Wait | TopMoneyTools",
-        description: "Depreciation, total cost of ownership, and when financing is tool versus trap.",
-        url: "https://topmoneytools.com/education/car-buying-cash-loan-wait",
-        type: "article",
-      }}
-      structuredData={[structuredData, breadcrumbSchema]}
-    >
-      <p className="mt-3 text-[#889988]">
-        Cars are mostly declining assets. The “best” purchase is often the one that meets reliable-transport needs at the lowest <strong className="text-[#E0E0E0]">total cost of ownership</strong> without wrecking your safety net.
-      </p>
+              { label: "Auto Loan Calculator", to: "/tools/auto-loan" },
+              { label: "Savings Goal", to: "/tools/savings-goal" },
+              { label: "Budget Planner", to: "/tools/budget-planner" }
+            ]}
+            relatedArticles={[
+              { label: "Car Buying: New vs. Used", to: "/education/car-buying-guide", num: "116" },
+            ]}
+            seoMeta={{
+              title: "Car Buying: Cash, Loan, or Wait | TopMoneyTools",
+              description: "Depreciation, total cost of ownership, and when financing is tool versus trap.",
+              url: "https://topmoneytools.com/education/car-buying-cash-loan-wait",
+              type: "article",
+            }}
+            structuredData={[structuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">How this differs:</strong>{" "}
+              <Link to="/education/car-buying-guide" className="text-[#A3FFD6] hover:underline">Car Buying: New vs. Used</Link>
+              {" "}compares vehicle type and depreciation. This article is about <em>funding</em> — cash, loan, or waiting — once you roughly know what car you need.
+            </p>
+            <p className="mt-3 text-[#889988]">
+              Cars are mostly declining assets. The “best” purchase is often the one that meets reliable-transport needs at the lowest <strong className="text-[#E0E0E0]">total cost of ownership</strong> without wrecking your safety net.
+            </p>
       <h2 className="mt-0 text-xl font-semibold text-[#E0E0E0]">
         Total cost of ownership (not just sticker)
       </h2>

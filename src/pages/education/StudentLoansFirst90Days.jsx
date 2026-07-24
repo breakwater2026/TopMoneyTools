@@ -34,21 +34,29 @@ export default function StudentLoansFirst90Days() {
         { q: "What is an emergency fund?", slug: "emergency-fund" }
       ]}
       relatedTools={[
-        { label: "Student Loan Calculator", to: "/tools/student-loan" },
-        { label: "Emergency Fund", to: "/tools/emergency-fund" },
-        { label: "Budget Planner", to: "/tools/budget-planner" }
-      ]}
-      seoMeta={{
-        title: "Student Loans After Graduation: First 90 Days | TopMoneyTools",
-        description: "A practical first-three-months checklist: inventory loans, build a budget, and choose a payment approach.",
-        url: "https://topmoneytools.com/education/student-loans-first-90-days",
-        type: "article",
-      }}
-      structuredData={[structuredData, breadcrumbSchema]}
-    >
-      <p className="mt-3 text-[#889988]">
-        The first three months after school set the tone. You do not need a perfect forever plan—you need <strong className="text-[#E0E0E0]">inventory, cash flow, and no silent defaults</strong>.
-      </p>
+              { label: "Student Loan Calculator", to: "/tools/student-loan" },
+              { label: "Emergency Fund", to: "/tools/emergency-fund" },
+              { label: "Budget Planner", to: "/tools/budget-planner" }
+            ]}
+            relatedArticles={[
+              { label: "Student Loan Repayment Strategies", to: "/education/student-loan-strategies", num: "118" },
+            ]}
+            seoMeta={{
+              title: "Student Loans After Graduation: First 90 Days | TopMoneyTools",
+              description: "A practical first-three-months checklist: inventory loans, build a budget, and choose a payment approach.",
+              url: "https://topmoneytools.com/education/student-loans-first-90-days",
+              type: "article",
+            }}
+            structuredData={[structuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">How this differs:</strong>{" "}
+              <Link to="/education/student-loan-strategies" className="text-[#A3FFD6] hover:underline">Student Loan Repayment Strategies</Link>
+              {" "}covers federal vs private, IDR, PSLF, and refinancing. This article is a day-1 to day-90 checklist for new graduates — inventory first, strategy second.
+            </p>
+            <p className="mt-3 text-[#889988]">
+              The first three months after school set the tone. You do not need a perfect forever plan—you need <strong className="text-[#E0E0E0]">inventory, cash flow, and no silent defaults</strong>.
+            </p>
       <h2 className="mt-0 text-xl font-semibold text-[#E0E0E0]">
         Days 1–30: Inventory
       </h2>

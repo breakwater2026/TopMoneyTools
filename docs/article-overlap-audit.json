@@ -1,0 +1,349 @@
+{
+  "count": 40,
+  "by_cluster": {
+    "inflation": [
+      {
+        "num": "101",
+        "slug": "how-inflation-affects-your-daily-budget",
+        "title": "How Inflation Affects Your Daily Budget"
+      },
+      {
+        "num": "108",
+        "slug": "how-inflation-works",
+        "title": "How Inflation Works"
+      },
+      {
+        "num": "123",
+        "slug": "inflation-proofing-savings",
+        "title": "Inflation-Proofing Your Savings"
+      }
+    ],
+    "budgeting": [
+      {
+        "num": "102",
+        "slug": "budgeting-for-beginners",
+        "title": "Budgeting for Beginners (50/30/20 Rule)"
+      },
+      {
+        "num": "104",
+        "slug": "budgeting-101",
+        "title": "Budgeting 101"
+      },
+      {
+        "num": "127",
+        "slug": "needs-wants-gray-zone",
+        "title": "Needs, Wants, and the Gray Zone"
+      }
+    ],
+    "interest_loans": [
+      {
+        "num": "103",
+        "slug": "how-to-compare-loans",
+        "title": "How to Compare Loans"
+      },
+      {
+        "num": "107",
+        "slug": "understanding-interest-rates",
+        "title": "Understanding Interest Rates"
+      },
+      {
+        "num": "109",
+        "slug": "credit-scores-and-borrowing",
+        "title": "Credit Scores & Borrowing"
+      },
+      {
+        "num": "129",
+        "slug": "fixed-vs-variable-rates",
+        "title": "Fixed vs Variable Rate Loans"
+      }
+    ],
+    "investing": [
+      {
+        "num": "105",
+        "slug": "investing-101",
+        "title": "Investing 101"
+      },
+      {
+        "num": "114",
+        "slug": "compound-interest-guide",
+        "title": "Compound Interest: The Eighth Wonder"
+      },
+      {
+        "num": "119",
+        "slug": "dollar-cost-averaging",
+        "title": "Dollar-Cost Averaging Deep Dive"
+      },
+      {
+        "num": "133",
+        "slug": "index-funds-plain-english",
+        "title": "Index Funds in Plain English"
+      }
+    ],
+    "retirement_fire": [
+      {
+        "num": "106",
+        "slug": "retirement-planning-basics",
+        "title": "Retirement Planning Basics"
+      },
+      {
+        "num": "117",
+        "slug": "safe-withdrawal-rates",
+        "title": "The 4% Rule & Safe Withdrawal Rates"
+      },
+      {
+        "num": "125",
+        "slug": "fire-movement",
+        "title": "Financial Independence Retire Early (FIRE)"
+      },
+      {
+        "num": "135",
+        "slug": "sequence-of-returns",
+        "title": "Sequence of Returns Risk (Why Early Retirement Is Harder)"
+      }
+    ],
+    "emergency": [
+      {
+        "num": "110",
+        "slug": "emergency-funds-and-safety-nets",
+        "title": "Emergency Funds & Financial Safety Nets"
+      }
+    ],
+    "tax": [
+      {
+        "num": "111",
+        "slug": "tax-brackets-explained",
+        "title": "Tax Brackets Explained"
+      }
+    ],
+    "housing": [
+      {
+        "num": "112",
+        "slug": "rent-vs-buy",
+        "title": "Rent vs. Buy: The Full Math"
+      },
+      {
+        "num": "115",
+        "slug": "home-affordability",
+        "title": "Home Affordability: How Much House?"
+      },
+      {
+        "num": "130",
+        "slug": "down-payment-tradeoffs",
+        "title": "Down Payments: 5%, 10%, or 20%?"
+      },
+      {
+        "num": "131",
+        "slug": "renting-longer-myth",
+        "title": "Renting Longer Isn't Always Throwing Money Away"
+      },
+      {
+        "num": "136",
+        "slug": "how-much-house-too-much",
+        "title": "How Much House Is Too Much?"
+      },
+      {
+        "num": "140",
+        "slug": "monthly-money-review",
+        "title": "A One-Hour Monthly Money Review"
+      }
+    ],
+    "credit_debt": [
+      {
+        "num": "113",
+        "slug": "credit-card-interest",
+        "title": "Credit Card Interest Demystified"
+      },
+      {
+        "num": "118",
+        "slug": "student-loan-strategies",
+        "title": "Student Loan Repayment Strategies"
+      },
+      {
+        "num": "128",
+        "slug": "minimum-payments-cost",
+        "title": "The True Cost of Minimum Payments"
+      }
+    ],
+    "auto": [
+      {
+        "num": "116",
+        "slug": "car-buying-guide",
+        "title": "Car Buying: New vs. Used"
+      },
+      {
+        "num": "137",
+        "slug": "car-buying-cash-loan-wait",
+        "title": "Car Buying: Cash, Loan, or Wait"
+      }
+    ],
+    "insurance": [
+      {
+        "num": "120",
+        "slug": "insurance-essentials",
+        "title": "Insurance: What You Actually Need"
+      },
+      {
+        "num": "139",
+        "slug": "insurance-basics-gaps",
+        "title": "Insurance Basics: What Gap Are You Actually Filling?"
+      }
+    ],
+    "couples_side": [
+      {
+        "num": "121",
+        "slug": "side-hustle-economics",
+        "title": "Side Hustle Economics"
+      },
+      {
+        "num": "122",
+        "slug": "couples-and-money",
+        "title": "Couples & Money"
+      }
+    ],
+    "net_worth": [
+      {
+        "num": "124",
+        "slug": "net-worth-by-age",
+        "title": "Net Worth Benchmarks by Age"
+      },
+      {
+        "num": "126",
+        "slug": "net-worth-habit",
+        "title": "How to Build a Simple Net Worth Habit"
+      }
+    ],
+    "windfall_review": [
+      {
+        "num": "132",
+        "slug": "windfall-plan",
+        "title": "What to Do With a Windfall (Bonus, Tax Refund, Gift)"
+      }
+    ],
+    "risk": [
+      {
+        "num": "134",
+        "slug": "risk-tolerance-vs-capacity",
+        "title": "Risk Tolerance vs Risk Capacity"
+      }
+    ],
+    "student": [
+      {
+        "num": "138",
+        "slug": "student-loans-first-90-days",
+        "title": "Student Loans After Graduation: First 90 Days"
+      }
+    ]
+  },
+  "high_jaccard_pairs": [
+    {
+      "score": 0.294,
+      "a": "car-buying-guide",
+      "b": "car-buying-cash-loan-wait",
+      "shared": [
+        "buying",
+        "car",
+        "cost",
+        "ownership",
+        "total"
+      ]
+    }
+  ],
+  "new_vs_old_same_cluster": [
+    {
+      "new": "net-worth-habit",
+      "cluster": "net_worth",
+      "old": [
+        "net-worth-by-age"
+      ]
+    },
+    {
+      "new": "needs-wants-gray-zone",
+      "cluster": "budgeting",
+      "old": [
+        "budgeting-for-beginners",
+        "budgeting-101"
+      ]
+    },
+    {
+      "new": "minimum-payments-cost",
+      "cluster": "credit_debt",
+      "old": [
+        "credit-card-interest",
+        "student-loan-strategies"
+      ]
+    },
+    {
+      "new": "fixed-vs-variable-rates",
+      "cluster": "interest_loans",
+      "old": [
+        "how-to-compare-loans",
+        "understanding-interest-rates",
+        "credit-scores-and-borrowing"
+      ]
+    },
+    {
+      "new": "down-payment-tradeoffs",
+      "cluster": "housing",
+      "old": [
+        "rent-vs-buy",
+        "home-affordability"
+      ]
+    },
+    {
+      "new": "renting-longer-myth",
+      "cluster": "housing",
+      "old": [
+        "rent-vs-buy",
+        "home-affordability"
+      ]
+    },
+    {
+      "new": "index-funds-plain-english",
+      "cluster": "investing",
+      "old": [
+        "investing-101",
+        "compound-interest-guide",
+        "dollar-cost-averaging"
+      ]
+    },
+    {
+      "new": "sequence-of-returns",
+      "cluster": "retirement_fire",
+      "old": [
+        "retirement-planning-basics",
+        "safe-withdrawal-rates",
+        "fire-movement"
+      ]
+    },
+    {
+      "new": "how-much-house-too-much",
+      "cluster": "housing",
+      "old": [
+        "rent-vs-buy",
+        "home-affordability"
+      ]
+    },
+    {
+      "new": "car-buying-cash-loan-wait",
+      "cluster": "auto",
+      "old": [
+        "car-buying-guide"
+      ]
+    },
+    {
+      "new": "insurance-basics-gaps",
+      "cluster": "insurance",
+      "old": [
+        "insurance-essentials"
+      ]
+    },
+    {
+      "new": "monthly-money-review",
+      "cluster": "housing",
+      "old": [
+        "rent-vs-buy",
+        "home-affordability"
+      ]
+    }
+  ]
+}

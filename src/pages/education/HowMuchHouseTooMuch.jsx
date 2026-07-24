@@ -34,21 +34,31 @@ export default function HowMuchHouseTooMuch() {
         { q: "What is a mortgage?", slug: "mortgage" }
       ]}
       relatedTools={[
-        { label: "Home Affordability", to: "/tools/home-affordability" },
-        { label: "Mortgage Payment", to: "/tools/mortgage-payment" },
-        { label: "Budget Planner", to: "/tools/budget-planner" }
-      ]}
-      seoMeta={{
-        title: "How Much House Is Too Much? | TopMoneyTools",
-        description: "Payment comfort, maintenance, and opportunity cost\u2014why lender maximum is not the same as enough life left over.",
-        url: "https://topmoneytools.com/education/how-much-house-too-much",
-        type: "article",
-      }}
-      structuredData={[structuredData, breadcrumbSchema]}
-    >
-      <p className="mt-3 text-[#889988]">
-        A lender’s maximum approval is a risk decision for the lender. <strong className="text-[#E0E0E0]">Your</strong> maximum should leave room to live, save, and absorb repairs.
-      </p>
+              { label: "Home Affordability", to: "/tools/home-affordability" },
+              { label: "Mortgage Payment", to: "/tools/mortgage-payment" },
+              { label: "Budget Planner", to: "/tools/budget-planner" }
+            ]}
+            relatedArticles={[
+              { label: "Home Affordability: How Much House?", to: "/education/home-affordability", num: "115" },
+              { label: "Down Payments: 5%, 10%, or 20%?", to: "/education/down-payment-tradeoffs", num: "130" },
+            ]}
+            seoMeta={{
+              title: "How Much House Is Too Much? | TopMoneyTools",
+              description: "Payment comfort, maintenance, and opportunity cost—why lender maximum is not the same as enough life left over.",
+              url: "https://topmoneytools.com/education/how-much-house-too-much",
+              type: "article",
+            }}
+            structuredData={[structuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">How this differs:</strong>{" "}
+              <Link to="/education/home-affordability" className="text-[#A3FFD6] hover:underline">Home Affordability</Link>
+              {" "}explains lender DTI rules and closing costs. This article is the household comfort test — why the bank’s max is often too high for a life you still want to live. For down-payment sizing, see{" "}
+              <Link to="/education/down-payment-tradeoffs" className="text-[#A3FFD6] hover:underline">Down Payments: 5%, 10%, or 20%?</Link>.
+            </p>
+            <p className="mt-3 text-[#889988]">
+              A lender’s maximum approval is a risk decision for the lender. <strong className="text-[#E0E0E0]">Your</strong> maximum should leave room to live, save, and absorb repairs.
+            </p>
       <h2 className="mt-0 text-xl font-semibold text-[#E0E0E0]">
         Three ceilings (use the lowest)
       </h2>

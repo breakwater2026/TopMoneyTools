@@ -34,20 +34,31 @@ export default function NeedsWantsGrayZone() {
         { q: "What is discretionary spending?", slug: "discretionary-spending" }
       ]}
       relatedTools={[
-        { label: "Budget Planner", to: "/tools/budget-planner" },
-        { label: "Savings Rate Calculator", to: "/tools/savings-rate" }
-      ]}
-      seoMeta={{
-        title: "Needs, Wants, and the Gray Zone | TopMoneyTools",
-        description: "Make 50/30/20 work in real life. How to classify spending when categories blur\u2014and how to fix a needs-heavy budget.",
-        url: "https://topmoneytools.com/education/needs-wants-gray-zone",
-        type: "article",
-      }}
-      structuredData={[structuredData, breadcrumbSchema]}
-    >
-      <p className="mt-3 text-[#889988]">
-        The 50/30/20 rule is a teaching tool: roughly half of take-home pay for needs, 30% for wants, 20% for saving and debt payoff. Real life is messier. Commuting can be a need; a luxury car payment is partly a want. Groceries are a need; daily delivery markups are mostly a want.
-      </p>
+              { label: "Budget Planner", to: "/tools/budget-planner" },
+              { label: "Savings Rate Calculator", to: "/tools/savings-rate" }
+            ]}
+            relatedArticles={[
+              { label: "Budgeting for Beginners (50/30/20)", to: "/education/budgeting-for-beginners", num: "102" },
+              { label: "Budgeting 101", to: "/education/budgeting-101", num: "104" },
+            ]}
+            seoMeta={{
+              title: "Needs, Wants, and the Gray Zone | TopMoneyTools",
+              description: "Make 50/30/20 work in real life. How to classify spending when categories blur—and how to fix a needs-heavy budget.",
+              url: "https://topmoneytools.com/education/needs-wants-gray-zone",
+              type: "article",
+            }}
+            structuredData={[structuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">How this differs:</strong>{" "}
+              <Link to="/education/budgeting-for-beginners" className="text-[#A3FFD6] hover:underline">Budgeting for Beginners</Link>
+              {" "}and{" "}
+              <Link to="/education/budgeting-101" className="text-[#A3FFD6] hover:underline">Budgeting 101</Link>
+              {" "}teach the 50/30/20 framework. This article assumes you know the rule and focuses on the messy middle — subscriptions, commuting, and values-based wants that break neat buckets.
+            </p>
+            <p className="mt-3 text-[#889988]">
+              The 50/30/20 rule is a teaching tool: roughly half of take-home pay for needs, 30% for wants, 20% for saving and debt payoff. Real life is messier. Commuting can be a need; a luxury car payment is partly a want. Groceries are a need; daily delivery markups are mostly a want.
+            </p>
       <p className="mt-3 text-[#889988]">
         This article helps you classify spending honestly and fix budgets that collapse because everything got labeled “essential.”
       </p>

@@ -34,20 +34,28 @@ export default function RentingLongerMyth() {
         { q: "What is equity?", slug: "equity" }
       ]}
       relatedTools={[
-        { label: "Rent vs Buy Calculator", to: "/tools/rent-vs-buy" },
-        { label: "Budget Planner", to: "/tools/budget-planner" }
-      ]}
-      seoMeta={{
-        title: "Renting Longer Isn\u2019t Always \u201cThrowing Money Away\u201d | TopMoneyTools",
-        description: "When renting is financially rational: flexibility, transaction costs, short horizons, and opportunity cost.",
-        url: "https://topmoneytools.com/education/renting-longer-myth",
-        type: "article",
-      }}
-      structuredData={[structuredData, breadcrumbSchema]}
-    >
-      <p className="mt-3 text-[#889988]">
-        Rent pays for housing services. Part of a mortgage payment builds equity—but ownership also buys repairs, transaction costs, concentration risk, and reduced mobility. “Throwing money away” is a slogan, not a spreadsheet.
-      </p>
+              { label: "Rent vs Buy Calculator", to: "/tools/rent-vs-buy" },
+              { label: "Budget Planner", to: "/tools/budget-planner" }
+            ]}
+            relatedArticles={[
+              { label: "Rent vs. Buy: The Full Math", to: "/education/rent-vs-buy", num: "112" },
+            ]}
+            seoMeta={{
+              title: "Renting Longer Isn't Always Throwing Money Away | TopMoneyTools",
+              description: "When renting is financially rational: flexibility, transaction costs, short horizons, and opportunity cost.",
+              url: "https://topmoneytools.com/education/renting-longer-myth",
+              type: "article",
+            }}
+            structuredData={[structuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">How this differs:</strong>{" "}
+              <Link to="/education/rent-vs-buy" className="text-[#A3FFD6] hover:underline">Rent vs. Buy: The Full Math</Link>
+              {" "}is a multi-year cost comparison. This article challenges the slogan that renting is always waste — especially for short horizons and mobility.
+            </p>
+            <p className="mt-3 text-[#889988]">
+              Rent pays for housing services. Part of a mortgage payment builds equity—but ownership also buys repairs, transaction costs, concentration risk, and reduced mobility. “Throwing money away” is a slogan, not a spreadsheet.
+            </p>
       <h2 className="mt-0 text-xl font-semibold text-[#E0E0E0]">
         What renters pay for
       </h2>

@@ -34,21 +34,29 @@ export default function InsuranceBasicsGaps() {
         { q: "What is income protection?", slug: "income-protection" }
       ]}
       relatedTools={[
-        { label: "Insurance Gap Analyzer", to: "/tools/insurance-gap" },
-        { label: "Emergency Fund", to: "/tools/emergency-fund" },
-        { label: "Net Worth", to: "/tools/net-worth" }
-      ]}
-      seoMeta={{
-        title: "Insurance Basics: What Gap Are You Actually Filling? | TopMoneyTools",
-        description: "Life insurance as a goals inventory, not a fear purchase. How to use a gap estimate before you talk to a licensed advisor.",
-        url: "https://topmoneytools.com/education/insurance-basics-gaps",
-        type: "article",
-      }}
-      structuredData={[structuredData, breadcrumbSchema]}
-    >
-      <p className="mt-3 text-[#889988]">
-        Insurance is for <strong className="text-[#E0E0E0]">financial holes</strong> you cannot comfortably fund yourself. The mistake is buying random coverage from fear—or buying none when others depend on your income.
-      </p>
+              { label: "Insurance Gap Analyzer", to: "/tools/insurance-gap" },
+              { label: "Emergency Fund", to: "/tools/emergency-fund" },
+              { label: "Net Worth", to: "/tools/net-worth" }
+            ]}
+            relatedArticles={[
+              { label: "Insurance: What You Actually Need", to: "/education/insurance-essentials", num: "120" },
+            ]}
+            seoMeta={{
+              title: "Insurance Basics: What Gap Are You Actually Filling? | TopMoneyTools",
+              description: "Life insurance as a goals inventory, not a fear purchase. How to use a gap estimate before you talk to a licensed advisor.",
+              url: "https://topmoneytools.com/education/insurance-basics-gaps",
+              type: "article",
+            }}
+            structuredData={[structuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">How this differs:</strong>{" "}
+              <Link to="/education/insurance-essentials" className="text-[#A3FFD6] hover:underline">Insurance: What You Actually Need</Link>
+              {" "}surveys product types (term vs whole life, disability, health). This article is the pre-advisor worksheet — inventory the <em>gap</em> you are trying to fill before shopping policies.
+            </p>
+            <p className="mt-3 text-[#889988]">
+              Insurance is for <strong className="text-[#E0E0E0]">financial holes</strong> you cannot comfortably fund yourself. The mistake is buying random coverage from fear—or buying none when others depend on your income.
+            </p>
       <p className="mt-3 text-[#889988]">
         This is education. Only licensed advisors and insurers can recommend products for you.
       </p>

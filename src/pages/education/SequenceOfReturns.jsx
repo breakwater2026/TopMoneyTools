@@ -34,20 +34,31 @@ export default function SequenceOfReturns() {
         { q: "What is the 4% rule?", slug: "4-percent-rule" }
       ]}
       relatedTools={[
-        { label: "Retirement Withdrawal", to: "/tools/retirement-withdrawal" },
-        { label: "FIRE Number", to: "/tools/fire-number" }
-      ]}
-      seoMeta={{
-        title: "Sequence of Returns Risk (Why Early Retirement Is Harder) | TopMoneyTools",
-        description: "Why average returns mislead early retirees and how bad markets at the start of withdrawals change outcomes.",
-        url: "https://topmoneytools.com/education/sequence-of-returns",
-        type: "article",
-      }}
-      structuredData={[structuredData, breadcrumbSchema]}
-    >
-      <p className="mt-3 text-[#889988]">
-        Two retirees can earn the <strong className="text-[#E0E0E0]">same average return</strong> over 30 years and finish in very different places if one hits a bear market at the start of withdrawals and the other hits it later. That is <strong className="text-[#E0E0E0]">sequence of returns risk</strong>.
-      </p>
+              { label: "Retirement Withdrawal", to: "/tools/retirement-withdrawal" },
+              { label: "FIRE Number", to: "/tools/fire-number" }
+            ]}
+            relatedArticles={[
+              { label: "The 4% Rule & Safe Withdrawal Rates", to: "/education/safe-withdrawal-rates", num: "117" },
+              { label: "FIRE Movement", to: "/education/fire-movement", num: "125" },
+            ]}
+            seoMeta={{
+              title: "Sequence of Returns Risk (Why Early Retirement Is Harder) | TopMoneyTools",
+              description: "Why average returns mislead early retirees and how bad markets at the start of withdrawals change outcomes.",
+              url: "https://topmoneytools.com/education/sequence-of-returns",
+              type: "article",
+            }}
+            structuredData={[structuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">How this differs:</strong>{" "}
+              <Link to="/education/safe-withdrawal-rates" className="text-[#A3FFD6] hover:underline">Safe Withdrawal Rates</Link>
+              {" "}introduces the 4% rule and Trinity Study.{" "}
+              <Link to="/education/fire-movement" className="text-[#A3FFD6] hover:underline">FIRE</Link>
+              {" "}covers the savings-rate path to independence. This article isolates one failure mode: bad markets early in retirement — sequence risk — in plain English.
+            </p>
+            <p className="mt-3 text-[#889988]">
+              Two retirees can earn the <strong className="text-[#E0E0E0]">same average return</strong> over 30 years and finish in very different places if one hits a bear market at the start of withdrawals and the other hits it later. That is <strong className="text-[#E0E0E0]">sequence of returns risk</strong>.
+            </p>
       <h2 className="mt-0 text-xl font-semibold text-[#E0E0E0]">
         The idea in one story
       </h2>

@@ -34,20 +34,29 @@ export default function MinimumPaymentsCost() {
         { q: "What is APR?", slug: "apr" }
       ]}
       relatedTools={[
-        { label: "Credit Card Payoff", to: "/tools/credit-card-payoff" },
-        { label: "Debt Cost Calculator", to: "/tools/debt-cost" }
-      ]}
-      seoMeta={{
-        title: "The True Cost of Minimum Payments | TopMoneyTools",
-        description: "Why minimum payments keep you in debt for years and how fixed payoff amounts change interest and time.",
-        url: "https://topmoneytools.com/education/minimum-payments-cost",
-        type: "article",
-      }}
-      structuredData={[structuredData, breadcrumbSchema]}
-    >
-      <p className="mt-3 text-[#889988]">
-        Minimum payments are designed to keep the account current—not to free you quickly. On high-APR credit cards, a minimum-only plan can turn a manageable balance into a multi-year interest subscription.
-      </p>
+              { label: "Credit Card Payoff", to: "/tools/credit-card-payoff" },
+              { label: "Debt Cost Calculator", to: "/tools/debt-cost" }
+            ]}
+            relatedArticles={[
+              { label: "Credit Card Interest Demystified", to: "/education/credit-card-interest", num: "113" },
+            ]}
+            seoMeta={{
+              title: "The True Cost of Minimum Payments | TopMoneyTools",
+              description: "Why minimum payments keep you in debt for years and how fixed payoff amounts change interest and time.",
+              url: "https://topmoneytools.com/education/minimum-payments-cost",
+              type: "article",
+            }}
+            structuredData={[structuredData, breadcrumbSchema]}
+          >
+            <p className="mt-3 rounded-sm border border-[#A3FFD6]/20 bg-[#A3FFD6]/5 px-3 py-2 text-sm text-[#889988]">
+              <strong className="text-[#E0E0E0]">How this differs:</strong>{" "}
+              <Link to="/education/credit-card-interest" className="text-[#A3FFD6] hover:underline">Credit Card Interest Demystified</Link>
+              {" "}explains APR, daily interest, and balance-transfer mechanics. This article zooms in on one trap — minimum-only payments — with timeline math and a fixed-payoff protocol. Pair it with the{" "}
+              <Link to="/tools/credit-card-payoff" className="text-[#A3FFD6] hover:underline">Credit Card Payoff Calculator</Link>.
+            </p>
+            <p className="mt-3 text-[#889988]">
+              Minimum payments are designed to keep the account current—not to free you quickly. On high-APR credit cards, a minimum-only plan can turn a manageable balance into a multi-year interest subscription.
+            </p>
       <p className="mt-3 text-[#889988]">
         This article explains why that happens and how to use fixed-payment math to take back the timeline.
       </p>
