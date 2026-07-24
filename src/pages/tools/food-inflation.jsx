@@ -13,7 +13,7 @@ export default function FoodInflation() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/tools/food-inflation-calculator/Countries-Inflation.json")
+    fetch("/tools/food-inflation/Countries-Inflation.json")
       .then(response => response.json())
       .then(data => {
         setCountries(data.countries);

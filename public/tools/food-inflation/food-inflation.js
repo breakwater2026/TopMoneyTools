@@ -31,7 +31,7 @@ let selectedCountry = null;
 
 async function loadCountries() {
   try {
-    const res = await fetch("/tools/food-inflation-calculator/Countries-Inflation.json");
+    const res = await fetch("/tools/food-inflation/Countries-Inflation.json");
     const data = await res.json();
     
     if (!data.countries || !Array.isArray(data.countries)) {
