@@ -90,6 +90,14 @@ export default function Education() {
           Learn the basics, one clear step at a time. {ARTICLES.length} plain-English articles on inflation, budgeting,
           taxes, investing, loans, insurance, and more.
         </p>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#889988]/90">
+          Educational information only — not personalized financial advice. Pair any guide with the related calculator
+          when you want numbers. See our{" "}
+          <Link to="/disclaimer" className="text-[#A3FFD6] hover:underline">
+            Disclaimer
+          </Link>
+          .
+        </p>
 
         <div className="mt-6">
           <AdSlot slot="top" />

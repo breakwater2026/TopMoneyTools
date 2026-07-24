@@ -6,7 +6,7 @@ import Reveal from "@/components/Reveal";
 import ToolCard from "@/components/ToolCard";
 import FaqAccordion from "@/components/content/FaqAccordion";
 import SiteButton from "@/components/ui/SiteButton";
-import { LIVE_TOOLS, GLOSSARY, TOOL_COUNT } from "@/config/site.config";
+import { LIVE_TOOLS, TOOL_COUNT } from "@/config/site.config";
 
 const FAQS = [
   {
@@ -70,7 +70,7 @@ export default function Home() {
   return (
     <Layout>
       <SEO
-        title="Privacy-First Financial Calculators & Plain-English Guides"
+        title="Financial Calculators & Plain-English Guides | TopMoneyTools"
         description={`TopMoneyTools offers ${TOOL_COUNT} free financial calculators and plain-English guides. Calculator inputs stay on your device. Free to use; supported by advertising as described in Privacy.`}
         seoMeta={{
           url: "https://topmoneytools.com/",
@@ -318,7 +318,7 @@ export default function Home() {
           <Link to="/glossary" className="instrument-surface rounded-sm p-6 transition hover:instrument-glow">
             <h3 className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]">// Glossary</h3>
             <p className="mt-2 font-heading text-xl font-semibold text-[#E0E0E0]">
-              {GLOSSARY.length} Plain-English Terms
+              Plain-English Terms
             </p>
             <p className="mt-2 text-sm text-[#889988]">Every financial word used across our tools, defined simply.</p>
             <span className="mt-3 inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6]">

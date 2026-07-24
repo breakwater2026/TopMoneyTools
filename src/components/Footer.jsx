@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { GLOSSARY } from "@/config/site.config";
 
 // Single global footer — Tools / Learn / Trust
 export default function Footer() {
@@ -70,7 +69,7 @@ export default function Footer() {
             </li>
             <li>
               <Link to="/glossary" className="hover:text-[#A3FFD6]">
-                Glossary ({GLOSSARY.length} terms)
+                Glossary
               </Link>
             </li>
             <li>

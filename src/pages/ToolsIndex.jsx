@@ -30,7 +30,7 @@ export default function ToolsIndex() {
         <h1 className="mt-1 font-heading text-4xl font-bold tracking-tight text-[#E0E0E0]">All Instruments</h1>
         <p className="mt-2 max-w-xl text-[#889988]">
           {TOOL_COUNT} free calculators that run entirely in your browser. No accounts. Calculator inputs are not stored
-          on our servers.
+          on our servers. Educational estimates only — not personalized financial advice.
         </p>
         <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3FFD6]/70">
           {TOOL_COUNT} instruments · 01–{String(TOOL_COUNT).padStart(2, "0")}

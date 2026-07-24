@@ -98,6 +98,18 @@ export default function ArticleShell({
               </div>
             )}
 
+            <p className="mt-8 border-t border-[#A3FFD6]/15 pt-6 text-xs leading-relaxed text-[#889988]/90">
+              Educational information only — not personalized financial, tax, insurance, or investment advice.{" "}
+              <Link to="/disclaimer" className="text-[#A3FFD6] hover:underline">
+                Disclaimer
+              </Link>
+              {" · "}
+              <Link to="/privacy" className="text-[#A3FFD6] hover:underline">
+                Privacy
+              </Link>
+              .
+            </p>
+
             {autoRelated.length > 0 && (
               <div className="mt-6 border-t border-[#A3FFD6]/15 pt-6">
                 <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#A3FFD6]/60">// Related Articles</p>
